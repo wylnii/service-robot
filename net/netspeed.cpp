@@ -17,7 +17,7 @@ NetSpeed::NetSpeed(QObject *parent) : QObject(parent)
 NetSpeed::~NetSpeed()
 {
     timer.stop();
-    m_thread->quit();
+    m_thread->wait(1000);
 //    delete file;
 }
 

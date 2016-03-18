@@ -85,7 +85,7 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->comboBox_2->setCurrentText(QString::number(DEFAULT_BAUD));
 
     connect(serialport,&SerialPort::errMsg,this,&MainWindow::setStatusBarText);
-    connect(serialport,&SerialPort::rcvData,this,&MainWindow::handleRcvData);
+    connect(serialport,&SerialPort::rcvData,this,&MainWindow::getSPMsg);
     connect(this, &MainWindow::openSerialPort, serialport, &SerialPort::openPort);
     connect(this, &MainWindow::robotMove, serialport, &SerialPort::move);
     connect(this, &MainWindow::sendCmd, serialport, static_cast<void (SerialPort::*)(const QByteArray &)>(&SerialPort::sendCMD));
@@ -101,9 +101,10 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(ssdbClient, &SSDB_Client::CtrlMsg, serialport, &SerialPort::getCtrlMsg);
     connect(ssdbClient, &SSDB_Client::CtrlMsg, videoPlayer, &VideoPlayer::getCtrlMsg);
     connect(videoPlayer, &VideoPlayer::returnMsg, ssdbClient, &SSDB_Client::rcvVideoMsg);
+    connect(serialport,&SerialPort::rcvData,ssdbClient,&SSDB_Client::getSPMsg);
     connect(this, SIGNAL(connectSSDB()), ssdbClient, SLOT(connectServer()));
 
-    netSpeed = new NetSpeed();
+//    netSpeed = new NetSpeed();
 
     keyInput = new KeyInput(this);
     connect(keyInput, &KeyInput::keyPressed, this, &MainWindow::getKeyinput);
@@ -116,9 +117,9 @@ MainWindow::~MainWindow()
     wifi_thread->quit();
     serialport_thread->quit();
 //    videoPlayer->stop();
-    wifi_thread->deleteLater();
-    serialport_thread->deleteLater();
-    thread()->msleep(50);
+    wifi_thread->quit();
+    serialport_thread->quit();
+    thread()->msleep(100);
     delete videoPlayer;
     delete wifi;
     delete ssdbClient;
@@ -506,7 +507,7 @@ void MainWindow::on_pushButton_openPort_clicked()
     emit openSerialPort(ui->comboBox->currentText(),ui->comboBox_2->currentText().toInt(), serialport->isOpen());
 }
 
-void MainWindow::handleRcvData(const SerialPort::CtrlCmd &cmd)
+void MainWindow::getSPMsg(const SerialPort::CtrlCmd &cmd)
 {
     setStatText(QString("type: %1 data: %2").arg(cmd.type, 0, 16).arg(cmd.data, 8, 2, QChar('0')));
 }

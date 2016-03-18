@@ -5,6 +5,7 @@
 #include <QtCore>
 #include "SSDB/ssdb_client.h"
 #include "global.h"
+#include "serialport/serialport.h"
 
 class SSDB_Client : public QThread
 {
@@ -38,6 +39,7 @@ public slots:
     void rcvVideoMsg(const QString &list, int type);
     void queryVideoCtrl();
     void sendVideoInfo();
+    void getSPMsg(const SerialPort::CtrlCmd &cmd);
 
 signals:
     void CtrlMsg(SSDB_CtrlCmd);

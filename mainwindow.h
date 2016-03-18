@@ -73,7 +73,7 @@ private slots:
     void setStatText(const QString &text);
     void setStatusBarText(const QString &text, bool type = 0);
     void rcvKBInput(const QString &input, const QString &mrk);
-    void handleRcvData(const SerialPort::CtrlCmd &cmd);
+    void getSPMsg(const SerialPort::CtrlCmd &cmd);
     void getCtrlMsg(const SSDB_CtrlCmd &cmd);
     void getKeyinput(uchar key, bool status);
     void changeWindows(bool en = true);
@@ -92,7 +92,7 @@ private:
     SerialPort *serialport;
     SSDB_Client *ssdbClient;
     ScreenEmotion *screenEmotion;
-    NetSpeed *netSpeed;
+//    NetSpeed *netSpeed;
     KeyInput *keyInput;
 };
 

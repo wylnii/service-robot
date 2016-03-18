@@ -10,6 +10,7 @@ const char* Param_KEY = "param";
 const char* Video_CMD = "VideoPlay";
 const char* VideoInfo_KEY = "VideoInfo";
 const char* VideoPlayList_KEY = "VideoPlayList";
+const char* Robot_Msg = "RobotMsg";
 
 const char* EndVideo_CMD = "EndVideo";
 const char* EndDirCtrl_CMD = "EndDirCtl";
@@ -306,6 +307,12 @@ void SSDB_Client::sendVideoInfo()
     emit CtrlMsg(cmd);
 }
 
+void SSDB_Client::getSPMsg(const SerialPort::CtrlCmd &cmd)
+{
+    QString data = QString("%1 %2").arg(cmd.type, 0, 16).arg(cmd.data, 8, 2, QChar('0'));
+    hset(Robot_Msg, data.toStdString());
+}
+
 bool SSDB_Client::isNewDirCmd(SSDB_DIR cmd)
 {
     dirCmds<<cmd;
@@ -415,15 +422,15 @@ void SSDB_Client::run()
             {
                 queryDirCtrl();
             }
-            //            int i = 12;
-//            while(! m_timer->hasExpired(120) && ! stop)
-//            {
-//                QThread::msleep(10);
-//            }
-//            m_timer->start();
-            QEventLoop loop;
-            QTimer::singleShot(100,&loop,SLOT(quit()));
-            loop.exec();
+//                        int i = 12;
+            while(! m_timer->hasExpired(120) && ! stop)
+            {
+                QThread::msleep(10);
+            }
+            m_timer->start();
+//            QEventLoop loop;
+//            QTimer::singleShot(100,&loop,SLOT(quit()));
+//            loop.exec();
         }
     }
     m_timer->invalidate();
