@@ -12,6 +12,9 @@ SerialPort::SerialPort(QObject *parent) : QSerialPort(parent)
 
     connect(this,SIGNAL(readyRead()),this,SLOT(readCom()));
     openPort(scan_com().last(),DEFAULT_BAUD);
+    mtimer.start(2000);
+    connect(&mtimer,SIGNAL(timeout()),this,SLOT(queryRobotMsg()));
+    timerCount = 0;
 }
 
 SerialPort::~SerialPort()
@@ -61,6 +64,7 @@ QStringList SerialPort::scan_com()
  *               09         set charge voltage                              FF 09 XX XX BCC   XX XX = VOLT*1000
  *               10         set wait for charge time
  *               11-12   headup headdown                              FF 11 XX BCC
+ *               13-14  headleft headright
  *               15         query battery voltage                        FF 15 BCC
  *               16         query speed                                          FF 16 BCC
  *               17         query turn over speed                       FF 17 BCC
@@ -105,6 +109,12 @@ void SerialPort::move(MoveFlag motion)
     case HeadDown:
         sendCMD(QByteArray("\xff\x12\xff\x12"));
         break;
+    case HeadLeft:
+        sendCMD(QByteArray("\xff\x13\xff\x13"));
+        break;
+    case HeadRight:
+        sendCMD(QByteArray("\xff\x14\xff\x14"));
+        break;
     case Charge:
         sendCMD(QByteArray("\xff\x20\xff\x20"));
         break;
@@ -143,6 +153,18 @@ void SerialPort::sendCMD(const uchar *cmd, int length)
             thread()->usleep(1000);
         }
         thread()->msleep(10);
+    }
+}
+
+void SerialPort::queryRobotMsg()
+{
+    if(isOpen())
+    {
+        if((timerCount&0x01) == 1)
+            sendCMD("\xff\x15\xff\x15");//voltage
+        else
+            sendCMD("\xff\x21\xff\x21");//barrier
+        timerCount ++;
     }
 }
 
@@ -255,6 +277,8 @@ void SerialPort::getCtrlMsg(const SSDB_CtrlCmd &cmd)
         sendArgs(cmd);
     }
         break;
+    case SSDB_CTRL_Charge:
+        move(SerialPort::Charge);
     default:
         break;
     }
@@ -273,7 +297,7 @@ void SerialPort::analyseData(const QByteArray &rcvMsg)
         if(sum == (uchar)rcvMsg[last] && last > 1) //last byte:check
         {
             qDebug("check:0x%02X",sum);
-            uint data = 0;
+            int data = 0;
             switch ((uchar)rcvMsg[1])
             {
             case Cmd_QueryBatVol:
@@ -308,7 +332,7 @@ void SerialPort::analyseData(const QByteArray &rcvMsg)
             }
             if(data > 0)
             {
-                emit rcvData(CtrlCmd{(Cmd_Type)rcvMsg[1], data});
+                emit rcvSPData(CtrlCmd{(Cmd_Type)rcvMsg[1], data});
             }
         }
     }

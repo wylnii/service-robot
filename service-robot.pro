@@ -34,14 +34,16 @@ SOURCES += main.cpp\
     videoplayer/videoplayer.cpp \
     serialport/serialport.cpp \
     net/ipinfotable.cpp \
-    SSDB/ssdb_client.cpp \
     SSDB/buffer.c \
+    SSDB/ssdb_client.cpp \
+    SSDB/ssdb_client_.cpp \
     global.cpp \
     net/downloader.cpp \
     net/netspeed.cpp \
     keyinput.cpp \
-    SSDB/ssdb_client_.cpp \
-    screenemotion/screenemotion.cpp
+    screenemotion/screenemotion.cpp \
+    qrc_rc.cpp \
+    audioplayer/audioplayer.cpp
 
 HEADERS  += mainwindow.h \
     keyboard/keyboard.h \
@@ -53,11 +55,13 @@ HEADERS  += mainwindow.h \
     net/ipinfotable.h \
     SSDB/buffer.h \
     SSDB/ssdb_client.h \
+    SSDB/ssdb_client_.h \
     net/downloader.h \
     net/netspeed.h \
     keyinput.h \
-    SSDB/ssdb_client_.h \
-    screenemotion/screenemotion.h
+    screenemotion/screenemotion.h \
+    audioplayer.h \
+    audioplayer/audioplayer.h
 
 FORMS    += mainwindow.ui \
     keyboard/keyboard.ui

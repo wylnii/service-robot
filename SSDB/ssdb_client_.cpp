@@ -11,6 +11,7 @@ const char* Video_CMD = "VideoPlay";
 const char* VideoInfo_KEY = "VideoInfo";
 const char* VideoPlayList_KEY = "VideoPlayList";
 const char* Robot_Msg = "RobotMsg";
+const char* Battery_Volt = "BatteryVolt";
 
 const char* EndVideo_CMD = "EndVideo";
 const char* EndDirCtrl_CMD = "EndDirCtl";
@@ -200,6 +201,10 @@ void SSDB_Client::queryDirCtrl()
             cmd.dirCtrl = SSDB_DIR_HeadUp;
         else if(ret == "headdown")
             cmd.dirCtrl = SSDB_DIR_HeadDown;
+        else if(ret == "headleft")
+            cmd.dirCtrl = SSDB_DIR_HeadLeft;
+        else if(ret == "headright")
+            cmd.dirCtrl = SSDB_DIR_HeadRight;
         else
             return;
         if(isNewDirCmd(cmd.dirCtrl))
@@ -284,6 +289,7 @@ void SSDB_Client::queryVideoCtrl()
             else if(list[0] == "Stop")
             {
                 sendInfo_timer = false;
+                queryVideoCtrl_timer = false;
                 msleep(5);
                 hset(VideoInfo_KEY, "NULL");
                 cmd.videoCtrl = Video_Stop;
@@ -309,8 +315,22 @@ void SSDB_Client::sendVideoInfo()
 
 void SSDB_Client::getSPMsg(const SerialPort::CtrlCmd &cmd)
 {
-    QString data = QString("%1 %2").arg(cmd.type, 0, 16).arg(cmd.data, 8, 2, QChar('0'));
-    hset(Robot_Msg, data.toStdString());
+    switch ((int)cmd.type)
+    {
+    case SerialPort::Cmd_QueryBatVol:
+        hset(Battery_Volt,QString::number(cmd.data).toStdString());
+        hset(Query_KEY,Battery_Volt);
+        break;
+    case SerialPort::Cmd_WarningMsg:
+    {
+        QString data = QString("%1 %2").arg(cmd.type, 0, 16).arg(cmd.data, 8, 2, QChar('0'));
+        hset(Robot_Msg, data.toStdString());
+        hset(Query_KEY,Robot_Msg);
+    }
+        break;
+    default:
+        break;
+    }
 }
 
 bool SSDB_Client::isNewDirCmd(SSDB_DIR cmd)

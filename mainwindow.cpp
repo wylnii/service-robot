@@ -85,7 +85,7 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->comboBox_2->setCurrentText(QString::number(DEFAULT_BAUD));
 
     connect(serialport,&SerialPort::errMsg,this,&MainWindow::setStatusBarText);
-    connect(serialport,&SerialPort::rcvData,this,&MainWindow::getSPMsg);
+    connect(serialport,&SerialPort::rcvSPData,this,&MainWindow::getSPMsg);
     connect(this, &MainWindow::openSerialPort, serialport, &SerialPort::openPort);
     connect(this, &MainWindow::robotMove, serialport, &SerialPort::move);
     connect(this, &MainWindow::sendCmd, serialport, static_cast<void (SerialPort::*)(const QByteArray &)>(&SerialPort::sendCMD));
@@ -101,7 +101,7 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(ssdbClient, &SSDB_Client::CtrlMsg, serialport, &SerialPort::getCtrlMsg);
     connect(ssdbClient, &SSDB_Client::CtrlMsg, videoPlayer, &VideoPlayer::getCtrlMsg);
     connect(videoPlayer, &VideoPlayer::returnMsg, ssdbClient, &SSDB_Client::rcvVideoMsg);
-    connect(serialport,&SerialPort::rcvData,ssdbClient,&SSDB_Client::getSPMsg);
+    connect(serialport,&SerialPort::rcvSPData,ssdbClient,&SSDB_Client::getSPMsg);
     connect(this, SIGNAL(connectSSDB()), ssdbClient, SLOT(connectServer()));
 
 //    netSpeed = new NetSpeed();
@@ -520,7 +520,7 @@ void MainWindow::on_tabWidget_tabBarClicked(int index)
 
 void MainWindow::getCtrlMsg(const SSDB_CtrlCmd &cmd)
 {
-    qDebug()<<"get:"<<cmd.msg<<cmd.type<<cmd.dirCtrl<<cmd.videoCtrl;
+    qDebug()<<"MainWidow get:"<<cmd.msg<<cmd.type<<cmd.dirCtrl<<cmd.videoCtrl;
     if(cmd.type == SSDB_CTRL_VideoCtrl)
     {
         switch (cmd.videoCtrl)
