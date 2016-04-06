@@ -12,6 +12,7 @@ MainWindow::MainWindow(QWidget *parent) :
 
     move((screenrect.width() - WINDOW_WIDTH)/2, 0);
 
+    RobotName = loadHistory("RobotName");
    //    centralWidget()->setMouseTracking(1);
 //    setMouseTracking(1);
 
@@ -90,9 +91,9 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(this, &MainWindow::robotMove, serialport, &SerialPort::move);
     connect(this, &MainWindow::sendCmd, serialport, static_cast<void (SerialPort::*)(const QByteArray &)>(&SerialPort::sendCMD));
 
-    ssdbClient = new SSDB_Client();
-    ssdbClient->moveToThread(serialport_thread);
-    ssdbClient->setClientName(loadHistory("RobotName"));
+    ssdbClient = new SSDB_Client(this,RobotName);
+//    ssdbClient->moveToThread(serialport_thread);
+//    ssdbClient->setClientName(RobotName);
     ssdbClient->setServerAddr(loadHistory("SSDB_server"));
     ssdbClient->setServerPort(loadHistory("SSDB_port").toInt());
 

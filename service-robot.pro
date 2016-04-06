@@ -42,7 +42,6 @@ SOURCES += main.cpp\
     net/netspeed.cpp \
     keyinput.cpp \
     screenemotion/screenemotion.cpp \
-    qrc_rc.cpp \
     audioplayer/audioplayer.cpp
 
 HEADERS  += mainwindow.h \

@@ -1,5 +1,6 @@
 #include "global.h"
 
+QString RobotName;
 QTextCodec *textCodec = QTextCodec::codecForName("GB18030");
 
 QByteArray encrypt(const QByteArray &code, bool en) //0:en+, 1:de-

@@ -121,7 +121,7 @@ bool SSDB_Client::connectServer(const QString &host, int port)
     serverAddr = host;
     serverPort = port;
     m_client->connect(host.toLatin1().constData(), port);
-    qDebug()<<currentThread();
+//    qDebug()<<currentThread();
 
     if(m_client->isConnect())
     {
@@ -351,6 +351,11 @@ std::string SSDB_Client::getClientName() const
 
 void SSDB_Client::setClientName(const std::string &name)
 {
+    if(name.length() == 0)
+    {
+        qDebug()<<this<<"ClientName error!";
+        return;
+    }
     if(clientName != name)
     {
         clientName = name;
@@ -415,7 +420,7 @@ void SSDB_Client::run()
     if(! stop)
         return;
     stop = false;
-    qDebug()<<currentThread();
+    qDebug()<<this<<this->thread()<<currentThread();
     int timeCnt = 0;
     while(! stop)
     {

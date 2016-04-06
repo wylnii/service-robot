@@ -41,6 +41,11 @@ VideoPlayer::VideoPlayer(QObject *parent, QWidget *widget):QThread(parent)
     timer->start(3600000);
     connect(timer, &QTimer::timeout, this, &VideoPlayer::freeMem);
 
+    audioPlayer = new AudioPlayer();
+    connect(this,SIGNAL(stopAudioPlayer()),audioPlayer,SLOT(stop()));
+    audioPlayer->setRobotId(RobotName);
+    audioPlayer->startAudioPlayer();
+
     m_thread = new QThread(this);
     m_thread->start();
     moveToThread(m_thread);
@@ -53,6 +58,7 @@ VideoPlayer::~VideoPlayer()
     wait(100);
     delete m_thread;
     delete timer;
+    delete audioPlayer;
 }
 
 void VideoPlayer::setSource(const char *name)
@@ -377,8 +383,8 @@ int VideoPlayer::play()
             videoThread = SDL_CreateThread(video_thread,NULL);
             if(videoThread == NULL)
             {
-                return -1;
                 printf("##ERROR\tvideoThread start failed");
+                return -1;
             }
 //            videothread.start();
         }
@@ -392,6 +398,7 @@ int VideoPlayer::play()
                 printf("##ERROR\taudioThread start failed");
                 return -1;
             }
+            emit stopAudioPlayer();
         }
     }
     Pause = 0;
@@ -459,6 +466,7 @@ void VideoPlayer::pause()
         SDL_PushEvent(&event);
         isPlaying = Pause;
         //    SDL_PauseAudio(1);
+        audioPlayer->startAudioPlayer();
     }
 }
 
@@ -477,6 +485,7 @@ void VideoPlayer::stop(bool repaint)
         {
             SDL_CloseAudio();
             SDL_KillThread(vs->audioThread);
+            audioPlayer->startAudioPlayer();
         }
 //        videothread.stop();
         if(videoStream >= 0)

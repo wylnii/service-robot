@@ -1,7 +1,10 @@
 #ifndef GLOBAL
 #define GLOBAL
 
-#include<QtCore>
+#include <QString>
+#include <QVariant>
+#include <QSettings>
+#include <QTextCodec>
 
 #define RECORD_LOG
 #define PRINT_SCREEN
@@ -15,6 +18,8 @@
 #if QT_VERSION > 0x050500
 #define _TEST
 #endif
+
+extern QString RobotName;
 
 extern QTextCodec *textCodec;
 

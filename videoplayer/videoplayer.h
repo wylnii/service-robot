@@ -6,6 +6,7 @@
 #include <QtWidgets>
 #include <QTimer>
 #include "global.h"
+#include "audioplayer/audioplayer.h"
 
 /*
 class VideoThread : public QThread
@@ -79,6 +80,7 @@ private:
     QString singleVideo;
     QTimer *timer;
     QWidget *face;
+    AudioPlayer *audioPlayer;
 
 public slots:
     int play();
@@ -95,6 +97,7 @@ public slots:
 signals:
     void playEnd();
     void returnMsg(const QString &list, int type);
+    void stopAudioPlayer();
 };
 
 #endif // VIDEOPLAYER_H
