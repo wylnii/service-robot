@@ -25,7 +25,7 @@ Keyboard::Keyboard(QWidget *parent, const QString &disp, const QString &deflt) :
                   "QToolButton::checked{background-color:#000000;border:5px groove green;}"
                   "QToolButton::hover{border-color:#808080;background-color:#d0d0d0;}");
 
-    move(0, parentWidget()->height() - 230);
+    move(0, (parentWidget()->height() - this->height())*0.94);
     inputMode = iMode_Normal;
     caps_Lock = false;
     saveToFile = true;
