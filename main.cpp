@@ -15,7 +15,7 @@ int main(int argc, char *argv[])
     qDebug()<<"\n\nstart :\t"<<a.arguments()<<"\n";
 
     QFont f("WenQuanYi Micro Hei");
-    f.setPointSize(10);
+    f.setPointSize(16);
     a.setFont(f);
 
     MainWindow w;

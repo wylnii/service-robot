@@ -8,6 +8,8 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     ui->setupUi(this);
     setFixedSize(WINDOW_WIDTH,WINDOW_HEIGHT);
+    ui->label_title->hide();
+    ui->label_logo->hide();
     QRect screenrect = QApplication::desktop()->screenGeometry();
 
     move((screenrect.width() - WINDOW_WIDTH)/2, 0);
@@ -46,19 +48,27 @@ MainWindow::MainWindow(QWidget *parent) :
 #endif
     QTimer::singleShot(1000,Qt::VeryCoarseTimer,this,SLOT(autoConnect()));//auto connect
 
-    ipInfoTable=new IPInfoTable(ui->tabWidgetPage3,480,416);
+    ipInfoTable=new IPInfoTable(ui->tabWidgetPage3,950,720);
+    ipInfoTable->setFontPointSize(20);
 
     wifitable=new QTableWidget(ui->tabWidgetPage2);
+//    wifitable->verticalHeader()->setSectionResizeMode(QHeaderView::Stretch);
+    wifitable->verticalHeader()->setDefaultSectionSize(60); //设置行距
+    wifitable->verticalHeader()->setFixedWidth(60);
+    wifitable->verticalHeader()->setDefaultAlignment(Qt::AlignHCenter|Qt::AlignVCenter);
     wifitable->setColumnCount(3);
-    wifitable->setColumnWidth(0,200);
-    wifitable->setColumnWidth(1,100);
-    wifitable->setColumnWidth(2,110);
-    wifitable->setFixedSize(500,416);
+//    wifitable->setColumnWidth(0,200);
+//    wifitable->setColumnWidth(1,100);
+//    wifitable->setColumnWidth(2,110);
+    wifitable->setFixedSize(950,720);
     wifitable->move(2,0);
     wifitable->setEditTriggers(QAbstractItemView::NoEditTriggers);
     wifitable->setSelectionBehavior(QAbstractItemView::SelectRows);
     wifitable->setAlternatingRowColors(true);
-    wifitable->horizontalHeader()->setSectionResizeMode(0,QHeaderView::Stretch);
+//    wifitable->horizontalHeader()->setSectionResizeMode(0,QHeaderView::Stretch);
+//    wifitable->horizontalHeader()->setSectionResizeMode(1,QHeaderView::Stretch);
+    wifitable->horizontalHeader()->setFixedHeight(60);
+    wifitable->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
 
     mykeyboard=new Keyboard(this);
     mykeyboard->hide();

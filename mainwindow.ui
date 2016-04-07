@@ -6,698 +6,871 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>800</width>
-    <height>480</height>
+    <width>1280</width>
+    <height>800</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>MainWindow</string>
   </property>
   <widget class="QWidget" name="centralWidget">
-   <widget class="QTabWidget" name="tabWidget">
-    <property name="geometry">
-     <rect>
-      <x>0</x>
-      <y>0</y>
-      <width>800</width>
-      <height>460</height>
-     </rect>
-    </property>
-    <property name="focusPolicy">
-     <enum>Qt::NoFocus</enum>
-    </property>
-    <property name="currentIndex">
-     <number>0</number>
-    </property>
-    <widget class="QWidget" name="tabWidgetPage1">
-     <attribute name="title">
-      <string> Main </string>
-     </attribute>
-     <widget class="QLabel" name="label_3">
-      <property name="geometry">
-       <rect>
-        <x>290</x>
-        <y>80</y>
-        <width>211</width>
-        <height>211</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string/>
-      </property>
-      <property name="pixmap">
-       <pixmap resource="res.qrc">:/image/resource/logo.png</pixmap>
-      </property>
-     </widget>
-     <widget class="QLabel" name="label">
-      <property name="geometry">
-       <rect>
-        <x>5</x>
-        <y>340</y>
-        <width>786</width>
-        <height>86</height>
-       </rect>
-      </property>
-      <property name="font">
-       <font>
-        <pointsize>24</pointsize>
-       </font>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">color: rgb(249, 19, 19);</string>
-      </property>
-      <property name="text">
-       <string> 安徽工业大学 电气与信息工程学院</string>
-      </property>
-      <property name="alignment">
-       <set>Qt::AlignCenter</set>
-      </property>
-     </widget>
-     <widget class="QSlider" name="verticalSlider_2">
-      <property name="geometry">
-       <rect>
-        <x>690</x>
-        <y>105</y>
-        <width>29</width>
-        <height>216</height>
-       </rect>
-      </property>
+   <layout class="QGridLayout" name="gridLayout_5">
+    <item row="0" column="0">
+     <widget class="QTabWidget" name="tabWidget">
       <property name="focusPolicy">
        <enum>Qt::NoFocus</enum>
       </property>
-      <property name="maximum">
-       <number>127</number>
+      <property name="currentIndex">
+       <number>3</number>
       </property>
-      <property name="value">
-       <number>127</number>
-      </property>
-      <property name="orientation">
-       <enum>Qt::Vertical</enum>
-      </property>
-     </widget>
-    </widget>
-    <widget class="QWidget" name="tabWidgetPage2">
-     <attribute name="title">
-      <string>NetWork</string>
-     </attribute>
-     <widget class="QWidget" name="widget_4" native="true">
-      <property name="geometry">
-       <rect>
-        <x>610</x>
-        <y>15</y>
-        <width>171</width>
-        <height>386</height>
-       </rect>
-      </property>
-      <widget class="QWidget" name="layoutWidget">
-       <property name="geometry">
-        <rect>
-         <x>40</x>
-         <y>25</y>
-         <width>95</width>
-         <height>346</height>
-        </rect>
-       </property>
-       <layout class="QVBoxLayout" name="verticalLayout">
-        <item>
-         <widget class="QPushButton" name="pushButton_scan">
-          <property name="minimumSize">
-           <size>
-            <width>0</width>
-            <height>34</height>
-           </size>
-          </property>
-          <property name="text">
-           <string>scan</string>
-          </property>
-         </widget>
+      <widget class="QWidget" name="tabWidgetPage1">
+       <attribute name="title">
+        <string> Main </string>
+       </attribute>
+       <widget class="QSlider" name="verticalSlider_2">
+        <property name="geometry">
+         <rect>
+          <x>1055</x>
+          <y>110</y>
+          <width>96</width>
+          <height>511</height>
+         </rect>
+        </property>
+        <property name="focusPolicy">
+         <enum>Qt::NoFocus</enum>
+        </property>
+        <property name="maximum">
+         <number>127</number>
+        </property>
+        <property name="value">
+         <number>127</number>
+        </property>
+        <property name="orientation">
+         <enum>Qt::Vertical</enum>
+        </property>
+       </widget>
+       <widget class="QWidget" name="layoutWidget">
+        <property name="geometry">
+         <rect>
+          <x>45</x>
+          <y>10</y>
+          <width>896</width>
+          <height>701</height>
+         </rect>
+        </property>
+        <layout class="QVBoxLayout" name="verticalLayout_4">
+         <item>
+          <layout class="QHBoxLayout" name="horizontalLayout_4">
+           <item>
+            <spacer name="horizontalSpacer_3">
+             <property name="orientation">
+              <enum>Qt::Horizontal</enum>
+             </property>
+             <property name="sizeHint" stdset="0">
+              <size>
+               <width>40</width>
+               <height>20</height>
+              </size>
+             </property>
+            </spacer>
+           </item>
+           <item>
+            <widget class="QLabel" name="label_logo">
+             <property name="text">
+              <string/>
+             </property>
+             <property name="pixmap">
+              <pixmap resource="res.qrc">:/image/resource/logo.png</pixmap>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <spacer name="horizontalSpacer_4">
+             <property name="orientation">
+              <enum>Qt::Horizontal</enum>
+             </property>
+             <property name="sizeHint" stdset="0">
+              <size>
+               <width>40</width>
+               <height>20</height>
+              </size>
+             </property>
+            </spacer>
+           </item>
+          </layout>
+         </item>
+         <item>
+          <widget class="QLabel" name="label_title">
+           <property name="font">
+            <font>
+             <pointsize>30</pointsize>
+            </font>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">color: rgb(249, 19, 19);</string>
+           </property>
+           <property name="text">
+            <string> 安徽工业大学 电气与信息工程学院</string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignCenter</set>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+      </widget>
+      <widget class="QWidget" name="tabWidgetPage2">
+       <attribute name="title">
+        <string>NetWork</string>
+       </attribute>
+       <widget class="QWidget" name="widget_4" native="true">
+        <property name="geometry">
+         <rect>
+          <x>1020</x>
+          <y>15</y>
+          <width>161</width>
+          <height>711</height>
+         </rect>
+        </property>
+        <layout class="QVBoxLayout" name="verticalLayout">
+         <item>
+          <widget class="QPushButton" name="pushButton_scan">
+           <property name="minimumSize">
+            <size>
+             <width>0</width>
+             <height>60</height>
+            </size>
+           </property>
+           <property name="text">
+            <string>scan</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="pushButton_connect">
+           <property name="minimumSize">
+            <size>
+             <width>0</width>
+             <height>60</height>
+            </size>
+           </property>
+           <property name="text">
+            <string>connect</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="pushButton_openssdb">
+           <property name="minimumSize">
+            <size>
+             <width>0</width>
+             <height>60</height>
+            </size>
+           </property>
+           <property name="text">
+            <string>open SSDB</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="pushButton_disconnect">
+           <property name="minimumSize">
+            <size>
+             <width>0</width>
+             <height>60</height>
+            </size>
+           </property>
+           <property name="text">
+            <string>disconnect</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+      </widget>
+      <widget class="QWidget" name="tabWidgetPage3">
+       <attribute name="title">
+        <string>IP Info</string>
+       </attribute>
+      </widget>
+      <widget class="QWidget" name="tabWidgetPage4">
+       <attribute name="title">
+        <string>Control</string>
+       </attribute>
+       <layout class="QGridLayout" name="gridLayout_3">
+        <item row="0" column="0">
+         <layout class="QHBoxLayout" name="horizontalLayout_5">
+          <item>
+           <widget class="QWidget" name="widget_3" native="true">
+            <layout class="QVBoxLayout" name="verticalLayout_2">
+             <item>
+              <spacer name="verticalSpacer_4">
+               <property name="orientation">
+                <enum>Qt::Vertical</enum>
+               </property>
+               <property name="sizeHint" stdset="0">
+                <size>
+                 <width>20</width>
+                 <height>40</height>
+                </size>
+               </property>
+              </spacer>
+             </item>
+             <item>
+              <widget class="QGroupBox" name="groupBox">
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
+               <property name="title">
+                <string>SerialPort</string>
+               </property>
+               <layout class="QGridLayout" name="gridLayout_2">
+                <item row="0" column="0">
+                 <layout class="QGridLayout" name="gridLayout">
+                  <item row="0" column="0">
+                   <widget class="QLabel" name="label_4">
+                    <property name="maximumSize">
+                     <size>
+                      <width>100</width>
+                      <height>16777215</height>
+                     </size>
+                    </property>
+                    <property name="text">
+                     <string>Port:</string>
+                    </property>
+                    <property name="alignment">
+                     <set>Qt::AlignCenter</set>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="0" column="1">
+                   <widget class="QComboBox" name="comboBox">
+                    <property name="minimumSize">
+                     <size>
+                      <width>60</width>
+                      <height>50</height>
+                     </size>
+                    </property>
+                    <property name="maximumSize">
+                     <size>
+                      <width>150</width>
+                      <height>16777215</height>
+                     </size>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="1" column="0">
+                   <widget class="QLabel" name="label_2">
+                    <property name="maximumSize">
+                     <size>
+                      <width>100</width>
+                      <height>16777215</height>
+                     </size>
+                    </property>
+                    <property name="text">
+                     <string>Baud:</string>
+                    </property>
+                    <property name="alignment">
+                     <set>Qt::AlignCenter</set>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="1" column="1">
+                   <widget class="QComboBox" name="comboBox_2">
+                    <property name="minimumSize">
+                     <size>
+                      <width>60</width>
+                      <height>50</height>
+                     </size>
+                    </property>
+                    <property name="maximumSize">
+                     <size>
+                      <width>150</width>
+                      <height>16777215</height>
+                     </size>
+                    </property>
+                    <item>
+                     <property name="text">
+                      <string>9600</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>19200</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>38400</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>57600</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>115200</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>230400</string>
+                     </property>
+                    </item>
+                   </widget>
+                  </item>
+                 </layout>
+                </item>
+                <item row="0" column="1">
+                 <widget class="QPushButton" name="pushButton_openPort">
+                  <property name="minimumSize">
+                   <size>
+                    <width>60</width>
+                    <height>50</height>
+                   </size>
+                  </property>
+                  <property name="maximumSize">
+                   <size>
+                    <width>150</width>
+                    <height>16777215</height>
+                   </size>
+                  </property>
+                  <property name="focusPolicy">
+                   <enum>Qt::NoFocus</enum>
+                  </property>
+                  <property name="text">
+                   <string>open</string>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </widget>
+             </item>
+             <item>
+              <spacer name="verticalSpacer_2">
+               <property name="orientation">
+                <enum>Qt::Vertical</enum>
+               </property>
+               <property name="sizeHint" stdset="0">
+                <size>
+                 <width>20</width>
+                 <height>40</height>
+                </size>
+               </property>
+              </spacer>
+             </item>
+             <item>
+              <layout class="QHBoxLayout" name="horizontalLayout_2">
+               <item>
+                <widget class="QToolButton" name="toolButton_show">
+                 <property name="minimumSize">
+                  <size>
+                   <width>100</width>
+                   <height>50</height>
+                  </size>
+                 </property>
+                 <property name="focusPolicy">
+                  <enum>Qt::NoFocus</enum>
+                 </property>
+                 <property name="text">
+                  <string>show</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QToolButton" name="toolButton_test">
+                 <property name="minimumSize">
+                  <size>
+                   <width>100</width>
+                   <height>50</height>
+                  </size>
+                 </property>
+                 <property name="focusPolicy">
+                  <enum>Qt::NoFocus</enum>
+                 </property>
+                 <property name="text">
+                  <string>test</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QPushButton" name="pushButton_download">
+                 <property name="sizePolicy">
+                  <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                   <horstretch>0</horstretch>
+                   <verstretch>0</verstretch>
+                  </sizepolicy>
+                 </property>
+                 <property name="minimumSize">
+                  <size>
+                   <width>120</width>
+                   <height>50</height>
+                  </size>
+                 </property>
+                 <property name="focusPolicy">
+                  <enum>Qt::NoFocus</enum>
+                 </property>
+                 <property name="text">
+                  <string>Download</string>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </item>
+             <item>
+              <spacer name="verticalSpacer_3">
+               <property name="orientation">
+                <enum>Qt::Vertical</enum>
+               </property>
+               <property name="sizeHint" stdset="0">
+                <size>
+                 <width>20</width>
+                 <height>40</height>
+                </size>
+               </property>
+              </spacer>
+             </item>
+             <item>
+              <spacer name="verticalSpacer_5">
+               <property name="orientation">
+                <enum>Qt::Vertical</enum>
+               </property>
+               <property name="sizeHint" stdset="0">
+                <size>
+                 <width>20</width>
+                 <height>40</height>
+                </size>
+               </property>
+              </spacer>
+             </item>
+             <item>
+              <spacer name="verticalSpacer">
+               <property name="orientation">
+                <enum>Qt::Vertical</enum>
+               </property>
+               <property name="sizeHint" stdset="0">
+                <size>
+                 <width>20</width>
+                 <height>40</height>
+                </size>
+               </property>
+              </spacer>
+             </item>
+            </layout>
+           </widget>
+          </item>
+          <item>
+           <spacer name="horizontalSpacer_5">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+            <property name="sizeType">
+             <enum>QSizePolicy::Fixed</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>40</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+          <item>
+           <widget class="QWidget" name="widget_videoCtrl" native="true">
+            <layout class="QVBoxLayout" name="verticalLayout_3">
+             <item>
+              <layout class="QHBoxLayout" name="horizontalLayout_3">
+               <item>
+                <spacer name="horizontalSpacer_2">
+                 <property name="orientation">
+                  <enum>Qt::Horizontal</enum>
+                 </property>
+                 <property name="sizeType">
+                  <enum>QSizePolicy::Preferred</enum>
+                 </property>
+                 <property name="sizeHint" stdset="0">
+                  <size>
+                   <width>40</width>
+                   <height>20</height>
+                  </size>
+                 </property>
+                </spacer>
+               </item>
+               <item>
+                <widget class="QSlider" name="verticalSlider">
+                 <property name="minimumSize">
+                  <size>
+                   <width>0</width>
+                   <height>300</height>
+                  </size>
+                 </property>
+                 <property name="maximumSize">
+                  <size>
+                   <width>16777215</width>
+                   <height>400</height>
+                  </size>
+                 </property>
+                 <property name="focusPolicy">
+                  <enum>Qt::NoFocus</enum>
+                 </property>
+                 <property name="maximum">
+                  <number>128</number>
+                 </property>
+                 <property name="value">
+                  <number>128</number>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <spacer name="horizontalSpacer">
+                 <property name="orientation">
+                  <enum>Qt::Horizontal</enum>
+                 </property>
+                 <property name="sizeType">
+                  <enum>QSizePolicy::Preferred</enum>
+                 </property>
+                 <property name="sizeHint" stdset="0">
+                  <size>
+                   <width>40</width>
+                   <height>20</height>
+                  </size>
+                 </property>
+                </spacer>
+               </item>
+              </layout>
+             </item>
+             <item>
+              <widget class="QLabel" name="label_5">
+               <property name="text">
+                <string>Volume</string>
+               </property>
+               <property name="alignment">
+                <set>Qt::AlignCenter</set>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <layout class="QHBoxLayout" name="horizontalLayout">
+               <item>
+                <widget class="QToolButton" name="toolButton_last">
+                 <property name="minimumSize">
+                  <size>
+                   <width>0</width>
+                   <height>32</height>
+                  </size>
+                 </property>
+                 <property name="maximumSize">
+                  <size>
+                   <width>100</width>
+                   <height>100</height>
+                  </size>
+                 </property>
+                 <property name="focusPolicy">
+                  <enum>Qt::NoFocus</enum>
+                 </property>
+                 <property name="text">
+                  <string/>
+                 </property>
+                 <property name="icon">
+                  <iconset resource="res.qrc">
+                   <normaloff>:/image/resource/last.png</normaloff>:/image/resource/last.png</iconset>
+                 </property>
+                 <property name="iconSize">
+                  <size>
+                   <width>160</width>
+                   <height>160</height>
+                  </size>
+                 </property>
+                 <property name="autoRaise">
+                  <bool>true</bool>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QToolButton" name="toolButton_play">
+                 <property name="minimumSize">
+                  <size>
+                   <width>0</width>
+                   <height>32</height>
+                  </size>
+                 </property>
+                 <property name="maximumSize">
+                  <size>
+                   <width>100</width>
+                   <height>100</height>
+                  </size>
+                 </property>
+                 <property name="focusPolicy">
+                  <enum>Qt::NoFocus</enum>
+                 </property>
+                 <property name="icon">
+                  <iconset resource="res.qrc">
+                   <normaloff>:/image/resource/play.png</normaloff>:/image/resource/play.png</iconset>
+                 </property>
+                 <property name="iconSize">
+                  <size>
+                   <width>160</width>
+                   <height>160</height>
+                  </size>
+                 </property>
+                 <property name="autoRaise">
+                  <bool>true</bool>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QToolButton" name="toolButton_next">
+                 <property name="minimumSize">
+                  <size>
+                   <width>0</width>
+                   <height>32</height>
+                  </size>
+                 </property>
+                 <property name="maximumSize">
+                  <size>
+                   <width>100</width>
+                   <height>100</height>
+                  </size>
+                 </property>
+                 <property name="focusPolicy">
+                  <enum>Qt::NoFocus</enum>
+                 </property>
+                 <property name="text">
+                  <string/>
+                 </property>
+                 <property name="icon">
+                  <iconset resource="res.qrc">
+                   <normaloff>:/image/resource/next.png</normaloff>:/image/resource/next.png</iconset>
+                 </property>
+                 <property name="iconSize">
+                  <size>
+                   <width>160</width>
+                   <height>160</height>
+                  </size>
+                 </property>
+                 <property name="autoRaise">
+                  <bool>true</bool>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </item>
+             <item>
+              <spacer name="verticalSpacer_6">
+               <property name="orientation">
+                <enum>Qt::Vertical</enum>
+               </property>
+               <property name="sizeType">
+                <enum>QSizePolicy::Fixed</enum>
+               </property>
+               <property name="sizeHint" stdset="0">
+                <size>
+                 <width>20</width>
+                 <height>100</height>
+                </size>
+               </property>
+              </spacer>
+             </item>
+            </layout>
+           </widget>
+          </item>
+         </layout>
         </item>
-        <item>
-         <widget class="QPushButton" name="pushButton_connect">
-          <property name="minimumSize">
-           <size>
-            <width>0</width>
-            <height>34</height>
-           </size>
-          </property>
-          <property name="text">
-           <string>connect</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QPushButton" name="pushButton_openssdb">
-          <property name="minimumSize">
-           <size>
-            <width>0</width>
-            <height>34</height>
-           </size>
-          </property>
-          <property name="text">
-           <string>open SSDB</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QPushButton" name="pushButton_disconnect">
-          <property name="minimumSize">
-           <size>
-            <width>0</width>
-            <height>34</height>
-           </size>
-          </property>
-          <property name="text">
-           <string>disconnect</string>
-          </property>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="tabWidgetPage5">
+       <attribute name="title">
+        <string>Robot Control</string>
+       </attribute>
+       <layout class="QGridLayout" name="gridLayout_6">
+        <item row="0" column="0">
+         <widget class="QWidget" name="widget" native="true">
+          <widget class="QToolButton" name="toolButton_right">
+           <property name="geometry">
+            <rect>
+             <x>490</x>
+             <y>270</y>
+             <width>150</width>
+             <height>150</height>
+            </rect>
+           </property>
+           <property name="font">
+            <font>
+             <pointsize>24</pointsize>
+            </font>
+           </property>
+           <property name="focusPolicy">
+            <enum>Qt::NoFocus</enum>
+           </property>
+           <property name="text">
+            <string>&gt;</string>
+           </property>
+          </widget>
+          <widget class="QToolButton" name="toolButton_left">
+           <property name="geometry">
+            <rect>
+             <x>55</x>
+             <y>270</y>
+             <width>150</width>
+             <height>150</height>
+            </rect>
+           </property>
+           <property name="font">
+            <font>
+             <pointsize>24</pointsize>
+            </font>
+           </property>
+           <property name="focusPolicy">
+            <enum>Qt::NoFocus</enum>
+           </property>
+           <property name="text">
+            <string>&lt;</string>
+           </property>
+          </widget>
+          <widget class="QToolButton" name="toolButton_stop">
+           <property name="geometry">
+            <rect>
+             <x>275</x>
+             <y>270</y>
+             <width>150</width>
+             <height>150</height>
+            </rect>
+           </property>
+           <property name="font">
+            <font>
+             <pointsize>24</pointsize>
+            </font>
+           </property>
+           <property name="focusPolicy">
+            <enum>Qt::NoFocus</enum>
+           </property>
+           <property name="text">
+            <string>+</string>
+           </property>
+          </widget>
+          <widget class="QToolButton" name="toolButton_up">
+           <property name="geometry">
+            <rect>
+             <x>275</x>
+             <y>60</y>
+             <width>150</width>
+             <height>150</height>
+            </rect>
+           </property>
+           <property name="font">
+            <font>
+             <pointsize>24</pointsize>
+            </font>
+           </property>
+           <property name="focusPolicy">
+            <enum>Qt::NoFocus</enum>
+           </property>
+           <property name="text">
+            <string>^</string>
+           </property>
+          </widget>
+          <widget class="QToolButton" name="toolButton_down">
+           <property name="geometry">
+            <rect>
+             <x>275</x>
+             <y>480</y>
+             <width>150</width>
+             <height>150</height>
+            </rect>
+           </property>
+           <property name="font">
+            <font>
+             <pointsize>24</pointsize>
+            </font>
+           </property>
+           <property name="focusPolicy">
+            <enum>Qt::NoFocus</enum>
+           </property>
+           <property name="text">
+            <string>v</string>
+           </property>
+          </widget>
+          <widget class="QToolButton" name="toolButton_headup">
+           <property name="geometry">
+            <rect>
+             <x>900</x>
+             <y>140</y>
+             <width>150</width>
+             <height>150</height>
+            </rect>
+           </property>
+           <property name="font">
+            <font>
+             <pointsize>24</pointsize>
+            </font>
+           </property>
+           <property name="focusPolicy">
+            <enum>Qt::NoFocus</enum>
+           </property>
+           <property name="text">
+            <string>^</string>
+           </property>
+          </widget>
+          <widget class="QToolButton" name="toolButton_headdown">
+           <property name="geometry">
+            <rect>
+             <x>900</x>
+             <y>385</y>
+             <width>150</width>
+             <height>150</height>
+            </rect>
+           </property>
+           <property name="font">
+            <font>
+             <pointsize>24</pointsize>
+            </font>
+           </property>
+           <property name="focusPolicy">
+            <enum>Qt::NoFocus</enum>
+           </property>
+           <property name="text">
+            <string>v</string>
+           </property>
+          </widget>
+          <widget class="QToolButton" name="toolButton_charge">
+           <property name="geometry">
+            <rect>
+             <x>710</x>
+             <y>490</y>
+             <width>116</width>
+             <height>166</height>
+            </rect>
+           </property>
+           <property name="focusPolicy">
+            <enum>Qt::NoFocus</enum>
+           </property>
+           <property name="icon">
+            <iconset resource="res.qrc">
+             <normaloff>:/image/resource/battery_charging.png</normaloff>:/image/resource/battery_charging.png</iconset>
+           </property>
+           <property name="iconSize">
+            <size>
+             <width>200</width>
+             <height>200</height>
+            </size>
+           </property>
+           <property name="autoRaise">
+            <bool>true</bool>
+           </property>
+          </widget>
          </widget>
         </item>
        </layout>
       </widget>
      </widget>
-    </widget>
-    <widget class="QWidget" name="tabWidgetPage3">
-     <attribute name="title">
-      <string>IP Info</string>
-     </attribute>
-    </widget>
-    <widget class="QWidget" name="tabWidgetPage4">
-     <attribute name="title">
-      <string>Control</string>
-     </attribute>
-     <widget class="QWidget" name="widget_videoCtrl" native="true">
-      <property name="geometry">
-       <rect>
-        <x>495</x>
-        <y>20</y>
-        <width>236</width>
-        <height>356</height>
-       </rect>
-      </property>
-      <widget class="QSlider" name="verticalSlider">
-       <property name="geometry">
-        <rect>
-         <x>105</x>
-         <y>15</y>
-         <width>29</width>
-         <height>211</height>
-        </rect>
-       </property>
-       <property name="focusPolicy">
-        <enum>Qt::NoFocus</enum>
-       </property>
-       <property name="maximum">
-        <number>128</number>
-       </property>
-       <property name="value">
-        <number>128</number>
-       </property>
-      </widget>
-      <widget class="QLabel" name="label_5">
-       <property name="geometry">
-        <rect>
-         <x>70</x>
-         <y>230</y>
-         <width>96</width>
-         <height>31</height>
-        </rect>
-       </property>
-       <property name="text">
-        <string>Volume</string>
-       </property>
-       <property name="alignment">
-        <set>Qt::AlignCenter</set>
-       </property>
-      </widget>
-      <widget class="QToolButton" name="toolButton_play">
-       <property name="geometry">
-        <rect>
-         <x>95</x>
-         <y>265</y>
-         <width>55</width>
-         <height>55</height>
-        </rect>
-       </property>
-       <property name="minimumSize">
-        <size>
-         <width>0</width>
-         <height>32</height>
-        </size>
-       </property>
-       <property name="focusPolicy">
-        <enum>Qt::NoFocus</enum>
-       </property>
-       <property name="icon">
-        <iconset resource="res.qrc">
-         <normaloff>:/image/resource/play.png</normaloff>:/image/resource/play.png</iconset>
-       </property>
-       <property name="iconSize">
-        <size>
-         <width>160</width>
-         <height>160</height>
-        </size>
-       </property>
-       <property name="autoRaise">
-        <bool>true</bool>
-       </property>
-      </widget>
-      <widget class="QToolButton" name="toolButton_last">
-       <property name="geometry">
-        <rect>
-         <x>20</x>
-         <y>265</y>
-         <width>55</width>
-         <height>55</height>
-        </rect>
-       </property>
-       <property name="minimumSize">
-        <size>
-         <width>0</width>
-         <height>32</height>
-        </size>
-       </property>
-       <property name="focusPolicy">
-        <enum>Qt::NoFocus</enum>
-       </property>
-       <property name="text">
-        <string/>
-       </property>
-       <property name="icon">
-        <iconset resource="res.qrc">
-         <normaloff>:/image/resource/last.png</normaloff>:/image/resource/last.png</iconset>
-       </property>
-       <property name="iconSize">
-        <size>
-         <width>160</width>
-         <height>160</height>
-        </size>
-       </property>
-       <property name="autoRaise">
-        <bool>true</bool>
-       </property>
-      </widget>
-      <widget class="QToolButton" name="toolButton_next">
-       <property name="geometry">
-        <rect>
-         <x>170</x>
-         <y>265</y>
-         <width>55</width>
-         <height>55</height>
-        </rect>
-       </property>
-       <property name="minimumSize">
-        <size>
-         <width>0</width>
-         <height>32</height>
-        </size>
-       </property>
-       <property name="focusPolicy">
-        <enum>Qt::NoFocus</enum>
-       </property>
-       <property name="text">
-        <string/>
-       </property>
-       <property name="icon">
-        <iconset resource="res.qrc">
-         <normaloff>:/image/resource/next.png</normaloff>:/image/resource/next.png</iconset>
-       </property>
-       <property name="iconSize">
-        <size>
-         <width>160</width>
-         <height>160</height>
-        </size>
-       </property>
-       <property name="autoRaise">
-        <bool>true</bool>
-       </property>
-      </widget>
-     </widget>
-     <widget class="QWidget" name="widget_3" native="true">
-      <property name="geometry">
-       <rect>
-        <x>35</x>
-        <y>70</y>
-        <width>381</width>
-        <height>266</height>
-       </rect>
-      </property>
-      <widget class="QPushButton" name="pushButton_download">
-       <property name="geometry">
-        <rect>
-         <x>250</x>
-         <y>190</y>
-         <width>92</width>
-         <height>34</height>
-        </rect>
-       </property>
-       <property name="minimumSize">
-        <size>
-         <width>0</width>
-         <height>32</height>
-        </size>
-       </property>
-       <property name="focusPolicy">
-        <enum>Qt::NoFocus</enum>
-       </property>
-       <property name="text">
-        <string>Download</string>
-       </property>
-      </widget>
-      <widget class="QGroupBox" name="groupBox">
-       <property name="geometry">
-        <rect>
-         <x>35</x>
-         <y>35</y>
-         <width>301</width>
-         <height>106</height>
-        </rect>
-       </property>
-       <property name="title">
-        <string>SerialPort</string>
-       </property>
-       <widget class="QPushButton" name="pushButton_openPort">
-        <property name="geometry">
-         <rect>
-          <x>200</x>
-          <y>45</y>
-          <width>71</width>
-          <height>32</height>
-         </rect>
-        </property>
-        <property name="minimumSize">
-         <size>
-          <width>0</width>
-          <height>32</height>
-         </size>
-        </property>
-        <property name="focusPolicy">
-         <enum>Qt::NoFocus</enum>
-        </property>
-        <property name="text">
-         <string>open</string>
-        </property>
-       </widget>
-       <widget class="QLabel" name="label_2">
-        <property name="geometry">
-         <rect>
-          <x>10</x>
-          <y>70</y>
-          <width>67</width>
-          <height>17</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string>Baud:</string>
-        </property>
-       </widget>
-       <widget class="QLabel" name="label_4">
-        <property name="geometry">
-         <rect>
-          <x>10</x>
-          <y>35</y>
-          <width>67</width>
-          <height>17</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string>Port:</string>
-        </property>
-       </widget>
-       <widget class="QComboBox" name="comboBox">
-        <property name="geometry">
-         <rect>
-          <x>75</x>
-          <y>30</y>
-          <width>96</width>
-          <height>27</height>
-         </rect>
-        </property>
-       </widget>
-       <widget class="QComboBox" name="comboBox_2">
-        <property name="geometry">
-         <rect>
-          <x>75</x>
-          <y>65</y>
-          <width>96</width>
-          <height>27</height>
-         </rect>
-        </property>
-        <item>
-         <property name="text">
-          <string>9600</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>19200</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>38400</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>57600</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>115200</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>230400</string>
-         </property>
-        </item>
-       </widget>
-      </widget>
-      <widget class="QToolButton" name="toolButton_show">
-       <property name="geometry">
-        <rect>
-         <x>45</x>
-         <y>185</y>
-         <width>71</width>
-         <height>41</height>
-        </rect>
-       </property>
-       <property name="focusPolicy">
-        <enum>Qt::NoFocus</enum>
-       </property>
-       <property name="text">
-        <string>show</string>
-       </property>
-      </widget>
-      <widget class="QToolButton" name="toolButton_test">
-       <property name="geometry">
-        <rect>
-         <x>150</x>
-         <y>185</y>
-         <width>71</width>
-         <height>41</height>
-        </rect>
-       </property>
-       <property name="focusPolicy">
-        <enum>Qt::NoFocus</enum>
-       </property>
-       <property name="text">
-        <string>test</string>
-       </property>
-      </widget>
-     </widget>
-     <zorder>widget_3</zorder>
-     <zorder>widget_videoCtrl</zorder>
-    </widget>
-    <widget class="QWidget" name="tabWidgetPage5">
-     <attribute name="title">
-      <string>Robot Control</string>
-     </attribute>
-     <widget class="QWidget" name="widget" native="true">
-      <property name="geometry">
-       <rect>
-        <x>50</x>
-        <y>25</y>
-        <width>691</width>
-        <height>376</height>
-       </rect>
-      </property>
-      <widget class="QToolButton" name="toolButton_right">
-       <property name="geometry">
-        <rect>
-         <x>280</x>
-         <y>130</y>
-         <width>100</width>
-         <height>100</height>
-        </rect>
-       </property>
-       <property name="font">
-        <font>
-         <pointsize>24</pointsize>
-        </font>
-       </property>
-       <property name="focusPolicy">
-        <enum>Qt::NoFocus</enum>
-       </property>
-       <property name="text">
-        <string>&gt;</string>
-       </property>
-      </widget>
-      <widget class="QToolButton" name="toolButton_left">
-       <property name="geometry">
-        <rect>
-         <x>20</x>
-         <y>130</y>
-         <width>100</width>
-         <height>100</height>
-        </rect>
-       </property>
-       <property name="font">
-        <font>
-         <pointsize>24</pointsize>
-        </font>
-       </property>
-       <property name="focusPolicy">
-        <enum>Qt::NoFocus</enum>
-       </property>
-       <property name="text">
-        <string>&lt;</string>
-       </property>
-      </widget>
-      <widget class="QToolButton" name="toolButton_stop">
-       <property name="geometry">
-        <rect>
-         <x>150</x>
-         <y>130</y>
-         <width>100</width>
-         <height>100</height>
-        </rect>
-       </property>
-       <property name="font">
-        <font>
-         <pointsize>24</pointsize>
-        </font>
-       </property>
-       <property name="focusPolicy">
-        <enum>Qt::NoFocus</enum>
-       </property>
-       <property name="text">
-        <string>+</string>
-       </property>
-      </widget>
-      <widget class="QToolButton" name="toolButton_up">
-       <property name="geometry">
-        <rect>
-         <x>150</x>
-         <y>5</y>
-         <width>100</width>
-         <height>100</height>
-        </rect>
-       </property>
-       <property name="font">
-        <font>
-         <pointsize>24</pointsize>
-        </font>
-       </property>
-       <property name="focusPolicy">
-        <enum>Qt::NoFocus</enum>
-       </property>
-       <property name="text">
-        <string>^</string>
-       </property>
-      </widget>
-      <widget class="QToolButton" name="toolButton_down">
-       <property name="geometry">
-        <rect>
-         <x>150</x>
-         <y>255</y>
-         <width>100</width>
-         <height>100</height>
-        </rect>
-       </property>
-       <property name="font">
-        <font>
-         <pointsize>24</pointsize>
-        </font>
-       </property>
-       <property name="focusPolicy">
-        <enum>Qt::NoFocus</enum>
-       </property>
-       <property name="text">
-        <string>v</string>
-       </property>
-      </widget>
-      <widget class="QToolButton" name="toolButton_headup">
-       <property name="geometry">
-        <rect>
-         <x>550</x>
-         <y>45</y>
-         <width>100</width>
-         <height>100</height>
-        </rect>
-       </property>
-       <property name="font">
-        <font>
-         <pointsize>24</pointsize>
-        </font>
-       </property>
-       <property name="focusPolicy">
-        <enum>Qt::NoFocus</enum>
-       </property>
-       <property name="text">
-        <string>^</string>
-       </property>
-      </widget>
-      <widget class="QToolButton" name="toolButton_headdown">
-       <property name="geometry">
-        <rect>
-         <x>550</x>
-         <y>225</y>
-         <width>100</width>
-         <height>100</height>
-        </rect>
-       </property>
-       <property name="font">
-        <font>
-         <pointsize>24</pointsize>
-        </font>
-       </property>
-       <property name="focusPolicy">
-        <enum>Qt::NoFocus</enum>
-       </property>
-       <property name="text">
-        <string>v</string>
-       </property>
-      </widget>
-     </widget>
-     <widget class="QToolButton" name="toolButton_charge">
-      <property name="geometry">
-       <rect>
-        <x>470</x>
-        <y>305</y>
-        <width>70</width>
-        <height>90</height>
-       </rect>
-      </property>
-      <property name="focusPolicy">
-       <enum>Qt::NoFocus</enum>
-      </property>
-      <property name="icon">
-       <iconset resource="res.qrc">
-        <normaloff>:/image/resource/battery_charging.png</normaloff>:/image/resource/battery_charging.png</iconset>
-      </property>
-      <property name="iconSize">
-       <size>
-        <width>160</width>
-        <height>160</height>
-       </size>
-      </property>
-      <property name="autoRaise">
-       <bool>true</bool>
-      </property>
-     </widget>
-    </widget>
-   </widget>
+    </item>
+   </layout>
   </widget>
   <widget class="QStatusBar" name="statusBar"/>
  </widget>
