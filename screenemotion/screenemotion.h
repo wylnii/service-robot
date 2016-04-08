@@ -38,6 +38,10 @@ private:
     int currentEmt;
     QWidget *mainWindow;
 
+    const int radius = 80;
+    const QPoint p1,p2,p3,p4;
+
+
 protected:
     void mousePressEvent(QMouseEvent *e);
 

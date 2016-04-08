@@ -59,7 +59,6 @@ HEADERS  += mainwindow.h \
     net/netspeed.h \
     keyinput.h \
     screenemotion/screenemotion.h \
-    audioplayer.h \
     audioplayer/audioplayer.h
 
 FORMS    += mainwindow.ui \

@@ -1,8 +1,9 @@
 #include "screenemotion.h"
 
-const char *emotionDir = "./emotion/";
+const char *EmotionDir = "./emotion/";
 
-ScreenEmotion::ScreenEmotion(QWidget *parent, QWidget *mainWind):QLabel(parent)
+ScreenEmotion::ScreenEmotion(QWidget *parent, QWidget *mainWind):QLabel(parent),
+    p1(radius,radius), p2(radius,SCREEN_HEIGHT-radius), p3(SCREEN_WIDTH-radius,radius),p4(SCREEN_WIDTH-radius,SCREEN_HEIGHT-radius)
 {
     Q_ASSERT(mainWind != NULL);
     mainWindow = mainWind;
@@ -45,7 +46,7 @@ void ScreenEmotion::addEmotion(int type, const QString &fileName)
 
 void ScreenEmotion::searchEmotion()
 {
-    QDir dir(emotionDir);
+    QDir dir(EmotionDir);
     QStringList filelist = dir.entryList(QStringList()<<"*.gif"<<"*.png"<<"*.jpeg"<<"*.jpg");
     foreach (QString file, filelist)
     {
@@ -67,7 +68,7 @@ void ScreenEmotion::searchEmotion()
             mot = voiceListen;
 
         if(mot != EmotionCount)
-            emotionList.insert(mot, file.prepend(emotionDir));
+            emotionList.insert(mot, file.prepend(EmotionDir));
     }
 }
 
@@ -137,10 +138,10 @@ void ScreenEmotion::mousePressEvent(QMouseEvent *e)
     posList.append(e->pos());
     if(posList.count()>3)
     {
-        QPoint pot1((posList[last - 3] - QPoint(50,50))/100);
-        QPoint pot2((posList[last - 2] - QPoint(50,430))/100);
-        QPoint pot3((posList[last - 1] - QPoint(750,50))/100);
-        QPoint pot4((posList[last] - QPoint(750,430))/100);
+        QPoint pot1((posList[last - 3] - p1)/100);
+        QPoint pot2((posList[last - 2] - p2)/100);
+        QPoint pot3((posList[last - 1] - p3)/100);
+        QPoint pot4((posList[last]       - p4)/100);
 //        qDebug()<<pot<<pot2;
         if(pot1.isNull() && pot2.isNull() && pot3.isNull() && pot4.isNull())
         {

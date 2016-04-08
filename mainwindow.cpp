@@ -214,6 +214,7 @@ QString sliderStyle = "QSlider  {\
 
 void MainWindow::show()
 {
+//    QMainWindow::show();
 #ifndef _TEST
     screenEmotion->changeEmotion(ScreenEmotion::connecting);
     screenEmotion->show();
@@ -224,9 +225,10 @@ void MainWindow::show()
 
 void MainWindow::setStatText(const QString &text)
 {
+    static int statusBar_height = statusBar()->height();
     status_label->setText(text);
     qDebug()<<text;
-    repaint(0,460,800,20);
+    repaint(0,SCREEN_HEIGHT-statusBar_height,SCREEN_WIDTH,statusBar_height);
 }
 
 void MainWindow::setStatusBarText(const QString &text, bool type)

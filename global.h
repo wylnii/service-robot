@@ -19,6 +19,10 @@
 #define _TEST
 #endif
 
+#ifndef logout
+#define logout qDebug()<<this
+#endif
+
 extern QString RobotName;
 
 extern QTextCodec *textCodec;
