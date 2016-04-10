@@ -11,8 +11,8 @@ SerialPort::SerialPort(QObject *parent) : QSerialPort(parent)
     lastCMD.clear();
 
     connect(this,SIGNAL(readyRead()),this,SLOT(readCom()));
-    openPort(scan_com().last(),DEFAULT_BAUD);
-    mtimer.start(2000);
+//    openPort(scan_com().last(),DEFAULT_BAUD);
+    mtimer.start(5000);
     connect(&mtimer,SIGNAL(timeout()),this,SLOT(queryRobotMsg()));
     timerCount = 0;
 }
@@ -31,7 +31,7 @@ bool compareString(const QString &s1, const QString &s2)
         return s1.length() < s2.length();
 }
 
-QStringList SerialPort::scan_com()
+QStringList SerialPort::scanAvailablePorts()
 {
     QList<QSerialPortInfo> portsInfo = QSerialPortInfo::availablePorts();//List all available port
     QStringList portList;
@@ -61,11 +61,11 @@ QStringList SerialPort::scan_com()
  *               06         set speed                                               FF 06 XX BCC
  *               07         set turn over speed                            FF 07 XX BCC
  *               08         set shake head speed                        FF 08 XX BCC
- *               09         set charge voltage                              FF 09 XX XX BCC   XX XX = VOLT*1000
- *               10         set wait for charge time
+ *               09         set charge voltage                              FF 09 XX BCC   XX = Voltage
+ *               15         set wait for charge time    //TODO 暂定
  *               11-12   headup headdown                              FF 11 XX BCC
  *               13-14  headleft headright
- *               15         query battery voltage                        FF 15 BCC
+ *               10         query battery voltage                        FF 10 BCC
  *               16         query speed                                          FF 16 BCC
  *               17         query turn over speed                       FF 17 BCC
  *               18         query shake head speed                   FF 18 BCC
@@ -161,7 +161,7 @@ void SerialPort::queryRobotMsg()
     if(isOpen())
     {
         if((timerCount&0x01) == 1)
-            sendCMD("\xff\x15\xff\x15");//voltage
+            sendCMD("\xff\x10\xff\x10");//voltage
         else
             sendCMD("\xff\x21\xff\x21");//barrier
         timerCount ++;
@@ -302,7 +302,7 @@ void SerialPort::analyseData(const QByteArray &rcvMsg)
             {
             case Cmd_QueryBatVol:
                 if(last >= 3)
-                    data = ((uchar)rcvMsg[2]<<8) + (uchar)rcvMsg[3];
+                    data = (uchar)rcvMsg[2];//TODO 第三位为电压信息 Volt=data/256.0*29
                 break;
             case Cmd_QueryRunS:
                 data = (uchar)rcvMsg[2];
@@ -315,7 +315,7 @@ void SerialPort::analyseData(const QByteArray &rcvMsg)
                 break;
             case Cmd_QueryChgVol:
                 if(last >= 3)
-                    data = ((uchar)rcvMsg[2]<<8) + (uchar)rcvMsg[3];
+                    data = (uchar)rcvMsg[2];
                 break;
             case Cmd_WarningMsg:
                 data = (uchar)rcvMsg[2];

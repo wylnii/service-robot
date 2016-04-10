@@ -61,7 +61,9 @@ HEADERS  += mainwindow.h \
     screenemotion/screenemotion.h \
     audioplayer/audioplayer.h
 
-FORMS    += mainwindow.ui \
+FORMS    += \
+#    mainwindow800*480.ui \
+    mainwindow.ui \
     keyboard/keyboard.ui
 
 RESOURCES += \

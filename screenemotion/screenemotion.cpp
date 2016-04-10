@@ -1,6 +1,6 @@
 #include "screenemotion.h"
 
-const char *EmotionDir = "./emotion/";
+const QString EmotionDir = "./emotion/";
 
 ScreenEmotion::ScreenEmotion(QWidget *parent, QWidget *mainWind):QLabel(parent),
     p1(radius,radius), p2(radius,SCREEN_HEIGHT-radius), p3(SCREEN_WIDTH-radius,radius),p4(SCREEN_WIDTH-radius,SCREEN_HEIGHT-radius)
@@ -8,6 +8,7 @@ ScreenEmotion::ScreenEmotion(QWidget *parent, QWidget *mainWind):QLabel(parent),
     Q_ASSERT(mainWind != NULL);
     mainWindow = mainWind;
     movie = new QMovie(this);
+//    movie->setSpeed(20);
     setMovie(movie);
     emotionList.clear();
     setFixedSize(SCREEN_WIDTH, SCREEN_HEIGHT);
@@ -17,7 +18,7 @@ ScreenEmotion::ScreenEmotion(QWidget *parent, QWidget *mainWind):QLabel(parent),
     QPalette pal = palette();
     pal.setColor(QPalette::Background,QColor(0,0,0));
     setPalette(pal);
-//    setScaledContents(true);
+    setScaledContents(true);
 //    hide();
     searchEmotion();
     currentEmt = 0;
@@ -32,7 +33,7 @@ void ScreenEmotion::setMovieFile(const QString &path)
     {
         movie->stop();
         movie->setFileName(path);
-        movie->setScaledSize(this->size());
+//        movie->setScaledSize(this->size());
     }
 }
 
@@ -74,8 +75,11 @@ void ScreenEmotion::searchEmotion()
 
 void ScreenEmotion::changeEmotion(Emotion emotion)
 {
-    setMovieFile(emotionList[emotion]);
-    startMovie();
+    if(emotion < EmotionCount && emotion >= 0)
+    {
+        setMovieFile(emotionList[emotion]);
+        startMovie();
+    }
 }
 
 void ScreenEmotion::startMovie()
@@ -126,22 +130,30 @@ void ScreenEmotion::autoChangeEmt()
     currentEmt%=EmotionCount;
 }
 
+void ScreenEmotion::getCtrlMsg(const SSDB_CtrlCmd &cmd)
+{
+    if(cmd.type == SSDB_CTRL_Emotion)
+    {
+        changeEmotion((Emotion)cmd.emotinIndex);
+    }
+}
+
 void ScreenEmotion::mousePressEvent(QMouseEvent *e)
 {
     qDebug()<<e->pos();
     int last = posList.count();
     if(last > 0)
     {
-        if(((posList[last - 1] - e->pos())/40).isNull())
+        if(((posList[last - 1] - e->pos())/radius).isNull())
             return;
     }
     posList.append(e->pos());
     if(posList.count()>3)
     {
-        QPoint pot1((posList[last - 3] - p1)/100);
-        QPoint pot2((posList[last - 2] - p2)/100);
-        QPoint pot3((posList[last - 1] - p3)/100);
-        QPoint pot4((posList[last]       - p4)/100);
+        QPoint pot1((posList[last - 3] - p1)/radius/2);
+        QPoint pot2((posList[last - 2] - p2)/radius/2);
+        QPoint pot3((posList[last - 1] - p3)/radius/2);
+        QPoint pot4((posList[last]       - p4)/radius/2);
 //        qDebug()<<pot<<pot2;
         if(pot1.isNull() && pot2.isNull() && pot3.isNull() && pot4.isNull())
         {

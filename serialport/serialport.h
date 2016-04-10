@@ -12,10 +12,11 @@ class SerialPort : public QSerialPort
 public:
     explicit SerialPort(QObject *parent = 0);
     ~SerialPort();
-    QStringList scan_com();
+    QStringList scanAvailablePorts();
     enum MoveFlag{Up = 0x01, Down, Left, Right, Stop = 0x05, HeadUp = 0x11, HeadDown = 0x12, HeadLeft = 0x13, HeadRight = 0x14, Charge = 0x20};
-    enum Cmd_Type{Cmd_SetRunS = 0x06, Cmd_SetTurnS = 0x07, Cmd_SetShakeS = 0x08, Cmd_SetChgVol = 0x09, Cmd_SetTimeChg = 0x10,\
-                Cmd_QueryBatVol = 0x15, Cmd_QueryRunS = 0x16, Cmd_QueryTurnS, Cmd_QueryShakeS, Cmd_QueryChgVol = 0x19, Cmd_WarningMsg = 0x21};
+    enum Cmd_Type{Cmd_SetRunS = 0x06, Cmd_SetTurnS = 0x07, Cmd_SetShakeS = 0x08, Cmd_SetChgVol = 0x09, Cmd_SetTimeChg = 0x15,\
+                Cmd_QueryBatVol = 0x10, Cmd_QueryRunS = 0x16, Cmd_QueryTurnS = 0x17, Cmd_QueryShakeS = 0x18,\
+                Cmd_QueryChgVol = 0x19, Cmd_Charge = 0x20, Cmd_WarningMsg = 0x21};
     struct CtrlCmd
     {
         Cmd_Type type;

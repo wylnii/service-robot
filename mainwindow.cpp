@@ -49,7 +49,6 @@ MainWindow::MainWindow(QWidget *parent) :
     QTimer::singleShot(1000,Qt::VeryCoarseTimer,this,SLOT(autoConnect()));//auto connect
 
     ipInfoTable=new IPInfoTable(ui->tabWidgetPage3,950,720);
-    ipInfoTable->setFontPointSize(20);
 
     wifitable=new QTableWidget(ui->tabWidgetPage2);
 //    wifitable->verticalHeader()->setSectionResizeMode(QHeaderView::Stretch);
@@ -60,7 +59,7 @@ MainWindow::MainWindow(QWidget *parent) :
 //    wifitable->setColumnWidth(0,200);
 //    wifitable->setColumnWidth(1,100);
 //    wifitable->setColumnWidth(2,110);
-    wifitable->setFixedSize(950,720);
+    wifitable->setFixedSize(950,700);
     wifitable->move(2,0);
     wifitable->setEditTriggers(QAbstractItemView::NoEditTriggers);
     wifitable->setSelectionBehavior(QAbstractItemView::SelectRows);
@@ -74,7 +73,7 @@ MainWindow::MainWindow(QWidget *parent) :
     mykeyboard->hide();
     connect(mykeyboard,SIGNAL(enter(QString,QString)),this,SLOT(rcvKBInput(QString,QString)));
 
-    screenEmotion = new ScreenEmotion(0, this);
+    screenEmotion = new ScreenEmotion(NULL, this);
     connect(screenEmotion, &ScreenEmotion::changeWindows, this, &MainWindow::changeWindows);
 
     videoPlayer = new VideoPlayer(NULL, screenEmotion);
@@ -89,9 +88,9 @@ MainWindow::MainWindow(QWidget *parent) :
     setStatusBarText((filelist.join(" & ").prepend("playList: ")),1);
     ui->verticalSlider->setValue(videoPlayer->Volume());
 
-    serialport = new SerialPort;
+    serialport = new SerialPort();
     serialport->moveToThread(serialport_thread);
-    ui->comboBox->addItems(serialport->scan_com());
+    ui->comboBox->addItems(serialport->scanAvailablePorts());
     ui->comboBox->setCurrentIndex(ui->comboBox->count()-1);
     ui->comboBox_2->setCurrentText(QString::number(DEFAULT_BAUD));
 
@@ -100,7 +99,7 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(this, &MainWindow::openSerialPort, serialport, &SerialPort::openPort);
     connect(this, &MainWindow::robotMove, serialport, &SerialPort::move);
     connect(this, &MainWindow::sendCmd, serialport, static_cast<void (SerialPort::*)(const QByteArray &)>(&SerialPort::sendCMD));
-
+    emit openSerialPort(loadHistory("SerialPort_Num","ttySAC3"),loadHistory("SerialPort_Baudrate",DEFAULT_BAUD).toInt());
     ssdbClient = new SSDB_Client(this,RobotName);
 //    ssdbClient->moveToThread(serialport_thread);
 //    ssdbClient->setClientName(RobotName);
@@ -111,6 +110,7 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(ssdbClient, &SSDB_Client::CtrlMsg, this, &MainWindow::getCtrlMsg);
     connect(ssdbClient, &SSDB_Client::CtrlMsg, serialport, &SerialPort::getCtrlMsg);
     connect(ssdbClient, &SSDB_Client::CtrlMsg, videoPlayer, &VideoPlayer::getCtrlMsg);
+    connect(ssdbClient, &SSDB_Client::CtrlMsg, screenEmotion, &ScreenEmotion::getCtrlMsg);
     connect(videoPlayer, &VideoPlayer::returnMsg, ssdbClient, &SSDB_Client::rcvVideoMsg);
     connect(serialport,&SerialPort::rcvSPData,ssdbClient,&SSDB_Client::getSPMsg);
     connect(this, SIGNAL(connectSSDB()), ssdbClient, SLOT(connectServer()));
@@ -177,39 +177,39 @@ border: 1px solid #c2c7cb;\
 padding:8px;}\
 QTabWidget::pane{border-width:1px;border-color: #306880; border-top: 1px solid #A2A7FB;}\
 QTabBar::tab:!selected {margin-top: 6px;} \
-QTabBar::tab:selected {color: rgb(37, 138, 198);font:18px }";
+QTabBar::tab:selected {color: rgb(37, 138, 198);font:18dp }";
 
-  ui->tabWidget->setStyleSheet(tabBarStyle);
+    ui->tabWidget->setStyleSheet(tabBarStyle);
 
-QString sliderStyle = "QSlider  {\
+    QString sliderStyle = "QSlider  {\
         background-color: #00000000;\
-        min-width:5px;\
-        max-width:50px;\
-        /*border:15px solid #00000000;*/\
-    }\
-     QSlider::add-page:vertical { \
-        background-color: rgb(37, 168, 198);\
-        width:4px;\
-     border-radius: 4px;\
-     }\
-     QSlider::sub-page:vertical {\
-        background-color: rgb(87, 97, 106);\
-        width:4px;\
-     border-radius: 4px;\
-     }\
-    QSlider::groove:vertical  {\
-        background:transparent;\
-        width:8px;\
-    border-radius: 4px;\
-    }\
-    QSlider::handle:vertical {\
-         height: 16px;\
-        width: 16px;\
-        border-image: url(:/image/resource/point.png);\
-         margin: -0 -4px; \
-     }";
-        ui->verticalSlider->setStyleSheet(sliderStyle);
-        ui->verticalSlider_2->setStyleSheet(sliderStyle);
+min-width:5px;\
+max-width:50px;\
+/*border:15px solid #00000000;*/\
+}\
+QSlider::add-page:vertical { \
+                      background-color: rgb(37, 168, 198);\
+width:4px;\
+border-radius: 4px;\
+}\
+QSlider::sub-page:vertical {\
+                      background-color: rgb(87, 97, 106);\
+width:4px;\
+border-radius: 4px;\
+}\
+QSlider::groove:vertical  {\
+                    background:transparent;\
+width:8px;\
+border-radius: 4px;\
+}\
+QSlider::handle:vertical {\
+                    height: 16px;\
+width: 16px;\
+border-image: url(:/image/resource/point.png);\
+margin: -0 -4px; \
+}";
+    ui->verticalSlider->setStyleSheet(sliderStyle);
+    ui->verticalSlider_2->setStyleSheet(sliderStyle);
 }
 
 void MainWindow::show()
@@ -286,7 +286,7 @@ void MainWindow::on_pushButton_scan_clicked()
         item3->setTextAlignment(Qt::AlignCenter);
         wifitable->setItem(wifitable->rowCount()-1,2,item3);
     }
-    ui->pushButton_scan->setEnabled(1);
+    ui->pushButton_scan->setEnabled(true);
 }
 
 void MainWindow::autoConnect()
@@ -295,21 +295,27 @@ void MainWindow::autoConnect()
     {
         screenEmotion->stopMovie();
         setStatText("<font color='red'>找不到网络设备!</font>");
-        int ret = QMessageBox::warning(this,"Warning","<font color='red'>找不到网络设备!</font><p>是否重启？</p>"\
-                            ,tr("\t\t确定\t\t"),tr("\t\t取消\t\t"));
-        if(ret == 0)
-        {
+/*        int ret = QMessageBox::warning(this,"Warning","<font color='red'>找不到网络设备!</font><p>是否重启？</p>"\
+//                            ,tr("\t\t确定\t\t"),tr("\t\t取消\t\t"));
+//        if(ret == 0)
+//        {*/
 #ifndef _TEST
-            system("reboot");
+        system("reboot");
 #endif
-            return;
-        }
+        return;
     }
     else if (USB_WiFi::WiFi_exist())
     {
         if(! wifi->connect_wifi(loadHistory("SSID"),loadHistory("STATE"),loadHistory("#WIFI_password")))
             return;
     }
+//启动时不检查网络连接
+    if(loadHistory("Check_Net_Connect",1).toInt() <= 0)
+    {
+        screenEmotion->exHide();
+        return;
+    }
+    qDebug()<<"Check_Net_Connect...";
 
     QElapsedTimer timer;
     int cnt = 16;
@@ -323,8 +329,9 @@ void MainWindow::autoConnect()
         }
     }
 
-    if(cnt < 0)
+    if(cnt < 0 && loadHistory("Enable_Restart",1).toInt())
     {
+        qDebug()<<"Enable_Restart...";
         system("./restart_service &");
         qApp->exit();
     }
@@ -518,6 +525,8 @@ void MainWindow::on_toolButton_stop_clicked()
 void MainWindow::on_pushButton_openPort_clicked()
 {
     emit openSerialPort(ui->comboBox->currentText(),ui->comboBox_2->currentText().toInt(), serialport->isOpen());
+    saveHistory(ui->comboBox->currentText(),"SerialPort_Num");
+    saveHistory(ui->comboBox_2->currentText().toInt(),"SerialPort_Baudrate");
 }
 
 void MainWindow::getSPMsg(const SerialPort::CtrlCmd &cmd)
@@ -635,6 +644,16 @@ void MainWindow::on_toolButton_headdown_clicked()
     emit robotMove(SerialPort::HeadDown);
 }
 
+void MainWindow::on_toolButton_headleft_clicked()
+{
+    emit robotMove(SerialPort::HeadLeft);
+}
+
+void MainWindow::on_toolButton_headright_clicked()
+{
+    emit robotMove(SerialPort::HeadRight);
+}
+
 void MainWindow::on_pushButton_download_clicked()
 {
     Downloader *downloader = new Downloader(this);
@@ -651,6 +670,7 @@ http://mirrors.ustc.edu.cn/qtproject/official_releases/gdb/linux-32/md5sums.txt\
 
 void MainWindow::on_toolButton_show_clicked()
 {
+    screenEmotion->changeEmotion(ScreenEmotion::service);
     screenEmotion->show();
 }
 

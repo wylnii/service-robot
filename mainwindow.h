@@ -58,6 +58,9 @@ public slots:
     void on_pushButton_openssdb_clicked();
     void on_toolButton_headup_clicked();
     void on_toolButton_headdown_clicked();
+    void on_toolButton_headleft_clicked();
+    void on_toolButton_headright_clicked();
+
     void on_pushButton_download_clicked();
     void on_toolButton_show_clicked();
     void on_toolButton_charge_clicked();
@@ -77,6 +80,7 @@ private slots:
     void getCtrlMsg(const SSDB_CtrlCmd &cmd);
     void getKeyinput(uchar key, bool status);
     void changeWindows(bool en = true);
+
 
 
 private:

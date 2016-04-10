@@ -21,7 +21,7 @@
        <enum>Qt::NoFocus</enum>
       </property>
       <property name="currentIndex">
-       <number>3</number>
+       <number>1</number>
       </property>
       <widget class="QWidget" name="tabWidgetPage1">
        <attribute name="title">
@@ -127,9 +127,9 @@
        <widget class="QWidget" name="widget_4" native="true">
         <property name="geometry">
          <rect>
-          <x>1020</x>
+          <x>980</x>
           <y>15</y>
-          <width>161</width>
+          <width>211</width>
           <height>711</height>
          </rect>
         </property>
@@ -830,7 +830,7 @@
            <property name="geometry">
             <rect>
              <x>900</x>
-             <y>140</y>
+             <y>105</y>
              <width>150</width>
              <height>150</height>
             </rect>
@@ -851,7 +851,7 @@
            <property name="geometry">
             <rect>
              <x>900</x>
-             <y>385</y>
+             <y>425</y>
              <width>150</width>
              <height>150</height>
             </rect>
@@ -892,6 +892,48 @@
            </property>
            <property name="autoRaise">
             <bool>true</bool>
+           </property>
+          </widget>
+          <widget class="QToolButton" name="toolButton_headright">
+           <property name="geometry">
+            <rect>
+             <x>1065</x>
+             <y>265</y>
+             <width>150</width>
+             <height>150</height>
+            </rect>
+           </property>
+           <property name="font">
+            <font>
+             <pointsize>24</pointsize>
+            </font>
+           </property>
+           <property name="focusPolicy">
+            <enum>Qt::NoFocus</enum>
+           </property>
+           <property name="text">
+            <string>&gt;</string>
+           </property>
+          </widget>
+          <widget class="QToolButton" name="toolButton_headleft">
+           <property name="geometry">
+            <rect>
+             <x>735</x>
+             <y>265</y>
+             <width>150</width>
+             <height>150</height>
+            </rect>
+           </property>
+           <property name="font">
+            <font>
+             <pointsize>24</pointsize>
+            </font>
+           </property>
+           <property name="focusPolicy">
+            <enum>Qt::NoFocus</enum>
+           </property>
+           <property name="text">
+            <string>&lt;</string>
            </property>
           </widget>
          </widget>

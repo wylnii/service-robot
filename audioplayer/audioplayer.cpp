@@ -51,7 +51,8 @@ void AudioPlayer::startAudioPlayer(const QString &robot_id)
 
 void AudioPlayer::startAudioPlayer()
 {
-    startAudioPlayer(robotID);
+//TODO
+//    startAudioPlayer(robotID);
 }
 
 bool AudioPlayer::stop()

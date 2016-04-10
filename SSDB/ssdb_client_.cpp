@@ -318,7 +318,7 @@ void SSDB_Client::getSPMsg(const SerialPort::CtrlCmd &cmd)
     switch ((int)cmd.type)
     {
     case SerialPort::Cmd_QueryBatVol:
-        hset(Battery_Volt,QString::number(cmd.data).toStdString());
+        hset(Battery_Volt,QString("%1V").arg(cmd.data/256.0*29).toStdString());
         hset(Query_KEY,Battery_Volt);
         break;
     case SerialPort::Cmd_WarningMsg:

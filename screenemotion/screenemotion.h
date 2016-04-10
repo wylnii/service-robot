@@ -26,6 +26,7 @@ public slots:
     void hide();
     void exHide();
     void autoChangeEmt();
+    void getCtrlMsg(const SSDB_CtrlCmd &cmd);
 
 signals:
     void changeWindows(bool en = true);

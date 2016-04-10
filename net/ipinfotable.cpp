@@ -66,11 +66,14 @@ bool IPInfoTable::hasValidIP()
             {
                 if(entry.ip().protocol() == QAbstractSocket::IPv4Protocol)
                 {
-                    qDebug()<<entry.ip()<<entry.broadcast()<<entry.netmask();
+//                    qDebug()<<entry.ip()<<entry.broadcast()<<entry.netmask();
                     if(entry.ip() == QHostAddress("192.168.1.230") || entry.ip().isNull())  //检测到有效IP（系统默认IP为192.168.1.230）
                         return false;
                     else
+                    {
+                        qDebug()<<entry.ip()<<entry.broadcast()<<entry.netmask();
                         return true;
+                    }
                 }
             }
         }
