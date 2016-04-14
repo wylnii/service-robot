@@ -2,6 +2,7 @@
 
 QString RobotName;
 QTextCodec *textCodec = QTextCodec::codecForName("GB18030");
+QStringList emotions;   //for SSDB
 
 QByteArray encrypt(const QByteArray &code, bool en) //0:en+, 1:de-
 {

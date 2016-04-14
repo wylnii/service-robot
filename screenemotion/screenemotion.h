@@ -30,18 +30,18 @@ public slots:
 
 signals:
     void changeWindows(bool en = true);
+    void initEmotions(const QStringList& list);
 
 private:
     QMovie *movie;
     QHash<int, QString> emotionList;
     QList<QPoint> posList;
-    QTimer *timer;
+//    QTimer *timer;
     int currentEmt;
     QWidget *mainWindow;
 
     const int radius = 80;
     const QPoint p1,p2,p3,p4;
-
 
 protected:
     void mousePressEvent(QMouseEvent *e);

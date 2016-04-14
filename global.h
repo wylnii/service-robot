@@ -19,13 +19,16 @@
 #define _TEST
 #endif
 
+#define DEBUG
+
 #ifndef logout
 #define logout qDebug()<<this
 #endif
 
 extern QString RobotName;
-
 extern QTextCodec *textCodec;
+extern QStringList emotions;   //for SSDB
+
 
 #define HD_SCREEN
 #ifdef HD_SCREEN
@@ -61,7 +64,7 @@ struct SSDB_CtrlCmd{
     SSDB_DIR dirCtrl = SSDB_DIR_Stop;
     SSDB_PARAM param;
     SSDB_Video_Ctrl videoCtrl = Video_Err;
-    QString msg = QString();
+    QString msg;
     int emotinIndex = -1;
 };
 //Q_DECLARE_METATYPE(SSDB_CtrlCmd)

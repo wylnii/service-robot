@@ -1,4 +1,5 @@
 #include "ssdb_client_.h"
+#include <stdio.h>
 
 using namespace ssdb;
 using namespace std;
@@ -12,9 +13,12 @@ const char* VideoInfo_KEY = "VideoInfo";
 const char* VideoPlayList_KEY = "VideoPlayList";
 const char* Robot_Msg = "RobotMsg";
 const char* Battery_Volt = "BatteryVolt";
+const char* EmotionList = "EmotionList";
+const char* Emotion_KEY = "Brow";
 
 const char* EndVideo_CMD = "EndVideo";
 const char* EndDirCtrl_CMD = "EndDirCtl";
+const char* ChangeEmt_CMD = "ChangeEmotion";
 
 SSDB_Client::SSDB_Client(QObject *parent, const QString &name, const QString &addr, int port):\
     QThread(parent), serverAddr(addr), serverPort(port)
@@ -113,6 +117,23 @@ void SSDB_Client::analyseCMD(const std::string &ret)
     {
         queryDirCtrlTimerStart = false;
     }
+    else if(ret == ChangeEmt_CMD)
+    {
+        string data;
+        hget(Emotion_KEY, &data);
+        if(data.length() > 0)
+        {
+            int index = -1;
+            sscanf(data.c_str(),"%d",&index);
+            if(index >= 0)
+            {
+                SSDB_CtrlCmd cmd;
+                cmd.type = SSDB_CTRL_Emotion;
+                cmd.emotinIndex = index;//TODO 从1还是从0开始？
+                emit CtrlMsg(cmd);
+            }
+        }
+    }
     hset(Query_KEY, string("NULL"));
 }
 
@@ -152,6 +173,8 @@ bool SSDB_Client::connectServer(const QString &host, int port)
 #ifndef _TEST
         QTimer::singleShot(3500, Qt::VeryCoarseTimer, this, &SSDB_Client::getArgs);
 #endif
+        hset(EmotionList, emotions.join(" ").toStdString());
+//        getSPMsg(SerialPort::CtrlCmd{SerialPort::Cmd_QueryBatVol,240});
         return true;
     }
     else
@@ -318,7 +341,7 @@ void SSDB_Client::getSPMsg(const SerialPort::CtrlCmd &cmd)
     switch ((int)cmd.type)
     {
     case SerialPort::Cmd_QueryBatVol:
-        hset(Battery_Volt,QString("%1V").arg(cmd.data/256.0*29).toStdString());
+        hset(Battery_Volt,QString::number(cmd.data/256.0*29,'f',2).toStdString());
         hset(Query_KEY,Battery_Volt);
         break;
     case SerialPort::Cmd_WarningMsg:
@@ -410,8 +433,6 @@ Status SSDB_Client::hset(const string &key, const string &val)
 
 void SSDB_Client::getArgs()
 {
-//    hset(VideoInfo_KEY, "");
-//    hset(VideoPlayList_KEY, "");
     analyseCMD(Param_CMD);
 }
 

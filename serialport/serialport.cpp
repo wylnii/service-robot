@@ -62,9 +62,9 @@ QStringList SerialPort::scanAvailablePorts()
  *               07         set turn over speed                            FF 07 XX BCC
  *               08         set shake head speed                        FF 08 XX BCC
  *               09         set charge voltage                              FF 09 XX BCC   XX = Voltage
- *               15         set wait for charge time    //TODO 暂定
  *               11-12   headup headdown                              FF 11 XX BCC
- *               13-14  headleft headright
+ *               13-14   headleft headright
+ *               15         headmid
  *               10         query battery voltage                        FF 10 BCC
  *               16         query speed                                          FF 16 BCC
  *               17         query turn over speed                       FF 17 BCC
@@ -114,6 +114,9 @@ void SerialPort::move(MoveFlag motion)
         break;
     case HeadRight:
         sendCMD(QByteArray("\xff\x14\xff\x14"));
+        break;
+    case HeadMid:
+        sendCMD(QByteArray("\xff\x15\xff\x15"));
         break;
     case Charge:
         sendCMD(QByteArray("\xff\x20\xff\x20"));

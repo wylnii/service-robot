@@ -11,6 +11,7 @@ ScreenEmotion::ScreenEmotion(QWidget *parent, QWidget *mainWind):QLabel(parent),
 //    movie->setSpeed(20);
     setMovie(movie);
     emotionList.clear();
+    emotions.clear();
     setFixedSize(SCREEN_WIDTH, SCREEN_HEIGHT);
     setWindowFlags(Qt::WindowStaysOnTopHint);
     setAlignment(Qt::AlignHCenter|Qt::AlignVCenter);
@@ -22,8 +23,8 @@ ScreenEmotion::ScreenEmotion(QWidget *parent, QWidget *mainWind):QLabel(parent),
 //    hide();
     searchEmotion();
     currentEmt = 0;
-    timer = new QTimer(this);
-    connect(timer, &QTimer::timeout, this, &ScreenEmotion::autoChangeEmt);
+//    timer = new QTimer(this);
+//    connect(timer, &QTimer::timeout, this, &ScreenEmotion::autoChangeEmt);
 //    timer->start(2000);
 }
 
@@ -34,6 +35,7 @@ void ScreenEmotion::setMovieFile(const QString &path)
         movie->stop();
         movie->setFileName(path);
 //        movie->setScaledSize(this->size());
+        qDebug()<<"changeEmotion : "<<path;
     }
 }
 
@@ -49,6 +51,7 @@ void ScreenEmotion::searchEmotion()
 {
     QDir dir(EmotionDir);
     QStringList filelist = dir.entryList(QStringList()<<"*.gif"<<"*.png"<<"*.jpeg"<<"*.jpg");
+    emotions.clear();
     foreach (QString file, filelist)
     {
         QString filename = QFileInfo(file).completeBaseName().toLower();
@@ -69,7 +72,10 @@ void ScreenEmotion::searchEmotion()
             mot = voiceListen;
 
         if(mot != EmotionCount)
+        {
             emotionList.insert(mot, file.prepend(EmotionDir));
+            emotions.append(filename);
+        }
     }
 }
 
@@ -140,7 +146,9 @@ void ScreenEmotion::getCtrlMsg(const SSDB_CtrlCmd &cmd)
 
 void ScreenEmotion::mousePressEvent(QMouseEvent *e)
 {
+#ifdef DEBUG
     qDebug()<<e->pos();
+#endif
     int last = posList.count();
     if(last > 0)
     {
