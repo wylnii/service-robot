@@ -22,6 +22,7 @@ ScreenEmotion::ScreenEmotion(QWidget *parent, QWidget *mainWind):QLabel(parent),
     setScaledContents(true);
 //    hide();
     searchEmotion();
+    setMovieFile(emotionList[service]);
     currentEmt = 0;
 //    timer = new QTimer(this);
 //    connect(timer, &QTimer::timeout, this, &ScreenEmotion::autoChangeEmt);

@@ -12,6 +12,7 @@ SerialPort::SerialPort(QObject *parent) : QSerialPort(parent)
 
     connect(this,SIGNAL(readyRead()),this,SLOT(readCom()));
 //    openPort(scan_com().last(),DEFAULT_BAUD);
+    mtimer.setTimerType(Qt::VeryCoarseTimer);
     mtimer.start(5000);
     connect(&mtimer,SIGNAL(timeout()),this,SLOT(queryRobotMsg()));
     timerCount = 0;
@@ -165,8 +166,8 @@ void SerialPort::queryRobotMsg()
     {
         if((timerCount&0x01) == 1)
             sendCMD("\xff\x10\xff\x10");//voltage
-        else
-            sendCMD("\xff\x21\xff\x21");//barrier
+//        else
+//            sendCMD("\xff\x21\xff\x21");//barrier
         timerCount ++;
     }
 }

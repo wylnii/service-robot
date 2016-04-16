@@ -30,7 +30,6 @@ public slots:
 
 signals:
     void changeWindows(bool en = true);
-    void initEmotions(const QStringList& list);
 
 private:
     QMovie *movie;

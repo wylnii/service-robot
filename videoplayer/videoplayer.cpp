@@ -49,6 +49,7 @@ VideoPlayer::VideoPlayer(QObject *parent, QWidget *widget):QThread(parent)
     m_thread = new QThread(this);
     m_thread->start();
     moveToThread(m_thread);
+//    QTimer::singleShot(5000,Qt::VeryCoarseTimer,[](){SDL_CloseAudio();});
 }
 
 VideoPlayer::~VideoPlayer()
@@ -319,17 +320,7 @@ VideoPlayer::PlayMode VideoPlayer::getPlayMode() const
     return playMode;
 }
 
-QString VideoPlayer::getSingleVideo() const
-{
-    return singleVideo;
-}
-
-void VideoPlayer::setSingleVideo(const QString &videoname)
-{
-    singleVideo = videoname;
-}
-
-bool VideoPlayer::isPause() const
+bool VideoPlayer::IsPause() const
 {
     return Pause;
 }
@@ -375,7 +366,7 @@ int VideoPlayer::play()
         if(openFile_and_getStream() != 0)
         {
             updateUI();
-           return ENOENT;
+            return ENOENT;
         }
         qDebug()<<"##\tplay_cnt :"<<play_cnt<<QDateTime::currentDateTime().toString("yyyy-MM-dd hh:mm:ss");
         if(videoStream != -1)
@@ -401,7 +392,7 @@ int VideoPlayer::play()
             emit stopAudioPlayer();
         }
     }
-    Pause = 0;
+    Pause = false;
     SDL_PauseAudio(0);
     return 0;
 }
@@ -443,13 +434,7 @@ void VideoPlayer::replay()
         play(filename);
         break;
     case Single:
-        if(qApp->activeWindow() != NULL)
-            qApp->activeWindow()->repaint();
-        else
-        {
-            Q_ASSERT(face != NULL);
-            face->show();
-        }
+        updateUI();
         break;
     default:
         break;

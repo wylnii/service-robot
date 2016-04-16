@@ -19,6 +19,7 @@ const char* Emotion_KEY = "Brow";
 const char* EndVideo_CMD = "EndVideo";
 const char* EndDirCtrl_CMD = "EndDirCtl";
 const char* ChangeEmt_CMD = "ChangeEmotion";
+const char* Charge_CMD = "Charge";
 
 SSDB_Client::SSDB_Client(QObject *parent, const QString &name, const QString &addr, int port):\
     QThread(parent), serverAddr(addr), serverPort(port)
@@ -98,6 +99,12 @@ void SSDB_Client::analyseCMD(const std::string &ret)
                 emit CtrlMsg(cmd);
             }
         }
+    }
+    else if (ret == Charge_CMD)
+    {
+        SSDB_CtrlCmd cmd;
+        cmd.type = SSDB_CTRL_Charge;
+        emit CtrlMsg(cmd);
     }
     else if(ret == Video_CMD)
     {

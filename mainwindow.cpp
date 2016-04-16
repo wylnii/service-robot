@@ -156,16 +156,17 @@ void MainWindow::setStyleSheet()
                   "QPushButton::checked{background-color:#000000;border:5px groove green;}"
                   "QPushButton::hover{border-color:#606060;/*background-color:#d0d0d0;*/}"
                   ;
-    stylesheet +=("QToolButton::enabled{border:2px outset gray;border-radius:5px;padding:0px 0px;}"
+    stylesheet +="QToolButton::enabled{border:2px outset gray;border-radius:5px;padding:0px 0px;}"
                   "QToolButton::pressed{border-color:#a0a0a0;border:3px groove ;background-color:#d0d0d0;}"
                   "QToolButton::checked{background-color:#000000;border:5px groove green;}"
-                  "QToolButton::hover{border-color:#606060;/*background-color:#d0d0d0;*/}") ;
+                  "QToolButton::hover{border-color:#606060;/*background-color:#d0d0d0;*/}" ;
    stylesheet += "QComboBox {"
                  "border: 1px solid gray;"
                  "border-radius: 3px;"
                  "padding: 1px 1px 1px 3px;"
                  "}";
    ui->widget->setStyleSheet(stylesheet);
+   ui->toolButton_charge->setStyleSheet("QToolButton{border:0px outset gray;border-radius:5px;padding:0px 0px;}");
    ui->widget_3->setStyleSheet(stylesheet);
    ui->widget_4->setStyleSheet(stylesheet);
 

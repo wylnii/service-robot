@@ -42,7 +42,8 @@ SOURCES += main.cpp\
     net/netspeed.cpp \
     keyinput.cpp \
     screenemotion/screenemotion.cpp \
-    audioplayer/audioplayer.cpp
+    audioplayer/audioplayer.cpp \
+    net/login.cpp
 
 HEADERS  += mainwindow.h \
     keyboard/keyboard.h \
@@ -59,7 +60,8 @@ HEADERS  += mainwindow.h \
     net/netspeed.h \
     keyinput.h \
     screenemotion/screenemotion.h \
-    audioplayer/audioplayer.h
+    audioplayer/audioplayer.h \
+    net/login.h
 
 FORMS    += \
 #    mainwindow800*480.ui \

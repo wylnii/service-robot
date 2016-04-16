@@ -53,14 +53,11 @@ public:
     void setPlaylist(const QStringList &list);
 
     bool IsPlaying() const;
-
-    QString getSingleVideo() const;
-    void setSingleVideo(const QString &videoname);
-    bool isPause() const;
+    bool IsPause() const;
+    bool IsOpened() const;
 
     void setFace(QWidget *value);
 
-    bool IsOpened() const;
 
 protected:
     void run();
@@ -77,7 +74,6 @@ private:
     bool Stop;
     quint64 play_cnt;
     PlayMode playMode;
-    QString singleVideo;
     QTimer *timer;
     QWidget *face;
     AudioPlayer *audioPlayer;
