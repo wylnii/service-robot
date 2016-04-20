@@ -1,8 +1,10 @@
 #include "login.h"
-#include <QEventLoop>
+#include <QTimer>
 
 const QString LOGIN_URL = "http://60.171.108.115:8076/rb/"
                           "t_loginbyrobot.aspx?action=login&robotcode=%1&password=%2";
+const QString LOGOUT_URL = "http://60.171.108.115:8076/rb/"
+                          "t_loginbyrobot.aspx?action=logout&robotid=%1&key=%2";
 const QString DATA_URL = "http://60.171.108.115:8076/rb/"
                          "t_getmaterial.aspx?action=queryall&robotid=%1&key=%2";
 
@@ -23,6 +25,8 @@ Login::Login(QObject *parent) : QObject(parent)
 
 Login::~Login()
 {
+    if(isOnline)
+        logout();
     mThread->quit();
     qDebug()<<"quit";
     mThread->wait();
@@ -39,11 +43,7 @@ int Login::login()//blocked
     }
     key.clear();
     request(LOGIN_URL.arg(userName).arg(userPassword));
-    QEventLoop loop;
-    QObject::connect(this,SIGNAL(finished(int)),&loop,SLOT(quit()));
-    QObject::connect(reply,SIGNAL(error(QNetworkReply::NetworkError)),&loop,SLOT(quit()));
-    loop.exec();
-//    qDebug()<<data;
+    qDebug()<<data;
     QRegExp exp("result=(\\d+)\\rrobotid=(\\d+)\\rkey=([\\w]+)");
     exp.indexIn(data);
     int result_code = exp.cap(1).toInt();
@@ -68,7 +68,35 @@ int Login::login(const QString &name, const QString &password)
     return login();
 }
 
-int Login::getMaterial()//blocked
+int Login::logout()
+{
+    if(!isOnline)
+    {
+        qDebug()<<"please login first!";
+        return -3;
+    }
+    if(key.isEmpty())
+    {
+        qDebug()<<"key is empty!";
+        return -1;
+    }
+    request(LOGOUT_URL.arg(robotId).arg(key));
+
+    qDebug()<<data;
+    QRegExp exp("result=(\\d+)");
+    exp.indexIn(data);
+    int result_code = exp.cap(1).toInt();
+    if(result_code == 0)
+    {
+        return_code = -1;//err
+        return return_code;
+    }
+
+    isOnline = false;
+    return 0;
+}
+
+int Login::getMaterial()
 {
     if(!isOnline)
     {
@@ -81,11 +109,6 @@ int Login::getMaterial()//blocked
         return -1;
     }
     request(DATA_URL.arg(robotId).arg(key));
-
-    QEventLoop loop;
-    QObject::connect(this,SIGNAL(finished(int)),&loop,SLOT(quit()));
-    QObject::connect(reply,SIGNAL(error(QNetworkReply::NetworkError)),&loop,SLOT(quit()));
-    loop.exec();
     QRegExp exp("result=(\\d+)\\nforce=(\\d+)\\|version=(\\d+)\\|URL=(.+)\\n");
     exp.indexIn(data);
     int result_code = exp.cap(1).toInt();
@@ -133,7 +156,7 @@ void Login::readData()
     data.append(reply->readAll());
 }
 
-void Login::request(const QString &url)
+void Login::request(const QString &url)//blocked
 {
     data.clear();
     return_code = 0;
@@ -143,6 +166,20 @@ void Login::request(const QString &url)
     connect(reply,SIGNAL(finished()),this,SLOT(doFinish()));
     connect(reply,SIGNAL(error(QNetworkReply::NetworkError)),this,SLOT(doSslErrors(QNetworkReply::NetworkError)));
     timer.start();
+    QObject::connect(this,SIGNAL(finished(int)),&loop,SLOT(quit()));
+    QObject::connect(reply,SIGNAL(error(QNetworkReply::NetworkError)),&loop,SLOT(quit()));
+    QTimer::singleShot(2000,
+                       [&](void)
+    {
+        if(loop.isRunning())
+        {
+            qDebug()<<"timeout";
+            loop.quit();
+            return_code = -3;
+            emit error(return_code);
+        }
+    });
+    loop.exec();
 }
 
 QString Login::getURL() const

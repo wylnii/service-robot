@@ -6,6 +6,8 @@
 #include <QNetworkReply>
 #include <QThread>
 #include <QElapsedTimer>
+#include <QEventLoop>
+#include <QDebug>
 
 class Login : public QObject
 {
@@ -15,6 +17,7 @@ public:
     ~Login();
     int login();
     int login(const QString& name, const QString& password);
+    int logout();
     int getMaterial();
     void setUserData(const QString& name, const QString& password);
     int getReturnCode() const;
@@ -35,9 +38,11 @@ private:
     QString key;
     int robotId;
     bool isOnline;
+    QEventLoop loop;
 
 signals:
     void finished(int code);
+    void error(int code);
 
 public slots:
     void readData(qint64 bytesReceived, qint64 bytesTotal);

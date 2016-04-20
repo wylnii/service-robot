@@ -36,11 +36,11 @@ DISTNAME      = service-robot1.0.0
 DISTDIR = /home/wyl/Desktop/service-robot/.tmp/service-robot1.0.0
 LINK          = arm-linux-g++
 LFLAGS        = -Wl,-O1 -Wl,-rpath,/qt-5.5.0-install/lib
-LIBS          = $(SUBLIBS) -L/usr/local/lib/ -L/opt/ffmpeg-arm/lib/ -lavcodec -lavformat -lavdevice -lavfilter -lavutil -lpostproc -lswresample -lswscale -L/opt/x264-arm/lib -lx264 -L/opt/SDL-arm/lib/ -lSDL -L/qt-5.5.0-install/lib -lQt5Widgets -lQt5Gui -lQt5Network -lQt5SerialPort -lQt5Core -lpthread 
-AR            = arm-linux-ar cqs
+LIBS          = $(SUBLIBS) -L/usr/local/lib/ -lswresample -lswscale -L/opt/ffmpeg-arm/lib/ -lavcodec -lavformat -lavdevice -lavfilter -lavutil -lpostproc -L/opt/x264-arm/lib -lx264 -L/opt/SDL-arm/lib -lSDL -L/qt-5.5.0-install/lib -lQt5Widgets -lQt5Gui -lQt5Network -lQt5SerialPort -lQt5Core -lpthread 
+AR            = arm-linux-gnueabi-ar cqs
 RANLIB        = 
 SED           = sed
-STRIP         = arm-linux-strip
+STRIP         = arm-linux-gnueabi-strip
 
 ####### Output directory
 
@@ -63,7 +63,8 @@ SOURCES       = main.cpp \
 		net/netspeed.cpp \
 		keyinput.cpp \
 		screenemotion/screenemotion.cpp \
-		audioplayer/audioplayer.cpp qrc_res.cpp \
+		audioplayer/audioplayer.cpp \
+		net/login.cpp qrc_res.cpp \
 		moc_mainwindow.cpp \
 		moc_keyboard.cpp \
 		moc_usb_wifi.cpp \
@@ -75,7 +76,8 @@ SOURCES       = main.cpp \
 		moc_netspeed.cpp \
 		moc_keyinput.cpp \
 		moc_screenemotion.cpp \
-		moc_audioplayer.cpp
+		moc_audioplayer.cpp \
+		moc_login.cpp
 OBJECTS       = main.o \
 		mainwindow.o \
 		keyboard.o \
@@ -92,6 +94,7 @@ OBJECTS       = main.o \
 		keyinput.o \
 		screenemotion.o \
 		audioplayer.o \
+		login.o \
 		qrc_res.o \
 		moc_mainwindow.o \
 		moc_keyboard.o \
@@ -104,7 +107,8 @@ OBJECTS       = main.o \
 		moc_netspeed.o \
 		moc_keyinput.o \
 		moc_screenemotion.o \
-		moc_audioplayer.o
+		moc_audioplayer.o \
+		moc_login.o
 DIST          = /qt-5.5.0-install/mkspecs/features/spec_pre.prf \
 		/qt-5.5.0-install/mkspecs/common/unix.conf \
 		/qt-5.5.0-install/mkspecs/common/linux.conf \
@@ -186,7 +190,8 @@ DIST          = /qt-5.5.0-install/mkspecs/features/spec_pre.prf \
 		net/netspeed.h \
 		keyinput.h \
 		screenemotion/screenemotion.h \
-		audioplayer/audioplayer.h main.cpp \
+		audioplayer/audioplayer.h \
+		net/login.h main.cpp \
 		mainwindow.cpp \
 		keyboard/keyboard.cpp \
 		net/usb_wifi.cpp \
@@ -201,7 +206,8 @@ DIST          = /qt-5.5.0-install/mkspecs/features/spec_pre.prf \
 		net/netspeed.cpp \
 		keyinput.cpp \
 		screenemotion/screenemotion.cpp \
-		audioplayer/audioplayer.cpp
+		audioplayer/audioplayer.cpp \
+		net/login.cpp
 QMAKE_TARGET  = service-robot
 DESTDIR       = #avoid trailing-slash linebreak
 TARGET        = service-robot
@@ -394,8 +400,8 @@ distdir: FORCE
 	@test -d $(DISTDIR) || mkdir -p $(DISTDIR)
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
 	$(COPY_FILE) --parents res.qrc $(DISTDIR)/
-	$(COPY_FILE) --parents mainwindow.h keyboard/keyboard.h net/usb_wifi.h videoplayer/video.h videoplayer/videoplayer.h serialport/serialport.h global.h net/ipinfotable.h SSDB/buffer.h SSDB/ssdb_client.h SSDB/ssdb_client_.h net/downloader.h net/netspeed.h keyinput.h screenemotion/screenemotion.h audioplayer/audioplayer.h $(DISTDIR)/
-	$(COPY_FILE) --parents main.cpp mainwindow.cpp keyboard/keyboard.cpp net/usb_wifi.cpp videoplayer/videoplayer.cpp serialport/serialport.cpp net/ipinfotable.cpp SSDB/buffer.c SSDB/ssdb_client.cpp SSDB/ssdb_client_.cpp global.cpp net/downloader.cpp net/netspeed.cpp keyinput.cpp screenemotion/screenemotion.cpp audioplayer/audioplayer.cpp $(DISTDIR)/
+	$(COPY_FILE) --parents mainwindow.h keyboard/keyboard.h net/usb_wifi.h videoplayer/video.h videoplayer/videoplayer.h serialport/serialport.h global.h net/ipinfotable.h SSDB/buffer.h SSDB/ssdb_client.h SSDB/ssdb_client_.h net/downloader.h net/netspeed.h keyinput.h screenemotion/screenemotion.h audioplayer/audioplayer.h net/login.h $(DISTDIR)/
+	$(COPY_FILE) --parents main.cpp mainwindow.cpp keyboard/keyboard.cpp net/usb_wifi.cpp videoplayer/videoplayer.cpp serialport/serialport.cpp net/ipinfotable.cpp SSDB/buffer.c SSDB/ssdb_client.cpp SSDB/ssdb_client_.cpp global.cpp net/downloader.cpp net/netspeed.cpp keyinput.cpp screenemotion/screenemotion.cpp audioplayer/audioplayer.cpp net/login.cpp $(DISTDIR)/
 	$(COPY_FILE) --parents mainwindow.ui keyboard/keyboard.ui $(DISTDIR)/
 
 
@@ -429,9 +435,9 @@ qrc_res.cpp: res.qrc \
 		resource/last.png
 	/qt-5.5.0-install/bin/rcc -name res res.qrc -o qrc_res.cpp
 
-compiler_moc_header_make_all: moc_mainwindow.cpp moc_keyboard.cpp moc_usb_wifi.cpp moc_videoplayer.cpp moc_serialport.cpp moc_ipinfotable.cpp moc_ssdb_client_.cpp moc_downloader.cpp moc_netspeed.cpp moc_keyinput.cpp moc_screenemotion.cpp moc_audioplayer.cpp
+compiler_moc_header_make_all: moc_mainwindow.cpp moc_keyboard.cpp moc_usb_wifi.cpp moc_videoplayer.cpp moc_serialport.cpp moc_ipinfotable.cpp moc_ssdb_client_.cpp moc_downloader.cpp moc_netspeed.cpp moc_keyinput.cpp moc_screenemotion.cpp moc_audioplayer.cpp moc_login.cpp
 compiler_moc_header_clean:
-	-$(DEL_FILE) moc_mainwindow.cpp moc_keyboard.cpp moc_usb_wifi.cpp moc_videoplayer.cpp moc_serialport.cpp moc_ipinfotable.cpp moc_ssdb_client_.cpp moc_downloader.cpp moc_netspeed.cpp moc_keyinput.cpp moc_screenemotion.cpp moc_audioplayer.cpp
+	-$(DEL_FILE) moc_mainwindow.cpp moc_keyboard.cpp moc_usb_wifi.cpp moc_videoplayer.cpp moc_serialport.cpp moc_ipinfotable.cpp moc_ssdb_client_.cpp moc_downloader.cpp moc_netspeed.cpp moc_keyinput.cpp moc_screenemotion.cpp moc_audioplayer.cpp moc_login.cpp
 moc_mainwindow.cpp: /qt-5.5.0-install/include/QtWidgets/QtWidgets \
 		/qt-5.5.0-install/include/QtWidgets/QtWidgetsDepends \
 		/qt-5.5.0-install/include/QtCore/QtCore \
@@ -3446,6 +3452,112 @@ moc_audioplayer.cpp: /qt-5.5.0-install/include/QtCore/QObject \
 		audioplayer/audioplayer.h
 	/qt-5.5.0-install/bin/moc $(DEFINES) -I/qt-5.5.0-install/mkspecs/linux-arm-gnueabi-g++ -I/home/wyl/Desktop/service-robot -I/usr/local/include -I/qt-5.5.0-install/include -I/qt-5.5.0-install/include/QtWidgets -I/qt-5.5.0-install/include/QtGui -I/qt-5.5.0-install/include/QtNetwork -I/qt-5.5.0-install/include/QtSerialPort -I/qt-5.5.0-install/include/QtCore -I/opt/FriendlyARM/toolschain/4.5.1/arm-none-linux-gnueabi/include/c++/4.5.1 -I/opt/FriendlyARM/toolschain/4.5.1/arm-none-linux-gnueabi/include/c++/4.5.1/arm-none-linux-gnueabi -I/opt/FriendlyARM/toolschain/4.5.1/arm-none-linux-gnueabi/include/c++/4.5.1/backward -I/opt/FriendlyARM/toolschain/4.5.1/lib/gcc/arm-none-linux-gnueabi/4.5.1/include -I/opt/FriendlyARM/toolschain/4.5.1/lib/gcc/arm-none-linux-gnueabi/4.5.1/include-fixed -I/opt/FriendlyARM/toolschain/4.5.1/arm-none-linux-gnueabi/include audioplayer/audioplayer.h -o moc_audioplayer.cpp
 
+moc_login.cpp: /qt-5.5.0-install/include/QtCore/QObject \
+		/qt-5.5.0-install/include/QtCore/qobject.h \
+		/qt-5.5.0-install/include/QtCore/qobjectdefs.h \
+		/qt-5.5.0-install/include/QtCore/qnamespace.h \
+		/qt-5.5.0-install/include/QtCore/qglobal.h \
+		/qt-5.5.0-install/include/QtCore/qconfig.h \
+		/qt-5.5.0-install/include/QtCore/qfeatures.h \
+		/qt-5.5.0-install/include/QtCore/qsystemdetection.h \
+		/qt-5.5.0-install/include/QtCore/qprocessordetection.h \
+		/qt-5.5.0-install/include/QtCore/qcompilerdetection.h \
+		/qt-5.5.0-install/include/QtCore/qtypeinfo.h \
+		/qt-5.5.0-install/include/QtCore/qtypetraits.h \
+		/qt-5.5.0-install/include/QtCore/qsysinfo.h \
+		/qt-5.5.0-install/include/QtCore/qlogging.h \
+		/qt-5.5.0-install/include/QtCore/qflags.h \
+		/qt-5.5.0-install/include/QtCore/qatomic.h \
+		/qt-5.5.0-install/include/QtCore/qbasicatomic.h \
+		/qt-5.5.0-install/include/QtCore/qatomic_bootstrap.h \
+		/qt-5.5.0-install/include/QtCore/qgenericatomic.h \
+		/qt-5.5.0-install/include/QtCore/qatomic_cxx11.h \
+		/qt-5.5.0-install/include/QtCore/qatomic_gcc.h \
+		/qt-5.5.0-install/include/QtCore/qatomic_msvc.h \
+		/qt-5.5.0-install/include/QtCore/qatomic_armv7.h \
+		/qt-5.5.0-install/include/QtCore/qatomic_armv6.h \
+		/qt-5.5.0-install/include/QtCore/qatomic_armv5.h \
+		/qt-5.5.0-install/include/QtCore/qatomic_ia64.h \
+		/qt-5.5.0-install/include/QtCore/qatomic_mips.h \
+		/qt-5.5.0-install/include/QtCore/qatomic_x86.h \
+		/qt-5.5.0-install/include/QtCore/qatomic_unix.h \
+		/qt-5.5.0-install/include/QtCore/qglobalstatic.h \
+		/qt-5.5.0-install/include/QtCore/qmutex.h \
+		/qt-5.5.0-install/include/QtCore/qnumeric.h \
+		/qt-5.5.0-install/include/QtCore/qobjectdefs_impl.h \
+		/qt-5.5.0-install/include/QtCore/qstring.h \
+		/qt-5.5.0-install/include/QtCore/qchar.h \
+		/qt-5.5.0-install/include/QtCore/qbytearray.h \
+		/qt-5.5.0-install/include/QtCore/qrefcount.h \
+		/qt-5.5.0-install/include/QtCore/qarraydata.h \
+		/qt-5.5.0-install/include/QtCore/qstringbuilder.h \
+		/qt-5.5.0-install/include/QtCore/qlist.h \
+		/qt-5.5.0-install/include/QtCore/qalgorithms.h \
+		/qt-5.5.0-install/include/QtCore/qiterator.h \
+		/qt-5.5.0-install/include/QtCore/qbytearraylist.h \
+		/qt-5.5.0-install/include/QtCore/qstringlist.h \
+		/qt-5.5.0-install/include/QtCore/qregexp.h \
+		/qt-5.5.0-install/include/QtCore/qstringmatcher.h \
+		/qt-5.5.0-install/include/QtCore/qcoreevent.h \
+		/qt-5.5.0-install/include/QtCore/qscopedpointer.h \
+		/qt-5.5.0-install/include/QtCore/qmetatype.h \
+		/qt-5.5.0-install/include/QtCore/qvarlengtharray.h \
+		/qt-5.5.0-install/include/QtCore/qcontainerfwd.h \
+		/qt-5.5.0-install/include/QtCore/qisenum.h \
+		/qt-5.5.0-install/include/QtCore/qobject_impl.h \
+		/qt-5.5.0-install/include/QtNetwork/QNetworkAccessManager \
+		/qt-5.5.0-install/include/QtNetwork/qnetworkaccessmanager.h \
+		/qt-5.5.0-install/include/QtNetwork/QSslConfiguration \
+		/qt-5.5.0-install/include/QtNetwork/qsslconfiguration.h \
+		/qt-5.5.0-install/include/QtCore/qshareddata.h \
+		/qt-5.5.0-install/include/QtCore/qhash.h \
+		/qt-5.5.0-install/include/QtCore/qpair.h \
+		/qt-5.5.0-install/include/QtNetwork/qsslsocket.h \
+		/qt-5.5.0-install/include/QtNetwork/qtcpsocket.h \
+		/qt-5.5.0-install/include/QtNetwork/qabstractsocket.h \
+		/qt-5.5.0-install/include/QtCore/qiodevice.h \
+		/qt-5.5.0-install/include/QtCore/qdebug.h \
+		/qt-5.5.0-install/include/QtCore/qmap.h \
+		/qt-5.5.0-install/include/QtCore/qtextstream.h \
+		/qt-5.5.0-install/include/QtCore/qlocale.h \
+		/qt-5.5.0-install/include/QtCore/qvariant.h \
+		/qt-5.5.0-install/include/QtCore/qvector.h \
+		/qt-5.5.0-install/include/QtCore/qpoint.h \
+		/qt-5.5.0-install/include/QtCore/qset.h \
+		/qt-5.5.0-install/include/QtCore/qcontiguouscache.h \
+		/qt-5.5.0-install/include/QtNetwork/qsslerror.h \
+		/qt-5.5.0-install/include/QtNetwork/qsslcertificate.h \
+		/qt-5.5.0-install/include/QtCore/qcryptographichash.h \
+		/qt-5.5.0-install/include/QtCore/qdatetime.h \
+		/qt-5.5.0-install/include/QtCore/qsharedpointer.h \
+		/qt-5.5.0-install/include/QtCore/qsharedpointer_impl.h \
+		/qt-5.5.0-install/include/QtNetwork/qssl.h \
+		/qt-5.5.0-install/include/QtCore/QFlags \
+		/qt-5.5.0-install/include/QtNetwork/QSslPreSharedKeyAuthenticator \
+		/qt-5.5.0-install/include/QtNetwork/qsslpresharedkeyauthenticator.h \
+		/qt-5.5.0-install/include/QtCore/QtGlobal \
+		/qt-5.5.0-install/include/QtCore/QString \
+		/qt-5.5.0-install/include/QtCore/QSharedDataPointer \
+		/qt-5.5.0-install/include/QtCore/QMetaType \
+		/qt-5.5.0-install/include/QtNetwork/QNetworkReply \
+		/qt-5.5.0-install/include/QtNetwork/qnetworkreply.h \
+		/qt-5.5.0-install/include/QtCore/QIODevice \
+		/qt-5.5.0-install/include/QtCore/QVariant \
+		/qt-5.5.0-install/include/QtNetwork/QNetworkRequest \
+		/qt-5.5.0-install/include/QtNetwork/qnetworkrequest.h \
+		/qt-5.5.0-install/include/QtCore/QUrl \
+		/qt-5.5.0-install/include/QtCore/qurl.h \
+		/qt-5.5.0-install/include/QtCore/qurlquery.h \
+		/qt-5.5.0-install/include/QtCore/QThread \
+		/qt-5.5.0-install/include/QtCore/qthread.h \
+		/qt-5.5.0-install/include/QtCore/QElapsedTimer \
+		/qt-5.5.0-install/include/QtCore/qelapsedtimer.h \
+		/qt-5.5.0-install/include/QtCore/QEventLoop \
+		/qt-5.5.0-install/include/QtCore/qeventloop.h \
+		/qt-5.5.0-install/include/QtCore/QDebug \
+		net/login.h
+	/qt-5.5.0-install/bin/moc $(DEFINES) -I/qt-5.5.0-install/mkspecs/linux-arm-gnueabi-g++ -I/home/wyl/Desktop/service-robot -I/usr/local/include -I/qt-5.5.0-install/include -I/qt-5.5.0-install/include/QtWidgets -I/qt-5.5.0-install/include/QtGui -I/qt-5.5.0-install/include/QtNetwork -I/qt-5.5.0-install/include/QtSerialPort -I/qt-5.5.0-install/include/QtCore -I/opt/FriendlyARM/toolschain/4.5.1/arm-none-linux-gnueabi/include/c++/4.5.1 -I/opt/FriendlyARM/toolschain/4.5.1/arm-none-linux-gnueabi/include/c++/4.5.1/arm-none-linux-gnueabi -I/opt/FriendlyARM/toolschain/4.5.1/arm-none-linux-gnueabi/include/c++/4.5.1/backward -I/opt/FriendlyARM/toolschain/4.5.1/lib/gcc/arm-none-linux-gnueabi/4.5.1/include -I/opt/FriendlyARM/toolschain/4.5.1/lib/gcc/arm-none-linux-gnueabi/4.5.1/include-fixed -I/opt/FriendlyARM/toolschain/4.5.1/arm-none-linux-gnueabi/include net/login.h -o moc_login.cpp
+
 compiler_moc_source_make_all:
 compiler_moc_source_clean:
 compiler_uic_make_all: ui_mainwindow.h ui_keyboard.h
@@ -4533,6 +4645,22 @@ mainwindow.o: mainwindow.cpp mainwindow.h \
 		keyinput.h \
 		/qt-5.5.0-install/include/QtCore/QSocketNotifier \
 		ui_mainwindow.h \
+		/qt-5.5.0-install/include/QtWidgets/QAction \
+		/qt-5.5.0-install/include/QtWidgets/QApplication \
+		/qt-5.5.0-install/include/QtWidgets/QButtonGroup \
+		/qt-5.5.0-install/include/QtWidgets/QComboBox \
+		/qt-5.5.0-install/include/QtWidgets/QGridLayout \
+		/qt-5.5.0-install/include/QtWidgets/QGroupBox \
+		/qt-5.5.0-install/include/QtWidgets/QHBoxLayout \
+		/qt-5.5.0-install/include/QtWidgets/QHeaderView \
+		/qt-5.5.0-install/include/QtWidgets/QMainWindow \
+		/qt-5.5.0-install/include/QtWidgets/QPushButton \
+		/qt-5.5.0-install/include/QtWidgets/QSlider \
+		/qt-5.5.0-install/include/QtWidgets/QSpacerItem \
+		/qt-5.5.0-install/include/QtWidgets/QStatusBar \
+		/qt-5.5.0-install/include/QtWidgets/QTabWidget \
+		/qt-5.5.0-install/include/QtWidgets/QToolButton \
+		/qt-5.5.0-install/include/QtWidgets/QVBoxLayout \
 		/qt-5.5.0-install/include/QtWidgets/QInputDialog
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o mainwindow.o mainwindow.cpp
 
@@ -4644,13 +4772,65 @@ keyboard.o: keyboard/keyboard.cpp keyboard/keyboard.h \
 		/qt-5.5.0-install/include/QtGui/QMouseEvent \
 		/qt-5.5.0-install/include/QtCore/QDebug \
 		ui_keyboard.h \
+		/qt-5.5.0-install/include/QtCore/QVariant \
+		/qt-5.5.0-install/include/QtWidgets/QAction \
+		/qt-5.5.0-install/include/QtWidgets/qaction.h \
+		/qt-5.5.0-install/include/QtGui/qicon.h \
+		/qt-5.5.0-install/include/QtWidgets/qactiongroup.h \
+		/qt-5.5.0-install/include/QtWidgets/QApplication \
+		/qt-5.5.0-install/include/QtWidgets/qapplication.h \
+		/qt-5.5.0-install/include/QtCore/qcoreapplication.h \
+		/qt-5.5.0-install/include/QtCore/qeventloop.h \
+		/qt-5.5.0-install/include/QtWidgets/qdesktopwidget.h \
+		/qt-5.5.0-install/include/QtGui/qguiapplication.h \
+		/qt-5.5.0-install/include/QtGui/qinputmethod.h \
+		/qt-5.5.0-install/include/QtWidgets/QButtonGroup \
+		/qt-5.5.0-install/include/QtWidgets/qbuttongroup.h \
+		/qt-5.5.0-install/include/QtWidgets/QFrame \
+		/qt-5.5.0-install/include/QtWidgets/qframe.h \
+		/qt-5.5.0-install/include/QtWidgets/QGridLayout \
+		/qt-5.5.0-install/include/QtWidgets/qgridlayout.h \
+		/qt-5.5.0-install/include/QtWidgets/qlayout.h \
+		/qt-5.5.0-install/include/QtWidgets/qlayoutitem.h \
+		/qt-5.5.0-install/include/QtWidgets/qboxlayout.h \
+		/qt-5.5.0-install/include/QtWidgets/QGroupBox \
+		/qt-5.5.0-install/include/QtWidgets/qgroupbox.h \
+		/qt-5.5.0-install/include/QtWidgets/QHBoxLayout \
+		/qt-5.5.0-install/include/QtWidgets/QHeaderView \
+		/qt-5.5.0-install/include/QtWidgets/qheaderview.h \
+		/qt-5.5.0-install/include/QtWidgets/qabstractitemview.h \
+		/qt-5.5.0-install/include/QtWidgets/qabstractscrollarea.h \
+		/qt-5.5.0-install/include/QtCore/qabstractitemmodel.h \
+		/qt-5.5.0-install/include/QtCore/qitemselectionmodel.h \
+		/qt-5.5.0-install/include/QtWidgets/qabstractitemdelegate.h \
+		/qt-5.5.0-install/include/QtWidgets/qstyleoption.h \
+		/qt-5.5.0-install/include/QtWidgets/qabstractspinbox.h \
+		/qt-5.5.0-install/include/QtGui/qvalidator.h \
+		/qt-5.5.0-install/include/QtCore/qregularexpression.h \
+		/qt-5.5.0-install/include/QtWidgets/qslider.h \
+		/qt-5.5.0-install/include/QtWidgets/qabstractslider.h \
+		/qt-5.5.0-install/include/QtWidgets/qstyle.h \
+		/qt-5.5.0-install/include/QtWidgets/qtabbar.h \
+		/qt-5.5.0-install/include/QtWidgets/qtabwidget.h \
+		/qt-5.5.0-install/include/QtWidgets/qrubberband.h \
+		/qt-5.5.0-install/include/QtWidgets/QLabel \
+		/qt-5.5.0-install/include/QtWidgets/qlabel.h \
+		/qt-5.5.0-install/include/QtWidgets/QLineEdit \
+		/qt-5.5.0-install/include/QtWidgets/qlineedit.h \
+		/qt-5.5.0-install/include/QtGui/qtextcursor.h \
+		/qt-5.5.0-install/include/QtGui/qtextformat.h \
+		/qt-5.5.0-install/include/QtGui/qpen.h \
+		/qt-5.5.0-install/include/QtGui/qtextoption.h \
+		/qt-5.5.0-install/include/QtWidgets/QToolButton \
+		/qt-5.5.0-install/include/QtWidgets/qtoolbutton.h \
+		/qt-5.5.0-install/include/QtWidgets/qabstractbutton.h \
+		/qt-5.5.0-install/include/QtWidgets/QVBoxLayout \
 		/qt-5.5.0-install/include/QtCore/QThread \
 		/qt-5.5.0-install/include/QtCore/qthread.h \
 		/qt-5.5.0-install/include/QtCore/QCryptographicHash \
 		/qt-5.5.0-install/include/QtCore/qcryptographichash.h \
 		global.h \
 		/qt-5.5.0-install/include/QtCore/QString \
-		/qt-5.5.0-install/include/QtCore/QVariant \
 		/qt-5.5.0-install/include/QtCore/QSettings \
 		/qt-5.5.0-install/include/QtCore/qsettings.h \
 		/qt-5.5.0-install/include/QtCore/QTextCodec \
@@ -7328,6 +7508,115 @@ audioplayer.o: audioplayer/audioplayer.cpp audioplayer/audioplayer.h \
 		/qt-5.5.0-install/include/QtCore/qthread.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o audioplayer.o audioplayer/audioplayer.cpp
 
+login.o: net/login.cpp net/login.h \
+		/qt-5.5.0-install/include/QtCore/QObject \
+		/qt-5.5.0-install/include/QtCore/qobject.h \
+		/qt-5.5.0-install/include/QtCore/qobjectdefs.h \
+		/qt-5.5.0-install/include/QtCore/qnamespace.h \
+		/qt-5.5.0-install/include/QtCore/qglobal.h \
+		/qt-5.5.0-install/include/QtCore/qconfig.h \
+		/qt-5.5.0-install/include/QtCore/qfeatures.h \
+		/qt-5.5.0-install/include/QtCore/qsystemdetection.h \
+		/qt-5.5.0-install/include/QtCore/qprocessordetection.h \
+		/qt-5.5.0-install/include/QtCore/qcompilerdetection.h \
+		/qt-5.5.0-install/include/QtCore/qtypeinfo.h \
+		/qt-5.5.0-install/include/QtCore/qtypetraits.h \
+		/qt-5.5.0-install/include/QtCore/qsysinfo.h \
+		/qt-5.5.0-install/include/QtCore/qlogging.h \
+		/qt-5.5.0-install/include/QtCore/qflags.h \
+		/qt-5.5.0-install/include/QtCore/qatomic.h \
+		/qt-5.5.0-install/include/QtCore/qbasicatomic.h \
+		/qt-5.5.0-install/include/QtCore/qatomic_bootstrap.h \
+		/qt-5.5.0-install/include/QtCore/qgenericatomic.h \
+		/qt-5.5.0-install/include/QtCore/qatomic_cxx11.h \
+		/qt-5.5.0-install/include/QtCore/qatomic_gcc.h \
+		/qt-5.5.0-install/include/QtCore/qatomic_msvc.h \
+		/qt-5.5.0-install/include/QtCore/qatomic_armv7.h \
+		/qt-5.5.0-install/include/QtCore/qatomic_armv6.h \
+		/qt-5.5.0-install/include/QtCore/qatomic_armv5.h \
+		/qt-5.5.0-install/include/QtCore/qatomic_ia64.h \
+		/qt-5.5.0-install/include/QtCore/qatomic_mips.h \
+		/qt-5.5.0-install/include/QtCore/qatomic_x86.h \
+		/qt-5.5.0-install/include/QtCore/qatomic_unix.h \
+		/qt-5.5.0-install/include/QtCore/qglobalstatic.h \
+		/qt-5.5.0-install/include/QtCore/qmutex.h \
+		/qt-5.5.0-install/include/QtCore/qnumeric.h \
+		/qt-5.5.0-install/include/QtCore/qobjectdefs_impl.h \
+		/qt-5.5.0-install/include/QtCore/qstring.h \
+		/qt-5.5.0-install/include/QtCore/qchar.h \
+		/qt-5.5.0-install/include/QtCore/qbytearray.h \
+		/qt-5.5.0-install/include/QtCore/qrefcount.h \
+		/qt-5.5.0-install/include/QtCore/qarraydata.h \
+		/qt-5.5.0-install/include/QtCore/qstringbuilder.h \
+		/qt-5.5.0-install/include/QtCore/qlist.h \
+		/qt-5.5.0-install/include/QtCore/qalgorithms.h \
+		/qt-5.5.0-install/include/QtCore/qiterator.h \
+		/qt-5.5.0-install/include/QtCore/qbytearraylist.h \
+		/qt-5.5.0-install/include/QtCore/qstringlist.h \
+		/qt-5.5.0-install/include/QtCore/qregexp.h \
+		/qt-5.5.0-install/include/QtCore/qstringmatcher.h \
+		/qt-5.5.0-install/include/QtCore/qcoreevent.h \
+		/qt-5.5.0-install/include/QtCore/qscopedpointer.h \
+		/qt-5.5.0-install/include/QtCore/qmetatype.h \
+		/qt-5.5.0-install/include/QtCore/qvarlengtharray.h \
+		/qt-5.5.0-install/include/QtCore/qcontainerfwd.h \
+		/qt-5.5.0-install/include/QtCore/qisenum.h \
+		/qt-5.5.0-install/include/QtCore/qobject_impl.h \
+		/qt-5.5.0-install/include/QtNetwork/QNetworkAccessManager \
+		/qt-5.5.0-install/include/QtNetwork/qnetworkaccessmanager.h \
+		/qt-5.5.0-install/include/QtNetwork/QSslConfiguration \
+		/qt-5.5.0-install/include/QtNetwork/qsslconfiguration.h \
+		/qt-5.5.0-install/include/QtCore/qshareddata.h \
+		/qt-5.5.0-install/include/QtCore/qhash.h \
+		/qt-5.5.0-install/include/QtCore/qpair.h \
+		/qt-5.5.0-install/include/QtNetwork/qsslsocket.h \
+		/qt-5.5.0-install/include/QtNetwork/qtcpsocket.h \
+		/qt-5.5.0-install/include/QtNetwork/qabstractsocket.h \
+		/qt-5.5.0-install/include/QtCore/qiodevice.h \
+		/qt-5.5.0-install/include/QtCore/qdebug.h \
+		/qt-5.5.0-install/include/QtCore/qmap.h \
+		/qt-5.5.0-install/include/QtCore/qtextstream.h \
+		/qt-5.5.0-install/include/QtCore/qlocale.h \
+		/qt-5.5.0-install/include/QtCore/qvariant.h \
+		/qt-5.5.0-install/include/QtCore/qvector.h \
+		/qt-5.5.0-install/include/QtCore/qpoint.h \
+		/qt-5.5.0-install/include/QtCore/qset.h \
+		/qt-5.5.0-install/include/QtCore/qcontiguouscache.h \
+		/qt-5.5.0-install/include/QtNetwork/qsslerror.h \
+		/qt-5.5.0-install/include/QtNetwork/qsslcertificate.h \
+		/qt-5.5.0-install/include/QtCore/qcryptographichash.h \
+		/qt-5.5.0-install/include/QtCore/qdatetime.h \
+		/qt-5.5.0-install/include/QtCore/qsharedpointer.h \
+		/qt-5.5.0-install/include/QtCore/qsharedpointer_impl.h \
+		/qt-5.5.0-install/include/QtNetwork/qssl.h \
+		/qt-5.5.0-install/include/QtCore/QFlags \
+		/qt-5.5.0-install/include/QtNetwork/QSslPreSharedKeyAuthenticator \
+		/qt-5.5.0-install/include/QtNetwork/qsslpresharedkeyauthenticator.h \
+		/qt-5.5.0-install/include/QtCore/QtGlobal \
+		/qt-5.5.0-install/include/QtCore/QString \
+		/qt-5.5.0-install/include/QtCore/QSharedDataPointer \
+		/qt-5.5.0-install/include/QtCore/QMetaType \
+		/qt-5.5.0-install/include/QtNetwork/QNetworkReply \
+		/qt-5.5.0-install/include/QtNetwork/qnetworkreply.h \
+		/qt-5.5.0-install/include/QtCore/QIODevice \
+		/qt-5.5.0-install/include/QtCore/QVariant \
+		/qt-5.5.0-install/include/QtNetwork/QNetworkRequest \
+		/qt-5.5.0-install/include/QtNetwork/qnetworkrequest.h \
+		/qt-5.5.0-install/include/QtCore/QUrl \
+		/qt-5.5.0-install/include/QtCore/qurl.h \
+		/qt-5.5.0-install/include/QtCore/qurlquery.h \
+		/qt-5.5.0-install/include/QtCore/QThread \
+		/qt-5.5.0-install/include/QtCore/qthread.h \
+		/qt-5.5.0-install/include/QtCore/QElapsedTimer \
+		/qt-5.5.0-install/include/QtCore/qelapsedtimer.h \
+		/qt-5.5.0-install/include/QtCore/QEventLoop \
+		/qt-5.5.0-install/include/QtCore/qeventloop.h \
+		/qt-5.5.0-install/include/QtCore/QDebug \
+		/qt-5.5.0-install/include/QtCore/QTimer \
+		/qt-5.5.0-install/include/QtCore/qtimer.h \
+		/qt-5.5.0-install/include/QtCore/qbasictimer.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o login.o net/login.cpp
+
 qrc_res.o: qrc_res.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o qrc_res.o qrc_res.cpp
 
@@ -7366,6 +7655,9 @@ moc_screenemotion.o: moc_screenemotion.cpp
 
 moc_audioplayer.o: moc_audioplayer.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_audioplayer.o moc_audioplayer.cpp
+
+moc_login.o: moc_login.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_login.o moc_login.cpp
 
 ####### Install
 

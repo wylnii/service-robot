@@ -19,10 +19,14 @@ linux
 {
 LIBS    += -L/usr/local/lib/ -lavcodec -lavformat -lavdevice -lavfilter -lavutil -lpostproc -lswresample -lswscale
 LIBS    += -L/usr/local/lib/ -lSDL -lx264
-
-LIBS    += -L/opt/ffmpeg-arm/lib/ -lavcodec -lavformat -lavdevice -lavfilter -lavutil -lpostproc -lswresample -lswscale
+#for 4412
+LIBS    += -L/opt/ffmpeg-arm/lib/ -lavcodec -lavformat -lavdevice -lavfilter -lavutil -lpostproc
 LIBS    += -L/opt/x264-arm/lib -lx264
-LIBS    += -L/opt/SDL-arm/lib/ -lSDL
+LIBS    += -L/opt/SDL-arm/lib -lSDL
+#for 4418
+#LIBS    += -L/opt/ffmpeg-arm-nanopi2/lib/ -lavcodec -lavformat -lavdevice -lavfilter -lavutil -lpostproc -lswresample -lswscale
+#LIBS    += -L/opt/x264-arm-nanopi2/lib -lx264
+#LIBS    += -L/opt/SDL-arm-nanopi2/lib -lSDL
 
 INCLUDEPATH +=/usr/local/include
 }
