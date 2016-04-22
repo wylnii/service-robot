@@ -1,3 +1,6 @@
+#!/bin/sh
+UDISK=$PWD
+echo $UDISK
 cp qt-5.5.0.tar.gz /.
 cd /.
 tar zxvf qt-5.5.0.tar.gz
@@ -15,14 +18,18 @@ cp init.d/rcS init.d/rcS.bak
 
 tar zxvf etc.tar.gz
 
-#cd /udisk/0
-cd /udisk/0
-cp -r service-robot usr_init audioPlayer configure.ini emotion/ /opt/
+#cd /udisk/1
+cd $UDISK
+cp -r service-robot usr_init restart_service audioPlayer configure.ini emotion/ /opt/
 
+#cp video
 cd /.
 mkdir video
+cd $UDISK
+echo "copy videos...\n"
+cp video/* /video/
 
-cd qt-5.5.0/
+cd /qt-5.5.0/
 source /etc/profile
 ./dbus-uuidgen >/etc/machine-id
 

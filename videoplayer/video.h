@@ -76,6 +76,7 @@ int audioStream = -1;
 short volume = 128;
 double video_duration = 0;
 double video_cur_time = 0;
+int video_frames = 0;
 //void packet_queue_init(PacketQueue *q);
 //int packet_queue_put(PacketQueue *q, AVPacket *pkt);
 //int packet_queue_get(PacketQueue *q, AVPacket *pkt, int block);
@@ -570,8 +571,10 @@ void auto_scale(int dist_w,int dist_h,int *w,int *h)
         }
     }
 }
+QMutex video_mutex;
 int video_thread(void *arg)
 {
+    QMutexLocker locker(&video_mutex);
     PlayIsEnd = 0;
     Q_UNUSED(arg);
     // Get a pointer to the codec context for the video stream
@@ -599,7 +602,7 @@ int video_thread(void *arg)
 
     int width = WINDOW_WIDTH, height = WINDOW_HEIGHT;
     auto_scale(pCodecCtx->width, pCodecCtx->height, &width, &height);
-    qDebug("width = %d, height = %d",width,height);
+
     struct SwsContext* sws_ctx = sws_getContext(
                 pCodecCtx->width,
                 pCodecCtx->height,
@@ -625,7 +628,12 @@ int video_thread(void *arg)
     float frame_rate = av_q2d(pFormatCtx->streams[videoStream]->r_frame_rate);
     double time_base = av_q2d(pFormatCtx->streams[videoStream]->time_base);
     video_duration = (double)pFormatCtx->duration/1e6;
-    qDebug()<<frame_rate<<video_duration<<pFormatCtx->streams[videoStream]->nb_frames;
+    video_frames = pFormatCtx->streams[videoStream]->nb_frames;
+    if(video_frames < 1 && frame_rate > 0 && video_duration > 0)
+    {
+        video_frames = frame_rate*video_duration - 1;
+    }
+    qDebug("size:%dx%d   fps:%0.3f   duration:%0.3lfs   frames:%d",width,height,frame_rate,video_duration,video_frames);
 
     //////////////////////////////////////////////////////
 
@@ -638,7 +646,7 @@ int video_thread(void *arg)
 
 #ifndef __DARWIN__
 //    fprintf(stderr,"%s\tline:%d\n",__FILE__,__LINE__);
-        screen = SDL_SetVideoMode(SCREEN_WIDTH, SCREEN_HEIGHT, 0, 0);
+    screen = SDL_SetVideoMode(SCREEN_WIDTH, SCREEN_HEIGHT, 0, 0);
 #else
     screen = SDL_SetVideoMode(pCodecCtx->width, pCodecCtx->height, 24, 0);
 #endif
@@ -681,8 +689,8 @@ int video_thread(void *arg)
                     if(frameFinished)
                     {
                         SDL_LockYUVOverlay(bmp);
-                        AVPicture *pict;
-                        pict = new AVPicture;
+                        AVPicture *pict = (AVPicture *)av_mallocz(sizeof(AVPicture));
+//                        avpicture_alloc(pict, AV_PIX_FMT_YUV420P, width, height);
                         pict->data[0] = bmp->pixels[0];
                         pict->data[1] = bmp->pixels[2];
                         pict->data[2] = bmp->pixels[1];
@@ -697,7 +705,7 @@ int video_thread(void *arg)
                             sws_scale(sws_ctx, pFrame->data, pFrame->linesize,
                                       0, pCodecCtx->height, pict->data, pict->linesize);
                         }
-                        delete pict;
+                        av_free(pict);
                         SDL_UnlockYUVOverlay(bmp);
                         SDL_DisplayYUVOverlay(bmp, &sdlRect);
 
@@ -710,23 +718,26 @@ int video_thread(void *arg)
                     }
                 }
             }
-//            else
-//            {
-//                play_over = 1;
-//                Pause = 1;
-//                qDebug()<<"play_over";
-//                break;
-//            }
+            else
+            {
+                play_over = 1;
+                Pause = 1;
+                qDebug("play over  at : %0.3f/%0.3f",video_cur_time,video_duration);
+                break;
+            }
             if(video_duration > 0 && video_cur_time > video_duration - 0.1)
             {
                 qDebug("play over  at : %0.3f/%0.3f",video_cur_time,video_duration);
                 break;
             }
+            // Free the packet that was allocated by av_read_frame
             av_free_packet(&packet);
         }
-        if(vs->quit)
+        if(vs->quit > 0)
+        {
+            qDebug("stop  at : %0.3f/%0.3f",video_cur_time,video_duration);
             break;
-        // Free the packet that was allocated by av_read_frame
+        }
         if(SDL_PollEvent(&event))
         {
             if(event.type == SDL_KEYDOWN)
@@ -783,9 +794,10 @@ int video_thread(void *arg)
     av_frame_free(&pFrame);
 
     // Close the codec
-    if(pFormatCtx != NULL)
+    if(pCodecCtx != NULL)
+    {
         avcodec_close(pCodecCtx);
-//    SDL_Quit();
+    }
     qDebug("videoThread --> return  at : %0.3f/%0.3f",video_cur_time,video_duration);
     return 0;
 }

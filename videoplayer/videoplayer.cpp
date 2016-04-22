@@ -5,7 +5,7 @@
 VideoPlayer::VideoPlayer(QObject *parent, QWidget *widget):QThread(parent)
 {
     setObjectName(QStringLiteral("VideoPlayer"));
-
+    SDL_Quit();
     Q_ASSERT(widget);
     face = widget;
     filename.clear();
@@ -55,8 +55,10 @@ VideoPlayer::VideoPlayer(QObject *parent, QWidget *widget):QThread(parent)
 VideoPlayer::~VideoPlayer()
 {
     m_thread->quit();
+    stop();
     Stop = true;
     wait(100);
+    SDL_Quit();
     delete m_thread;
     delete timer;
     delete audioPlayer;
@@ -170,7 +172,7 @@ void VideoPlayer::playNext(int n)
         playingNO = (playingNO + cnt)%cnt;
         if(playingNO < 0)
             playingNO = 0;
-        qDebug()<<"play Next: "<<playingNO<<playlist[playingNO];
+        qDebug()<<"\n##\tplay Next: "<<playingNO<<playlist[playingNO];
         setSource(playlist[playingNO]);
         play();
     }
@@ -369,7 +371,7 @@ int VideoPlayer::play()
             return ENOENT;
         }
         qDebug()<<"##\tplay_cnt :"<<play_cnt<<QDateTime::currentDateTime().toString("yyyy-MM-dd hh:mm:ss");
-        if(videoStream != -1)
+        if(videoStream >= 0)
         {
             videoThread = SDL_CreateThread(video_thread,NULL);
             if(videoThread == NULL)
@@ -380,7 +382,7 @@ int VideoPlayer::play()
 //            videothread.start();
         }
         msleep(50);
-        if(audioStream != -1)
+        if(audioStream >= 0)
         {
             vs->audioThread = SDL_CreateThread(audio_thread, vs);
             if (vs->audioThread == NULL)
@@ -462,7 +464,7 @@ void VideoPlayer::stop(bool repaint)
     {
         vs->quit = 1;
         isPlaying = false;
-        msleep(50);
+        msleep(100);
 
         if(pFormatCtx != NULL)
             avformat_close_input(&pFormatCtx);

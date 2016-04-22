@@ -17,16 +17,14 @@ TEMPLATE = app
 #LIBS += -lws2_32
 linux
 {
-LIBS    += -L/usr/local/lib/ -lavcodec -lavformat -lavdevice -lavfilter -lavutil -lpostproc -lswresample -lswscale
-LIBS    += -L/usr/local/lib/ -lSDL -lx264
+LIBS    += -L/usr/local/lib -lavcodec -lavformat -lavdevice -lavfilter -lavutil -lpostproc -lswresample -lswscale
+LIBS    += -L/usr/local/lib -lSDL -lx264
 #for 4412
-LIBS    += -L/opt/ffmpeg-arm/lib/ -lavcodec -lavformat -lavdevice -lavfilter -lavutil -lpostproc
-LIBS    += -L/opt/x264-arm/lib -lx264
-LIBS    += -L/opt/SDL-arm/lib -lSDL
+LIBS    += -L/opt/ffmpeg-x264-SDL-arm/lib/ -lavcodec -lavformat -lavdevice -lavfilter -lavutil -lpostproc
+LIBS    += -L/opt/ffmpeg-x264-SDL-arm/lib/ -lx264 -lSDL
 #for 4418
-#LIBS    += -L/opt/ffmpeg-arm-nanopi2/lib/ -lavcodec -lavformat -lavdevice -lavfilter -lavutil -lpostproc -lswresample -lswscale
-#LIBS    += -L/opt/x264-arm-nanopi2/lib -lx264
-#LIBS    += -L/opt/SDL-arm-nanopi2/lib -lSDL
+#LIBS    += -L/opt/ffmpeg-x264-SDL-nanopi2/lib/ -lavcodec -lavformat -lavdevice -lavfilter -lavutil -lpostproc
+#LIBS    += -L/opt/ffmpeg-x264-SDL-nanopi2/lib/ -lx264 -lSDL
 
 INCLUDEPATH +=/usr/local/include
 }

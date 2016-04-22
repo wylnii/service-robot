@@ -606,6 +606,7 @@ void MainWindow::getKeyinput(uchar key, bool status)
             on_toolButton_play_clicked();
             break;
         case 4:
+            qApp->exit();
             break;
         default:
             break;
@@ -721,6 +722,7 @@ void MainWindow::on_toolButton_last_clicked()
 void MainWindow::on_toolButton_next_clicked()
 {
     videoPlayer->playNext();
+    QTimer::singleShot(10000,this,&MainWindow::on_toolButton_next_clicked);//TODO
 }
 
 void MainWindow::on_verticalSlider_2_sliderReleased()
