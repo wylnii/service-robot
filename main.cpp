@@ -27,11 +27,14 @@ int main(int argc, char *argv[])
 void recordLog(const QString &log)
 {
     QString time = QDateTime::currentDateTime().toString("MM/dd HH:mm:ss.zzz -> ");
-    QFile outFile("log.txt");
-    outFile.open(QIODevice::WriteOnly | QIODevice::Append);
-    QTextStream out(&outFile);
-    out << time << log << "\r\n";
-    outFile.close();
+    QString msg("echo '%1%2' >> log.txt");
+    msg = msg.arg(time,log);
+//    QFile outFile("log.txt");
+//    outFile.open(QIODevice::WriteOnly | QIODevice::Append);
+//    QTextStream out(&outFile);
+//    out << time << log << "\r\n";
+//    outFile.close();
+    system(msg.toLocal8Bit().constData());
 }
 
 void customMessageHandler(QtMsgType type, const QMessageLogContext &contex, const QString &msg)
@@ -45,7 +48,7 @@ void customMessageHandler(QtMsgType type, const QMessageLogContext &contex, cons
         break;
     case QtWarningMsg:
 //        log = QString("Warning: %1").arg(msg);
-        fprintf(stderr,"%s\n",msg.toLatin1().constData());
+        fprintf(stderr,"%s\n",msg.toLocal8Bit().constData());
         return;
         break;
     case QtCriticalMsg:
@@ -61,6 +64,6 @@ void customMessageHandler(QtMsgType type, const QMessageLogContext &contex, cons
     recordLog(log);
 #endif
 #ifdef PRINT_SCREEN
-    fprintf(stderr,"%s\n",msg.toLatin1().constData());
+    fprintf(stderr,"%s\n",msg.toLocal8Bit().constData());
 #endif
 }

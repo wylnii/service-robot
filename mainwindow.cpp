@@ -33,9 +33,9 @@ MainWindow::MainWindow(QWidget *parent) :
     serialport_thread->start();
 
     wifi=new USB_WiFi;//不能指定为this，要不然无法用moveToThread
-    connect(wifi,SIGNAL(errormsg(QString)),this,SLOT(setStatText(QString)));
-    connect(this,SIGNAL(connect_net(QString,QString,QString)),wifi,SLOT(connect_wifi(QString,QString,QString)));
-    connect(this,SIGNAL(stop_net()),wifi,SLOT(stop_wifi()));
+    connect(wifi,&USB_WiFi::errormsg,this,&MainWindow::setStatText);
+    connect(this,&MainWindow::connect_net,wifi,&USB_WiFi::connect_wifi);
+    connect(this,&MainWindow::stop_net,wifi,&USB_WiFi::stop_wifi);
     wifi->moveToThread(wifi_thread);
 
 #ifdef _TEST1
@@ -46,7 +46,7 @@ MainWindow::MainWindow(QWidget *parent) :
                             ,tr("\t\t&O&k\t\t"),tr("\t\tCancle\t\t"));
     }
 #endif
-    QTimer::singleShot(1000,Qt::VeryCoarseTimer,this,SLOT(autoConnect()));//auto connect
+    QTimer::singleShot(1500,Qt::VeryCoarseTimer,this,&MainWindow::autoConnect);//auto connect
 
     ipInfoTable=new IPInfoTable(ui->tabWidgetPage3,950,720);
 
@@ -77,15 +77,8 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(screenEmotion, &ScreenEmotion::changeWindows, this, &MainWindow::changeWindows);
 
     videoPlayer = new VideoPlayer(NULL, screenEmotion);
-    QDir dir("./");
-    QStringList filelist = dir.entryList(QStringList()<<"*.mkv"<<"*.mp4"<<"*.flv"<<"*.rm"<<"*.rmvb");
-    dir.setPath("/video/");
-    foreach(QString file, dir.entryList(QStringList()<<"*.mkv"<<"*.mp4"<<"*.flv"<<"*.rm"<<"*.rmvb"))
-    {
-        filelist<<file.prepend(dir.absolutePath().append('/'));
-    }
-    videoPlayer->setPlaylist(filelist);
-    setStatusBarText((filelist.join(" & ").prepend("playList: ")),1);
+    setStatusBarText((videoPlayer->getPlaylist().join(" & ").prepend("playList: ")),1);
+
     ui->verticalSlider->setValue(videoPlayer->Volume());
 
     serialport = new SerialPort();

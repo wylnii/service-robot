@@ -5,7 +5,6 @@
 VideoPlayer::VideoPlayer(QObject *parent, QWidget *widget):QThread(parent)
 {
     setObjectName(QStringLiteral("VideoPlayer"));
-    SDL_Quit();
     Q_ASSERT(widget);
     face = widget;
     filename.clear();
@@ -50,6 +49,16 @@ VideoPlayer::VideoPlayer(QObject *parent, QWidget *widget):QThread(parent)
     m_thread->start();
     moveToThread(m_thread);
 //    QTimer::singleShot(5000,Qt::VeryCoarseTimer,[](){SDL_CloseAudio();});
+    QStringList filters;
+    filters<<"*.mkv"<<"*.mp4"<<"*.flv"<<"*.rm"<<"*.rmvb";
+    QDir dir("./");
+    QStringList filelist = dir.entryList(filters);
+    dir.setPath("/video/");
+    foreach(QString file, dir.entryList(filters))
+    {
+        filelist<<file.prepend(dir.absolutePath().append('/'));
+    }
+    setPlaylist(filelist);
 }
 
 VideoPlayer::~VideoPlayer()
@@ -269,7 +278,7 @@ void VideoPlayer::setPlayMode(VideoPlayer::PlayMode mode)
     qDebug()<<"setPlayMode:"<<mode;
 }
 
-QString VideoPlayer::getPlayingFilename() const
+const QString &VideoPlayer::getPlayingFilename() const
 {
     return filename;
 }
@@ -337,7 +346,7 @@ void VideoPlayer::setPlaylist(const QStringList &list)
     playlist = list;
 }
 
-QStringList VideoPlayer::getPlaylist() const
+const QStringList &VideoPlayer::getPlaylist() const
 {
     return playlist;
 }

@@ -48,8 +48,8 @@ public:
     enum PlayMode{Cycle = 0, SingleCycle = 1, Single = 2};
     void setPlayMode(PlayMode mode);
     PlayMode getPlayMode() const;
-    QString getPlayingFilename() const;
-    QStringList getPlaylist() const;
+    const QString &getPlayingFilename() const;
+    const QStringList &getPlaylist() const;
     void setPlaylist(const QStringList &list);
 
     bool IsPlaying() const;
@@ -57,7 +57,6 @@ public:
     bool IsOpened() const;
 
     void setFace(QWidget *value);
-
 
 protected:
     void run();

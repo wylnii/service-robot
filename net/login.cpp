@@ -25,8 +25,8 @@ Login::Login(QObject *parent) : QObject(parent)
 
 Login::~Login()
 {
-    if(isOnline)
-        logout();
+//    if(isOnline)
+//        logout();
     mThread->quit();
     qDebug()<<"quit";
     mThread->wait();

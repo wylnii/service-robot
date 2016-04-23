@@ -722,7 +722,7 @@ int video_thread(void *arg)
             {
                 play_over = 1;
                 Pause = 1;
-                qDebug("play over  at : %0.3f/%0.3f",video_cur_time,video_duration);
+                qDebug("#play over  at : %0.3f/%0.3f",video_cur_time,video_duration);
                 break;
             }
             if(video_duration > 0 && video_cur_time > video_duration - 0.1)

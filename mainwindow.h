@@ -14,6 +14,7 @@
 #include "screenemotion/screenemotion.h"
 #include "net/netspeed.h"
 #include "keyinput.h"
+#include "net/login.h"
 
 namespace Ui {
 class MainWindow;

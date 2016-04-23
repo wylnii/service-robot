@@ -27,7 +27,7 @@ QByteArray loadHistory(const QString &mrk, const QVariant &default_value, const 
 //        qDebug()<<"load"<<value<<mrk;
     }
     settings.endGroup();
-    return (mrk[0] == '#'? encrypt(value,1):value);
+    return (mrk[0] == '#'? encrypt(value,true):value);
 }
 
 void saveHistory(const QVariant &input, const QString &mrk, const QString &group)
@@ -36,7 +36,7 @@ void saveHistory(const QVariant &input, const QString &mrk, const QString &group
         settings.beginGroup(group);
         if(! input.isNull() && ! mrk.isEmpty())
         {
-            settings.setValue(mrk, /*mrk[0] == '#'? encrypt(input.toLatin1()):*/input);
+            settings.setValue(mrk, mrk[0] == '#'? encrypt(input.toByteArray()):input);
 //            qDebug()<<"save"<<input<<mrk;
         }
         settings.endGroup();

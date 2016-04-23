@@ -21,8 +21,8 @@
 
 #define DEBUG
 
-#ifndef logout
-#define logout qDebug()<<this
+#ifndef Logout
+#define Logout qDebug()<<this
 #endif
 
 extern QString RobotName;
@@ -71,8 +71,7 @@ struct SSDB_CtrlCmd{
 
 void saveHistory(const QVariant &input, const QString &mrk, const QString &group = QString("configure"));
 QByteArray loadHistory(const QString &mrk, const QVariant &dfl_value = QVariant(), const QString &group = QString("configure"));
-QByteArray encrypt(const QByteArray &code);
-QByteArray decrypt(const QByteArray &code);
+QByteArray encrypt(const QByteArray &code, bool en = false);
 
 
 #endif // GLOBAL
