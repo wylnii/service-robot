@@ -715,7 +715,7 @@ void MainWindow::on_toolButton_last_clicked()
 void MainWindow::on_toolButton_next_clicked()
 {
     videoPlayer->playNext();
-    QTimer::singleShot(10000,this,&MainWindow::on_toolButton_next_clicked);//TODO
+    QTimer::singleShot(1000,this,&MainWindow::on_toolButton_next_clicked);//TODO
 }
 
 void MainWindow::on_verticalSlider_2_sliderReleased()

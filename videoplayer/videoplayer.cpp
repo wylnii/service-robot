@@ -262,12 +262,12 @@ void VideoPlayer::getCtrlMsg(const SSDB_CtrlCmd &cmd)
     }
 }
 
-double VideoPlayer::position()
+double VideoPlayer::position() const
 {
     return video_cur_time;
 }
 
-double VideoPlayer::duration()
+double VideoPlayer::duration() const
 {
     return video_duration > 0.1 ? video_duration : -1;
 }
@@ -285,14 +285,15 @@ const QString &VideoPlayer::getPlayingFilename() const
 
 void VideoPlayer::run()
 {
+//    qDebug()<<QThread::currentThread()<<QThread::thread()<<m_thread;
     while(! Stop)
     {
         if(PlayIsEnd)
         {
-            emit playEnd();
             PlayIsEnd = 0;
             qDebug()<<"play end:"<<filename;
-            msleep(100);
+//            msleep(100);
+            emit playEnd();
         }
         msleep(20);
     }
@@ -363,7 +364,7 @@ int VideoPlayer::play()
     play_cnt ++;
     if(! isOpened)
     {
-        if(!playlist.isEmpty() && playingNO == -1)
+        if(!playlist.isEmpty() && playingNO < 0)
         {
             setSource(playlist[0]);
             playingNO = 0;
@@ -410,8 +411,14 @@ int VideoPlayer::play()
 
 int VideoPlayer::play(const QString &file)
 {
+    if(! QFile(file).exists())
+    {
+        qDebug()<<file<<"is not exist";
+        return ENOENT;
+    }
     stop();
     setSource(file);
+    playingNO = 0;
     return play();
 }
 
@@ -473,19 +480,22 @@ void VideoPlayer::stop(bool repaint)
     {
         vs->quit = 1;
         isPlaying = false;
-        msleep(100);
+//        msleep(100);
 
-        if(pFormatCtx != NULL)
-            avformat_close_input(&pFormatCtx);
         if(audioStream >= 0)
         {
-            SDL_CloseAudio();
-            SDL_KillThread(vs->audioThread);
+//            SDL_KillThread(vs->audioThread);
+            SDL_WaitThread(vs->audioThread,NULL);
             audioPlayer->startAudioPlayer();
         }
 //        videothread.stop();
         if(videoStream >= 0)
-            SDL_KillThread(videoThread);
+        {
+//            SDL_KillThread(videoThread);
+            SDL_WaitThread(videoThread,NULL);
+        }
+        if(pFormatCtx != NULL)
+            avformat_close_input(&pFormatCtx);
     }
     Pause = 0;
     isOpened = false;

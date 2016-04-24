@@ -42,8 +42,8 @@ public:
     void wait_for_end();
     void addToPlaylist(const QString &file, int que = -1);
     void removeFromPlaylist(const QString &file, int que = -1);
-    double position();
-    double duration();
+    double position() const;
+    double duration() const;
 
     enum PlayMode{Cycle = 0, SingleCycle = 1, Single = 2};
     void setPlayMode(PlayMode mode);

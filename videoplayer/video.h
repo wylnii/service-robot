@@ -444,8 +444,10 @@ static void stream_component_close(VideoState *is, int stream_index) {
 
 }
 */
+QMutex audio_mutex;
 int audio_thread(void *arg)
 {
+    QMutexLocker locker(&audio_mutex);
     VideoState *is = (VideoState *)arg;
     AVFormatContext *ic = NULL;
     AVPacket pkt1, *packet = &pkt1;
@@ -515,7 +517,7 @@ fail: {
         event.user.data1 = is;
         SDL_PushEvent(&event);
     }
-
+    SDL_CloseAudio();
     qDebug("audioThread --> return at : %0.3f/%0.3f",is->cur_time,is->duration);
     return 0;
 }
@@ -794,7 +796,7 @@ int video_thread(void *arg)
     av_frame_free(&pFrame);
 
     // Close the codec
-    if(pCodecCtx != NULL)
+    if(pFormatCtx != NULL)
     {
         avcodec_close(pCodecCtx);
     }
