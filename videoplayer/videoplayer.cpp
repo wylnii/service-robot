@@ -30,6 +30,9 @@ VideoPlayer::VideoPlayer(QObject *parent, QWidget *widget):QThread(parent)
 //    sprintf(winID, "SDL_WINDOWID=0x%lx", videoWidget->winId());
 
 //    SDL_putenv(winID);
+    label.resize(SCREEN_WIDTH,SCREEN_HEIGHT);
+    label.show();
+    connect(&label, &Label::gestureActivated, this, &VideoPlayer::stop);
 
     Init();
     connect(this,SIGNAL(playEnd()),this,SLOT(replay()));

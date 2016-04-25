@@ -692,7 +692,6 @@ int video_thread(void *arg)
                     {
                         SDL_LockYUVOverlay(bmp);
                         AVPicture *pict = (AVPicture *)av_mallocz(sizeof(AVPicture));
-//                        avpicture_alloc(pict, AV_PIX_FMT_YUV420P, width, height);
                         pict->data[0] = bmp->pixels[0];
                         pict->data[1] = bmp->pixels[2];
                         pict->data[2] = bmp->pixels[1];
@@ -742,6 +741,10 @@ int video_thread(void *arg)
         }
         if(SDL_PollEvent(&event))
         {
+            if(event.type == SDL_MOUSEBUTTONDOWN)
+            {
+                qDebug("x:%d y:%d",event.button.x, event.button.y);
+            }
             if(event.type == SDL_KEYDOWN)
             {
                 switch(event.key.keysym.sym)

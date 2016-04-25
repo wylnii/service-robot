@@ -2,8 +2,7 @@
 
 const QString EmotionDir = "./emotion/";
 
-ScreenEmotion::ScreenEmotion(QWidget *parent, QWidget *mainWind):QLabel(parent),
-    p1(radius,radius), p2(radius,SCREEN_HEIGHT-radius), p3(SCREEN_WIDTH-radius,radius),p4(SCREEN_WIDTH-radius,SCREEN_HEIGHT-radius)
+ScreenEmotion::ScreenEmotion(QWidget *parent, QWidget *mainWind):Label(parent)
 {
     Q_ASSERT(mainWind != NULL);
     mainWindow = mainWind;
@@ -13,13 +12,6 @@ ScreenEmotion::ScreenEmotion(QWidget *parent, QWidget *mainWind):QLabel(parent),
     emotionList.clear();
     emotions.clear();
     setFixedSize(SCREEN_WIDTH, SCREEN_HEIGHT);
-    setWindowFlags(Qt::WindowStaysOnTopHint);
-    setAlignment(Qt::AlignHCenter|Qt::AlignVCenter);
-    setMouseTracking(true);
-    QPalette pal = palette();
-    pal.setColor(QPalette::Background,QColor(0,0,0));
-    setPalette(pal);
-    setScaledContents(true);
 //    hide();
     searchEmotion();
     setMovieFile(emotionList[service]);
@@ -27,6 +19,7 @@ ScreenEmotion::ScreenEmotion(QWidget *parent, QWidget *mainWind):QLabel(parent),
 //    timer = new QTimer(this);
 //    connect(timer, &QTimer::timeout, this, &ScreenEmotion::autoChangeEmt);
 //    timer->start(2000);
+    connect(this,&Label::gestureActivated,this, &ScreenEmotion::getGesture);
 }
 
 void ScreenEmotion::setMovieFile(const QString &path)
@@ -77,6 +70,15 @@ void ScreenEmotion::searchEmotion()
             emotionList.insert(mot, file.prepend(EmotionDir));
             emotions.append(filename);
         }
+    }
+}
+
+void ScreenEmotion::getGesture(int type)
+{
+    if(type == 0)
+    {
+        exHide();
+        emit changeWindows();
     }
 }
 
@@ -142,37 +144,5 @@ void ScreenEmotion::getCtrlMsg(const SSDB_CtrlCmd &cmd)
     if(cmd.type == SSDB_CTRL_Emotion)
     {
         changeEmotion((Emotion)cmd.emotinIndex);
-    }
-}
-
-void ScreenEmotion::mousePressEvent(QMouseEvent *e)
-{
-#ifdef DEBUG
-    qDebug()<<e->pos();
-#endif
-    int last = posList.count();
-    if(last > 0)
-    {
-        if(((posList[last - 1] - e->pos())/radius).isNull())
-            return;
-    }
-    posList.append(e->pos());
-    if(posList.count()>3)
-    {
-        QPoint pot1((posList[last - 3] - p1)/radius/2);
-        QPoint pot2((posList[last - 2] - p2)/radius/2);
-        QPoint pot3((posList[last - 1] - p3)/radius/2);
-        QPoint pot4((posList[last]       - p4)/radius/2);
-//        qDebug()<<pot<<pot2;
-        if(pot1.isNull() && pot2.isNull() && pot3.isNull() && pot4.isNull())
-        {
-            emit changeWindows();
-            exHide();
-            posList.clear();
-        }
-        else
-        {
-            posList.removeFirst();
-        }
     }
 }

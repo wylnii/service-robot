@@ -6,8 +6,9 @@
 #include <QLabel>
 #include <QMovie>
 #include "global.h"
+#include "label.h"
 
-class ScreenEmotion : public QLabel
+class ScreenEmotion : public Label
 {
     Q_OBJECT
 public:
@@ -19,6 +20,7 @@ public:
     void searchEmotion();
 
 public slots:
+    void getGesture(int type);
     void changeEmotion(Emotion emotion);
     void startMovie();
     void stopMovie();
@@ -38,13 +40,6 @@ private:
 //    QTimer *timer;
     int currentEmt;
     QWidget *mainWindow;
-
-    const int radius = 80;
-    const QPoint p1,p2,p3,p4;
-
-protected:
-    void mousePressEvent(QMouseEvent *e);
-
 };
 
 #endif // SCREENFACE_H

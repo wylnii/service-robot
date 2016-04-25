@@ -45,7 +45,8 @@ SOURCES += main.cpp\
     keyinput.cpp \
     screenemotion/screenemotion.cpp \
     audioplayer/audioplayer.cpp \
-    net/login.cpp
+    net/login.cpp \
+    screenemotion/label.cpp
 
 HEADERS  += mainwindow.h \
     keyboard/keyboard.h \
@@ -63,7 +64,8 @@ HEADERS  += mainwindow.h \
     keyinput.h \
     screenemotion/screenemotion.h \
     audioplayer/audioplayer.h \
-    net/login.h
+    net/login.h \
+    screenemotion/label.h
 
 FORMS    += \
 #    mainwindow800*480.ui \

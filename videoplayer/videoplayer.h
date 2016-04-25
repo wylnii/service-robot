@@ -7,6 +7,7 @@
 #include <QTimer>
 #include "global.h"
 #include "audioplayer/audioplayer.h"
+#include "screenemotion/label.h"
 
 /*
 class VideoThread : public QThread
@@ -76,6 +77,7 @@ private:
     QTimer *timer;
     QWidget *face;
     AudioPlayer *audioPlayer;
+    Label label;
 
 public slots:
     int play();
