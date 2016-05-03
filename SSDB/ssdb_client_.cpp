@@ -117,6 +117,7 @@ void SSDB_Client::analyseCMD(const std::string &ret)
     }
     else if(ret == EndVideo_CMD)
     {
+        //FIXME EndVideo之后是继续播放视频，还是停止播放返回表情
         queryVideoCtrl_timer = false;
         sendInfo_timer = false;
     }

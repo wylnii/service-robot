@@ -73,11 +73,11 @@ MainWindow::MainWindow(QWidget *parent) :
     mykeyboard->hide();
     connect(mykeyboard,SIGNAL(enter(QString,QString)),this,SLOT(rcvKBInput(QString,QString)));
 
-    screenEmotion = new ScreenEmotion(NULL, this);
-    connect(screenEmotion, &ScreenEmotion::changeWindows, this, &MainWindow::changeWindows);
-
-    videoPlayer = new VideoPlayer(NULL, screenEmotion);
+    videoPlayer = new VideoPlayer(NULL, this);
     setStatusBarText((videoPlayer->getPlaylist().join(" & ").prepend("playList: ")),1);
+
+    emotionPlayer = new EmotionPlayer(NULL, videoPlayer);//TODO
+//    connect(emotionPlayer, &ScreenEmotion::changeWindows, this, &MainWindow::changeWindows);
 
     ui->verticalSlider->setValue(videoPlayer->Volume());
 
@@ -103,7 +103,7 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(ssdbClient, &SSDB_Client::CtrlMsg, this, &MainWindow::getCtrlMsg);
     connect(ssdbClient, &SSDB_Client::CtrlMsg, serialport, &SerialPort::getCtrlMsg);
     connect(ssdbClient, &SSDB_Client::CtrlMsg, videoPlayer, &VideoPlayer::getCtrlMsg);
-    connect(ssdbClient, &SSDB_Client::CtrlMsg, screenEmotion, &ScreenEmotion::getCtrlMsg);
+    connect(ssdbClient, &SSDB_Client::CtrlMsg, emotionPlayer, &EmotionPlayer::getCtrlMsg);
     connect(videoPlayer, &VideoPlayer::returnMsg, ssdbClient, &SSDB_Client::rcvVideoMsg);
     connect(serialport,&SerialPort::rcvSPData,ssdbClient,&SSDB_Client::getSPMsg);
     connect(this, SIGNAL(connectSSDB()), ssdbClient, SLOT(connectServer()));
@@ -128,7 +128,7 @@ MainWindow::~MainWindow()
     delete wifi;
     delete ssdbClient;
     delete serialport;
-    delete screenEmotion;
+    delete emotionPlayer;
     delete keyInput;
     qDebug()<<"exit";
     delete ui;
@@ -208,10 +208,10 @@ margin: -0 -4px; \
 
 void MainWindow::show()
 {
-//    QMainWindow::show();
+    QMainWindow::show();
 #ifndef _TEST
-    screenEmotion->changeEmotion(ScreenEmotion::connecting);
-    screenEmotion->show();
+//    emotionPlayer->changeEmotion("connect");
+//    screenEmotion->show();
 #else
     QMainWindow::show();
 #endif
@@ -287,7 +287,7 @@ void MainWindow::autoConnect()
 {
     if(! IPInfoTable::eth0_exist())
     {
-        screenEmotion->stopMovie();
+        emotionPlayer->stop();
         setStatText("<font color='red'>找不到网络设备!</font>");
 /*        int ret = QMessageBox::warning(this,"Warning","<font color='red'>找不到网络设备!</font><p>是否重启？</p>"\
 //                            ,tr("\t\t确定\t\t"),tr("\t\t取消\t\t"));
@@ -306,7 +306,7 @@ void MainWindow::autoConnect()
 //启动时不检查网络连接
     if(loadHistory("Check_Net_Connect",1).toInt() <= 0)
     {
-        screenEmotion->exHide();
+        emotionPlayer->stop(true);
         return;
     }
     qDebug()<<"Check_Net_Connect...";
@@ -331,7 +331,7 @@ void MainWindow::autoConnect()
     }
 
 #ifndef _TEST
-    screenEmotion->changeEmotion(ScreenEmotion::service);
+    emotionPlayer->changeEmotion("service");
 #endif
 
     emit connectSSDB();
@@ -536,50 +536,50 @@ void MainWindow::on_tabWidget_tabBarClicked(int index)
 
 void MainWindow::getCtrlMsg(const SSDB_CtrlCmd &cmd)
 {
-    qDebug()<<"MainWidow get:"<<cmd.msg<<cmd.type<<cmd.dirCtrl<<cmd.videoCtrl;
-    if(cmd.type == SSDB_CTRL_VideoCtrl)
-    {
-        switch (cmd.videoCtrl)
-        {
-        case Video_Play:
-            screenEmotion->hide();
-            break;
-        case Video_Pause:
-            if(videoPlayer->IsOpened())
-                screenEmotion->show();
-            break;
-        case Video_ContinuePlay:
-            if(videoPlayer->IsOpened())
-                screenEmotion->hide();
-            break;
-        case Video_Stop:
-            screenEmotion->show();
-            break;
-        case Video_PlayNext:
-            screenEmotion->hide();
-            break;
-        case Video_PlayLast:
-            screenEmotion->hide();
-            break;
-        case Video_SetPlayList:
-            break;
-        case Video_PlayList:
-            break;
-        case Video_Info:
-            break;
-        case Video_SetCyclePlay:
-            screenEmotion->hide();
-            break;
-        case Video_SetSinglePlay:
-            screenEmotion->hide();
-            break;
-        case Video_SetSingleCyclePlay:
-            screenEmotion->hide();
-            break;
-        default:
-            break;
-        }
-    }
+    qDebug()<<"MainWidow get:"<<cmd.msg<<"type:"<<cmd.type<<"dir:"<<cmd.dirCtrl<<"video:"<<cmd.videoCtrl;
+//    if(cmd.type == SSDB_CTRL_VideoCtrl)
+//    {
+//        switch (cmd.videoCtrl)
+//        {
+//        case Video_Play:
+//            emotionPlayer->hide();
+//            break;
+//        case Video_Pause:
+//            if(videoPlayer->IsOpened())
+//                emotionPlayer->show();
+//            break;
+//        case Video_ContinuePlay:
+//            if(videoPlayer->IsOpened())
+//                emotionPlayer->hide();
+//            break;
+//        case Video_Stop:
+//            emotionPlayer->show();
+//            break;
+//        case Video_PlayNext:
+//            emotionPlayer->hide();
+//            break;
+//        case Video_PlayLast:
+//            emotionPlayer->hide();
+//            break;
+//        case Video_SetPlayList:
+//            break;
+//        case Video_PlayList:
+//            break;
+//        case Video_Info:
+//            break;
+//        case Video_SetCyclePlay:
+//            emotionPlayer->hide();
+//            break;
+//        case Video_SetSinglePlay:
+//            emotionPlayer->hide();
+//            break;
+//        case Video_SetSingleCyclePlay:
+//            emotionPlayer->hide();
+//            break;
+//        default:
+//            break;
+//        }
+//    }
 }
 
 void MainWindow::getKeyinput(uchar key, bool status)
@@ -590,10 +590,10 @@ void MainWindow::getKeyinput(uchar key, bool status)
         switch (key)
         {
         case 1:
-            screenEmotion->show();
+//            emotionPlayer->show();
             break;
         case 2:
-            screenEmotion->exHide();
+//            emotionPlayer->exHide();
             break;
         case 3:
             on_toolButton_play_clicked();
@@ -665,8 +665,8 @@ http://mirrors.ustc.edu.cn/qtproject/official_releases/gdb/linux-32/md5sums.txt\
 
 void MainWindow::on_toolButton_show_clicked()
 {
-    screenEmotion->changeEmotion(ScreenEmotion::service);
-    screenEmotion->show();
+    emotionPlayer->changeEmotion("service");
+//    emotionPlayer->show();
 }
 
 void MainWindow::on_toolButton_charge_clicked()
@@ -715,7 +715,6 @@ void MainWindow::on_toolButton_last_clicked()
 void MainWindow::on_toolButton_next_clicked()
 {
     videoPlayer->playNext();
-    QTimer::singleShot(1000,this,&MainWindow::on_toolButton_next_clicked);//TODO
 }
 
 void MainWindow::on_verticalSlider_2_sliderReleased()

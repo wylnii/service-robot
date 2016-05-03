@@ -617,14 +617,14 @@ int video_thread(void *arg)
                 NULL,
                 NULL);
 
-    int numBytes = avpicture_get_size(
-                AV_PIX_FMT_YUV420P,
-                pCodecCtx->width,
-                pCodecCtx->height);
-    uint8_t* buffer = (uint8_t *)av_malloc( numBytes*sizeof(uint8_t) );
+//    int numBytes = avpicture_get_size(
+//                AV_PIX_FMT_YUV420P,
+//                pCodecCtx->width,
+//                pCodecCtx->height);
+//    uint8_t* buffer = (uint8_t *)av_malloc( numBytes*sizeof(uint8_t) );
 
-    avpicture_fill((AVPicture *)pFrame, buffer, AV_PIX_FMT_YUV420P,pCodecCtx->width, pCodecCtx->height);
-    av_free(buffer);
+//    avpicture_fill((AVPicture *)pFrame, buffer, AV_PIX_FMT_YUV420P,pCodecCtx->width, pCodecCtx->height);
+//    av_free(buffer);
 
     // Read frames and save first five frames to disk
     float frame_rate = av_q2d(pFormatCtx->streams[videoStream]->r_frame_rate);
@@ -635,7 +635,7 @@ int video_thread(void *arg)
     {
         video_frames = frame_rate*video_duration - 1;
     }
-    qDebug("size:%dx%d   fps:%0.3f   duration:%0.3lfs   frames:%d",width,height,frame_rate,video_duration,video_frames);
+    qDebug("size:%dx%d   fps:%0.3f   duration:%0.3lfs   frames:%d  code:%s",width,height,frame_rate,video_duration,video_frames, pCodec->name);
 
     //////////////////////////////////////////////////////
 
@@ -646,13 +646,6 @@ int video_thread(void *arg)
 //    sdlRect.w = SCREEN_WIDTH;
 //    sdlRect.h = SCREEN_HEIGHT;
 
-#ifndef __DARWIN__
-//    fprintf(stderr,"%s\tline:%d\n",__FILE__,__LINE__);
-    screen = SDL_SetVideoMode(SCREEN_WIDTH, SCREEN_HEIGHT, 0, 0);
-#else
-    screen = SDL_SetVideoMode(pCodecCtx->width, pCodecCtx->height, 24, 0);
-#endif
-//    fprintf(stderr,"%s\tline:%d\n",__FILE__,__LINE__);
     if(!screen)
     {
         fprintf(stderr, "SDL: could not set video mode - exiting\n");
@@ -820,7 +813,16 @@ void Init_all(void)
         fprintf(stderr, "Could not initialize SDL - %s\n", SDL_GetError());
         exit(1);
     }
+    //hide cursor
     SDL_ShowCursor(0);
+#ifndef __DARWIN__
+//    fprintf(stderr,"%s\tline:%d\n",__FILE__,__LINE__);
+/// SDL_SetVideoMode()会刷新屏幕导致开始播放时黑屏，放在初始化防止每次开始播放时都黑屏
+    screen = SDL_SetVideoMode(SCREEN_WIDTH, SCREEN_HEIGHT, 0, 0);
+#else
+    screen = SDL_SetVideoMode(pCodecCtx->width, pCodecCtx->height, 24, 0);
+#endif
+//    fprintf(stderr,"%s\tline:%d\n",__FILE__,__LINE__);
 }
 
 int Play(void)

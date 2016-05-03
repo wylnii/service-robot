@@ -1,4 +1,43 @@
 #include "serialport.h"
+/*
+ARM板与下位机UART通信协议说明：
+共四个字节（FF XX XX BCC，16进制）：FF数据头+一个字节控制指令+一个字节数据+一个字节BCC校验（异或校验）。
+注意：每帧指令需间隔10ms以上。
+
+控制指令如下：
+
+指令	说明
+01-05	控制机器人前后左右行走（第三个字节为任意，如FF 01 FF 01）
+06	设置机器人行走速度
+07	设置机器人转弯速度
+08	设置机器人摇头速度
+09	设置机器人充电门槛电压（低于此电压自动寻找充电桩充电）
+Volt=XX/256.0*29
+1A-1F	保留
+11-14	控制机器人上下左右摇头（第三字节为任意，如FF 11 FF 11）
+15	机器人头部回正
+10	查询当前电池电压
+16	查询机器人当前设定行走速度
+17	查询机器人当前设定转弯速度
+18	查询机器人当前设定摇头速度
+19	查询机器人当前设定充电门槛电压
+20	下达寻找充电桩指令
+21	查询当前障碍状态（障碍状态变化时会自动返回，也可手动查询）
+22-7F	保留
+
+
+下位机回应当前障碍状态说明：
+位于一帧的第三字节，byte1-byte8（低位-高位），有遮挡为1，无遮挡为0。
+
+Byte1	Byte2	Byte3	Byte4	Byte5	Byte6	Byte7	Byte8
+上超声波	下超声波	后超声波	左红外	右红外	台阶	保留	保留
+
+下位机回应帧格式：
+校验正确：FF CMD XX BCC	CMD为上述控制指令
+校验错误：FF CE XX BCC		CE=CMD|0x80
+BCC校验：
+BCC=FF^CMD^XX				^为异或位运算
+ */
 
 SerialPort::SerialPort(QObject *parent) : QSerialPort(parent)
 {
@@ -55,7 +94,7 @@ QStringList SerialPort::scanAvailablePorts()
 
 /*protocol: FF XX XX BCC
  * head: FF
- * data: 3 byte 1 control byte + 2 data byte
+ * data: 3 bytes (1 control byte + 1 data byte)
  * check method: BCC
  *
  *  detail: 01-05   direction ctrl  up down left right   FF 01 XX BCC
@@ -306,7 +345,7 @@ void SerialPort::analyseData(const QByteArray &rcvMsg)
             {
             case Cmd_QueryBatVol:
                 if(last >= 3)
-                    data = (uchar)rcvMsg[2];//TODO 第三位为电压信息 Volt=data/256.0*29
+                    data = (uchar)rcvMsg[2];//TODO 第三字节为电压信息 Volt=data/256.0*29
                 break;
             case Cmd_QueryRunS:
                 data = (uchar)rcvMsg[2];

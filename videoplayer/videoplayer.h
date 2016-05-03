@@ -31,7 +31,7 @@ class VideoPlayer : public QThread
 {
     Q_OBJECT
 public:
-    explicit VideoPlayer(QObject *parent = 0, QWidget *widget = 0);
+    explicit VideoPlayer(QObject *parent = 0, QWidget *window = 0);
     ~VideoPlayer();
     void setSource(const char *name);
     void setSource(const QString &name);
@@ -46,7 +46,7 @@ public:
     double position() const;
     double duration() const;
 
-    enum PlayMode{Cycle = 0, SingleCycle = 1, Single = 2};
+    enum PlayMode{Cycle = 0, SingleCycle = 1, Single = 2, UserMode};
     void setPlayMode(PlayMode mode);
     PlayMode getPlayMode() const;
     const QString &getPlayingFilename() const;
@@ -56,8 +56,6 @@ public:
     bool IsPlaying() const;
     bool IsPause() const;
     bool IsOpened() const;
-
-    void setFace(QWidget *value);
 
 protected:
     void run();
@@ -75,9 +73,10 @@ private:
     quint64 play_cnt;
     PlayMode playMode;
     QTimer *timer;
-    QWidget *face;
+    QWidget *mainWindow;
     AudioPlayer *audioPlayer;
     Label label;
+    int type;
 
 public slots:
     int play();
@@ -90,11 +89,13 @@ public slots:
     void playNext(int n = 1);
     void playLast(int l= 1);
     void getCtrlMsg(const SSDB_CtrlCmd &cmd);
+    int play(const QString &file, int type);
 
 signals:
     void playEnd();
     void returnMsg(const QString &list, int type);
     void stopAudioPlayer();
+    void replayEmotion();
 };
 
 #endif // VIDEOPLAYER_H

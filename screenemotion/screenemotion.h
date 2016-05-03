@@ -36,7 +36,6 @@ signals:
 private:
     QMovie *movie;
     QHash<int, QString> emotionList;
-    QList<QPoint> posList;
 //    QTimer *timer;
     int currentEmt;
     QWidget *mainWindow;

@@ -11,7 +11,7 @@
 #include "global.h"
 #include "SSDB/ssdb_client_.h"
 #include "net/downloader.h"
-#include "screenemotion/screenemotion.h"
+#include "videoplayer/emotionplayer.h"
 #include "net/netspeed.h"
 #include "keyinput.h"
 #include "net/login.h"
@@ -96,7 +96,7 @@ private:
     VideoPlayer *videoPlayer;
     SerialPort *serialport;
     SSDB_Client *ssdbClient;
-    ScreenEmotion *screenEmotion;
+    EmotionPlayer *emotionPlayer;
 //    NetSpeed *netSpeed;
     KeyInput *keyInput;
 };

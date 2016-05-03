@@ -2,11 +2,11 @@
 #include "video.h"
 //#include <QDesktopWidget>
 
-VideoPlayer::VideoPlayer(QObject *parent, QWidget *widget):QThread(parent)
+VideoPlayer::VideoPlayer(QObject *parent, QWidget *window):QThread(parent)
 {
     setObjectName(QStringLiteral("VideoPlayer"));
-    Q_ASSERT(widget);
-    face = widget;
+    Q_ASSERT(window);
+    mainWindow = window;
     filename.clear();
     isOpened = false;
     isPlaying = false;
@@ -17,22 +17,10 @@ VideoPlayer::VideoPlayer(QObject *parent, QWidget *widget):QThread(parent)
 
     volume = loadHistory("Video_Volume", 128).toInt();
 
-//    screen_width = w;
-//    screen_height = h;
-    //    QRect screenrect = QApplication::desktop()->screenGeometry();
-
-//    screen_width = screenrect.width();
-//    screen_height = screenrect.height();
-//    videoWidget = new QWidget();
-//    videoWidget->resize(screen_width,screen_height);
-
-//    char winID[256] = {0};
-//    sprintf(winID, "SDL_WINDOWID=0x%lx", videoWidget->winId());
-
-//    SDL_putenv(winID);
     label.resize(SCREEN_WIDTH,SCREEN_HEIGHT);
-    label.show();
+    label.show();//TODO
     connect(&label, &Label::gestureActivated, this, &VideoPlayer::stop);
+    connect(&label, &Label::gestureActivated, this, &VideoPlayer::updateUI);
 
     Init();
     connect(this,SIGNAL(playEnd()),this,SLOT(replay()));
@@ -62,6 +50,7 @@ VideoPlayer::VideoPlayer(QObject *parent, QWidget *widget):QThread(parent)
         filelist<<file.prepend(dir.absolutePath().append('/'));
     }
     setPlaylist(filelist);
+    type = 0;
 }
 
 VideoPlayer::~VideoPlayer()
@@ -199,6 +188,7 @@ void VideoPlayer::getCtrlMsg(const SSDB_CtrlCmd &cmd)
 {
     if(cmd.type == SSDB_CTRL_VideoCtrl)
     {
+        type = 0;
         switch (cmd.videoCtrl)
         {
         case Video_Play:
@@ -213,7 +203,7 @@ void VideoPlayer::getCtrlMsg(const SSDB_CtrlCmd &cmd)
             pause();
             break;
         case Video_Stop:
-            stop(true);
+            stop();
             break;
         case Video_PlayNext:
             playNext();
@@ -265,6 +255,13 @@ void VideoPlayer::getCtrlMsg(const SSDB_CtrlCmd &cmd)
     }
 }
 
+// only for play emotion
+int VideoPlayer::play(const QString &file, int type)
+{
+    this->type = type;
+    return play(file);
+}
+
 double VideoPlayer::position() const
 {
     return video_cur_time;
@@ -310,24 +307,13 @@ void VideoPlayer::freeMem()
 
 void VideoPlayer::updateUI()
 {
-    if(qApp->activeWindow() != NULL)
-        qApp->activeWindow()->repaint();
-    else
-    {
-        Q_ASSERT(face != NULL);
-        face->show();
-    }
+    mainWindow->repaint();
+    label.hide();
 }
 
 bool VideoPlayer::IsOpened() const
 {
     return isOpened;
-}
-
-void VideoPlayer::setFace(QWidget *widget)
-{
-    Q_ASSERT(widget != NULL);
-    face = widget;
 }
 
 VideoPlayer::PlayMode VideoPlayer::getPlayMode() const
@@ -372,7 +358,8 @@ int VideoPlayer::play()
             setSource(playlist[0]);
             playingNO = 0;
         }
-
+//        label.show();
+//        label.activateWindow();
         isOpened = true;
         isPlaying = true;
         Pause = true;
@@ -445,7 +432,13 @@ void VideoPlayer::silence(const bool &s)
 
 void VideoPlayer::replay()
 {
-    msleep(50);
+    if(type > 0)//表情播放
+    {
+        type = 0;
+        emit replayEmotion();
+        return;
+    }
+    msleep(100);
     switch (playMode)
     {
     case Cycle:
@@ -455,7 +448,9 @@ void VideoPlayer::replay()
         play(filename);
         break;
     case Single:
-        updateUI();
+        //播放完成后，触发播放表情
+//        updateUI();
+        emit replayEmotion();
         break;
     default:
         break;
