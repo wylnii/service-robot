@@ -236,6 +236,8 @@ void SSDB_Client::queryDirCtrl()
             cmd.dirCtrl = SSDB_DIR_HeadLeft;
         else if(ret == "headright")
             cmd.dirCtrl = SSDB_DIR_HeadRight;
+        else if(ret == "headmid")
+            cmd.dirCtrl = SSDB_DIR_HeadMid;
         else
             return;
         if(isNewDirCmd(cmd.dirCtrl))

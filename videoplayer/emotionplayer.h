@@ -14,6 +14,7 @@ public:
     void stop(bool repaint = false);
 
 signals:
+    void changeWindows();
 
 public slots:
     void changeEmotion(const QString &emotion);

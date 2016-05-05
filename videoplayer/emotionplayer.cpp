@@ -64,7 +64,7 @@ void EmotionPlayer::getCtrlMsg(const SSDB_CtrlCmd &cmd)
     switch (cmd.type)
     {
     case SSDB_CTRL_Emotion:
-        if(cmd.emotinIndex > 0)
+        if(cmd.emotinIndex >= 0)
             changeEmotion(cmd.emotinIndex);
         else
             changeEmotion(cmd.msg);
@@ -86,7 +86,7 @@ void EmotionPlayer::getGesture(int type)
     switch (type)
     {
     case 0:
-
+        emit changeWindows();
         break;
     default:
         break;

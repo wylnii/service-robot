@@ -80,11 +80,10 @@ private slots:
     void getSPMsg(const SerialPort::CtrlCmd &cmd);
     void getCtrlMsg(const SSDB_CtrlCmd &cmd);
     void getKeyinput(uchar key, bool status);
-    void changeWindows(bool en = true);
-
-
+    void changeWindows();
 
 private:
+    bool checkNet();
     Ui::MainWindow *ui;
     QThread *wifi_thread;
     QThread *serialport_thread;

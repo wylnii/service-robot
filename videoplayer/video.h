@@ -786,6 +786,7 @@ int video_thread(void *arg)
     if(vs->quit  == 0)
         PlayIsEnd = 1;
     vs->quit = 1;
+//    qDebug()<<pFormatCtx<<pCodecCtx;
     SDL_FreeYUVOverlay(bmp);
     SDL_FreeSurface(screen);
     // Free the YUV frame

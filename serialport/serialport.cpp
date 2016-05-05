@@ -213,6 +213,10 @@ void SerialPort::queryRobotMsg()
 
 void SerialPort::sendArgs(const SSDB_CtrlCmd &cmd)
 {
+    if(! isOpen())
+    {
+        return;
+    }
     uchar speed_run = cmd.param.speed_run;
     uchar speed_turnOver = cmd.param.speed_turnOver;
     uchar speed_headShake = cmd.param.speed_headShake;

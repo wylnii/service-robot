@@ -3,12 +3,16 @@
 #include "global.h"
 
 void customMessageHandler(QtMsgType type, const QMessageLogContext &contex, const QString &msg);
+void checkLogfileSize(int maxSize = 1024*1024);
 
 int main(int argc, char *argv[])
 {
 //    QTextCodec::setCodecForLocale(QTextCodec::codecForName("GB18030"));
 
 //    qSetMessagePattern("%{time MM/dd HH:mm:ss.zzz} : %{message}");
+    //启动时检查log文件大小，大于1M则分卷保存
+    checkLogfileSize();
+
     qInstallMessageHandler(customMessageHandler);
 
     QApplication a(argc, argv);
@@ -24,11 +28,23 @@ int main(int argc, char *argv[])
     return a.exec();
 }
 
+void checkLogfileSize(int maxSize)
+{
+    QFile file(LOG_FILE);
+    int size = file.size();
+    if(size > maxSize)
+    {
+        QString newFilename = QDateTime::currentDateTime().toString("log-yyyyMMddHHmmss.'txt'");
+        qDebug()<<newFilename;
+        file.rename(newFilename);
+    }
+}
+
 void recordLog(const QString &log)
 {
     QString time = QDateTime::currentDateTime().toString("MM/dd HH:mm:ss.zzz -> ");
-    QString msg("echo '%1%2' >> log.txt");
-    msg = msg.arg(time,log);
+    QString msg("echo '%1%2' >> %3");
+    msg = msg.arg(time,log,LOG_FILE);
 //    QFile outFile("log.txt");
 //    outFile.open(QIODevice::WriteOnly | QIODevice::Append);
 //    QTextStream out(&outFile);

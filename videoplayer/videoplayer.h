@@ -57,12 +57,15 @@ public:
     bool IsPause() const;
     bool IsOpened() const;
 
+    Label &getLabel();
+
 protected:
     void run();
     void freeMem();
     void updateUI();
 
 private:
+    void getGesture(int type);
     QThread *m_thread;
     QString filename;
     QStringList playlist;
@@ -77,6 +80,8 @@ private:
     AudioPlayer *audioPlayer;
     Label label;
     int type;
+    QMutex stopMutex;
+
 
 public slots:
     int play();
@@ -96,6 +101,7 @@ signals:
     void returnMsg(const QString &list, int type);
     void stopAudioPlayer();
     void replayEmotion();
+    void changeWindows();
 };
 
 #endif // VIDEOPLAYER_H

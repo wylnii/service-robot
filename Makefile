@@ -440,6 +440,7 @@ compiler_rcc_clean:
 	-$(DEL_FILE) qrc_res.cpp
 qrc_res.cpp: res.qrc \
 		resource/point.png \
+		resource/support.jpg \
 		resource/play.png \
 		resource/logo.png \
 		resource/battery_charging.png \

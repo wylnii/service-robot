@@ -74,10 +74,10 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(mykeyboard,SIGNAL(enter(QString,QString)),this,SLOT(rcvKBInput(QString,QString)));
 
     videoPlayer = new VideoPlayer(NULL, this);
+    connect(videoPlayer, &VideoPlayer::changeWindows, this, &MainWindow::changeWindows);
     setStatusBarText((videoPlayer->getPlaylist().join(" & ").prepend("playList: ")),1);
 
     emotionPlayer = new EmotionPlayer(NULL, videoPlayer);//TODO
-//    connect(emotionPlayer, &ScreenEmotion::changeWindows, this, &MainWindow::changeWindows);
 
     ui->verticalSlider->setValue(videoPlayer->Volume());
 
@@ -208,9 +208,9 @@ margin: -0 -4px; \
 
 void MainWindow::show()
 {
-    QMainWindow::show();
 #ifndef _TEST
-//    emotionPlayer->changeEmotion("connect");
+    emotionPlayer->changeEmotion("connect");
+//    QMainWindow::show();//TODO
 //    screenEmotion->show();
 #else
     QMainWindow::show();
@@ -310,31 +310,21 @@ void MainWindow::autoConnect()
         return;
     }
     qDebug()<<"Check_Net_Connect...";
-
-    QElapsedTimer timer;
-    int cnt = 16;
-
-    while (! IPInfoTable::hasValidIP() && cnt --)
+    if(checkNet())
     {
-        timer.start();
-        while(! timer.hasExpired(400))
-        {
-            qApp->processEvents();
-        }
-    }
-
-    if(cnt < 0 && loadHistory("Enable_Restart",1).toInt())
-    {
-        qDebug()<<"Enable_Restart...";
-        system("./restart_service &");
-        qApp->exit();
-    }
-
 #ifndef _TEST
-    emotionPlayer->changeEmotion("service");
+        emotionPlayer->changeEmotion("service");
 #endif
-
-    emit connectSSDB();
+        emit connectSSDB();
+    }
+    else    //检查网络连接失败，显示帮助界面
+    {
+        this->hide();
+        emotionPlayer->stop();
+        Label &l = videoPlayer->getLabel();
+        l.setPixmap(QPixmap(":/image/resource/support.jpg"));
+        l.activateWindow();
+    }
 }
 
 void MainWindow::on_pushButton_connect_clicked()
@@ -607,13 +597,47 @@ void MainWindow::getKeyinput(uchar key, bool status)
     }
 }
 
-void MainWindow::changeWindows(bool en)
+void MainWindow::changeWindows()
 {
-    if(en)
+    QMainWindow::show();
+    mykeyboard->setInputMsg("Unlock Password :","Unlock_password",false);
+    mykeyboard->show();
+}
+
+bool MainWindow::checkNet()
+{
+    QElapsedTimer timer;
+
+    int i = 0;
+    while(i++ < 3)
     {
-        mykeyboard->setInputMsg("Unlock Password :","Unlock_password",false);
-        mykeyboard->show();
+        int cnt = 10;
+        while (! IPInfoTable::hasValidIP() && cnt --)
+        {
+            timer.start();
+            while(! timer.hasExpired(500))
+            {
+                qApp->processEvents();
+            }
+        }
+        if(cnt < 0)
+        {
+            qDebug()<<"##\trestart_net:"<<i;
+            system("./restart_service");
+        }
+        else
+        {
+            return true;
+        }
     }
+    return false;
+
+//    if(cnt < 0 && loadHistory("Enable_Restart",1).toInt())
+//    {
+//        qDebug()<<"Enable_Restart...";
+//        system("./restart_service &");
+//        qApp->exit();
+//    }
 }
 
 void MainWindow::on_pushButton_openssdb_clicked()

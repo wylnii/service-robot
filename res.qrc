@@ -6,5 +6,6 @@
         <file>resource/next.png</file>
         <file>resource/play.png</file>
         <file>resource/point.png</file>
+        <file>resource/support.jpg</file>
     </qresource>
 </RCC>

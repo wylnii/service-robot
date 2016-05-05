@@ -19,8 +19,7 @@ VideoPlayer::VideoPlayer(QObject *parent, QWidget *window):QThread(parent)
 
     label.resize(SCREEN_WIDTH,SCREEN_HEIGHT);
     label.show();//TODO
-    connect(&label, &Label::gestureActivated, this, &VideoPlayer::stop);
-    connect(&label, &Label::gestureActivated, this, &VideoPlayer::updateUI);
+    connect(&label, &Label::gestureActivated, this, &VideoPlayer::getGesture);
 
     Init();
     connect(this,SIGNAL(playEnd()),this,SLOT(replay()));
@@ -32,7 +31,7 @@ VideoPlayer::VideoPlayer(QObject *parent, QWidget *window):QThread(parent)
     connect(timer, &QTimer::timeout, this, &VideoPlayer::freeMem);
 
     audioPlayer = new AudioPlayer();
-    connect(this,SIGNAL(stopAudioPlayer()),audioPlayer,SLOT(stop()));
+    connect(this,&VideoPlayer::stopAudioPlayer,audioPlayer,&AudioPlayer::stop);
     audioPlayer->setRobotId(RobotName);
     audioPlayer->startAudioPlayer();
 
@@ -311,6 +310,24 @@ void VideoPlayer::updateUI()
     label.hide();
 }
 
+void VideoPlayer::getGesture(int type)
+{
+    switch (type)
+    {
+    case 0:
+        stop(true);
+        emit changeWindows();
+        break;
+    default:
+        break;
+    }
+}
+
+Label &VideoPlayer::getLabel()
+{
+    return label;
+}
+
 bool VideoPlayer::IsOpened() const
 {
     return isOpened;
@@ -358,7 +375,8 @@ int VideoPlayer::play()
             setSource(playlist[0]);
             playingNO = 0;
         }
-//        label.show();
+        label.show();
+        mainWindow->hide();
 //        label.activateWindow();
         isOpened = true;
         isPlaying = true;
@@ -473,11 +491,12 @@ void VideoPlayer::pause()
 
 void VideoPlayer::stop(bool repaint)
 {
+    QMutexLocker locker(&stopMutex);//加入互斥锁，防止重入
 //    pause();
     if(isPlaying || isOpened)
     {
-        vs->quit = 1;
         isPlaying = false;
+        vs->quit = 1;
 //        msleep(100);
 
         if(audioStream >= 0)
