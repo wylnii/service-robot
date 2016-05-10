@@ -81,16 +81,9 @@ void EmotionPlayer::getCtrlMsg(const SSDB_CtrlCmd &cmd)
     }
 }
 
-void EmotionPlayer::getGesture(int type)
+void EmotionPlayer::playEmotion()
 {
-    switch (type)
-    {
-    case 0:
-        emit changeWindows();
-        break;
-    default:
-        break;
-    }
+    playEmotion(emotionList[currentIndex]);
 }
 
 void EmotionPlayer::replay()

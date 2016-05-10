@@ -94,7 +94,7 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(this, &MainWindow::sendCmd, serialport, static_cast<void (SerialPort::*)(const QByteArray &)>(&SerialPort::sendCMD));
     emit openSerialPort(loadHistory("SerialPort_Num","ttySAC3"),loadHistory("SerialPort_Baudrate",DEFAULT_BAUD).toInt());
     ssdbClient = new SSDB_Client(this,RobotName);
-//    ssdbClient->moveToThread(serialport_thread);
+//    ssdbClient->moveToThread(serialport_thread);//TODO multi-thread
 //    ssdbClient->setClientName(RobotName);
     ssdbClient->setServerAddr(loadHistory("SSDB_server"));
     ssdbClient->setServerPort(loadHistory("SSDB_port").toInt());
@@ -300,30 +300,41 @@ void MainWindow::autoConnect()
     }
     else if (USB_WiFi::WiFi_exist())
     {
-        if(! wifi->connect_wifi(loadHistory("SSID"),loadHistory("STATE"),loadHistory("#WIFI_password")))
-            return;
+        system("ifconfig eth0 down");//disable eth0
+        bool success = wifi->connect_wifi(loadHistory("SSID"),loadHistory("STATE"),loadHistory("#WIFI_password"));
+        if(success)
+        {
+            emotionPlayer->changeEmotion("service");
+            emit connectSSDB();
+            if(! ssdbClient->isConnected())
+            {
+                showSupportMsg();
+            }
+        }
+        return;
     }
-//启动时不检查网络连接
+
+//启动时检查网络连接
     if(loadHistory("Check_Net_Connect",1).toInt() <= 0)
     {
         emotionPlayer->stop(true);
         return;
     }
     qDebug()<<"Check_Net_Connect...";
-    if(checkNet())
+    if(IPInfoTable::checkNet())
     {
 #ifndef _TEST
         emotionPlayer->changeEmotion("service");
 #endif
         emit connectSSDB();
+        if(! ssdbClient->isConnected())
+        {
+            showSupportMsg();
+        }
     }
     else    //检查网络连接失败，显示帮助界面
     {
-        this->hide();
-        emotionPlayer->stop();
-        Label &l = videoPlayer->getLabel();
-        l.setPixmap(QPixmap(":/image/resource/support.jpg"));
-        l.activateWindow();
+        showSupportMsg();
     }
 }
 
@@ -580,10 +591,10 @@ void MainWindow::getKeyinput(uchar key, bool status)
         switch (key)
         {
         case 1:
-//            emotionPlayer->show();
+            emotionPlayer->playEmotion();
             break;
         case 2:
-//            emotionPlayer->exHide();
+            QMainWindow::show();
             break;
         case 3:
             on_toolButton_play_clicked();
@@ -604,40 +615,13 @@ void MainWindow::changeWindows()
     mykeyboard->show();
 }
 
-bool MainWindow::checkNet()
+void MainWindow::showSupportMsg()
 {
-    QElapsedTimer timer;
-
-    int i = 0;
-    while(i++ < 3)
-    {
-        int cnt = 10;
-        while (! IPInfoTable::hasValidIP() && cnt --)
-        {
-            timer.start();
-            while(! timer.hasExpired(500))
-            {
-                qApp->processEvents();
-            }
-        }
-        if(cnt < 0)
-        {
-            qDebug()<<"##\trestart_net:"<<i;
-            system("./restart_service");
-        }
-        else
-        {
-            return true;
-        }
-    }
-    return false;
-
-//    if(cnt < 0 && loadHistory("Enable_Restart",1).toInt())
-//    {
-//        qDebug()<<"Enable_Restart...";
-//        system("./restart_service &");
-//        qApp->exit();
-//    }
+    this->hide();
+    emotionPlayer->stop();
+    Label &l = videoPlayer->getLabel();
+    l.setPixmap(QPixmap(":/image/resource/support.jpg"));
+    l.activateWindow();
 }
 
 void MainWindow::on_pushButton_openssdb_clicked()

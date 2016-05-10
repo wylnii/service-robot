@@ -83,7 +83,7 @@ private slots:
     void changeWindows();
 
 private:
-    bool checkNet();
+    void showSupportMsg();
     Ui::MainWindow *ui;
     QThread *wifi_thread;
     QThread *serialport_thread;

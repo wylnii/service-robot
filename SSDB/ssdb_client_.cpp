@@ -24,7 +24,7 @@ const char* Charge_CMD = "Charge";
 SSDB_Client::SSDB_Client(QObject *parent, const QString &name, const QString &addr, int port):\
     QThread(parent), serverAddr(addr), serverPort(port)
 {
-    setObjectName(STRING(SSDB_Client));
+//    setObjectName(STRING(SSDB_Client));
     qRegisterMetaType<SSDB_CtrlCmd>("SSDB_CtrlCmd");
 
     setClientName(name.toStdString());
@@ -38,6 +38,7 @@ SSDB_Client::SSDB_Client(QObject *parent, const QString &name, const QString &ad
     queryVideoCtrl_timer = false;
     sendInfo_timer = false;
     stop = true;
+    connect(&timer_getNetworkQuality,&QTimer::timeout,[&](){hset("NetworkDelay",QString::number(getNetworkQuality()).toStdString());});
 }
 
 SSDB_Client::~SSDB_Client()
@@ -64,6 +65,7 @@ void SSDB_Client::disConnect()
     queryDirCtrlTimerStart = false;
     sendInfo_timer = false;
     m_client->disConnect();
+    timer_getNetworkQuality.stop();
     emit errMsg("disconnect ssdb");
 }
 
@@ -182,7 +184,8 @@ bool SSDB_Client::connectServer(const QString &host, int port)
         QTimer::singleShot(3500, Qt::VeryCoarseTimer, this, &SSDB_Client::getArgs);
 #endif
         hset(EmotionList, emotions.join(" ").toStdString());
-//        getSPMsg(SerialPort::CtrlCmd{SerialPort::Cmd_QueryBatVol,240});
+        hset(Robot_Msg,std::string());
+        timer_getNetworkQuality.start(10000);
         return true;
     }
     else
@@ -356,8 +359,24 @@ void SSDB_Client::getSPMsg(const SerialPort::CtrlCmd &cmd)
         break;
     case SerialPort::Cmd_WarningMsg:
     {
-        QString data = QString("%1 %2").arg(cmd.type, 0, 16).arg(cmd.data, 8, 2, QChar('0'));
-        hset(Robot_Msg, data.toStdString());
+        static const char* msg_list[6]={"上超声波、","下超声波、","后超声波、","左红外、","右红外、","台阶、"};
+        QString data;
+        uchar msg = cmd.data&0b00111111;
+        if(msg > 0)
+        {
+            for (int i = 0; i < 6; ++i)
+            {
+                if(msg&(0b00000001<<i))
+                {
+                    data.append(msg_list[i]);
+                }
+            }
+            data.remove(-1,1);
+            data.append("有遮挡");
+        }
+        qDebug()<<data;
+
+        hset(Robot_Msg, textCodec->fromUnicode(data).toStdString());
         hset(Query_KEY,Robot_Msg);
     }
         break;
@@ -375,6 +394,31 @@ bool SSDB_Client::isNewDirCmd(SSDB_DIR cmd)
         return true;
     else
         return false;
+}
+
+int SSDB_Client::getNetworkQuality()
+{
+    static const QString NetworkCMD = loadHistory("SSDB_server").prepend("ping -q -c 4 -i 0.2 -W 0.5 ");
+    process.start(NetworkCMD);
+    if(process.waitForFinished(6000))
+    {
+        QByteArray ret = process.readAll();
+        static QRegExp reg("(\\d+)%.+/(\\d+\\.\\d+)/\\d+\\.\\d+/");
+        //        qDebug()<<ret;
+        if(reg.indexIn(ret) > 0 && reg.captureCount() > 1)
+        {
+            float loss = reg.cap(1).toFloat()/100;
+            if(loss < 0 || loss >1)
+                return -2;
+            float quality = reg.cap(2).toFloat();
+            if(quality < 0)
+                return -2;
+            qDebug()<<loss<<quality;
+            quality = 5000/(quality+50)*(1 - loss);
+            return quality;
+        }
+    }
+    return -1;
 }
 
 std::string SSDB_Client::getClientName() const
@@ -453,14 +497,14 @@ void SSDB_Client::run()
     stop = false;
     qDebug()<<this<<this->thread()<<currentThread();
     int timeCnt = 0;
+    QElapsedTimer t;
     while(! stop)
     {
         timeCnt = 0;
-        m_timer->start();
         if(timerStart)
         {
             ticktack();
-//            qDebug()<<QTime::currentTime();
+            qDebug()<<t.restart();
         }
         while(timeCnt < 10)
         {
@@ -478,12 +522,11 @@ void SSDB_Client::run()
             {
                 queryDirCtrl();
             }
-//                        int i = 12;
-            while(! m_timer->hasExpired(120) && ! stop)
+            m_timer->start();
+            while(! m_timer->hasExpired(100) && ! stop)
             {
                 QThread::msleep(10);
             }
-            m_timer->start();
 //            QEventLoop loop;
 //            QTimer::singleShot(100,&loop,SLOT(quit()));
 //            loop.exec();

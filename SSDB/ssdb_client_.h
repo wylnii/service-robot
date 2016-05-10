@@ -46,6 +46,11 @@ signals:
     void errMsg(QString, bool = 0);
 
 private:
+    bool isNewDirCmd(SSDB_DIR cmd);
+    int getNetworkQuality() ;
+    QProcess process;
+    QTimer timer_getNetworkQuality;
+
     ssdb::SSDBClient *m_client;
     std::string clientName;
     QString serverAddr;
@@ -58,7 +63,6 @@ private:
     QElapsedTimer *m_timer;
     QMutex mutex;
     QVector<SSDB_DIR> dirCmds;
-    bool isNewDirCmd(SSDB_DIR cmd);
 
 protected:
     void run();

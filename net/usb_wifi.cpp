@@ -168,6 +168,7 @@ bool USB_WiFi::connect_wifi_by_(const QString &cmd, const QString &ssid, const Q
     QElapsedTimer t;
     t.start();
 
+    delete process;
     process = new QProcess();
     process->start(cmd);
     if(process->waitForStarted())

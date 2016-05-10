@@ -11,7 +11,7 @@ IPInfoTable::~IPInfoTable()
 
 }
 
-QStringList IPInfoTable::get_ipinfo()//主要用于获得设备的ip信息
+QStringList IPInfoTable::getIpinfo()//主要用于获得设备的ip信息
 {
     QStringList localinfo;
     QList<QNetworkInterface> list = QNetworkInterface::allInterfaces();
@@ -81,9 +81,38 @@ bool IPInfoTable::hasValidIP()
     return false;
 }
 
+bool IPInfoTable::checkNet()
+{
+    QElapsedTimer timer;
+
+    int i = 0;
+    while(i++ < 3)
+    {
+        int cnt = 10;
+        while (! IPInfoTable::hasValidIP() && cnt --)
+        {
+            timer.start();
+            while(! timer.hasExpired(500))
+            {
+                qApp->processEvents();
+            }
+        }
+        if(cnt < 0)
+        {
+            qDebug()<<"##\trestart_net:"<<i;
+            system("./restart_service");
+        }
+        else
+        {
+            return true;
+        }
+    }
+    return false;
+}
+
 void IPInfoTable::showIPInfo()
 {
     clear();
-    QStringList localinfo = get_ipinfo();
+    QStringList localinfo = getIpinfo();
     setText(localinfo.join('\n'));
 }

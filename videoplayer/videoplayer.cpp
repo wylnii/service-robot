@@ -306,6 +306,8 @@ void VideoPlayer::freeMem()
 
 void VideoPlayer::updateUI()
 {
+    if(mainWindow->isHidden())
+        mainWindow->show();
     mainWindow->repaint();
     label.hide();
 }
@@ -375,8 +377,10 @@ int VideoPlayer::play()
             setSource(playlist[0]);
             playingNO = 0;
         }
-        label.show();
-        mainWindow->hide();
+        if(label.isHidden())
+            label.show();
+        if(!mainWindow->isHidden())
+            mainWindow->hide();
 //        label.activateWindow();
         isOpened = true;
         isPlaying = true;

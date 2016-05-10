@@ -20,7 +20,7 @@ public slots:
     void changeEmotion(const QString &emotion);
     void changeEmotion(int index);
     void getCtrlMsg(const SSDB_CtrlCmd &cmd);
-    void getGesture(int type);
+    void playEmotion();
 
 private:
     void playEmotion(const QString &filePath);
