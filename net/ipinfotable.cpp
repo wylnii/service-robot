@@ -1,5 +1,7 @@
 #include "ipinfotable.h"
 
+static const QString NetWorkInterface("eth0");
+
 IPInfoTable::IPInfoTable(QWidget *parent, int width, int height) : QTextEdit(parent)
 {
     setFixedSize(width,height);
@@ -48,7 +50,7 @@ bool IPInfoTable::eth0_exist()
     //获取所有网络接口的列表
     foreach(QNetworkInterface interface, list)
     { //遍历每一个网络接口
-        if(interface.name() == "eth0")
+        if(interface.name() == NetWorkInterface)
             return true;
     }
     return false;
@@ -60,7 +62,7 @@ bool IPInfoTable::hasValidIP()
     //获取所有网络接口的列表
     foreach(QNetworkInterface interface, list)
     { //遍历每一个网络接口
-        if(interface.name() == "eth0")
+        if(interface.name() == NetWorkInterface)
         {
             foreach(QNetworkAddressEntry entry,interface.addressEntries())
             {

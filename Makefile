@@ -954,6 +954,9 @@ moc_mainwindow.cpp: /qt-5.5.0-install/include/QtWidgets/QtWidgets \
 		/qt-5.5.0-install/include/QtCore/QHash \
 		/qt-5.5.0-install/include/QtNetwork/qsslkey.h \
 		/qt-5.5.0-install/include/QtNetwork/qtnetworkversion.h \
+		global.h \
+		/qt-5.5.0-install/include/QtCore/QSettings \
+		/qt-5.5.0-install/include/QtCore/QTextCodec \
 		net/usb_wifi.h \
 		/qt-5.5.0-install/include/QtWidgets/QTableWidgetItem \
 		/qt-5.5.0-install/include/QtWidgets/QTableWidget \
@@ -965,9 +968,6 @@ moc_mainwindow.cpp: /qt-5.5.0-install/include/QtWidgets/QtWidgets \
 		/qt-5.5.0-install/include/QtSerialPort/qserialportinfo.h \
 		/qt-5.5.0-install/include/QtSerialPort/qtserialportversion.h \
 		/qt-5.5.0-install/include/QtCore/QElapsedTimer \
-		global.h \
-		/qt-5.5.0-install/include/QtCore/QSettings \
-		/qt-5.5.0-install/include/QtCore/QTextCodec \
 		videoplayer/videoplayer.h \
 		/qt-5.5.0-install/include/QtCore/QTimer \
 		audioplayer/audioplayer.h \
@@ -2260,6 +2260,9 @@ moc_ipinfotable.cpp: /qt-5.5.0-install/include/QtWidgets/QTextEdit \
 		/qt-5.5.0-install/include/QtCore/QHash \
 		/qt-5.5.0-install/include/QtNetwork/qsslkey.h \
 		/qt-5.5.0-install/include/QtNetwork/qtnetworkversion.h \
+		global.h \
+		/qt-5.5.0-install/include/QtCore/QSettings \
+		/qt-5.5.0-install/include/QtCore/QTextCodec \
 		net/ipinfotable.h
 	/qt-5.5.0-install/bin/moc $(DEFINES) -I/qt-5.5.0-install/mkspecs/linux-arm-gnueabi-g++ -I/home/wyl/Desktop/service-robot -I/usr/local/include -I/qt-5.5.0-install/include -I/qt-5.5.0-install/include/QtWidgets -I/qt-5.5.0-install/include/QtGui -I/qt-5.5.0-install/include/QtNetwork -I/qt-5.5.0-install/include/QtSerialPort -I/qt-5.5.0-install/include/QtCore -I/opt/FriendlyARM/toolschain/4.5.1/arm-none-linux-gnueabi/include/c++/4.5.1 -I/opt/FriendlyARM/toolschain/4.5.1/arm-none-linux-gnueabi/include/c++/4.5.1/arm-none-linux-gnueabi -I/opt/FriendlyARM/toolschain/4.5.1/arm-none-linux-gnueabi/include/c++/4.5.1/backward -I/opt/FriendlyARM/toolschain/4.5.1/lib/gcc/arm-none-linux-gnueabi/4.5.1/include -I/opt/FriendlyARM/toolschain/4.5.1/lib/gcc/arm-none-linux-gnueabi/4.5.1/include-fixed -I/opt/FriendlyARM/toolschain/4.5.1/arm-none-linux-gnueabi/include net/ipinfotable.h -o moc_ipinfotable.cpp
 
@@ -4673,6 +4676,9 @@ main.o: main.cpp mainwindow.h \
 		/qt-5.5.0-install/include/QtCore/QHash \
 		/qt-5.5.0-install/include/QtNetwork/qsslkey.h \
 		/qt-5.5.0-install/include/QtNetwork/qtnetworkversion.h \
+		global.h \
+		/qt-5.5.0-install/include/QtCore/QSettings \
+		/qt-5.5.0-install/include/QtCore/QTextCodec \
 		net/usb_wifi.h \
 		/qt-5.5.0-install/include/QtWidgets/QTableWidgetItem \
 		/qt-5.5.0-install/include/QtWidgets/QTableWidget \
@@ -4684,9 +4690,6 @@ main.o: main.cpp mainwindow.h \
 		/qt-5.5.0-install/include/QtSerialPort/qserialportinfo.h \
 		/qt-5.5.0-install/include/QtSerialPort/qtserialportversion.h \
 		/qt-5.5.0-install/include/QtCore/QElapsedTimer \
-		global.h \
-		/qt-5.5.0-install/include/QtCore/QSettings \
-		/qt-5.5.0-install/include/QtCore/QTextCodec \
 		videoplayer/videoplayer.h \
 		/qt-5.5.0-install/include/QtCore/QTimer \
 		audioplayer/audioplayer.h \
@@ -5211,6 +5214,9 @@ mainwindow.o: mainwindow.cpp mainwindow.h \
 		/qt-5.5.0-install/include/QtCore/QHash \
 		/qt-5.5.0-install/include/QtNetwork/qsslkey.h \
 		/qt-5.5.0-install/include/QtNetwork/qtnetworkversion.h \
+		global.h \
+		/qt-5.5.0-install/include/QtCore/QSettings \
+		/qt-5.5.0-install/include/QtCore/QTextCodec \
 		net/usb_wifi.h \
 		/qt-5.5.0-install/include/QtWidgets/QTableWidgetItem \
 		/qt-5.5.0-install/include/QtWidgets/QTableWidget \
@@ -5222,9 +5228,6 @@ mainwindow.o: mainwindow.cpp mainwindow.h \
 		/qt-5.5.0-install/include/QtSerialPort/qserialportinfo.h \
 		/qt-5.5.0-install/include/QtSerialPort/qtserialportversion.h \
 		/qt-5.5.0-install/include/QtCore/QElapsedTimer \
-		global.h \
-		/qt-5.5.0-install/include/QtCore/QSettings \
-		/qt-5.5.0-install/include/QtCore/QTextCodec \
 		videoplayer/videoplayer.h \
 		/qt-5.5.0-install/include/QtCore/QTimer \
 		audioplayer/audioplayer.h \
@@ -6671,7 +6674,10 @@ ipinfotable.o: net/ipinfotable.cpp net/ipinfotable.h \
 		/qt-5.5.0-install/include/QtNetwork/qsslellipticcurve.h \
 		/qt-5.5.0-install/include/QtCore/QHash \
 		/qt-5.5.0-install/include/QtNetwork/qsslkey.h \
-		/qt-5.5.0-install/include/QtNetwork/qtnetworkversion.h
+		/qt-5.5.0-install/include/QtNetwork/qtnetworkversion.h \
+		global.h \
+		/qt-5.5.0-install/include/QtCore/QSettings \
+		/qt-5.5.0-install/include/QtCore/QTextCodec
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o ipinfotable.o net/ipinfotable.cpp
 
 buffer.o: SSDB/buffer.c SSDB/buffer.h

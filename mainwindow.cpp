@@ -85,7 +85,7 @@ MainWindow::MainWindow(QWidget *parent) :
     serialport->moveToThread(serialport_thread);
     ui->comboBox->addItems(serialport->scanAvailablePorts());
     ui->comboBox->setCurrentIndex(ui->comboBox->count()-1);
-    ui->comboBox_2->setCurrentText(QString::number(DEFAULT_BAUD));
+    ui->comboBox_2->setCurrentText(loadHistory("SerialPort_Baudrate",DEFAULT_BAUD));
 
     connect(serialport,&SerialPort::errMsg,this,&MainWindow::setStatusBarText);
     connect(serialport,&SerialPort::rcvSPData,this,&MainWindow::getSPMsg);
