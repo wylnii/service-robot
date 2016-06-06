@@ -5246,22 +5246,6 @@ mainwindow.o: mainwindow.cpp mainwindow.h \
 		/qt-5.5.0-install/include/QtCore/QThread \
 		/qt-5.5.0-install/include/QtCore/QEventLoop \
 		ui_mainwindow.h \
-		/qt-5.5.0-install/include/QtWidgets/QAction \
-		/qt-5.5.0-install/include/QtWidgets/QApplication \
-		/qt-5.5.0-install/include/QtWidgets/QButtonGroup \
-		/qt-5.5.0-install/include/QtWidgets/QComboBox \
-		/qt-5.5.0-install/include/QtWidgets/QGridLayout \
-		/qt-5.5.0-install/include/QtWidgets/QGroupBox \
-		/qt-5.5.0-install/include/QtWidgets/QHBoxLayout \
-		/qt-5.5.0-install/include/QtWidgets/QHeaderView \
-		/qt-5.5.0-install/include/QtWidgets/QMainWindow \
-		/qt-5.5.0-install/include/QtWidgets/QPushButton \
-		/qt-5.5.0-install/include/QtWidgets/QSlider \
-		/qt-5.5.0-install/include/QtWidgets/QSpacerItem \
-		/qt-5.5.0-install/include/QtWidgets/QStatusBar \
-		/qt-5.5.0-install/include/QtWidgets/QTabWidget \
-		/qt-5.5.0-install/include/QtWidgets/QToolButton \
-		/qt-5.5.0-install/include/QtWidgets/QVBoxLayout \
 		/qt-5.5.0-install/include/QtWidgets/QInputDialog
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o mainwindow.o mainwindow.cpp
 
@@ -5373,65 +5357,13 @@ keyboard.o: keyboard/keyboard.cpp keyboard/keyboard.h \
 		/qt-5.5.0-install/include/QtGui/QMouseEvent \
 		/qt-5.5.0-install/include/QtCore/QDebug \
 		ui_keyboard.h \
-		/qt-5.5.0-install/include/QtCore/QVariant \
-		/qt-5.5.0-install/include/QtWidgets/QAction \
-		/qt-5.5.0-install/include/QtWidgets/qaction.h \
-		/qt-5.5.0-install/include/QtGui/qicon.h \
-		/qt-5.5.0-install/include/QtWidgets/qactiongroup.h \
-		/qt-5.5.0-install/include/QtWidgets/QApplication \
-		/qt-5.5.0-install/include/QtWidgets/qapplication.h \
-		/qt-5.5.0-install/include/QtCore/qcoreapplication.h \
-		/qt-5.5.0-install/include/QtCore/qeventloop.h \
-		/qt-5.5.0-install/include/QtWidgets/qdesktopwidget.h \
-		/qt-5.5.0-install/include/QtGui/qguiapplication.h \
-		/qt-5.5.0-install/include/QtGui/qinputmethod.h \
-		/qt-5.5.0-install/include/QtWidgets/QButtonGroup \
-		/qt-5.5.0-install/include/QtWidgets/qbuttongroup.h \
-		/qt-5.5.0-install/include/QtWidgets/QFrame \
-		/qt-5.5.0-install/include/QtWidgets/qframe.h \
-		/qt-5.5.0-install/include/QtWidgets/QGridLayout \
-		/qt-5.5.0-install/include/QtWidgets/qgridlayout.h \
-		/qt-5.5.0-install/include/QtWidgets/qlayout.h \
-		/qt-5.5.0-install/include/QtWidgets/qlayoutitem.h \
-		/qt-5.5.0-install/include/QtWidgets/qboxlayout.h \
-		/qt-5.5.0-install/include/QtWidgets/QGroupBox \
-		/qt-5.5.0-install/include/QtWidgets/qgroupbox.h \
-		/qt-5.5.0-install/include/QtWidgets/QHBoxLayout \
-		/qt-5.5.0-install/include/QtWidgets/QHeaderView \
-		/qt-5.5.0-install/include/QtWidgets/qheaderview.h \
-		/qt-5.5.0-install/include/QtWidgets/qabstractitemview.h \
-		/qt-5.5.0-install/include/QtWidgets/qabstractscrollarea.h \
-		/qt-5.5.0-install/include/QtCore/qabstractitemmodel.h \
-		/qt-5.5.0-install/include/QtCore/qitemselectionmodel.h \
-		/qt-5.5.0-install/include/QtWidgets/qabstractitemdelegate.h \
-		/qt-5.5.0-install/include/QtWidgets/qstyleoption.h \
-		/qt-5.5.0-install/include/QtWidgets/qabstractspinbox.h \
-		/qt-5.5.0-install/include/QtGui/qvalidator.h \
-		/qt-5.5.0-install/include/QtCore/qregularexpression.h \
-		/qt-5.5.0-install/include/QtWidgets/qslider.h \
-		/qt-5.5.0-install/include/QtWidgets/qabstractslider.h \
-		/qt-5.5.0-install/include/QtWidgets/qstyle.h \
-		/qt-5.5.0-install/include/QtWidgets/qtabbar.h \
-		/qt-5.5.0-install/include/QtWidgets/qtabwidget.h \
-		/qt-5.5.0-install/include/QtWidgets/qrubberband.h \
-		/qt-5.5.0-install/include/QtWidgets/QLabel \
-		/qt-5.5.0-install/include/QtWidgets/qlabel.h \
-		/qt-5.5.0-install/include/QtWidgets/QLineEdit \
-		/qt-5.5.0-install/include/QtWidgets/qlineedit.h \
-		/qt-5.5.0-install/include/QtGui/qtextcursor.h \
-		/qt-5.5.0-install/include/QtGui/qtextformat.h \
-		/qt-5.5.0-install/include/QtGui/qpen.h \
-		/qt-5.5.0-install/include/QtGui/qtextoption.h \
-		/qt-5.5.0-install/include/QtWidgets/QToolButton \
-		/qt-5.5.0-install/include/QtWidgets/qtoolbutton.h \
-		/qt-5.5.0-install/include/QtWidgets/qabstractbutton.h \
-		/qt-5.5.0-install/include/QtWidgets/QVBoxLayout \
 		/qt-5.5.0-install/include/QtCore/QThread \
 		/qt-5.5.0-install/include/QtCore/qthread.h \
 		/qt-5.5.0-install/include/QtCore/QCryptographicHash \
 		/qt-5.5.0-install/include/QtCore/qcryptographichash.h \
 		global.h \
 		/qt-5.5.0-install/include/QtCore/QString \
+		/qt-5.5.0-install/include/QtCore/QVariant \
 		/qt-5.5.0-install/include/QtCore/QSettings \
 		/qt-5.5.0-install/include/QtCore/qsettings.h \
 		/qt-5.5.0-install/include/QtCore/QTextCodec \

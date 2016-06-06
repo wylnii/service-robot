@@ -7,7 +7,24 @@ void checkLogfileSize(int maxSize = 1024*1024);
 
 int main(int argc, char *argv[])
 {
-//    QTextCodec::setCodecForLocale(QTextCodec::codecForName("GB18030"));
+    if(argc > 1)
+    {
+        if(argv[1] == QString("net") )
+        {
+            SSDB_Client c;
+            if(argc > 2)
+            {
+                qDebug()<<c.getNetworkQuality(argv[2]);
+            }
+            else
+            {
+                qDebug()<<c.getNetworkQuality();
+            }
+            return 0;
+        }
+        qDebug()<<"param error! pattern:(\\d+)%.+/(\\d+\\.\\d+)/\\d+\\.\\d+";
+        return 0;
+    }
 
 //    qSetMessagePattern("%{time MM/dd HH:mm:ss.zzz} : %{message}");
     //启动时检查log文件大小，大于1M则分卷保存

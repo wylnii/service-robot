@@ -24,7 +24,7 @@ const char* Charge_CMD = "Charge";
 SSDB_Client::SSDB_Client(QObject *parent, const QString &name, const QString &addr, int port):\
     QThread(parent), serverAddr(addr), serverPort(port)
 {
-//    setObjectName(STRING(SSDB_Client));
+    //    setObjectName(STRING(SSDB_Client));
     qRegisterMetaType<SSDB_CtrlCmd>("SSDB_CtrlCmd");
 
     setClientName(name.toStdString());
@@ -38,7 +38,9 @@ SSDB_Client::SSDB_Client(QObject *parent, const QString &name, const QString &ad
     queryVideoCtrl_timer = false;
     sendInfo_timer = false;
     stop = true;
-    connect(&timer_getNetworkQuality,&QTimer::timeout,[&](){hset("NetworkDelay",QString::number(getNetworkQuality()).toStdString());});
+    connect(&timer_getNetworkQuality,&QTimer::timeout,[&](){
+        hset("NetworkDelay",QString::number(getNetworkQuality()).toStdString());
+    });
 }
 
 SSDB_Client::~SSDB_Client()
@@ -78,8 +80,8 @@ void SSDB_Client::analyseCMD(const std::string &ret)
 {
     if(ret == DirCtrl_CMD)
     {
-        qDebug()<<ret.data();
         queryDirCtrlTimerStart = true;
+        hset(DirCtrl_CMD, "stop");
     }
     else if(ret == Param_CMD)
     {
@@ -152,7 +154,7 @@ bool SSDB_Client::connectServer(const QString &host, int port)
     serverAddr = host;
     serverPort = port;
     m_client->connect(host.toLatin1().constData(), port);
-//    qDebug()<<currentThread();
+    //    qDebug()<<currentThread();
 
     if(m_client->isConnect())
     {
@@ -160,23 +162,23 @@ bool SSDB_Client::connectServer(const QString &host, int port)
         //        s = m_client->auth("1234567890123456789012345678901234567890");
         //        if(s.error())
         //            return false;
-//        QImage img(":/image/resource/logo.png");
-//        QBuffer buffer;
-//        QDataStream data(&buffer);
-//        buffer.open(QIODevice::ReadWrite);
-//        data<<img;
-//        qDebug()<<buffer.size();
-//        const char* to = buffer.data().data();
-//        m_client->set("img",string(to,buffer.size()));
-//        string ret;
-//        m_client->get("img",&ret);
-//        buffer.close();
-//        buffer.setData(ret.data(),ret.length());
-//        buffer.open(QIODevice::ReadWrite);
-//        QImage img2;
-//        QDataStream data2(&buffer);
-//        data2>>img2;
-//        qDebug()<<img2.size();
+        //        QImage img(":/image/resource/logo.png");
+        //        QBuffer buffer;
+        //        QDataStream data(&buffer);
+        //        buffer.open(QIODevice::ReadWrite);
+        //        data<<img;
+        //        qDebug()<<buffer.size();
+        //        const char* to = buffer.data().data();
+        //        m_client->set("img",string(to,buffer.size()));
+        //        string ret;
+        //        m_client->get("img",&ret);
+        //        buffer.close();
+        //        buffer.setData(ret.data(),ret.length());
+        //        buffer.open(QIODevice::ReadWrite);
+        //        QImage img2;
+        //        QDataStream data2(&buffer);
+        //        data2>>img2;
+        //        qDebug()<<img2.size();
         emit errMsg("connect ssdb succeed!");
         timerStart = true;
         this->start();
@@ -241,6 +243,12 @@ void SSDB_Client::queryDirCtrl()
             cmd.dirCtrl = SSDB_DIR_HeadRight;
         else if(ret == "headmid")
             cmd.dirCtrl = SSDB_DIR_HeadMid;
+        else if(ret == EndDirCtrl_CMD)
+        {
+            cmd.dirCtrl = SSDB_DIR_Stop;
+            queryDirCtrlTimerStart = false;
+            hset(DirCtrl_CMD, "stop");
+        }
         else
             return;
         if(isNewDirCmd(cmd.dirCtrl))
@@ -396,15 +404,23 @@ bool SSDB_Client::isNewDirCmd(SSDB_DIR cmd)
         return false;
 }
 
-int SSDB_Client::getNetworkQuality()
+int SSDB_Client::getNetworkQuality(const QString &pattern)
 {
-    static const QString NetworkCMD = loadHistory("SSDB_server").prepend("ping -q -c 4 -i 0.2 -W 0.5 ");
+    static const QString NetworkCMD = loadHistory("SSDB_server").prepend("ping -q -c 4 ");
     process.start(NetworkCMD);
-    if(process.waitForFinished(6000))
+    if(process.waitForFinished(8000))
     {
         QByteArray ret = process.readAll();
+#ifndef _TEST
+        static QRegExp reg("(\\d+)%.+/(\\d+\\.\\d+)/\\d+\\.\\d+");
+#else
         static QRegExp reg("(\\d+)%.+/(\\d+\\.\\d+)/\\d+\\.\\d+/");
-        //        qDebug()<<ret;
+#endif
+//        qDebug()<<ret;
+        if(pattern.length() > 0)
+        {
+            reg.setPattern(pattern);
+        }
         if(reg.indexIn(ret) > 0 && reg.captureCount() > 1)
         {
             float loss = reg.cap(1).toFloat()/100;
@@ -413,10 +429,14 @@ int SSDB_Client::getNetworkQuality()
             float quality = reg.cap(2).toFloat();
             if(quality < 0)
                 return -2;
-            qDebug()<<loss<<quality;
+//            qDebug()<<loss<<quality;
             quality = 5000/(quality+50)*(1 - loss);
-            return quality;
+            return (int)quality;
         }
+    }
+    else
+    {
+        process.terminate();
     }
     return -1;
 }
@@ -497,14 +517,14 @@ void SSDB_Client::run()
     stop = false;
     qDebug()<<this<<this->thread()<<currentThread();
     int timeCnt = 0;
-    QElapsedTimer t;
+    //    QElapsedTimer t;
     while(! stop)
     {
         timeCnt = 0;
         if(timerStart)
         {
             ticktack();
-            qDebug()<<t.restart();
+            //            qDebug()<<t.restart();
         }
         while(timeCnt < 10)
         {
@@ -527,9 +547,9 @@ void SSDB_Client::run()
             {
                 QThread::msleep(10);
             }
-//            QEventLoop loop;
-//            QTimer::singleShot(100,&loop,SLOT(quit()));
-//            loop.exec();
+            //            QEventLoop loop;
+            //            QTimer::singleShot(100,&loop,SLOT(quit()));
+            //            loop.exec();
         }
     }
     m_timer->invalidate();

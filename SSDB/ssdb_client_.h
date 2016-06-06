@@ -40,6 +40,7 @@ public slots:
     void queryVideoCtrl();
     void sendVideoInfo();
     void getSPMsg(const SerialPort::CtrlCmd &cmd);
+    int getNetworkQuality(const QString &pattern = "") ;
 
 signals:
     void CtrlMsg(SSDB_CtrlCmd);
@@ -47,7 +48,6 @@ signals:
 
 private:
     bool isNewDirCmd(SSDB_DIR cmd);
-    int getNetworkQuality() ;
     QProcess process;
     QTimer timer_getNetworkQuality;
 

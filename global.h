@@ -15,9 +15,9 @@
 
 #define STRING(str) #str
 
-//#if QT_VERSION > 0x050500
-//#define _TEST
-//#endif
+#if QT_VERSION > 0x050500
+#define _TEST
+#endif
 
 #define DEBUG
 

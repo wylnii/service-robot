@@ -327,6 +327,10 @@ void MainWindow::autoConnect()
         emotionPlayer->changeEmotion("service");
 #endif
         emit connectSSDB();
+        QString cmd("./audioPlayer %1 %2 %3");
+        cmd = cmd.arg(loadHistory("SSDB_server","60.171.108.155"),"20000",RobotName);
+        qDebug()<<cmd;
+        system(cmd.toLocal8Bit().constData());
         if(! ssdbClient->isConnected())
         {
             showSupportMsg();
