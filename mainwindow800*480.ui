@@ -114,7 +114,7 @@
         <rect>
          <x>40</x>
          <y>25</y>
-         <width>95</width>
+         <width>106</width>
          <height>346</height>
         </rect>
        </property>
@@ -126,6 +126,9 @@
             <width>0</width>
             <height>34</height>
            </size>
+          </property>
+          <property name="focusPolicy">
+           <enum>Qt::NoFocus</enum>
           </property>
           <property name="text">
            <string>scan</string>
@@ -140,6 +143,9 @@
             <height>34</height>
            </size>
           </property>
+          <property name="focusPolicy">
+           <enum>Qt::NoFocus</enum>
+          </property>
           <property name="text">
            <string>connect</string>
           </property>
@@ -153,6 +159,9 @@
             <height>34</height>
            </size>
           </property>
+          <property name="focusPolicy">
+           <enum>Qt::NoFocus</enum>
+          </property>
           <property name="text">
            <string>open SSDB</string>
           </property>
@@ -165,6 +174,9 @@
             <width>0</width>
             <height>34</height>
            </size>
+          </property>
+          <property name="focusPolicy">
+           <enum>Qt::NoFocus</enum>
           </property>
           <property name="text">
            <string>disconnect</string>
@@ -630,10 +642,10 @@
       <widget class="QToolButton" name="toolButton_headup">
        <property name="geometry">
         <rect>
-         <x>550</x>
-         <y>45</y>
-         <width>100</width>
-         <height>100</height>
+         <x>580</x>
+         <y>65</y>
+         <width>80</width>
+         <height>80</height>
         </rect>
        </property>
        <property name="font">
@@ -651,10 +663,10 @@
       <widget class="QToolButton" name="toolButton_headdown">
        <property name="geometry">
         <rect>
-         <x>550</x>
-         <y>225</y>
-         <width>100</width>
-         <height>100</height>
+         <x>580</x>
+         <y>270</y>
+         <width>80</width>
+         <height>80</height>
         </rect>
        </property>
        <property name="font">
@@ -669,11 +681,53 @@
         <string>v</string>
        </property>
       </widget>
+      <widget class="QToolButton" name="toolButton_headleft">
+       <property name="geometry">
+        <rect>
+         <x>475</x>
+         <y>165</y>
+         <width>80</width>
+         <height>80</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>24</pointsize>
+        </font>
+       </property>
+       <property name="focusPolicy">
+        <enum>Qt::NoFocus</enum>
+       </property>
+       <property name="text">
+        <string>&lt;</string>
+       </property>
+      </widget>
+      <widget class="QToolButton" name="toolButton_headright">
+       <property name="geometry">
+        <rect>
+         <x>685</x>
+         <y>165</y>
+         <width>80</width>
+         <height>80</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>24</pointsize>
+        </font>
+       </property>
+       <property name="focusPolicy">
+        <enum>Qt::NoFocus</enum>
+       </property>
+       <property name="text">
+        <string>&gt;</string>
+       </property>
+      </widget>
      </widget>
      <widget class="QToolButton" name="toolButton_charge">
       <property name="geometry">
        <rect>
-        <x>470</x>
+        <x>420</x>
         <y>305</y>
         <width>70</width>
         <height>90</height>

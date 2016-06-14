@@ -217,6 +217,7 @@ void VideoPlayer::getCtrlMsg(const SSDB_CtrlCmd &cmd)
             break;
         case Video_PlayList:
         {
+            type = 1;
             QString list = playlist.join(" ");
             emit returnMsg(list, (int)cmd.videoCtrl);
         }
@@ -225,6 +226,7 @@ void VideoPlayer::getCtrlMsg(const SSDB_CtrlCmd &cmd)
         {
             QString list("%1 %2");
             list = list.arg(filename.isEmpty() ? "NULL": filename).arg((int)(position()/duration()*100));
+//            qDebug()<<list<<QThread::currentThread()<<thread();
             emit returnMsg(list, (int)cmd.videoCtrl);
         }
             break;

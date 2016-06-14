@@ -1,5 +1,5 @@
-#ifndef GLOBAL
-#define GLOBAL
+#ifndef GLOBAL_H
+#define GLOBAL_H
 
 #include <QString>
 #include <QVariant>
@@ -19,6 +19,8 @@
 #define _TEST
 #endif
 
+#define VERSION "2.0.1"
+
 #define DEBUG
 
 #ifndef Logout
@@ -33,7 +35,7 @@ extern QString RobotName;
 extern QTextCodec *textCodec;
 extern QStringList emotions;   //for SSDB
 
-
+//定义HD_SCREEN 高清屏
 #define HD_SCREEN
 #ifdef HD_SCREEN
 const int SCREEN_WIDTH = 1280;
@@ -77,6 +79,5 @@ void saveHistory(const QVariant &input, const QString &mrk, const QString &group
 QByteArray loadHistory(const QString &mrk, const QVariant &dfl_value = QVariant(), const QString &group = QString("configure"));
 QByteArray encrypt(const QByteArray &code, bool en = false);
 
-
-#endif // GLOBAL
+#endif // GLOBAL_H
 

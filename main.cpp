@@ -1,17 +1,30 @@
 #include "mainwindow.h"
 #include <QApplication>
 #include "global.h"
+#include "net/networkqualitythread.h"
 
 void customMessageHandler(QtMsgType type, const QMessageLogContext &contex, const QString &msg);
 void checkLogfileSize(int maxSize = 1024*1024);
 
 int main(int argc, char *argv[])
 {
+    QApplication a(argc, argv);
+
     if(argc > 1)
     {
-        if(argv[1] == QString("net") )
+        QCommandLineParser parser;
+        QCommandLineOption o1("t", "test net work delay", "pattern", "");
+        parser.addOption(o1);
+        parser.addVersionOption();
+        parser.addHelpOption();
+        QString info = QString("\r%1 %2\ncompiled at:\t%3 %4\npowered by:\t%5")
+                .arg(a.applicationName(), VERSION, __DATE__, __TIME__, "WYL");
+        a.setApplicationVersion(VERSION+info);
+        parser.setApplicationDescription(info);
+        parser.process(a);
+        if(parser.isSet(o1))
         {
-            SSDB_Client c;
+            NetworkQualityThread c;
             if(argc > 2)
             {
                 qDebug()<<c.getNetworkQuality(argv[2]);
@@ -22,7 +35,6 @@ int main(int argc, char *argv[])
             }
             return 0;
         }
-        qDebug()<<"param error! pattern:(\\d+)%.+/(\\d+\\.\\d+)/\\d+\\.\\d+";
         return 0;
     }
 
@@ -32,11 +44,14 @@ int main(int argc, char *argv[])
 
     qInstallMessageHandler(customMessageHandler);
 
-    QApplication a(argc, argv);
     qDebug()<<"\n\nstart :\t"<<a.arguments()<<"\n";
 
     QFont f("WenQuanYi Micro Hei");
+#ifdef HD_SCREEN
     f.setPointSize(16);
+#else
+    f.setPointSize(10);
+#endif
     a.setFont(f);
 
     MainWindow w;

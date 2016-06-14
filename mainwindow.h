@@ -15,6 +15,7 @@
 #include "net/netspeed.h"
 #include "keyinput.h"
 #include "net/login.h"
+#include "net/networkqualitythread.h"
 
 namespace Ui {
 class MainWindow;
@@ -98,6 +99,7 @@ private:
     EmotionPlayer *emotionPlayer;
 //    NetSpeed *netSpeed;
     KeyInput *keyInput;
+    NetworkQualityThread *networkQualityThread;
 };
 
 #endif // MAINWINDOW_H

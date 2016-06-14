@@ -38,9 +38,6 @@ SSDB_Client::SSDB_Client(QObject *parent, const QString &name, const QString &ad
     queryVideoCtrl_timer = false;
     sendInfo_timer = false;
     stop = true;
-    connect(&timer_getNetworkQuality,&QTimer::timeout,[&](){
-        hset("NetworkDelay",QString::number(getNetworkQuality()).toStdString());
-    });
 }
 
 SSDB_Client::~SSDB_Client()
@@ -67,7 +64,6 @@ void SSDB_Client::disConnect()
     queryDirCtrlTimerStart = false;
     sendInfo_timer = false;
     m_client->disConnect();
-    timer_getNetworkQuality.stop();
     emit errMsg("disconnect ssdb");
 }
 
@@ -187,7 +183,6 @@ bool SSDB_Client::connectServer(const QString &host, int port)
 #endif
         hset(EmotionList, emotions.join(" ").toStdString());
         hset(Robot_Msg,std::string());
-        timer_getNetworkQuality.start(10000);
         return true;
     }
     else
@@ -382,7 +377,8 @@ void SSDB_Client::getSPMsg(const SerialPort::CtrlCmd &cmd)
             data.remove(-1,1);
             data.append("有遮挡");
         }
-        qDebug()<<data;
+//        qDebug()<<data;
+//        emit errMsg(data);
 
         hset(Robot_Msg, textCodec->fromUnicode(data).toStdString());
         hset(Query_KEY,Robot_Msg);
@@ -391,6 +387,11 @@ void SSDB_Client::getSPMsg(const SerialPort::CtrlCmd &cmd)
     default:
         break;
     }
+}
+
+void SSDB_Client::getNetworkQuality(int quality)
+{
+    hset("NetworkDelay",QString::number(quality).toStdString());
 }
 
 bool SSDB_Client::isNewDirCmd(SSDB_DIR cmd)
@@ -402,43 +403,6 @@ bool SSDB_Client::isNewDirCmd(SSDB_DIR cmd)
         return true;
     else
         return false;
-}
-
-int SSDB_Client::getNetworkQuality(const QString &pattern)
-{
-    static const QString NetworkCMD = loadHistory("SSDB_server").prepend("ping -q -c 4 ");
-    process.start(NetworkCMD);
-    if(process.waitForFinished(8000))
-    {
-        QByteArray ret = process.readAll();
-#ifndef _TEST
-        static QRegExp reg("(\\d+)%.+/(\\d+\\.\\d+)/\\d+\\.\\d+");
-#else
-        static QRegExp reg("(\\d+)%.+/(\\d+\\.\\d+)/\\d+\\.\\d+/");
-#endif
-//        qDebug()<<ret;
-        if(pattern.length() > 0)
-        {
-            reg.setPattern(pattern);
-        }
-        if(reg.indexIn(ret) > 0 && reg.captureCount() > 1)
-        {
-            float loss = reg.cap(1).toFloat()/100;
-            if(loss < 0 || loss >1)
-                return -2;
-            float quality = reg.cap(2).toFloat();
-            if(quality < 0)
-                return -2;
-//            qDebug()<<loss<<quality;
-            quality = 5000/(quality+50)*(1 - loss);
-            return (int)quality;
-        }
-    }
-    else
-    {
-        process.terminate();
-    }
-    return -1;
 }
 
 std::string SSDB_Client::getClientName() const
@@ -534,7 +498,9 @@ void SSDB_Client::run()
                 if(timeCnt == 4)
                 {
                     if(sendInfo_timer)//send video msg current statue
+                    {
                         sendVideoInfo();
+                    }
                     queryVideoCtrl();
                 }
             }

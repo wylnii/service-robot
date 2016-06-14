@@ -57,6 +57,10 @@ void EmotionPlayer::changeEmotion(int index)
         currentIndex = index;
         playEmotion(emotionList[index]);
     }
+    else
+    {
+        qDebug()<<"Emotion index ("<<index<<") out of range";
+    }
 }
 
 void EmotionPlayer::getCtrlMsg(const SSDB_CtrlCmd &cmd)

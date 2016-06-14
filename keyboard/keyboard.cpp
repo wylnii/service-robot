@@ -1,8 +1,10 @@
 #include "keyboard.h"
-#include "ui_keyboard.h"
-#include <QThread>
-#include <QCryptographicHash>
 #include "global.h"
+#ifdef HD_SCREEN
+#include "ui_keyboard.h"
+#else
+#include "ui_keyboard800*480.h"
+#endif
 
 Keyboard::Keyboard(QWidget *parent, const QString &disp, const QString &deflt) :
     QWidget(parent),

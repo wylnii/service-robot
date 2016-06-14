@@ -19,6 +19,9 @@ public:
 
 signals:
     void errormsg(QString);//以信号模式将运行过程中的信息发送出去
+
+private:
+    static int getNetworkQuality(const QString &pattern = "");
 };
 
 #endif // IPINFO_H

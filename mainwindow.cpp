@@ -1,5 +1,9 @@
-#include "mainwindow.h"
+﻿#include "mainwindow.h"
+#ifdef HD_SCREEN
 #include "ui_mainwindow.h"
+#else
+#include "ui_mainwindow800*480.h"
+#endif
 #include <QInputDialog>
 
 MainWindow::MainWindow(QWidget *parent) :
@@ -8,14 +12,16 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     ui->setupUi(this);
     setFixedSize(WINDOW_WIDTH,WINDOW_HEIGHT);
+#ifdef HD_SCREEN
     ui->label_title->hide();
     ui->label_logo->hide();
+#endif
     QRect screenrect = QApplication::desktop()->screenGeometry();
 
     move((screenrect.width() - WINDOW_WIDTH)/2, 0);
 
     RobotName = loadHistory("RobotName");
-   //    centralWidget()->setMouseTracking(1);
+//    centralWidget()->setMouseTracking(1);
 //    setMouseTracking(1);
 
     qDebug()<<"main thread:"<<QThread::currentThread();
@@ -48,25 +54,30 @@ MainWindow::MainWindow(QWidget *parent) :
 #endif
     QTimer::singleShot(1500,Qt::VeryCoarseTimer,this,&MainWindow::autoConnect);//auto connect
 
-    ipInfoTable=new IPInfoTable(ui->tabWidgetPage3,950,720);
-
     wifitable=new QTableWidget(ui->tabWidgetPage2);
-//    wifitable->verticalHeader()->setSectionResizeMode(QHeaderView::Stretch);
-    wifitable->verticalHeader()->setDefaultSectionSize(60); //设置行距
-    wifitable->verticalHeader()->setFixedWidth(60);
+
+#ifdef HD_SCREEN
+    ipInfoTable=new IPInfoTable(ui->tabWidgetPage3,950,720);
+    wifitable->setFixedSize(950,700);
+    int wifitable_fixedsize = 60;
+#else
+    ipInfoTable=new IPInfoTable(ui->tabWidgetPage3,480,426);
+    wifitable->setFixedSize(480,426);
+    int wifitable_fixedsize = 40;
+#endif
+
+    //    wifitable->verticalHeader()->setSectionResizeMode(QHeaderView::Stretch);
+    wifitable->verticalHeader()->setDefaultSectionSize(wifitable_fixedsize); //设置行距
+    wifitable->verticalHeader()->setFixedWidth(wifitable_fixedsize);
     wifitable->verticalHeader()->setDefaultAlignment(Qt::AlignHCenter|Qt::AlignVCenter);
     wifitable->setColumnCount(3);
-//    wifitable->setColumnWidth(0,200);
-//    wifitable->setColumnWidth(1,100);
-//    wifitable->setColumnWidth(2,110);
-    wifitable->setFixedSize(950,700);
     wifitable->move(2,0);
     wifitable->setEditTriggers(QAbstractItemView::NoEditTriggers);
     wifitable->setSelectionBehavior(QAbstractItemView::SelectRows);
     wifitable->setAlternatingRowColors(true);
 //    wifitable->horizontalHeader()->setSectionResizeMode(0,QHeaderView::Stretch);
 //    wifitable->horizontalHeader()->setSectionResizeMode(1,QHeaderView::Stretch);
-    wifitable->horizontalHeader()->setFixedHeight(60);
+    wifitable->horizontalHeader()->setFixedHeight(wifitable_fixedsize);
     wifitable->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
 
     mykeyboard=new Keyboard(this);
@@ -106,9 +117,12 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(ssdbClient, &SSDB_Client::CtrlMsg, emotionPlayer, &EmotionPlayer::getCtrlMsg);
     connect(videoPlayer, &VideoPlayer::returnMsg, ssdbClient, &SSDB_Client::rcvVideoMsg);
     connect(serialport,&SerialPort::rcvSPData,ssdbClient,&SSDB_Client::getSPMsg);
-    connect(this, SIGNAL(connectSSDB()), ssdbClient, SLOT(connectServer()));
+    connect(this, &MainWindow::connectSSDB, ssdbClient, static_cast<bool (SSDB_Client::*)()>(&SSDB_Client::connectServer));
 
 //    netSpeed = new NetSpeed();
+    networkQualityThread = new NetworkQualityThread(this);
+    connect(networkQualityThread, &NetworkQualityThread::updateNetworkQuality, ssdbClient, &SSDB_Client::getNetworkQuality);
+    networkQualityThread->start();
 
     keyInput = new KeyInput(this);
     connect(keyInput, &KeyInput::keyPressed, this, &MainWindow::getKeyinput);
@@ -163,45 +177,45 @@ void MainWindow::setStyleSheet()
    ui->widget_3->setStyleSheet(stylesheet);
    ui->widget_4->setStyleSheet(stylesheet);
 
-   QString tabBarStyle = "QTabBar::tab {min-width:90px;\
-           background-color: #f2f1f0;\
-border: 1px solid #c2c7cb;\
-   border-top-left-radius: 6px;\
-   border-top-right-radius: 6px;\
-padding:8px;}\
-QTabWidget::pane{border-width:1px;border-color: #306880; border-top: 1px solid #A2A7FB;}\
-QTabBar::tab:!selected {margin-top: 6px;} \
-QTabBar::tab:selected {color: rgb(37, 138, 198);font:18dp }";
+   QString tabBarStyle = "QTabBar::tab {min-width:90px;"
+                         "background-color: #f2f1f0;"
+                         "border: 1px solid #c2c7cb;"
+                         "border-top-left-radius: 6px;"
+                         "border-top-right-radius: 6px;"
+                         "padding:8px;}"
+                         "QTabWidget::pane{border-width:1px;border-color: #306880; border-top: 1px solid #A2A7FB;}"
+                         "QTabBar::tab:!selected {margin-top: 6px;} "
+                         "QTabBar::tab:selected {color: rgb(37, 138, 198);font:18dp }";
 
     ui->tabWidget->setStyleSheet(tabBarStyle);
 
-    QString sliderStyle = "QSlider  {\
-        background-color: #00000000;\
-min-width:5px;\
-max-width:50px;\
-/*border:15px solid #00000000;*/\
-}\
-QSlider::add-page:vertical { \
-                      background-color: rgb(37, 168, 198);\
-width:4px;\
-border-radius: 4px;\
-}\
-QSlider::sub-page:vertical {\
-                      background-color: rgb(87, 97, 106);\
-width:4px;\
-border-radius: 4px;\
-}\
-QSlider::groove:vertical  {\
-                    background:transparent;\
-width:8px;\
-border-radius: 4px;\
-}\
-QSlider::handle:vertical {\
-                    height: 16px;\
-width: 16px;\
-border-image: url(:/image/resource/point.png);\
-margin: -0 -4px; \
-}";
+    QString sliderStyle = "QSlider  {"
+                          "background-color: #00000000;"
+                          "min-width:5px;"
+                          "max-width:50px;"
+                          "/*border:15px solid #00000000;*/"
+                          "}"
+                          "QSlider::add-page:vertical { "
+                          "background-color: rgb(37, 168, 198);"
+                          "width:4px;"
+                          "border-radius: 4px;"
+                          "}"
+                          "QSlider::sub-page:vertical {"
+                          "background-color: rgb(87, 97, 106);"
+                          "width:4px;"
+                          "border-radius: 4px;"
+                          "}"
+                          "QSlider::groove:vertical  {"
+                          "background:transparent;"
+                          "width:8px;"
+                          "border-radius: 4px;"
+                          "}"
+                          "QSlider::handle:vertical {"
+                          "height: 16px;"
+                          "width: 16px;"
+                          "border-image: url(:/image/resource/point.png);"
+                          "margin: -0 -4px; "
+                          "}";
     ui->verticalSlider->setStyleSheet(sliderStyle);
     ui->verticalSlider_2->setStyleSheet(sliderStyle);
 }

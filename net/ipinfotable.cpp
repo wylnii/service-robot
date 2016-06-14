@@ -83,6 +83,46 @@ bool IPInfoTable::hasValidIP()
     return false;
 }
 
+int IPInfoTable::getNetworkQuality(const QString &pattern)
+{
+    static const QString NetworkCMD = loadHistory("SSDB_server").prepend("ping -q -c 1 ");
+    static QProcess process;
+    process.start(NetworkCMD);
+    if(process.waitForFinished(8000))
+    {
+        QByteArray ret = process.readAll();
+#ifndef _TEST
+        static QRegExp reg("(\\d+)%.+/(\\d+\\.\\d+)/\\d+\\.\\d+");
+#else
+        static QRegExp reg("(\\d+)%.+/(\\d+\\.\\d+)/\\d+\\.\\d+/");
+#endif
+//        qDebug()<<ret;
+        if(pattern.length() > 0)
+        {
+            reg.setPattern(pattern);
+        }
+        if(reg.indexIn(ret) > 0 && reg.captureCount() > 1)
+        {
+            float loss = reg.cap(1).toFloat()/100;
+            if(loss < 0 || loss >1)
+                return -2;
+            float quality = reg.cap(2).toFloat();
+            if(quality < 0)
+                return -2;
+//            qDebug()<<loss<<quality;
+            quality = 5000/(quality+50)*(1 - loss);
+            qDebug()<<quality;
+            return (int)quality;
+        }
+    }
+    else
+    {
+        process.terminate();
+        process.waitForFinished(5000);
+    }
+    return -1;
+}
+
 bool IPInfoTable::checkNet()
 {
     QElapsedTimer timer;
@@ -104,7 +144,7 @@ bool IPInfoTable::checkNet()
             qDebug()<<"##\trestart_net:"<<i;
             system("./restart_service");
         }
-        else
+        else if(getNetworkQuality() > 0)
         {
             return true;
         }

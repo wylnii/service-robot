@@ -82,7 +82,6 @@ private:
     int type;
     QMutex stopMutex;
 
-
 public slots:
     int play();
     int play(const QString & file);

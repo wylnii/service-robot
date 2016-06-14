@@ -12,6 +12,7 @@ greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 QMAKE_CXXFLAGS += -std=gnu++11
 
 TARGET = service-robot
+VER_MAJ = 1
 TEMPLATE = app
 #包含win32的库
 #LIBS += -lws2_32
@@ -47,7 +48,8 @@ SOURCES += main.cpp\
     audioplayer/audioplayer.cpp \
     net/login.cpp \
     screenemotion/label.cpp \
-    videoplayer/emotionplayer.cpp
+    videoplayer/emotionplayer.cpp \
+    net/networkqualitythread.cpp
 
 HEADERS  += mainwindow.h \
     keyboard/keyboard.h \
@@ -67,12 +69,15 @@ HEADERS  += mainwindow.h \
     audioplayer/audioplayer.h \
     net/login.h \
     screenemotion/label.h \
-    videoplayer/emotionplayer.h
+    videoplayer/emotionplayer.h \
+    net/networkqualitythread.h
 
 FORMS    += \
-#    mainwindow800*480.ui \
     mainwindow.ui \
     keyboard/keyboard.ui
+#FORMS    += \
+#    mainwindow800*480.ui \
+#    keyboard/keyboard800*480.ui
 
 RESOURCES += \
     res.qrc
