@@ -3,7 +3,6 @@
 ARM板与下位机UART通信协议说明：
 共四个字节（FF XX XX BCC，16进制）：FF数据头+一个字节控制指令+一个字节数据+一个字节BCC校验（异或校验）。
 注意：每帧指令需间隔10ms以上。
-
 控制指令如下：
 
 指令	说明
@@ -12,8 +11,9 @@ ARM板与下位机UART通信协议说明：
 07	设置机器人转弯速度
 08	设置机器人摇头速度
 09	设置机器人充电门槛电压（低于此电压自动寻找充电桩充电）
-Volt=XX/256.0*29
-1A-1F	保留
+Volt=XX/256.0*30
+0A	设置充电等待时间
+0B-0F	保留
 11-14	控制机器人上下左右摇头（第三字节为任意，如FF 11 FF 11）
 15	机器人头部回正
 10	查询当前电池电压
@@ -21,6 +21,8 @@ Volt=XX/256.0*29
 17	查询机器人当前设定转弯速度
 18	查询机器人当前设定摇头速度
 19	查询机器人当前设定充电门槛电压
+1A	设置充电等待时间
+1B-1F	保留
 20	下达寻找充电桩指令
 21	查询当前障碍状态（障碍状态变化时会自动返回，也可手动查询）
 22-7F	保留
@@ -53,7 +55,7 @@ SerialPort::SerialPort(QObject *parent) : QSerialPort(parent)
 //    openPort(scan_com().last(),DEFAULT_BAUD);
     mtimer.setTimerType(Qt::VeryCoarseTimer);
     mtimer.start(5000);
-    connect(&mtimer,SIGNAL(timeout()),this,SLOT(queryRobotMsg()));
+    connect(&mtimer,&QTimer::timeout,this,&SerialPort::queryRobotMsg);
     timerCount = 0;
 }
 
@@ -126,43 +128,11 @@ QStringList SerialPort::scanAvailablePorts()
 
 void SerialPort::move(MoveFlag motion)
 {
-    switch (motion)
+    if(isOpen())
     {
-    case Up:
-        sendCMD(QByteArray("\xff\x01\xff\x01"));
-        break;
-    case Down:
-        sendCMD(QByteArray("\xff\x02\xff\x02"));
-        break;
-    case Left:
-        sendCMD(QByteArray("\xff\x03\xff\x03"));
-        break;
-    case Right:
-        sendCMD(QByteArray("\xff\x04\xff\x04"));
-        break;
-    case Stop:
-        sendCMD(QByteArray("\xff\x05\xff\x05"));
-        break;
-    case HeadUp:
-        sendCMD(QByteArray("\xff\x11\xff\x11"));
-        break;
-    case HeadDown:
-        sendCMD(QByteArray("\xff\x12\xff\x12"));
-        break;
-    case HeadLeft:
-        sendCMD(QByteArray("\xff\x13\xff\x13"));
-        break;
-    case HeadRight:
-        sendCMD(QByteArray("\xff\x14\xff\x14"));
-        break;
-    case HeadMid:
-        sendCMD(QByteArray("\xff\x15\xff\x15"));
-        break;
-    case Charge:
-        sendCMD(QByteArray("\xff\x20\xff\x20"));
-        break;
-    default:
-        break;
+        uchar cmd = motion;
+        uchar toSend[4] = {0xff, cmd, 0xff, cmd};
+        sendCMD(toSend, 4);
     }
 }
 
@@ -193,7 +163,7 @@ void SerialPort::sendCMD(const uchar *cmd, int length)
         while (length --)
         {
             putChar(*cmd++);
-            thread()->usleep(1000);
+            thread()->msleep(1);
         }
         thread()->msleep(10);
     }
@@ -204,9 +174,9 @@ void SerialPort::queryRobotMsg()
     if(isOpen())
     {
         if((timerCount&0x01) == 1)
+        {
             sendCMD("\xff\x10\xff\x10");//voltage
-//        else
-//            sendCMD("\xff\x21\xff\x21");//barrier
+        }
         timerCount ++;
     }
 }
@@ -344,12 +314,12 @@ void SerialPort::analyseData(const QByteArray &rcvMsg)
         if(sum == (uchar)rcvMsg[last] && last > 1) //last byte:check
         {
             qDebug("check:0x%02X",sum);
-            int data = 0;
+            int data = -1;
             switch ((uchar)rcvMsg[1])
             {
             case Cmd_QueryBatVol:
                 if(last >= 3)
-                    data = (uchar)rcvMsg[2];//TODO 第三字节为电压信息 Volt=data/256.0*29
+                    data = (uchar)rcvMsg[2];//TODO 第三字节为电压信息 Volt=data/256.0*30
                 break;
             case Cmd_QueryRunS:
                 data = (uchar)rcvMsg[2];
@@ -367,13 +337,16 @@ void SerialPort::analyseData(const QByteArray &rcvMsg)
             case Cmd_WarningMsg:
                 data = (uchar)rcvMsg[2];
                 break;
+            case Cmd_Charge:
+                data = Cmd_Charge;
+                break;
             default:
                 if(((uchar)rcvMsg[1] >> 7) == 0x01)
                 {
                     uchar cmd[4] = {0xff, (uchar)(rcvMsg[1] & 0x7f), 0xff};
                     cmd[3] = (cmd[0]^cmd[1]^cmd[2]);
                     thread()->msleep(20);
-                    sendCMD(cmd, 3);
+                    sendCMD(cmd, 4);
                 }
                 break;
             }

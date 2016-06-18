@@ -10,7 +10,7 @@ ScreenEmotion::ScreenEmotion(QWidget *parent, QWidget *mainWind):Label(parent)
 //    movie->setSpeed(20);
     setMovie(movie);
     emotionList.clear();
-    emotions.clear();
+    emotionList.clear();
     setFixedSize(SCREEN_WIDTH, SCREEN_HEIGHT);
 //    hide();
     searchEmotion();
@@ -45,7 +45,8 @@ void ScreenEmotion::searchEmotion()
 {
     QDir dir(EmotionDir);
     QStringList filelist = dir.entryList(QStringList()<<"*.gif"<<"*.png"<<"*.jpeg"<<"*.jpg");
-    emotions.clear();
+    emotionList.clear();
+    EmotionList.clear();
     foreach (QString file, filelist)
     {
         QString filename = QFileInfo(file).completeBaseName().toLower();
@@ -68,9 +69,9 @@ void ScreenEmotion::searchEmotion()
         if(mot != EmotionCount)
         {
             emotionList.insert(mot, file.prepend(EmotionDir));
-            emotions.append(filename);
         }
     }
+    EmotionList = emotionList.values();
 }
 
 void ScreenEmotion::getGesture(int type)
@@ -143,6 +144,6 @@ void ScreenEmotion::getCtrlMsg(const SSDB_CtrlCmd &cmd)
 {
     if(cmd.type == SSDB_CTRL_Emotion)
     {
-        changeEmotion((Emotion)cmd.emotinIndex);
+        changeEmotion((Emotion)cmd.emotionIndex);
     }
 }

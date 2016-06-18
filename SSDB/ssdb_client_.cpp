@@ -1,5 +1,6 @@
 #include "ssdb_client_.h"
 #include <stdio.h>
+#include <stdlib.h>
 
 using namespace ssdb;
 using namespace std;
@@ -13,7 +14,7 @@ const char* VideoInfo_KEY = "VideoInfo";
 const char* VideoPlayList_KEY = "VideoPlayList";
 const char* Robot_Msg = "RobotMsg";
 const char* Battery_Volt = "BatteryVolt";
-const char* EmotionList = "EmotionList";
+const char* EmotionList_KEY = "EmotionList";
 const char* Emotion_KEY = "Brow";
 
 const char* EndVideo_CMD = "EndVideo";
@@ -137,7 +138,8 @@ void SSDB_Client::analyseCMD(const std::string &ret)
             {
                 SSDB_CtrlCmd cmd;
                 cmd.type = SSDB_CTRL_Emotion;
-                cmd.emotinIndex = index;//TODO 从1还是从0开始？
+                cmd.msg = QString::fromStdString(data);
+                cmd.emotionIndex = index;//TODO 从1还是从0开始？
                 emit CtrlMsg(cmd);
             }
         }
@@ -181,8 +183,11 @@ bool SSDB_Client::connectServer(const QString &host, int port)
 #ifndef _TEST
         QTimer::singleShot(3500, Qt::VeryCoarseTimer, this, &SSDB_Client::getArgs);
 #endif
-        hset(EmotionList, emotions.join(" ").toStdString());
-        hset(Robot_Msg,std::string());
+        hset(EmotionList_KEY, EmotionList.join(' ').toStdString());
+        hset(VideoPlayList_KEY, textCodec->fromUnicode(VideoPlaylist.join(' ')).constData());
+        hset(Robot_Msg, std::string());
+        hset(VideoInfo_KEY, std::string());
+        hset(DirCtrl_CMD, std::string());
         return true;
     }
     else
@@ -357,8 +362,20 @@ void SSDB_Client::getSPMsg(const SerialPort::CtrlCmd &cmd)
     switch ((int)cmd.type)
     {
     case SerialPort::Cmd_QueryBatVol:
-        hset(Battery_Volt,QString::number(cmd.data/256.0*29,'f',2).toStdString());
+    {
+        float volt = cmd.data*30/256.0;
+        int grade = (volt - 25.5)*5/3;//25-28: 0-5
+        if(grade < 0)
+        {
+            grade = 0;
+        }
+        else if(grade > 5)
+        {
+            grade = 5;
+        }
+        hset(Battery_Volt,QString::number(grade).toStdString());
         hset(Query_KEY,Battery_Volt);
+    }
         break;
     case SerialPort::Cmd_WarningMsg:
     {
@@ -384,6 +401,9 @@ void SSDB_Client::getSPMsg(const SerialPort::CtrlCmd &cmd)
         hset(Query_KEY,Robot_Msg);
     }
         break;
+    case SerialPort::Cmd_Charge:
+        hset(Battery_Volt, "6");//TODO 上传充电信息
+        break;
     default:
         break;
     }
@@ -391,7 +411,17 @@ void SSDB_Client::getSPMsg(const SerialPort::CtrlCmd &cmd)
 
 void SSDB_Client::getNetworkQuality(int quality)
 {
-    hset("NetworkDelay",QString::number(quality).toStdString());
+    static const char* msg_list[4]={"无法连接","弱","中","强"};
+    if(quality < 0)
+    {
+        quality = 0;
+    }
+    else
+    {
+        quality = quality/35+1;
+    }
+
+    hset("NetworkDelay", textCodec->fromUnicode(msg_list[quality]).toStdString());
 }
 
 bool SSDB_Client::isNewDirCmd(SSDB_DIR cmd)

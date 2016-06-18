@@ -27,16 +27,16 @@ void EmotionPlayer::searchEmotion()
     QStringList filters;
     filters<<"*.mkv"<<"*.mp4"<<"*.flv"<<"*.rm"<<"*.rmvb";
     QStringList filelist = dir.entryList(filters);
-    emotions.clear();
     emotionList.clear();
+    EmotionList.clear();
     int index = 0;
     foreach (QString file, filelist)
     {
-        QString filename = QFileInfo(file).completeBaseName().toLower();
+        QString filename = QFileInfo(file).completeBaseName();
         emotionList.insert(index++, file.prepend(EmotionDir));
-        emotions.append(filename);
+        EmotionList.append(filename);
     }
-    qDebug()<<"emotionlist:"<<emotionList;
+    qDebug()<<"emotionlist:"<<EmotionList;
 }
 
 void EmotionPlayer::stop(bool repaint)
@@ -46,7 +46,7 @@ void EmotionPlayer::stop(bool repaint)
 
 void EmotionPlayer::changeEmotion(const QString &emotionName)
 {
-    int index = emotions.indexOf(emotionName);
+    int index = EmotionList.indexOf(emotionName);
     changeEmotion(index);
 }
 
@@ -68,8 +68,8 @@ void EmotionPlayer::getCtrlMsg(const SSDB_CtrlCmd &cmd)
     switch (cmd.type)
     {
     case SSDB_CTRL_Emotion:
-        if(cmd.emotinIndex >= 0)
-            changeEmotion(cmd.emotinIndex);
+        if(cmd.emotionIndex >= 0)
+            changeEmotion(cmd.emotionIndex);
         else
             changeEmotion(cmd.msg);
         break;

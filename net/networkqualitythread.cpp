@@ -5,6 +5,7 @@ NetworkQualityThread::NetworkQualityThread(QObject *parent) : QThread(parent)
 {
     stop = true;
     m_timer = new QElapsedTimer;
+    process = NULL;
 }
 
 NetworkQualityThread::~NetworkQualityThread()

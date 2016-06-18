@@ -18,7 +18,7 @@ int main(int argc, char *argv[])
         parser.addVersionOption();
         parser.addHelpOption();
         QString info = QString("\r%1 %2\ncompiled at:\t%3 %4\npowered by:\t%5")
-                .arg(a.applicationName(), VERSION, __DATE__, __TIME__, "WYL");
+                .arg(a.applicationName(), VERSION_STR, __DATE__, __TIME__, "WYL");
         a.setApplicationVersion(VERSION+info);
         parser.setApplicationDescription(info);
         parser.process(a);
@@ -27,7 +27,7 @@ int main(int argc, char *argv[])
             NetworkQualityThread c;
             if(argc > 2)
             {
-                qDebug()<<c.getNetworkQuality(argv[2]);
+                qDebug()<<c.getNetworkQuality(parser.value(o1));
             }
             else
             {
@@ -44,7 +44,8 @@ int main(int argc, char *argv[])
 
     qInstallMessageHandler(customMessageHandler);
 
-    qDebug()<<"\n\nstart :\t"<<a.arguments()<<"\n";
+    qDebug()<<endl<<a.applicationName().toLocal8Bit().data()<<VERSION_STR<<__DATE__<<__TIME__
+           <<"\nstart :\t"<<a.arguments()<<"\n";
 
     QFont f("WenQuanYi Micro Hei");
 #ifdef HD_SCREEN
@@ -66,7 +67,7 @@ void checkLogfileSize(int maxSize)
     int size = file.size();
     if(size > maxSize)
     {
-        QString newFilename = QDateTime::currentDateTime().toString("log-yyyyMMddHHmmss.'txt'");
+        QString newFilename = QDateTime::currentDateTime().toString("log-yyyyMMddHHmmss'.txt'");
         qDebug()<<newFilename;
         file.rename(newFilename);
     }

@@ -87,6 +87,11 @@ int IPInfoTable::getNetworkQuality(const QString &pattern)
 {
     static const QString NetworkCMD = loadHistory("SSDB_server").prepend("ping -q -c 1 ");
     static QProcess process;
+    if(process.state() != QProcess::NotRunning)
+    {
+        process.terminate();
+        process.waitForFinished(5000);
+    }
     process.start(NetworkCMD);
     if(process.waitForFinished(8000))
     {
@@ -111,7 +116,7 @@ int IPInfoTable::getNetworkQuality(const QString &pattern)
                 return -2;
 //            qDebug()<<loss<<quality;
             quality = 5000/(quality+50)*(1 - loss);
-            qDebug()<<quality;
+            qDebug()<<STRING(quality )<<quality;
             return (int)quality;
         }
     }

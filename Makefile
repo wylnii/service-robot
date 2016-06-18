@@ -5082,7 +5082,6 @@ mainwindow.o: mainwindow.cpp ui_mainwindow.h \
 		/qt-5.5.0-install/include/QtWidgets/qtoolbutton.h \
 		/qt-5.5.0-install/include/QtWidgets/QVBoxLayout \
 		/qt-5.5.0-install/include/QtWidgets/QWidget \
-		ui_mainwindow800*480.h \
 		/qt-5.5.0-install/include/QtWidgets/QInputDialog \
 		/qt-5.5.0-install/include/QtWidgets/qinputdialog.h \
 		/qt-5.5.0-install/include/QtWidgets/qdialog.h \
@@ -5200,8 +5199,14 @@ keyboard.o: keyboard/keyboard.cpp keyboard/keyboard.h \
 		/qt-5.5.0-install/include/QtCore/qsignalmapper.h \
 		/qt-5.5.0-install/include/QtGui/QMouseEvent \
 		/qt-5.5.0-install/include/QtCore/QDebug \
-		ui_keyboard.h \
+		global.h \
+		/qt-5.5.0-install/include/QtCore/QString \
 		/qt-5.5.0-install/include/QtCore/QVariant \
+		/qt-5.5.0-install/include/QtCore/QSettings \
+		/qt-5.5.0-install/include/QtCore/qsettings.h \
+		/qt-5.5.0-install/include/QtCore/QTextCodec \
+		/qt-5.5.0-install/include/QtCore/qtextcodec.h \
+		ui_keyboard.h \
 		/qt-5.5.0-install/include/QtWidgets/QAction \
 		/qt-5.5.0-install/include/QtWidgets/qaction.h \
 		/qt-5.5.0-install/include/QtGui/qicon.h \
@@ -5253,14 +5258,7 @@ keyboard.o: keyboard/keyboard.cpp keyboard/keyboard.h \
 		/qt-5.5.0-install/include/QtWidgets/QToolButton \
 		/qt-5.5.0-install/include/QtWidgets/qtoolbutton.h \
 		/qt-5.5.0-install/include/QtWidgets/qabstractbutton.h \
-		/qt-5.5.0-install/include/QtWidgets/QVBoxLayout \
-		ui_keyboard800*480.h \
-		global.h \
-		/qt-5.5.0-install/include/QtCore/QString \
-		/qt-5.5.0-install/include/QtCore/QSettings \
-		/qt-5.5.0-install/include/QtCore/qsettings.h \
-		/qt-5.5.0-install/include/QtCore/QTextCodec \
-		/qt-5.5.0-install/include/QtCore/qtextcodec.h
+		/qt-5.5.0-install/include/QtWidgets/QVBoxLayout
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o keyboard.o keyboard/keyboard.cpp
 
 usb_wifi.o: net/usb_wifi.cpp net/usb_wifi.h \

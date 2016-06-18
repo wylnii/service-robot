@@ -8,20 +8,32 @@
 
 #define RECORD_LOG
 #define PRINT_SCREEN
-
-#ifndef UNUSED
-#define UNUSED(x) (void)x
-#endif
+#define DEBUG
 
 #define STRING(str) #str
+#define STRCAT(str1,str2) (str1)##(str2)
 
 #if QT_VERSION > 0x050500
 #define _TEST
 #endif
 
-#define VERSION "2.0.1"
+//定义HD_SCREEN 高清屏
+#define HD_SCREEN
 
-#define DEBUG
+#ifdef HD_SCREEN
+const int SCREEN_WIDTH = 1280;
+const int SCREEN_HEIGHT = 800;
+#else
+const int SCREEN_WIDTH = 800;
+const int SCREEN_HEIGHT = 480;
+#endif
+
+#define VERSION  "2.0.2"
+#ifdef HD_SCREEN
+#define VERSION_STR VERSION " for HD"
+#else
+#define VERSION_STR VERSION " for SD"
+#endif
 
 #ifndef Logout
 #define Logout qDebug()<<this
@@ -33,17 +45,9 @@
 
 extern QString RobotName;
 extern QTextCodec *textCodec;
-extern QStringList emotions;   //for SSDB
+extern QStringList EmotionList;   //for SSDB
+extern QStringList VideoPlaylist;   //for SSDB
 
-//定义HD_SCREEN 高清屏
-#define HD_SCREEN
-#ifdef HD_SCREEN
-const int SCREEN_WIDTH = 1280;
-const int SCREEN_HEIGHT = 800;
-#else
-const int SCREEN_WIDTH = 800;
-const int SCREEN_HEIGHT = 480;
-#endif
 
 const int WINDOW_WIDTH = SCREEN_WIDTH;
 const int WINDOW_HEIGHT = SCREEN_HEIGHT;
@@ -71,7 +75,7 @@ struct SSDB_CtrlCmd{
     SSDB_PARAM param;
     SSDB_Video_Ctrl videoCtrl = Video_Err;
     QString msg;
-    int emotinIndex = -1;
+    int emotionIndex = -1;
 };
 //Q_DECLARE_METATYPE(SSDB_CtrlCmd)
 

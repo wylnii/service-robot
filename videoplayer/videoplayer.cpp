@@ -49,6 +49,7 @@ VideoPlayer::VideoPlayer(QObject *parent, QWidget *window):QThread(parent)
         filelist<<file.prepend(dir.absolutePath().append('/'));
     }
     setPlaylist(filelist);
+    VideoPlaylist = filelist;
     type = 0;
 }
 

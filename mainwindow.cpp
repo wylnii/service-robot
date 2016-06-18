@@ -86,7 +86,7 @@ MainWindow::MainWindow(QWidget *parent) :
 
     videoPlayer = new VideoPlayer(NULL, this);
     connect(videoPlayer, &VideoPlayer::changeWindows, this, &MainWindow::changeWindows);
-    setStatusBarText((videoPlayer->getPlaylist().join(" & ").prepend("playList: ")),1);
+    setStatusBarText((videoPlayer->getPlaylist().join(", ").prepend("playList: ")),1);
 
     emotionPlayer = new EmotionPlayer(NULL, videoPlayer);//TODO
 
@@ -556,49 +556,6 @@ void MainWindow::on_tabWidget_tabBarClicked(int index)
 void MainWindow::getCtrlMsg(const SSDB_CtrlCmd &cmd)
 {
     qDebug()<<"MainWidow get:"<<cmd.msg<<"type:"<<cmd.type<<"dir:"<<cmd.dirCtrl<<"video:"<<cmd.videoCtrl;
-//    if(cmd.type == SSDB_CTRL_VideoCtrl)
-//    {
-//        switch (cmd.videoCtrl)
-//        {
-//        case Video_Play:
-//            emotionPlayer->hide();
-//            break;
-//        case Video_Pause:
-//            if(videoPlayer->IsOpened())
-//                emotionPlayer->show();
-//            break;
-//        case Video_ContinuePlay:
-//            if(videoPlayer->IsOpened())
-//                emotionPlayer->hide();
-//            break;
-//        case Video_Stop:
-//            emotionPlayer->show();
-//            break;
-//        case Video_PlayNext:
-//            emotionPlayer->hide();
-//            break;
-//        case Video_PlayLast:
-//            emotionPlayer->hide();
-//            break;
-//        case Video_SetPlayList:
-//            break;
-//        case Video_PlayList:
-//            break;
-//        case Video_Info:
-//            break;
-//        case Video_SetCyclePlay:
-//            emotionPlayer->hide();
-//            break;
-//        case Video_SetSinglePlay:
-//            emotionPlayer->hide();
-//            break;
-//        case Video_SetSingleCyclePlay:
-//            emotionPlayer->hide();
-//            break;
-//        default:
-//            break;
-//        }
-//    }
 }
 
 void MainWindow::getKeyinput(uchar key, bool status)
