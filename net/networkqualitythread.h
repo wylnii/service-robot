@@ -14,9 +14,11 @@ public:
     int getNetworkQuality(const QString &pattern = "") ;
 
 private:
+    bool stopProcess();
     QProcess *process;
     QElapsedTimer *m_timer;
     bool stop;
+    QMutex mutex;
 
 signals:
     void updateNetworkQuality(int quality);

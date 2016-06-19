@@ -5,23 +5,29 @@ NetworkQualityThread::NetworkQualityThread(QObject *parent) : QThread(parent)
 {
     stop = true;
     m_timer = new QElapsedTimer;
-    process = NULL;
+    process = nullptr;
 }
 
 NetworkQualityThread::~NetworkQualityThread()
 {
     stop = true;
-    process->terminate();
+    stopProcess();
     wait(1000);
+    delete process;
     delete m_timer;
 }
 
 int NetworkQualityThread::getNetworkQuality(const QString &pattern)
 {
+    QMutexLocker locker(&mutex);
     static const QString NetworkCMD = loadHistory("SSDB_server").prepend("ping -q -c 4 ");
-    if(process == NULL)
+    if(process == nullptr)
     {
         process = new QProcess();
+    }
+    else if(! stopProcess())
+    {
+        return 0;
     }
     process->start(NetworkCMD);
     if(process->waitForFinished(8000))
@@ -45,16 +51,35 @@ int NetworkQualityThread::getNetworkQuality(const QString &pattern)
             float quality = reg.cap(2).toFloat();
             if(quality < 0)
                 return -2;
-            //            qDebug()<<loss<<quality;
+//            qDebug()<<loss<<quality;
             quality = 5000/(quality+50)*(1 - loss);
             return (int)quality;
         }
     }
     else
     {
-        process->terminate();
+        stopProcess();
     }
     return -1;
+}
+
+bool NetworkQualityThread::stopProcess()
+{
+    if(process->state() != QProcess::NotRunning)
+    {
+        process->terminate();
+        process->waitForFinished(1000);
+        if(process->state() != QProcess::NotRunning)
+        {
+            process->kill();
+            process->waitForFinished(1000);
+            if(process->state() != QProcess::NotRunning)
+            {
+                return false;
+            }
+        }
+    }
+    return true;
 }
 
 void NetworkQualityThread::run()

@@ -1,6 +1,7 @@
 #include "ipinfotable.h"
 
 static const QString NetWorkInterface("eth0");
+static const QString NetWorkInterface2("ens33");
 
 IPInfoTable::IPInfoTable(QWidget *parent, int width, int height) : QTextEdit(parent)
 {
@@ -44,13 +45,13 @@ QStringList IPInfoTable::getIpinfo()//主要用于获得设备的ip信息
     return localinfo;
 }
 
-bool IPInfoTable::eth0_exist()
+bool IPInfoTable::network_exist()
 {
     QList<QNetworkInterface> list = QNetworkInterface::allInterfaces();
     //获取所有网络接口的列表
     foreach(QNetworkInterface interface, list)
     { //遍历每一个网络接口
-        if(interface.name() == NetWorkInterface)
+        if(interface.name() == NetWorkInterface || interface.name() == NetWorkInterface2)
             return true;
     }
     return false;
@@ -62,7 +63,7 @@ bool IPInfoTable::hasValidIP()
     //获取所有网络接口的列表
     foreach(QNetworkInterface interface, list)
     { //遍历每一个网络接口
-        if(interface.name() == NetWorkInterface)
+        if(interface.name() == NetWorkInterface || interface.name() == NetWorkInterface2)
         {
             foreach(QNetworkAddressEntry entry,interface.addressEntries())
             {

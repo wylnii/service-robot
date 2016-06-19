@@ -13,7 +13,7 @@ public:
     ~IPInfoTable();
     QStringList getIpinfo();
     void showIPInfo();
-    static bool eth0_exist();
+    static bool network_exist();
     static bool hasValidIP();
     static bool checkNet();
 

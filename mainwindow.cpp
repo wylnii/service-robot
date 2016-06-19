@@ -299,7 +299,7 @@ void MainWindow::on_pushButton_scan_clicked()
 
 void MainWindow::autoConnect()
 {
-    if(! IPInfoTable::eth0_exist())
+    if(! IPInfoTable::network_exist())
     {
         emotionPlayer->stop();
         setStatText("<font color='red'>找不到网络设备!</font>");
@@ -544,13 +544,15 @@ void MainWindow::on_pushButton_openPort_clicked()
 
 void MainWindow::getSPMsg(const SerialPort::CtrlCmd &cmd)
 {
-    setStatText(QString("type: %1 data: %2").arg(cmd.type, 0, 16).arg(cmd.data, 8, 2, QChar('0')));
+    setStatText(QString("type: 0x%1 data: %2").arg(cmd.type, 0, 16).arg(cmd.data, 8, 2, QChar('0')));
 }
 
 void MainWindow::on_tabWidget_tabBarClicked(int index)
 {
     if(index == 2)
+    {
         ipInfoTable->showIPInfo();
+    }
 }
 
 void MainWindow::getCtrlMsg(const SSDB_CtrlCmd &cmd)

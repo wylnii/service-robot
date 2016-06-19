@@ -28,7 +28,7 @@ const int SCREEN_WIDTH = 800;
 const int SCREEN_HEIGHT = 480;
 #endif
 
-#define VERSION  "2.0.2"
+#define VERSION  "2.1.0"
 #ifdef HD_SCREEN
 #define VERSION_STR VERSION " for HD"
 #else

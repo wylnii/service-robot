@@ -33,6 +33,7 @@ class VideoPlayer : public QThread
 public:
     explicit VideoPlayer(QObject *parent = 0, QWidget *window = 0);
     ~VideoPlayer();
+    void searchVideos();
     void setSource(const char *name);
     void setSource(const QString &name);
     void setVolume(int vol);

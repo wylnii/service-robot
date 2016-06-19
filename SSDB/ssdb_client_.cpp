@@ -364,7 +364,7 @@ void SSDB_Client::getSPMsg(const SerialPort::CtrlCmd &cmd)
     case SerialPort::Cmd_QueryBatVol:
     {
         float volt = cmd.data*30/256.0;
-        int grade = (volt - 25.5)*5/3;//25-28: 0-5
+        int grade = (volt - 25.5)*5/3;//25.5-28.5V: 0-5
         if(grade < 0)
         {
             grade = 0;
@@ -374,7 +374,8 @@ void SSDB_Client::getSPMsg(const SerialPort::CtrlCmd &cmd)
             grade = 5;
         }
         hset(Battery_Volt,QString::number(grade).toStdString());
-        hset(Query_KEY,Battery_Volt);
+//        hset(Query_KEY,Battery_Volt);
+        qDebug("%s:%1.2fV", Battery_Volt, volt);
     }
         break;
     case SerialPort::Cmd_WarningMsg:

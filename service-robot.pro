@@ -49,7 +49,8 @@ SOURCES += main.cpp\
     net/login.cpp \
     screenemotion/label.cpp \
     videoplayer/emotionplayer.cpp \
-    net/networkqualitythread.cpp
+    net/networkqualitythread.cpp \
+    net/ftpdownloader.cpp
 
 HEADERS  += mainwindow.h \
     keyboard/keyboard.h \
@@ -70,7 +71,8 @@ HEADERS  += mainwindow.h \
     net/login.h \
     screenemotion/label.h \
     videoplayer/emotionplayer.h \
-    net/networkqualitythread.h
+    net/networkqualitythread.h \
+    net/ftpdownloader.h
 
 FORMS    += \
     mainwindow.ui \
