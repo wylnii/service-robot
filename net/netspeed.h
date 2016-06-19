@@ -2,7 +2,8 @@
 #define NETSPEED_H
 
 #include <QObject>
-#include <QtCore>
+#include <QTimer>
+class QFile;
 
 class NetSpeed : public QObject
 {

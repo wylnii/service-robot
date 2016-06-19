@@ -1,5 +1,9 @@
 #include "videoplayer.h"
 #include "video.h"
+#include <QElapsedTimer>
+#include <QDateTime>
+#include <QTimer>
+#include <QCoreApplication>
 //#include <QDesktopWidget>
 
 VideoPlayer::VideoPlayer(QObject *parent, QWidget *window):QThread(parent)

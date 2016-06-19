@@ -1,10 +1,10 @@
 #ifndef VIDEOPLAYER_H
 #define VIDEOPLAYER_H
 
-#include <QObject>
-#include <QtCore>
-#include <QtWidgets>
-#include <QTimer>
+#include <QThread>
+#include <QMutex>
+#include <QFileInfo>
+#include <QDir>
 #include "global.h"
 #include "audioplayer/audioplayer.h"
 #include "screenemotion/label.h"

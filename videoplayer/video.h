@@ -1,7 +1,7 @@
 #ifndef VIDEO
 #define VIDEO
-#include <QtCore>
-#include <QApplication>
+#include <QDebug>
+#include <QElapsedTimer>
 #include "global.h"
 
 extern "C"

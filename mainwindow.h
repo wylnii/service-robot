@@ -1,8 +1,8 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
-#include <QtWidgets>
-#include <QObject>
+#include <QMainWindow>
+#include <QTableWidget>
 #include "keyboard/keyboard.h"
 #include "net/ipinfotable.h"
 #include "net/usb_wifi.h"

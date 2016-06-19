@@ -1,4 +1,9 @@
 #include "ipinfotable.h"
+#include <QNetworkInterface>
+#include <QProcess>
+#include <QElapsedTimer>
+#include <QCoreApplication>
+#include "global.h"
 
 static const QString NetWorkInterface("eth0");
 static const QString NetWorkInterface2("ens33");

@@ -1,7 +1,6 @@
 #ifndef GLOBAL_H
 #define GLOBAL_H
 
-#include <QString>
 #include <QVariant>
 #include <QSettings>
 #include <QTextCodec>

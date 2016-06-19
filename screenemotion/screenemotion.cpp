@@ -1,4 +1,9 @@
 #include "screenemotion.h"
+#include <QFile>
+#include <QMovie>
+#include <QDebug>
+#include <QFileInfo>
+#include <QDir>
 
 const QString EmotionDir = "./emotion/";
 

@@ -1,12 +1,8 @@
 #ifndef SCREENFACE_H
 #define SCREENFACE_H
 
-#include <QtCore>
-#include <QtWidgets>
-#include <QLabel>
-#include <QMovie>
-#include "global.h"
 #include "label.h"
+#include "global.h"
 
 class ScreenEmotion : public Label
 {

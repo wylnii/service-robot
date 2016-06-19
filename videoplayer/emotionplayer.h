@@ -2,7 +2,7 @@
 #define EMOTIONPLAYER_H
 
 #include <QObject>
-#include <videoplayer/videoplayer.h>
+#include "videoplayer/videoplayer.h"
 
 class EmotionPlayer : public QObject
 {

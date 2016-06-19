@@ -4,10 +4,8 @@
 #include <QObject>
 #include <QNetworkAccessManager>
 #include <QNetworkReply>
-#include <QThread>
 #include <QElapsedTimer>
 #include <QEventLoop>
-#include <QDebug>
 
 class Login : public QObject
 {

@@ -1,4 +1,5 @@
 #include "emotionplayer.h"
+#include <QDebug>
 
 EmotionPlayer::EmotionPlayer(QObject *parent, VideoPlayer *videoPlayer) : QObject(parent)
 {

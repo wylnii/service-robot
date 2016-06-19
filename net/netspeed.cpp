@@ -1,4 +1,6 @@
 #include "netspeed.h"
+#include <QFile>
+#include <QThread>
 
 NetSpeed::NetSpeed(QObject *parent) : QObject(parent)
 {

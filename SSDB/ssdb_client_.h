@@ -1,11 +1,13 @@
 #ifndef SSDB_CLIENT__H
 #define SSDB_CLIENT__H
 
-#include <QObject>
-#include <QtCore>
+#include <QThread>
+#include <QMutex>
+#include <QVector>
 #include "SSDB/ssdb_client.h"
 #include "global.h"
 #include "serialport/serialport.h"
+class QElapsedTimer;
 
 class SSDB_Client : public QThread
 {

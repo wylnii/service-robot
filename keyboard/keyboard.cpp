@@ -1,5 +1,8 @@
 #include "keyboard.h"
-#include "global.h"
+#include <QSignalMapper>
+#include <QMouseEvent>
+#include <QDebug>
+
 #ifdef HD_SCREEN
 #include "ui_keyboard.h"
 #else

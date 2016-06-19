@@ -1,10 +1,9 @@
 #ifndef KEYBOARD_H
 #define KEYBOARD_H
 
+#include "global.h"
 #include <QWidget>
-#include <QSignalMapper>
-#include <QMouseEvent>
-#include <QDebug>
+class QSignalMapper;
 
 namespace Ui {
 class Keyboard;

@@ -2,8 +2,9 @@
 #define NETWORKQUALITY_H
 
 #include <QThread>
-#include <QtCore>
-#include "SSDB/ssdb_client_.h"
+class QProcess;
+class QElapsedTimer;
+class QMutex;
 
 class NetworkQualityThread : public QThread
 {
@@ -18,7 +19,7 @@ private:
     QProcess *process;
     QElapsedTimer *m_timer;
     bool stop;
-    QMutex mutex;
+    QMutex *mutex;
 
 signals:
     void updateNetworkQuality(int quality);

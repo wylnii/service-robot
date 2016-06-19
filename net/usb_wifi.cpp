@@ -1,6 +1,9 @@
 #include "usb_wifi.h"
-#include <QApplication>
 #include <QNetworkInterface>
+#include <QProcess>
+#include <QElapsedTimer>
+#include <QThread>
+#include <QCoreApplication>
 
 USB_WiFi::USB_WiFi(QObject  *parent) : QObject(parent)
 {
@@ -38,7 +41,7 @@ QList<QStringList> USB_WiFi::scan_wifi(int update)
         qDebug()<<"scan_wifi thread:"<<QThread::currentThread();
     if(update != 2)
         emit errormsg(QString("scan wifi ...").prepend(update ? "update ":""));
-    QApplication::processEvents();
+    qApp->processEvents();
     QStringList header;
     header<<"SSID"<<"Intensity"<<"state";
     QList<QStringList> result;

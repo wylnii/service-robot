@@ -1,4 +1,7 @@
 #include "serialport.h"
+#include <QElapsedTimer>
+#include <QtSerialPort>
+
 /*
 ARM板与下位机UART通信协议说明：
 共四个字节（FF XX XX BCC，16进制）：FF数据头+一个字节控制指令+一个字节数据+一个字节BCC校验（异或校验）。

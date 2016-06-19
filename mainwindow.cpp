@@ -1,10 +1,11 @@
 ﻿#include "mainwindow.h"
+#include <QDesktopWidget>
+
 #ifdef HD_SCREEN
 #include "ui_mainwindow.h"
 #else
 #include "ui_mainwindow800*480.h"
 #endif
-#include <QInputDialog>
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),

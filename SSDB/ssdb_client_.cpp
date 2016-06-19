@@ -1,6 +1,8 @@
 #include "ssdb_client_.h"
 #include <stdio.h>
 #include <stdlib.h>
+#include <QElapsedTimer>
+#include <QDebug>
 
 using namespace ssdb;
 using namespace std;

@@ -1,9 +1,9 @@
 #ifndef USB_WIFI_H
 #define USB_WIFI_H
 
-#include <QtCore>
-#include <QTableWidgetItem>
-#include <QTableWidget>
+#include <QObject>
+#include <QMutex>
+class QProcess;
 
 class USB_WiFi : public QObject
 {

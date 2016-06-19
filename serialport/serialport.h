@@ -1,10 +1,10 @@
 #ifndef SERIALPORT_H
 #define SERIALPORT_H
 
-#include <QtSerialPort>
-#include <QObject>
-#include <QElapsedTimer>
+#include <QSerialPort>
+#include <QTimer>
 #include "global.h"
+class QElapsedTimer;
 
 class SerialPort : public QSerialPort
 {

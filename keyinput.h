@@ -2,7 +2,7 @@
 #define KEYIN_H
 
 #include <QObject>
-#include <QSocketNotifier>
+class QSocketNotifier;
 
 const int num_of_btns = 8;
 

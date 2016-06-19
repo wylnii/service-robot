@@ -1,4 +1,8 @@
 #include "networkqualitythread.h"
+#include <QProcess>
+#include <QElapsedTimer>
+#include <QDebug>
+#include <QMutex>
 #include "global.h"
 
 NetworkQualityThread::NetworkQualityThread(QObject *parent) : QThread(parent)
@@ -6,6 +10,7 @@ NetworkQualityThread::NetworkQualityThread(QObject *parent) : QThread(parent)
     stop = true;
     m_timer = new QElapsedTimer;
     process = nullptr;
+    mutex = new QMutex();
 }
 
 NetworkQualityThread::~NetworkQualityThread()
@@ -14,12 +19,13 @@ NetworkQualityThread::~NetworkQualityThread()
     stopProcess();
     wait(1000);
     delete process;
+    delete mutex;
     delete m_timer;
 }
 
 int NetworkQualityThread::getNetworkQuality(const QString &pattern)
 {
-    QMutexLocker locker(&mutex);
+    QMutexLocker locker(mutex);
     static const QString NetworkCMD = loadHistory("SSDB_server").prepend("ping -q -c 4 ");
     if(process == nullptr)
     {

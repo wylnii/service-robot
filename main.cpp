@@ -1,7 +1,6 @@
 #include "mainwindow.h"
 #include <QApplication>
 #include "global.h"
-#include "net/networkqualitythread.h"
 
 void customMessageHandler(QtMsgType type, const QMessageLogContext &contex, const QString &msg);
 void checkLogfileSize(int maxSize = 1024*1024);

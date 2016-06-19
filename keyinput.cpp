@@ -1,5 +1,6 @@
 #include "keyinput.h"
-
+#include <QSocketNotifier>
+#include <QDebug>
 #include <unistd.h>
 #include <sys/ioctl.h>
 #include <sys/types.h>
@@ -8,7 +9,6 @@
 #include <sys/select.h>
 #include <sys/time.h>
 #include <errno.h>
-#include <QtCore>
 
 KeyInput::KeyInput(QObject *parent) : QObject(parent)
 {

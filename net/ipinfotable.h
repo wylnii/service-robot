@@ -2,8 +2,6 @@
 #define IPINFO_H
 
 #include <QTextEdit>
-#include <QtNetwork>
-#include <global.h>
 
 class IPInfoTable : public QTextEdit
 {

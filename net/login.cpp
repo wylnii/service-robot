@@ -1,4 +1,6 @@
 #include "login.h"
+#include <QThread>
+#include <QDebug>
 #include <QTimer>
 
 const QString LOGIN_URL = "http://60.171.108.115:8076/rb/"

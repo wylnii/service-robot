@@ -1,7 +1,7 @@
 #include "label.h"
-#include "global.h"
 #include <QMouseEvent>
 #include <QDebug>
+#include "global.h"
 
 Label::Label(QWidget *parent, int r):QLabel(parent),radius(r),
 p1(radius,radius), p2(radius,SCREEN_HEIGHT-radius), p3(SCREEN_WIDTH-radius,radius),p4(SCREEN_WIDTH-radius,SCREEN_HEIGHT-radius)

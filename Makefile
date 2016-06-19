@@ -463,14 +463,10 @@ qrc_res.cpp: res.qrc \
 compiler_moc_header_make_all: moc_mainwindow.cpp moc_keyboard.cpp moc_usb_wifi.cpp moc_videoplayer.cpp moc_serialport.cpp moc_ipinfotable.cpp moc_ssdb_client_.cpp moc_downloader.cpp moc_netspeed.cpp moc_keyinput.cpp moc_screenemotion.cpp moc_audioplayer.cpp moc_login.cpp moc_label.cpp moc_emotionplayer.cpp moc_networkqualitythread.cpp moc_ftpdownloader.cpp
 compiler_moc_header_clean:
 	-$(DEL_FILE) moc_mainwindow.cpp moc_keyboard.cpp moc_usb_wifi.cpp moc_videoplayer.cpp moc_serialport.cpp moc_ipinfotable.cpp moc_ssdb_client_.cpp moc_downloader.cpp moc_netspeed.cpp moc_keyinput.cpp moc_screenemotion.cpp moc_audioplayer.cpp moc_login.cpp moc_label.cpp moc_emotionplayer.cpp moc_networkqualitythread.cpp moc_ftpdownloader.cpp
-moc_mainwindow.cpp: /qt-5.5.0-install/include/QtWidgets/QtWidgets \
-		/qt-5.5.0-install/include/QtWidgets/QtWidgetsDepends \
-		/qt-5.5.0-install/include/QtCore/QtCore \
-		/qt-5.5.0-install/include/QtCore/QtCoreDepends \
-		/qt-5.5.0-install/include/QtCore/qabstractanimation.h \
-		/qt-5.5.0-install/include/QtCore/qobject.h \
-		/qt-5.5.0-install/include/QtCore/qobjectdefs.h \
-		/qt-5.5.0-install/include/QtCore/qnamespace.h \
+moc_mainwindow.cpp: /qt-5.5.0-install/include/QtWidgets/QMainWindow \
+		/qt-5.5.0-install/include/QtWidgets/qmainwindow.h \
+		/qt-5.5.0-install/include/QtWidgets/qwidget.h \
+		/qt-5.5.0-install/include/QtGui/qwindowdefs.h \
 		/qt-5.5.0-install/include/QtCore/qglobal.h \
 		/qt-5.5.0-install/include/QtCore/qconfig.h \
 		/qt-5.5.0-install/include/QtCore/qfeatures.h \
@@ -499,7 +495,11 @@ moc_mainwindow.cpp: /qt-5.5.0-install/include/QtWidgets/QtWidgets \
 		/qt-5.5.0-install/include/QtCore/qglobalstatic.h \
 		/qt-5.5.0-install/include/QtCore/qmutex.h \
 		/qt-5.5.0-install/include/QtCore/qnumeric.h \
+		/qt-5.5.0-install/include/QtCore/qobjectdefs.h \
+		/qt-5.5.0-install/include/QtCore/qnamespace.h \
 		/qt-5.5.0-install/include/QtCore/qobjectdefs_impl.h \
+		/qt-5.5.0-install/include/QtGui/qwindowdefs_win.h \
+		/qt-5.5.0-install/include/QtCore/qobject.h \
 		/qt-5.5.0-install/include/QtCore/qstring.h \
 		/qt-5.5.0-install/include/QtCore/qchar.h \
 		/qt-5.5.0-install/include/QtCore/qbytearray.h \
@@ -520,58 +520,146 @@ moc_mainwindow.cpp: /qt-5.5.0-install/include/QtWidgets/QtWidgets \
 		/qt-5.5.0-install/include/QtCore/qcontainerfwd.h \
 		/qt-5.5.0-install/include/QtCore/qisenum.h \
 		/qt-5.5.0-install/include/QtCore/qobject_impl.h \
+		/qt-5.5.0-install/include/QtCore/qmargins.h \
+		/qt-5.5.0-install/include/QtGui/qpaintdevice.h \
+		/qt-5.5.0-install/include/QtCore/qrect.h \
+		/qt-5.5.0-install/include/QtCore/qsize.h \
+		/qt-5.5.0-install/include/QtCore/qpoint.h \
+		/qt-5.5.0-install/include/QtGui/qpalette.h \
+		/qt-5.5.0-install/include/QtGui/qcolor.h \
+		/qt-5.5.0-install/include/QtGui/qrgb.h \
+		/qt-5.5.0-install/include/QtGui/qbrush.h \
+		/qt-5.5.0-install/include/QtCore/qpair.h \
+		/qt-5.5.0-install/include/QtCore/qvector.h \
+		/qt-5.5.0-install/include/QtGui/qmatrix.h \
+		/qt-5.5.0-install/include/QtGui/qpolygon.h \
+		/qt-5.5.0-install/include/QtGui/qregion.h \
+		/qt-5.5.0-install/include/QtCore/qdatastream.h \
+		/qt-5.5.0-install/include/QtCore/qiodevice.h \
+		/qt-5.5.0-install/include/QtCore/qline.h \
+		/qt-5.5.0-install/include/QtGui/qtransform.h \
+		/qt-5.5.0-install/include/QtGui/qpainterpath.h \
+		/qt-5.5.0-install/include/QtGui/qimage.h \
+		/qt-5.5.0-install/include/QtGui/qpixelformat.h \
+		/qt-5.5.0-install/include/QtGui/qpixmap.h \
+		/qt-5.5.0-install/include/QtCore/qsharedpointer.h \
+		/qt-5.5.0-install/include/QtCore/qshareddata.h \
+		/qt-5.5.0-install/include/QtCore/qhash.h \
+		/qt-5.5.0-install/include/QtCore/qsharedpointer_impl.h \
+		/qt-5.5.0-install/include/QtGui/qfont.h \
+		/qt-5.5.0-install/include/QtGui/qfontmetrics.h \
+		/qt-5.5.0-install/include/QtGui/qfontinfo.h \
+		/qt-5.5.0-install/include/QtWidgets/qsizepolicy.h \
+		/qt-5.5.0-install/include/QtGui/qcursor.h \
+		/qt-5.5.0-install/include/QtGui/qkeysequence.h \
+		/qt-5.5.0-install/include/QtGui/qevent.h \
+		/qt-5.5.0-install/include/QtCore/qvariant.h \
+		/qt-5.5.0-install/include/QtCore/qmap.h \
+		/qt-5.5.0-install/include/QtCore/qdebug.h \
+		/qt-5.5.0-install/include/QtCore/qtextstream.h \
+		/qt-5.5.0-install/include/QtCore/qlocale.h \
+		/qt-5.5.0-install/include/QtCore/qset.h \
+		/qt-5.5.0-install/include/QtCore/qcontiguouscache.h \
+		/qt-5.5.0-install/include/QtCore/qurl.h \
+		/qt-5.5.0-install/include/QtCore/qurlquery.h \
+		/qt-5.5.0-install/include/QtCore/qfile.h \
+		/qt-5.5.0-install/include/QtCore/qfiledevice.h \
+		/qt-5.5.0-install/include/QtGui/qvector2d.h \
+		/qt-5.5.0-install/include/QtGui/qtouchdevice.h \
+		/qt-5.5.0-install/include/QtWidgets/qtabwidget.h \
+		/qt-5.5.0-install/include/QtGui/qicon.h \
+		/qt-5.5.0-install/include/QtWidgets/QTableWidget \
+		/qt-5.5.0-install/include/QtWidgets/qtablewidget.h \
+		/qt-5.5.0-install/include/QtWidgets/qtableview.h \
+		/qt-5.5.0-install/include/QtWidgets/qabstractitemview.h \
+		/qt-5.5.0-install/include/QtWidgets/qabstractscrollarea.h \
+		/qt-5.5.0-install/include/QtWidgets/qframe.h \
+		/qt-5.5.0-install/include/QtCore/qabstractitemmodel.h \
+		/qt-5.5.0-install/include/QtCore/qitemselectionmodel.h \
+		/qt-5.5.0-install/include/QtWidgets/qabstractitemdelegate.h \
+		/qt-5.5.0-install/include/QtWidgets/qstyleoption.h \
+		/qt-5.5.0-install/include/QtWidgets/qabstractspinbox.h \
+		/qt-5.5.0-install/include/QtGui/qvalidator.h \
+		/qt-5.5.0-install/include/QtCore/qregularexpression.h \
+		/qt-5.5.0-install/include/QtWidgets/qslider.h \
+		/qt-5.5.0-install/include/QtWidgets/qabstractslider.h \
+		/qt-5.5.0-install/include/QtWidgets/qstyle.h \
+		/qt-5.5.0-install/include/QtWidgets/qtabbar.h \
+		/qt-5.5.0-install/include/QtWidgets/qrubberband.h \
+		keyboard/keyboard.h \
+		global.h \
+		/qt-5.5.0-install/include/QtCore/QVariant \
+		/qt-5.5.0-install/include/QtCore/QSettings \
+		/qt-5.5.0-install/include/QtCore/qsettings.h \
+		/qt-5.5.0-install/include/QtCore/QTextCodec \
+		/qt-5.5.0-install/include/QtCore/qtextcodec.h \
+		/qt-5.5.0-install/include/QtWidgets/QWidget \
+		net/ipinfotable.h \
+		/qt-5.5.0-install/include/QtWidgets/QTextEdit \
+		/qt-5.5.0-install/include/QtWidgets/qtextedit.h \
+		/qt-5.5.0-install/include/QtGui/qtextdocument.h \
+		/qt-5.5.0-install/include/QtGui/qtextoption.h \
+		/qt-5.5.0-install/include/QtGui/qtextcursor.h \
+		/qt-5.5.0-install/include/QtGui/qtextformat.h \
+		/qt-5.5.0-install/include/QtGui/qpen.h \
+		net/usb_wifi.h \
+		/qt-5.5.0-install/include/QtCore/QObject \
+		/qt-5.5.0-install/include/QtCore/QMutex \
+		serialport/serialport.h \
+		/qt-5.5.0-install/include/QtSerialPort/QSerialPort \
+		/qt-5.5.0-install/include/QtSerialPort/qserialport.h \
+		/qt-5.5.0-install/include/QtSerialPort/qserialportglobal.h \
+		/qt-5.5.0-install/include/QtCore/QTimer \
+		/qt-5.5.0-install/include/QtCore/qtimer.h \
+		/qt-5.5.0-install/include/QtCore/qbasictimer.h \
+		videoplayer/videoplayer.h \
+		/qt-5.5.0-install/include/QtCore/QThread \
+		/qt-5.5.0-install/include/QtCore/qthread.h \
+		/qt-5.5.0-install/include/QtCore/QFileInfo \
+		/qt-5.5.0-install/include/QtCore/qfileinfo.h \
+		/qt-5.5.0-install/include/QtCore/QDir \
+		/qt-5.5.0-install/include/QtCore/qdir.h \
+		audioplayer/audioplayer.h \
+		/qt-5.5.0-install/include/QtCore/QProcess \
+		/qt-5.5.0-install/include/QtCore/qprocess.h \
+		screenemotion/label.h \
+		/qt-5.5.0-install/include/QtWidgets/QLabel \
+		/qt-5.5.0-install/include/QtWidgets/qlabel.h \
+		SSDB/ssdb_client_.h \
+		/qt-5.5.0-install/include/QtCore/QVector \
+		SSDB/ssdb_client.h \
+		net/downloader.h \
+		/qt-5.5.0-install/include/QtNetwork/QtNetwork \
+		/qt-5.5.0-install/include/QtNetwork/QtNetworkDepends \
+		/qt-5.5.0-install/include/QtCore/QtCore \
+		/qt-5.5.0-install/include/QtCore/QtCoreDepends \
+		/qt-5.5.0-install/include/QtCore/qabstractanimation.h \
 		/qt-5.5.0-install/include/QtCore/qanimationgroup.h \
 		/qt-5.5.0-install/include/QtCore/qparallelanimationgroup.h \
 		/qt-5.5.0-install/include/QtCore/qpauseanimation.h \
 		/qt-5.5.0-install/include/QtCore/qpropertyanimation.h \
 		/qt-5.5.0-install/include/QtCore/qvariantanimation.h \
 		/qt-5.5.0-install/include/QtCore/qeasingcurve.h \
-		/qt-5.5.0-install/include/QtCore/qvector.h \
-		/qt-5.5.0-install/include/QtCore/qpoint.h \
-		/qt-5.5.0-install/include/QtCore/qvariant.h \
-		/qt-5.5.0-install/include/QtCore/qmap.h \
-		/qt-5.5.0-install/include/QtCore/qpair.h \
-		/qt-5.5.0-install/include/QtCore/qdebug.h \
-		/qt-5.5.0-install/include/QtCore/qhash.h \
-		/qt-5.5.0-install/include/QtCore/qtextstream.h \
-		/qt-5.5.0-install/include/QtCore/qiodevice.h \
-		/qt-5.5.0-install/include/QtCore/qlocale.h \
-		/qt-5.5.0-install/include/QtCore/qshareddata.h \
-		/qt-5.5.0-install/include/QtCore/qset.h \
-		/qt-5.5.0-install/include/QtCore/qcontiguouscache.h \
 		/qt-5.5.0-install/include/QtCore/qsequentialanimationgroup.h \
-		/qt-5.5.0-install/include/QtCore/qtextcodec.h \
 		/qt-5.5.0-install/include/QtCore/qendian.h \
 		/qt-5.5.0-install/include/QtCore/qlibraryinfo.h \
 		/qt-5.5.0-install/include/QtCore/qdatetime.h \
 		/qt-5.5.0-install/include/QtCore/qbuffer.h \
-		/qt-5.5.0-install/include/QtCore/qdatastream.h \
-		/qt-5.5.0-install/include/QtCore/qdir.h \
-		/qt-5.5.0-install/include/QtCore/qfileinfo.h \
-		/qt-5.5.0-install/include/QtCore/qfile.h \
-		/qt-5.5.0-install/include/QtCore/qfiledevice.h \
 		/qt-5.5.0-install/include/QtCore/qdiriterator.h \
 		/qt-5.5.0-install/include/QtCore/qfileselector.h \
-		/qt-5.5.0-install/include/QtCore/QObject \
 		/qt-5.5.0-install/include/QtCore/QStringList \
 		/qt-5.5.0-install/include/QtCore/qfilesystemwatcher.h \
 		/qt-5.5.0-install/include/QtCore/qlockfile.h \
 		/qt-5.5.0-install/include/QtCore/qloggingcategory.h \
-		/qt-5.5.0-install/include/QtCore/qprocess.h \
 		/qt-5.5.0-install/include/QtCore/qresource.h \
 		/qt-5.5.0-install/include/QtCore/qsavefile.h \
-		/qt-5.5.0-install/include/QtCore/qsettings.h \
 		/qt-5.5.0-install/include/QtCore/qstandardpaths.h \
 		/qt-5.5.0-install/include/QtCore/qstorageinfo.h \
 		/qt-5.5.0-install/include/QtCore/qtemporarydir.h \
 		/qt-5.5.0-install/include/QtCore/QScopedPointer \
 		/qt-5.5.0-install/include/QtCore/qtemporaryfile.h \
-		/qt-5.5.0-install/include/QtCore/qurl.h \
-		/qt-5.5.0-install/include/QtCore/qurlquery.h \
-		/qt-5.5.0-install/include/QtCore/qabstractitemmodel.h \
 		/qt-5.5.0-install/include/QtCore/qabstractproxymodel.h \
 		/qt-5.5.0-install/include/QtCore/qidentityproxymodel.h \
-		/qt-5.5.0-install/include/QtCore/qitemselectionmodel.h \
 		/qt-5.5.0-install/include/QtCore/qsortfilterproxymodel.h \
 		/qt-5.5.0-install/include/QtCore/qstringlistmodel.h \
 		/qt-5.5.0-install/include/QtCore/qjsonarray.h \
@@ -581,20 +669,16 @@ moc_mainwindow.cpp: /qt-5.5.0-install/include/QtWidgets/QtWidgets \
 		/qt-5.5.0-install/include/QtCore/qabstracteventdispatcher.h \
 		/qt-5.5.0-install/include/QtCore/qeventloop.h \
 		/qt-5.5.0-install/include/QtCore/qabstractnativeeventfilter.h \
-		/qt-5.5.0-install/include/QtCore/qbasictimer.h \
 		/qt-5.5.0-install/include/QtCore/qcoreapplication.h \
 		/qt-5.5.0-install/include/QtCore/qmath.h \
 		/qt-5.5.0-install/include/QtCore/qmetaobject.h \
 		/qt-5.5.0-install/include/QtCore/qmimedata.h \
 		/qt-5.5.0-install/include/QtCore/qobjectcleanuphandler.h \
 		/qt-5.5.0-install/include/QtCore/qpointer.h \
-		/qt-5.5.0-install/include/QtCore/qsharedpointer.h \
-		/qt-5.5.0-install/include/QtCore/qsharedpointer_impl.h \
 		/qt-5.5.0-install/include/QtCore/qsharedmemory.h \
 		/qt-5.5.0-install/include/QtCore/qsignalmapper.h \
 		/qt-5.5.0-install/include/QtCore/qsocketnotifier.h \
 		/qt-5.5.0-install/include/QtCore/qsystemsemaphore.h \
-		/qt-5.5.0-install/include/QtCore/qtimer.h \
 		/qt-5.5.0-install/include/QtCore/qtranslator.h \
 		/qt-5.5.0-install/include/QtCore/qwineventnotifier.h \
 		/qt-5.5.0-install/include/QtCore/qmimedatabase.h \
@@ -621,7 +705,6 @@ moc_mainwindow.cpp: /qt-5.5.0-install/include/QtWidgets/QtWidgets \
 		/qt-5.5.0-install/include/QtCore/qfuturewatcher.h \
 		/qt-5.5.0-install/include/QtCore/qreadwritelock.h \
 		/qt-5.5.0-install/include/QtCore/qsemaphore.h \
-		/qt-5.5.0-install/include/QtCore/qthread.h \
 		/qt-5.5.0-install/include/QtCore/qthreadpool.h \
 		/qt-5.5.0-install/include/QtCore/qthreadstorage.h \
 		/qt-5.5.0-install/include/QtCore/qwaitcondition.h \
@@ -635,14 +718,9 @@ moc_mainwindow.cpp: /qt-5.5.0-install/include/QtWidgets/QtWidgets \
 		/qt-5.5.0-install/include/QtCore/qcommandlineparser.h \
 		/qt-5.5.0-install/include/QtCore/qcryptographichash.h \
 		/qt-5.5.0-install/include/QtCore/qelapsedtimer.h \
-		/qt-5.5.0-install/include/QtCore/qline.h \
 		/qt-5.5.0-install/include/QtCore/qlinkedlist.h \
-		/qt-5.5.0-install/include/QtCore/qmargins.h \
 		/qt-5.5.0-install/include/QtCore/qmessageauthenticationcode.h \
 		/qt-5.5.0-install/include/QtCore/qqueue.h \
-		/qt-5.5.0-install/include/QtCore/qrect.h \
-		/qt-5.5.0-install/include/QtCore/qsize.h \
-		/qt-5.5.0-install/include/QtCore/qregularexpression.h \
 		/qt-5.5.0-install/include/QtCore/qscopedvaluerollback.h \
 		/qt-5.5.0-install/include/QtCore/qstack.h \
 		/qt-5.5.0-install/include/QtCore/qtextboundaryfinder.h \
@@ -650,279 +728,9 @@ moc_mainwindow.cpp: /qt-5.5.0-install/include/QtWidgets/QtWidgets \
 		/qt-5.5.0-install/include/QtCore/qtimezone.h \
 		/qt-5.5.0-install/include/QtCore/qxmlstream.h \
 		/qt-5.5.0-install/include/QtCore/qtcoreversion.h \
-		/qt-5.5.0-install/include/QtGui/QtGui \
-		/qt-5.5.0-install/include/QtGui/QtGuiDepends \
-		/qt-5.5.0-install/include/QtGui/qaccessible.h \
-		/qt-5.5.0-install/include/QtGui/qcolor.h \
-		/qt-5.5.0-install/include/QtGui/qrgb.h \
-		/qt-5.5.0-install/include/QtGui/qevent.h \
-		/qt-5.5.0-install/include/QtGui/qwindowdefs.h \
-		/qt-5.5.0-install/include/QtGui/qwindowdefs_win.h \
-		/qt-5.5.0-install/include/QtGui/qregion.h \
-		/qt-5.5.0-install/include/QtGui/qkeysequence.h \
-		/qt-5.5.0-install/include/QtGui/qvector2d.h \
-		/qt-5.5.0-install/include/QtGui/qtouchdevice.h \
-		/qt-5.5.0-install/include/QtGui/qaccessiblebridge.h \
-		/qt-5.5.0-install/include/QtGui/qaccessibleobject.h \
-		/qt-5.5.0-install/include/QtGui/qaccessibleplugin.h \
-		/qt-5.5.0-install/include/QtGui/qbitmap.h \
-		/qt-5.5.0-install/include/QtGui/qpixmap.h \
-		/qt-5.5.0-install/include/QtGui/qpaintdevice.h \
-		/qt-5.5.0-install/include/QtGui/qimage.h \
-		/qt-5.5.0-install/include/QtGui/qtransform.h \
-		/qt-5.5.0-install/include/QtGui/qmatrix.h \
-		/qt-5.5.0-install/include/QtGui/qpolygon.h \
-		/qt-5.5.0-install/include/QtGui/qpainterpath.h \
-		/qt-5.5.0-install/include/QtGui/qpixelformat.h \
-		/qt-5.5.0-install/include/QtGui/qicon.h \
-		/qt-5.5.0-install/include/QtGui/qiconengine.h \
-		/qt-5.5.0-install/include/QtGui/qiconengineplugin.h \
-		/qt-5.5.0-install/include/QtGui/qimageiohandler.h \
-		/qt-5.5.0-install/include/QtGui/qimagereader.h \
-		/qt-5.5.0-install/include/QtGui/qimagewriter.h \
-		/qt-5.5.0-install/include/QtGui/qmovie.h \
-		/qt-5.5.0-install/include/QtGui/qpicture.h \
-		/qt-5.5.0-install/include/QtGui/qpictureformatplugin.h \
-		/qt-5.5.0-install/include/QtGui/qpixmapcache.h \
-		/qt-5.5.0-install/include/QtGui/qstandarditemmodel.h \
-		/qt-5.5.0-install/include/QtGui/qbrush.h \
-		/qt-5.5.0-install/include/QtGui/qfont.h \
-		/qt-5.5.0-install/include/QtGui/qclipboard.h \
-		/qt-5.5.0-install/include/QtGui/qcursor.h \
-		/qt-5.5.0-install/include/QtGui/qdrag.h \
-		/qt-5.5.0-install/include/QtGui/qgenericplugin.h \
-		/qt-5.5.0-install/include/QtGui/qgenericpluginfactory.h \
-		/qt-5.5.0-install/include/QtGui/qguiapplication.h \
-		/qt-5.5.0-install/include/QtGui/qinputmethod.h \
-		/qt-5.5.0-install/include/QtGui/qoffscreensurface.h \
-		/qt-5.5.0-install/include/QtGui/qsurface.h \
-		/qt-5.5.0-install/include/QtGui/qsurfaceformat.h \
-		/qt-5.5.0-install/include/QtGui/qopenglcontext.h \
-		/qt-5.5.0-install/include/QtGui/QSurfaceFormat \
-		/qt-5.5.0-install/include/QtGui/qopengl.h \
-		/qt-5.5.0-install/include/QtCore/qt_windows.h \
-		/qt-5.5.0-install/include/QtGui/qopengles2ext.h \
-		/qt-5.5.0-install/include/QtGui/qopenglext.h \
-		/qt-5.5.0-install/include/QtGui/qopenglversionfunctions.h \
-		/qt-5.5.0-install/include/QtGui/qopenglwindow.h \
-		/qt-5.5.0-install/include/QtGui/QPaintDeviceWindow \
-		/qt-5.5.0-install/include/QtGui/qpaintdevicewindow.h \
-		/qt-5.5.0-install/include/QtGui/QWindow \
-		/qt-5.5.0-install/include/QtGui/qwindow.h \
-		/qt-5.5.0-install/include/QtCore/QEvent \
-		/qt-5.5.0-install/include/QtCore/QMargins \
-		/qt-5.5.0-install/include/QtCore/QRect \
-		/qt-5.5.0-install/include/QtGui/QPaintDevice \
-		/qt-5.5.0-install/include/QtGui/QOpenGLContext \
-		/qt-5.5.0-install/include/QtGui/QImage \
-		/qt-5.5.0-install/include/QtGui/qpalette.h \
-		/qt-5.5.0-install/include/QtGui/qrasterwindow.h \
-		/qt-5.5.0-install/include/QtGui/qscreen.h \
-		/qt-5.5.0-install/include/QtCore/QList \
-		/qt-5.5.0-install/include/QtCore/QSize \
-		/qt-5.5.0-install/include/QtCore/QSizeF \
-		/qt-5.5.0-install/include/QtGui/QTransform \
-		/qt-5.5.0-install/include/QtGui/qsessionmanager.h \
-		/qt-5.5.0-install/include/QtGui/qstylehints.h \
-		/qt-5.5.0-install/include/QtGui/qgenericmatrix.h \
-		/qt-5.5.0-install/include/QtGui/qmatrix4x4.h \
-		/qt-5.5.0-install/include/QtGui/qvector3d.h \
-		/qt-5.5.0-install/include/QtGui/qvector4d.h \
-		/qt-5.5.0-install/include/QtGui/qquaternion.h \
-		/qt-5.5.0-install/include/QtGui/qopenglbuffer.h \
-		/qt-5.5.0-install/include/QtGui/qopengldebug.h \
-		/qt-5.5.0-install/include/QtGui/qopenglframebufferobject.h \
-		/qt-5.5.0-install/include/QtGui/qopenglfunctions.h \
-		/qt-5.5.0-install/include/QtGui/qopenglpaintdevice.h \
-		/qt-5.5.0-install/include/QtGui/qopenglpixeltransferoptions.h \
-		/qt-5.5.0-install/include/QtCore/QSharedDataPointer \
-		/qt-5.5.0-install/include/QtGui/qopenglshaderprogram.h \
-		/qt-5.5.0-install/include/QtGui/qopengltexture.h \
-		/qt-5.5.0-install/include/QtGui/qopengltimerquery.h \
-		/qt-5.5.0-install/include/QtGui/qopenglvertexarrayobject.h \
-		/qt-5.5.0-install/include/QtGui/qbackingstore.h \
-		/qt-5.5.0-install/include/QtGui/qpagedpaintdevice.h \
-		/qt-5.5.0-install/include/QtGui/qpagelayout.h \
-		/qt-5.5.0-install/include/QtGui/qpagesize.h \
-		/qt-5.5.0-install/include/QtGui/qpaintengine.h \
-		/qt-5.5.0-install/include/QtGui/qpainter.h \
-		/qt-5.5.0-install/include/QtGui/qtextoption.h \
-		/qt-5.5.0-install/include/QtGui/qpen.h \
-		/qt-5.5.0-install/include/QtGui/qfontinfo.h \
-		/qt-5.5.0-install/include/QtGui/qfontmetrics.h \
-		/qt-5.5.0-install/include/QtGui/qpdfwriter.h \
-		/qt-5.5.0-install/include/QtGui/qabstracttextdocumentlayout.h \
-		/qt-5.5.0-install/include/QtGui/qtextlayout.h \
-		/qt-5.5.0-install/include/QtGui/qtextformat.h \
-		/qt-5.5.0-install/include/QtGui/qglyphrun.h \
-		/qt-5.5.0-install/include/QtGui/qrawfont.h \
-		/qt-5.5.0-install/include/QtGui/qfontdatabase.h \
-		/qt-5.5.0-install/include/QtGui/qtextcursor.h \
-		/qt-5.5.0-install/include/QtGui/qtextdocument.h \
-		/qt-5.5.0-install/include/QtGui/qstatictext.h \
-		/qt-5.5.0-install/include/QtGui/qsyntaxhighlighter.h \
-		/qt-5.5.0-install/include/QtGui/qtextobject.h \
-		/qt-5.5.0-install/include/QtGui/qtextdocumentfragment.h \
-		/qt-5.5.0-install/include/QtGui/qtextdocumentwriter.h \
-		/qt-5.5.0-install/include/QtGui/qtextlist.h \
-		/qt-5.5.0-install/include/QtGui/qtexttable.h \
-		/qt-5.5.0-install/include/QtGui/qdesktopservices.h \
-		/qt-5.5.0-install/include/QtGui/qvalidator.h \
-		/qt-5.5.0-install/include/QtGui/qtguiversion.h \
-		/qt-5.5.0-install/include/QtWidgets/complexwidgets.h \
-		/qt-5.5.0-install/include/QtWidgets/qaccessiblewidget.h \
-		/qt-5.5.0-install/include/QtWidgets/qabstractitemview.h \
-		/qt-5.5.0-install/include/QtWidgets/qabstractscrollarea.h \
-		/qt-5.5.0-install/include/QtWidgets/qframe.h \
-		/qt-5.5.0-install/include/QtWidgets/qwidget.h \
-		/qt-5.5.0-install/include/QtWidgets/qsizepolicy.h \
-		/qt-5.5.0-install/include/QtWidgets/qabstractitemdelegate.h \
-		/qt-5.5.0-install/include/QtWidgets/qstyleoption.h \
-		/qt-5.5.0-install/include/QtWidgets/qabstractspinbox.h \
-		/qt-5.5.0-install/include/QtWidgets/qslider.h \
-		/qt-5.5.0-install/include/QtWidgets/qabstractslider.h \
-		/qt-5.5.0-install/include/QtWidgets/qstyle.h \
-		/qt-5.5.0-install/include/QtWidgets/qtabbar.h \
-		/qt-5.5.0-install/include/QtWidgets/qtabwidget.h \
-		/qt-5.5.0-install/include/QtWidgets/qrubberband.h \
-		/qt-5.5.0-install/include/QtWidgets/itemviews.h \
-		/qt-5.5.0-install/include/QtWidgets/qheaderview.h \
-		/qt-5.5.0-install/include/QtWidgets/qaccessiblemenu.h \
-		/qt-5.5.0-install/include/QtWidgets/qaccessiblewidgets.h \
-		/qt-5.5.0-install/include/QtCore/QPointer \
-		/qt-5.5.0-install/include/QtCore/QPair \
-		/qt-5.5.0-install/include/QtWidgets/rangecontrols.h \
-		/qt-5.5.0-install/include/QtWidgets/simplewidgets.h \
-		/qt-5.5.0-install/include/QtWidgets/qcolordialog.h \
-		/qt-5.5.0-install/include/QtWidgets/qdialog.h \
-		/qt-5.5.0-install/include/QtWidgets/qerrormessage.h \
-		/qt-5.5.0-install/include/QtWidgets/qfiledialog.h \
-		/qt-5.5.0-install/include/QtWidgets/qfilesystemmodel.h \
-		/qt-5.5.0-install/include/QtWidgets/qfontdialog.h \
-		/qt-5.5.0-install/include/QtWidgets/qinputdialog.h \
-		/qt-5.5.0-install/include/QtWidgets/qlineedit.h \
-		/qt-5.5.0-install/include/QtWidgets/qmessagebox.h \
-		/qt-5.5.0-install/include/QtWidgets/qprogressdialog.h \
-		/qt-5.5.0-install/include/QtWidgets/qwizard.h \
-		/qt-5.5.0-install/include/QtWidgets/qgraphicseffect.h \
-		/qt-5.5.0-install/include/QtWidgets/qgraphicsanchorlayout.h \
-		/qt-5.5.0-install/include/QtWidgets/qgraphicsitem.h \
-		/qt-5.5.0-install/include/QtWidgets/qgraphicslayout.h \
-		/qt-5.5.0-install/include/QtWidgets/qgraphicslayoutitem.h \
-		/qt-5.5.0-install/include/QtWidgets/qgraphicsgridlayout.h \
-		/qt-5.5.0-install/include/QtWidgets/qgraphicsitemanimation.h \
-		/qt-5.5.0-install/include/QtWidgets/qgraphicslinearlayout.h \
-		/qt-5.5.0-install/include/QtWidgets/qgraphicsproxywidget.h \
-		/qt-5.5.0-install/include/QtWidgets/qgraphicswidget.h \
-		/qt-5.5.0-install/include/QtWidgets/qgraphicsscene.h \
-		/qt-5.5.0-install/include/QtWidgets/qgraphicssceneevent.h \
-		/qt-5.5.0-install/include/QtWidgets/qgraphicstransform.h \
-		/qt-5.5.0-install/include/QtGui/QVector3D \
-		/qt-5.5.0-install/include/QtGui/QMatrix4x4 \
-		/qt-5.5.0-install/include/QtWidgets/qgraphicsview.h \
-		/qt-5.5.0-install/include/QtWidgets/qscrollarea.h \
-		/qt-5.5.0-install/include/QtWidgets/qcolumnview.h \
-		/qt-5.5.0-install/include/QtWidgets/qdatawidgetmapper.h \
-		/qt-5.5.0-install/include/QtWidgets/qdirmodel.h \
-		/qt-5.5.0-install/include/QtWidgets/qfileiconprovider.h \
-		/qt-5.5.0-install/include/QtWidgets/qitemdelegate.h \
-		/qt-5.5.0-install/include/QtWidgets/qitemeditorfactory.h \
-		/qt-5.5.0-install/include/QtWidgets/qlistview.h \
-		/qt-5.5.0-install/include/QtWidgets/qlistwidget.h \
-		/qt-5.5.0-install/include/QtWidgets/qstyleditemdelegate.h \
-		/qt-5.5.0-install/include/QtWidgets/qtableview.h \
-		/qt-5.5.0-install/include/QtWidgets/qtablewidget.h \
-		/qt-5.5.0-install/include/QtWidgets/qtreeview.h \
-		/qt-5.5.0-install/include/QtWidgets/qtreewidget.h \
-		/qt-5.5.0-install/include/QtWidgets/qtreewidgetitemiterator.h \
-		/qt-5.5.0-install/include/QtWidgets/qaction.h \
-		/qt-5.5.0-install/include/QtWidgets/qactiongroup.h \
-		/qt-5.5.0-install/include/QtWidgets/qapplication.h \
-		/qt-5.5.0-install/include/QtWidgets/qdesktopwidget.h \
-		/qt-5.5.0-install/include/QtWidgets/qboxlayout.h \
-		/qt-5.5.0-install/include/QtWidgets/qlayout.h \
-		/qt-5.5.0-install/include/QtWidgets/qlayoutitem.h \
-		/qt-5.5.0-install/include/QtWidgets/qgridlayout.h \
-		/qt-5.5.0-install/include/QtWidgets/qformlayout.h \
-		/qt-5.5.0-install/include/QtWidgets/QLayout \
-		/qt-5.5.0-install/include/QtWidgets/qgesture.h \
-		/qt-5.5.0-install/include/QtWidgets/qgesturerecognizer.h \
-		/qt-5.5.0-install/include/QtWidgets/qopenglwidget.h \
-		/qt-5.5.0-install/include/QtWidgets/QWidget \
-		/qt-5.5.0-install/include/QtWidgets/qshortcut.h \
-		/qt-5.5.0-install/include/QtWidgets/qstackedlayout.h \
-		/qt-5.5.0-install/include/QtWidgets/qtooltip.h \
-		/qt-5.5.0-install/include/QtWidgets/qwhatsthis.h \
-		/qt-5.5.0-install/include/QtWidgets/qwidgetaction.h \
-		/qt-5.5.0-install/include/QtWidgets/qkeyeventtransition.h \
-		/qt-5.5.0-install/include/QtWidgets/qmouseeventtransition.h \
-		/qt-5.5.0-install/include/QtWidgets/qcommonstyle.h \
-		/qt-5.5.0-install/include/QtWidgets/qdrawutil.h \
-		/qt-5.5.0-install/include/QtWidgets/qproxystyle.h \
-		/qt-5.5.0-install/include/QtWidgets/QCommonStyle \
-		/qt-5.5.0-install/include/QtWidgets/qstylefactory.h \
-		/qt-5.5.0-install/include/QtWidgets/qstylepainter.h \
-		/qt-5.5.0-install/include/QtWidgets/qstyleplugin.h \
-		/qt-5.5.0-install/include/QtWidgets/qcolormap.h \
-		/qt-5.5.0-install/include/QtWidgets/qcompleter.h \
-		/qt-5.5.0-install/include/QtWidgets/qscroller.h \
-		/qt-5.5.0-install/include/QtCore/QPointF \
-		/qt-5.5.0-install/include/QtWidgets/QScrollerProperties \
-		/qt-5.5.0-install/include/QtWidgets/qscrollerproperties.h \
-		/qt-5.5.0-install/include/QtCore/QMetaType \
-		/qt-5.5.0-install/include/QtCore/QVariant \
-		/qt-5.5.0-install/include/QtWidgets/qsystemtrayicon.h \
-		/qt-5.5.0-install/include/QtWidgets/qundogroup.h \
-		/qt-5.5.0-install/include/QtWidgets/qundostack.h \
-		/qt-5.5.0-install/include/QtWidgets/qundoview.h \
-		/qt-5.5.0-install/include/QtWidgets/qabstractbutton.h \
-		/qt-5.5.0-install/include/QtWidgets/qbuttongroup.h \
-		/qt-5.5.0-install/include/QtWidgets/qcalendarwidget.h \
-		/qt-5.5.0-install/include/QtWidgets/qcheckbox.h \
-		/qt-5.5.0-install/include/QtWidgets/qcombobox.h \
-		/qt-5.5.0-install/include/QtWidgets/qcommandlinkbutton.h \
-		/qt-5.5.0-install/include/QtWidgets/qpushbutton.h \
-		/qt-5.5.0-install/include/QtWidgets/qdatetimeedit.h \
-		/qt-5.5.0-install/include/QtWidgets/qdial.h \
-		/qt-5.5.0-install/include/QtWidgets/qdialogbuttonbox.h \
-		/qt-5.5.0-install/include/QtWidgets/qdockwidget.h \
-		/qt-5.5.0-install/include/QtWidgets/qfocusframe.h \
-		/qt-5.5.0-install/include/QtWidgets/qfontcombobox.h \
-		/qt-5.5.0-install/include/QtWidgets/qgroupbox.h \
-		/qt-5.5.0-install/include/QtWidgets/qkeysequenceedit.h \
-		/qt-5.5.0-install/include/QtWidgets/qlabel.h \
-		/qt-5.5.0-install/include/QtWidgets/qlcdnumber.h \
-		/qt-5.5.0-install/include/QtWidgets/qmainwindow.h \
-		/qt-5.5.0-install/include/QtWidgets/qmdiarea.h \
-		/qt-5.5.0-install/include/QtWidgets/qmdisubwindow.h \
-		/qt-5.5.0-install/include/QtWidgets/qmenu.h \
-		/qt-5.5.0-install/include/QtWidgets/qmenubar.h \
-		/qt-5.5.0-install/include/QtWidgets/qplaintextedit.h \
-		/qt-5.5.0-install/include/QtWidgets/qtextedit.h \
-		/qt-5.5.0-install/include/QtWidgets/qprogressbar.h \
-		/qt-5.5.0-install/include/QtWidgets/qradiobutton.h \
-		/qt-5.5.0-install/include/QtWidgets/qscrollbar.h \
-		/qt-5.5.0-install/include/QtWidgets/qsizegrip.h \
-		/qt-5.5.0-install/include/QtWidgets/qspinbox.h \
-		/qt-5.5.0-install/include/QtWidgets/qsplashscreen.h \
-		/qt-5.5.0-install/include/QtWidgets/qsplitter.h \
-		/qt-5.5.0-install/include/QtWidgets/qstackedwidget.h \
-		/qt-5.5.0-install/include/QtWidgets/qstatusbar.h \
-		/qt-5.5.0-install/include/QtWidgets/qtextbrowser.h \
-		/qt-5.5.0-install/include/QtWidgets/qtoolbar.h \
-		/qt-5.5.0-install/include/QtWidgets/qtoolbox.h \
-		/qt-5.5.0-install/include/QtWidgets/qtoolbutton.h \
-		/qt-5.5.0-install/include/QtWidgets/qtwidgetsversion.h \
-		keyboard/keyboard.h \
-		/qt-5.5.0-install/include/QtCore/QSignalMapper \
-		/qt-5.5.0-install/include/QtGui/QMouseEvent \
-		/qt-5.5.0-install/include/QtCore/QDebug \
-		net/ipinfotable.h \
-		/qt-5.5.0-install/include/QtWidgets/QTextEdit \
-		/qt-5.5.0-install/include/QtNetwork/QtNetwork \
-		/qt-5.5.0-install/include/QtNetwork/QtNetworkDepends \
 		/qt-5.5.0-install/include/QtNetwork/qabstractnetworkcache.h \
 		/qt-5.5.0-install/include/QtNetwork/qnetworkrequest.h \
+		/qt-5.5.0-install/include/QtCore/QSharedDataPointer \
 		/qt-5.5.0-install/include/QtCore/QString \
 		/qt-5.5.0-install/include/QtCore/QUrl \
 		/qt-5.5.0-install/include/QtNetwork/qhttpmultipart.h \
@@ -942,7 +750,9 @@ moc_mainwindow.cpp: /qt-5.5.0-install/include/QtWidgets/QtWidgets \
 		/qt-5.5.0-install/include/QtNetwork/QSslPreSharedKeyAuthenticator \
 		/qt-5.5.0-install/include/QtNetwork/qsslpresharedkeyauthenticator.h \
 		/qt-5.5.0-install/include/QtCore/QtGlobal \
+		/qt-5.5.0-install/include/QtCore/QMetaType \
 		/qt-5.5.0-install/include/QtNetwork/qnetworkcookie.h \
+		/qt-5.5.0-install/include/QtCore/QList \
 		/qt-5.5.0-install/include/QtNetwork/qnetworkcookiejar.h \
 		/qt-5.5.0-install/include/QtNetwork/qnetworkdiskcache.h \
 		/qt-5.5.0-install/include/QtNetwork/qnetworkreply.h \
@@ -966,44 +776,21 @@ moc_mainwindow.cpp: /qt-5.5.0-install/include/QtWidgets/QtWidgets \
 		/qt-5.5.0-install/include/QtCore/QHash \
 		/qt-5.5.0-install/include/QtNetwork/qsslkey.h \
 		/qt-5.5.0-install/include/QtNetwork/qtnetworkversion.h \
-		global.h \
-		/qt-5.5.0-install/include/QtCore/QSettings \
-		/qt-5.5.0-install/include/QtCore/QTextCodec \
-		net/usb_wifi.h \
-		/qt-5.5.0-install/include/QtWidgets/QTableWidgetItem \
-		/qt-5.5.0-install/include/QtWidgets/QTableWidget \
-		serialport/serialport.h \
-		/qt-5.5.0-install/include/QtSerialPort/QtSerialPort \
-		/qt-5.5.0-install/include/QtSerialPort/QtSerialPortDepends \
-		/qt-5.5.0-install/include/QtSerialPort/qserialport.h \
-		/qt-5.5.0-install/include/QtSerialPort/qserialportglobal.h \
-		/qt-5.5.0-install/include/QtSerialPort/qserialportinfo.h \
-		/qt-5.5.0-install/include/QtSerialPort/qtserialportversion.h \
-		/qt-5.5.0-install/include/QtCore/QElapsedTimer \
-		videoplayer/videoplayer.h \
-		/qt-5.5.0-install/include/QtCore/QTimer \
-		audioplayer/audioplayer.h \
-		/qt-5.5.0-install/include/QtCore/QProcess \
-		screenemotion/label.h \
-		/qt-5.5.0-install/include/QtWidgets/QLabel \
-		SSDB/ssdb_client_.h \
-		SSDB/ssdb_client.h \
-		net/downloader.h \
 		videoplayer/emotionplayer.h \
 		net/netspeed.h \
 		keyinput.h \
-		/qt-5.5.0-install/include/QtCore/QSocketNotifier \
 		net/login.h \
 		/qt-5.5.0-install/include/QtNetwork/QNetworkReply \
-		/qt-5.5.0-install/include/QtCore/QThread \
+		/qt-5.5.0-install/include/QtCore/QElapsedTimer \
 		/qt-5.5.0-install/include/QtCore/QEventLoop \
 		net/networkqualitythread.h \
 		mainwindow.h
 	/qt-5.5.0-install/bin/moc $(DEFINES) -I/qt-5.5.0-install/mkspecs/linux-arm-gnueabi-g++ -I/home/wyl/Desktop/service-robot -I/usr/local/include -I/qt-5.5.0-install/include -I/qt-5.5.0-install/include/QtWidgets -I/qt-5.5.0-install/include/QtGui -I/qt-5.5.0-install/include/QtNetwork -I/qt-5.5.0-install/include/QtSerialPort -I/qt-5.5.0-install/include/QtCore -I/opt/FriendlyARM/toolschain/4.5.1/arm-none-linux-gnueabi/include/c++/4.5.1 -I/opt/FriendlyARM/toolschain/4.5.1/arm-none-linux-gnueabi/include/c++/4.5.1/arm-none-linux-gnueabi -I/opt/FriendlyARM/toolschain/4.5.1/arm-none-linux-gnueabi/include/c++/4.5.1/backward -I/opt/FriendlyARM/toolschain/4.5.1/lib/gcc/arm-none-linux-gnueabi/4.5.1/include -I/opt/FriendlyARM/toolschain/4.5.1/lib/gcc/arm-none-linux-gnueabi/4.5.1/include-fixed -I/opt/FriendlyARM/toolschain/4.5.1/arm-none-linux-gnueabi/include mainwindow.h -o moc_mainwindow.cpp
 
-moc_keyboard.cpp: /qt-5.5.0-install/include/QtWidgets/QWidget \
-		/qt-5.5.0-install/include/QtWidgets/qwidget.h \
-		/qt-5.5.0-install/include/QtGui/qwindowdefs.h \
+moc_keyboard.cpp: global.h \
+		/qt-5.5.0-install/include/QtCore/QVariant \
+		/qt-5.5.0-install/include/QtCore/qvariant.h \
+		/qt-5.5.0-install/include/QtCore/qatomic.h \
 		/qt-5.5.0-install/include/QtCore/qglobal.h \
 		/qt-5.5.0-install/include/QtCore/qconfig.h \
 		/qt-5.5.0-install/include/QtCore/qfeatures.h \
@@ -1015,7 +802,9 @@ moc_keyboard.cpp: /qt-5.5.0-install/include/QtWidgets/QWidget \
 		/qt-5.5.0-install/include/QtCore/qsysinfo.h \
 		/qt-5.5.0-install/include/QtCore/qlogging.h \
 		/qt-5.5.0-install/include/QtCore/qflags.h \
-		/qt-5.5.0-install/include/QtCore/qatomic.h \
+		/qt-5.5.0-install/include/QtCore/qglobalstatic.h \
+		/qt-5.5.0-install/include/QtCore/qmutex.h \
+		/qt-5.5.0-install/include/QtCore/qnumeric.h \
 		/qt-5.5.0-install/include/QtCore/qbasicatomic.h \
 		/qt-5.5.0-install/include/QtCore/qatomic_bootstrap.h \
 		/qt-5.5.0-install/include/QtCore/qgenericatomic.h \
@@ -1029,19 +818,12 @@ moc_keyboard.cpp: /qt-5.5.0-install/include/QtWidgets/QWidget \
 		/qt-5.5.0-install/include/QtCore/qatomic_mips.h \
 		/qt-5.5.0-install/include/QtCore/qatomic_x86.h \
 		/qt-5.5.0-install/include/QtCore/qatomic_unix.h \
-		/qt-5.5.0-install/include/QtCore/qglobalstatic.h \
-		/qt-5.5.0-install/include/QtCore/qmutex.h \
-		/qt-5.5.0-install/include/QtCore/qnumeric.h \
-		/qt-5.5.0-install/include/QtCore/qobjectdefs.h \
-		/qt-5.5.0-install/include/QtCore/qnamespace.h \
-		/qt-5.5.0-install/include/QtCore/qobjectdefs_impl.h \
-		/qt-5.5.0-install/include/QtGui/qwindowdefs_win.h \
-		/qt-5.5.0-install/include/QtCore/qobject.h \
-		/qt-5.5.0-install/include/QtCore/qstring.h \
-		/qt-5.5.0-install/include/QtCore/qchar.h \
 		/qt-5.5.0-install/include/QtCore/qbytearray.h \
 		/qt-5.5.0-install/include/QtCore/qrefcount.h \
+		/qt-5.5.0-install/include/QtCore/qnamespace.h \
 		/qt-5.5.0-install/include/QtCore/qarraydata.h \
+		/qt-5.5.0-install/include/QtCore/qstring.h \
+		/qt-5.5.0-install/include/QtCore/qchar.h \
 		/qt-5.5.0-install/include/QtCore/qstringbuilder.h \
 		/qt-5.5.0-install/include/QtCore/qlist.h \
 		/qt-5.5.0-install/include/QtCore/qalgorithms.h \
@@ -1050,29 +832,48 @@ moc_keyboard.cpp: /qt-5.5.0-install/include/QtWidgets/QWidget \
 		/qt-5.5.0-install/include/QtCore/qstringlist.h \
 		/qt-5.5.0-install/include/QtCore/qregexp.h \
 		/qt-5.5.0-install/include/QtCore/qstringmatcher.h \
-		/qt-5.5.0-install/include/QtCore/qcoreevent.h \
-		/qt-5.5.0-install/include/QtCore/qscopedpointer.h \
 		/qt-5.5.0-install/include/QtCore/qmetatype.h \
 		/qt-5.5.0-install/include/QtCore/qvarlengtharray.h \
 		/qt-5.5.0-install/include/QtCore/qcontainerfwd.h \
 		/qt-5.5.0-install/include/QtCore/qisenum.h \
+		/qt-5.5.0-install/include/QtCore/qobjectdefs.h \
+		/qt-5.5.0-install/include/QtCore/qobjectdefs_impl.h \
+		/qt-5.5.0-install/include/QtCore/qmap.h \
+		/qt-5.5.0-install/include/QtCore/qpair.h \
+		/qt-5.5.0-install/include/QtCore/qdebug.h \
+		/qt-5.5.0-install/include/QtCore/qhash.h \
+		/qt-5.5.0-install/include/QtCore/qtextstream.h \
+		/qt-5.5.0-install/include/QtCore/qiodevice.h \
+		/qt-5.5.0-install/include/QtCore/qobject.h \
+		/qt-5.5.0-install/include/QtCore/qcoreevent.h \
+		/qt-5.5.0-install/include/QtCore/qscopedpointer.h \
 		/qt-5.5.0-install/include/QtCore/qobject_impl.h \
+		/qt-5.5.0-install/include/QtCore/qlocale.h \
+		/qt-5.5.0-install/include/QtCore/qshareddata.h \
+		/qt-5.5.0-install/include/QtCore/qvector.h \
+		/qt-5.5.0-install/include/QtCore/qpoint.h \
+		/qt-5.5.0-install/include/QtCore/qset.h \
+		/qt-5.5.0-install/include/QtCore/qcontiguouscache.h \
+		/qt-5.5.0-install/include/QtCore/QSettings \
+		/qt-5.5.0-install/include/QtCore/qsettings.h \
+		/qt-5.5.0-install/include/QtCore/QTextCodec \
+		/qt-5.5.0-install/include/QtCore/qtextcodec.h \
+		/qt-5.5.0-install/include/QtWidgets/QWidget \
+		/qt-5.5.0-install/include/QtWidgets/qwidget.h \
+		/qt-5.5.0-install/include/QtGui/qwindowdefs.h \
+		/qt-5.5.0-install/include/QtGui/qwindowdefs_win.h \
 		/qt-5.5.0-install/include/QtCore/qmargins.h \
 		/qt-5.5.0-install/include/QtGui/qpaintdevice.h \
 		/qt-5.5.0-install/include/QtCore/qrect.h \
 		/qt-5.5.0-install/include/QtCore/qsize.h \
-		/qt-5.5.0-install/include/QtCore/qpoint.h \
 		/qt-5.5.0-install/include/QtGui/qpalette.h \
 		/qt-5.5.0-install/include/QtGui/qcolor.h \
 		/qt-5.5.0-install/include/QtGui/qrgb.h \
 		/qt-5.5.0-install/include/QtGui/qbrush.h \
-		/qt-5.5.0-install/include/QtCore/qpair.h \
-		/qt-5.5.0-install/include/QtCore/qvector.h \
 		/qt-5.5.0-install/include/QtGui/qmatrix.h \
 		/qt-5.5.0-install/include/QtGui/qpolygon.h \
 		/qt-5.5.0-install/include/QtGui/qregion.h \
 		/qt-5.5.0-install/include/QtCore/qdatastream.h \
-		/qt-5.5.0-install/include/QtCore/qiodevice.h \
 		/qt-5.5.0-install/include/QtCore/qline.h \
 		/qt-5.5.0-install/include/QtGui/qtransform.h \
 		/qt-5.5.0-install/include/QtGui/qpainterpath.h \
@@ -1080,8 +881,6 @@ moc_keyboard.cpp: /qt-5.5.0-install/include/QtWidgets/QWidget \
 		/qt-5.5.0-install/include/QtGui/qpixelformat.h \
 		/qt-5.5.0-install/include/QtGui/qpixmap.h \
 		/qt-5.5.0-install/include/QtCore/qsharedpointer.h \
-		/qt-5.5.0-install/include/QtCore/qshareddata.h \
-		/qt-5.5.0-install/include/QtCore/qhash.h \
 		/qt-5.5.0-install/include/QtCore/qsharedpointer_impl.h \
 		/qt-5.5.0-install/include/QtGui/qfont.h \
 		/qt-5.5.0-install/include/QtGui/qfontmetrics.h \
@@ -1090,29 +889,16 @@ moc_keyboard.cpp: /qt-5.5.0-install/include/QtWidgets/QWidget \
 		/qt-5.5.0-install/include/QtGui/qcursor.h \
 		/qt-5.5.0-install/include/QtGui/qkeysequence.h \
 		/qt-5.5.0-install/include/QtGui/qevent.h \
-		/qt-5.5.0-install/include/QtCore/qvariant.h \
-		/qt-5.5.0-install/include/QtCore/qmap.h \
-		/qt-5.5.0-install/include/QtCore/qdebug.h \
-		/qt-5.5.0-install/include/QtCore/qtextstream.h \
-		/qt-5.5.0-install/include/QtCore/qlocale.h \
-		/qt-5.5.0-install/include/QtCore/qset.h \
-		/qt-5.5.0-install/include/QtCore/qcontiguouscache.h \
 		/qt-5.5.0-install/include/QtCore/qurl.h \
 		/qt-5.5.0-install/include/QtCore/qurlquery.h \
 		/qt-5.5.0-install/include/QtCore/qfile.h \
 		/qt-5.5.0-install/include/QtCore/qfiledevice.h \
 		/qt-5.5.0-install/include/QtGui/qvector2d.h \
 		/qt-5.5.0-install/include/QtGui/qtouchdevice.h \
-		/qt-5.5.0-install/include/QtCore/QSignalMapper \
-		/qt-5.5.0-install/include/QtCore/qsignalmapper.h \
-		/qt-5.5.0-install/include/QtGui/QMouseEvent \
-		/qt-5.5.0-install/include/QtCore/QDebug \
 		keyboard/keyboard.h
 	/qt-5.5.0-install/bin/moc $(DEFINES) -I/qt-5.5.0-install/mkspecs/linux-arm-gnueabi-g++ -I/home/wyl/Desktop/service-robot -I/usr/local/include -I/qt-5.5.0-install/include -I/qt-5.5.0-install/include/QtWidgets -I/qt-5.5.0-install/include/QtGui -I/qt-5.5.0-install/include/QtNetwork -I/qt-5.5.0-install/include/QtSerialPort -I/qt-5.5.0-install/include/QtCore -I/opt/FriendlyARM/toolschain/4.5.1/arm-none-linux-gnueabi/include/c++/4.5.1 -I/opt/FriendlyARM/toolschain/4.5.1/arm-none-linux-gnueabi/include/c++/4.5.1/arm-none-linux-gnueabi -I/opt/FriendlyARM/toolschain/4.5.1/arm-none-linux-gnueabi/include/c++/4.5.1/backward -I/opt/FriendlyARM/toolschain/4.5.1/lib/gcc/arm-none-linux-gnueabi/4.5.1/include -I/opt/FriendlyARM/toolschain/4.5.1/lib/gcc/arm-none-linux-gnueabi/4.5.1/include-fixed -I/opt/FriendlyARM/toolschain/4.5.1/arm-none-linux-gnueabi/include keyboard/keyboard.h -o moc_keyboard.cpp
 
-moc_usb_wifi.cpp: /qt-5.5.0-install/include/QtCore/QtCore \
-		/qt-5.5.0-install/include/QtCore/QtCoreDepends \
-		/qt-5.5.0-install/include/QtCore/qabstractanimation.h \
+moc_usb_wifi.cpp: /qt-5.5.0-install/include/QtCore/QObject \
 		/qt-5.5.0-install/include/QtCore/qobject.h \
 		/qt-5.5.0-install/include/QtCore/qobjectdefs.h \
 		/qt-5.5.0-install/include/QtCore/qnamespace.h \
@@ -1165,183 +951,12 @@ moc_usb_wifi.cpp: /qt-5.5.0-install/include/QtCore/QtCore \
 		/qt-5.5.0-install/include/QtCore/qcontainerfwd.h \
 		/qt-5.5.0-install/include/QtCore/qisenum.h \
 		/qt-5.5.0-install/include/QtCore/qobject_impl.h \
-		/qt-5.5.0-install/include/QtCore/qanimationgroup.h \
-		/qt-5.5.0-install/include/QtCore/qparallelanimationgroup.h \
-		/qt-5.5.0-install/include/QtCore/qpauseanimation.h \
-		/qt-5.5.0-install/include/QtCore/qpropertyanimation.h \
-		/qt-5.5.0-install/include/QtCore/qvariantanimation.h \
-		/qt-5.5.0-install/include/QtCore/qeasingcurve.h \
-		/qt-5.5.0-install/include/QtCore/qvector.h \
-		/qt-5.5.0-install/include/QtCore/qpoint.h \
-		/qt-5.5.0-install/include/QtCore/qvariant.h \
-		/qt-5.5.0-install/include/QtCore/qmap.h \
-		/qt-5.5.0-install/include/QtCore/qpair.h \
-		/qt-5.5.0-install/include/QtCore/qdebug.h \
-		/qt-5.5.0-install/include/QtCore/qhash.h \
-		/qt-5.5.0-install/include/QtCore/qtextstream.h \
-		/qt-5.5.0-install/include/QtCore/qiodevice.h \
-		/qt-5.5.0-install/include/QtCore/qlocale.h \
-		/qt-5.5.0-install/include/QtCore/qshareddata.h \
-		/qt-5.5.0-install/include/QtCore/qset.h \
-		/qt-5.5.0-install/include/QtCore/qcontiguouscache.h \
-		/qt-5.5.0-install/include/QtCore/qsequentialanimationgroup.h \
-		/qt-5.5.0-install/include/QtCore/qtextcodec.h \
-		/qt-5.5.0-install/include/QtCore/qendian.h \
-		/qt-5.5.0-install/include/QtCore/qlibraryinfo.h \
-		/qt-5.5.0-install/include/QtCore/qdatetime.h \
-		/qt-5.5.0-install/include/QtCore/qbuffer.h \
-		/qt-5.5.0-install/include/QtCore/qdatastream.h \
-		/qt-5.5.0-install/include/QtCore/qdir.h \
-		/qt-5.5.0-install/include/QtCore/qfileinfo.h \
-		/qt-5.5.0-install/include/QtCore/qfile.h \
-		/qt-5.5.0-install/include/QtCore/qfiledevice.h \
-		/qt-5.5.0-install/include/QtCore/qdiriterator.h \
-		/qt-5.5.0-install/include/QtCore/qfileselector.h \
-		/qt-5.5.0-install/include/QtCore/QObject \
-		/qt-5.5.0-install/include/QtCore/QStringList \
-		/qt-5.5.0-install/include/QtCore/qfilesystemwatcher.h \
-		/qt-5.5.0-install/include/QtCore/qlockfile.h \
-		/qt-5.5.0-install/include/QtCore/qloggingcategory.h \
-		/qt-5.5.0-install/include/QtCore/qprocess.h \
-		/qt-5.5.0-install/include/QtCore/qresource.h \
-		/qt-5.5.0-install/include/QtCore/qsavefile.h \
-		/qt-5.5.0-install/include/QtCore/qsettings.h \
-		/qt-5.5.0-install/include/QtCore/qstandardpaths.h \
-		/qt-5.5.0-install/include/QtCore/qstorageinfo.h \
-		/qt-5.5.0-install/include/QtCore/qtemporarydir.h \
-		/qt-5.5.0-install/include/QtCore/QScopedPointer \
-		/qt-5.5.0-install/include/QtCore/qtemporaryfile.h \
-		/qt-5.5.0-install/include/QtCore/qurl.h \
-		/qt-5.5.0-install/include/QtCore/qurlquery.h \
-		/qt-5.5.0-install/include/QtCore/qabstractitemmodel.h \
-		/qt-5.5.0-install/include/QtCore/qabstractproxymodel.h \
-		/qt-5.5.0-install/include/QtCore/qidentityproxymodel.h \
-		/qt-5.5.0-install/include/QtCore/qitemselectionmodel.h \
-		/qt-5.5.0-install/include/QtCore/qsortfilterproxymodel.h \
-		/qt-5.5.0-install/include/QtCore/qstringlistmodel.h \
-		/qt-5.5.0-install/include/QtCore/qjsonarray.h \
-		/qt-5.5.0-install/include/QtCore/qjsonvalue.h \
-		/qt-5.5.0-install/include/QtCore/qjsondocument.h \
-		/qt-5.5.0-install/include/QtCore/qjsonobject.h \
-		/qt-5.5.0-install/include/QtCore/qabstracteventdispatcher.h \
-		/qt-5.5.0-install/include/QtCore/qeventloop.h \
-		/qt-5.5.0-install/include/QtCore/qabstractnativeeventfilter.h \
-		/qt-5.5.0-install/include/QtCore/qbasictimer.h \
-		/qt-5.5.0-install/include/QtCore/qcoreapplication.h \
-		/qt-5.5.0-install/include/QtCore/qmath.h \
-		/qt-5.5.0-install/include/QtCore/qmetaobject.h \
-		/qt-5.5.0-install/include/QtCore/qmimedata.h \
-		/qt-5.5.0-install/include/QtCore/qobjectcleanuphandler.h \
-		/qt-5.5.0-install/include/QtCore/qpointer.h \
-		/qt-5.5.0-install/include/QtCore/qsharedpointer.h \
-		/qt-5.5.0-install/include/QtCore/qsharedpointer_impl.h \
-		/qt-5.5.0-install/include/QtCore/qsharedmemory.h \
-		/qt-5.5.0-install/include/QtCore/qsignalmapper.h \
-		/qt-5.5.0-install/include/QtCore/qsocketnotifier.h \
-		/qt-5.5.0-install/include/QtCore/qsystemsemaphore.h \
-		/qt-5.5.0-install/include/QtCore/qtimer.h \
-		/qt-5.5.0-install/include/QtCore/qtranslator.h \
-		/qt-5.5.0-install/include/QtCore/qwineventnotifier.h \
-		/qt-5.5.0-install/include/QtCore/qmimedatabase.h \
-		/qt-5.5.0-install/include/QtCore/qmimetype.h \
-		/qt-5.5.0-install/include/QtCore/qfactoryinterface.h \
-		/qt-5.5.0-install/include/QtCore/qlibrary.h \
-		/qt-5.5.0-install/include/QtCore/qplugin.h \
-		/qt-5.5.0-install/include/QtCore/qpluginloader.h \
-		/qt-5.5.0-install/include/QtCore/quuid.h \
-		/qt-5.5.0-install/include/QtCore/qabstractstate.h \
-		/qt-5.5.0-install/include/QtCore/qabstracttransition.h \
-		/qt-5.5.0-install/include/QtCore/qeventtransition.h \
-		/qt-5.5.0-install/include/QtCore/qfinalstate.h \
-		/qt-5.5.0-install/include/QtCore/qhistorystate.h \
-		/qt-5.5.0-install/include/QtCore/qsignaltransition.h \
-		/qt-5.5.0-install/include/QtCore/qstate.h \
-		/qt-5.5.0-install/include/QtCore/qstatemachine.h \
-		/qt-5.5.0-install/include/QtCore/qexception.h \
-		/qt-5.5.0-install/include/QtCore/qfuture.h \
-		/qt-5.5.0-install/include/QtCore/qfutureinterface.h \
-		/qt-5.5.0-install/include/QtCore/qrunnable.h \
-		/qt-5.5.0-install/include/QtCore/qresultstore.h \
-		/qt-5.5.0-install/include/QtCore/qfuturesynchronizer.h \
-		/qt-5.5.0-install/include/QtCore/qfuturewatcher.h \
-		/qt-5.5.0-install/include/QtCore/qreadwritelock.h \
-		/qt-5.5.0-install/include/QtCore/qsemaphore.h \
-		/qt-5.5.0-install/include/QtCore/qthread.h \
-		/qt-5.5.0-install/include/QtCore/qthreadpool.h \
-		/qt-5.5.0-install/include/QtCore/qthreadstorage.h \
-		/qt-5.5.0-install/include/QtCore/qwaitcondition.h \
-		/qt-5.5.0-install/include/QtCore/qarraydataops.h \
-		/qt-5.5.0-install/include/QtCore/qarraydatapointer.h \
-		/qt-5.5.0-install/include/QtCore/qbitarray.h \
-		/qt-5.5.0-install/include/QtCore/qbytearraymatcher.h \
-		/qt-5.5.0-install/include/QtCore/qcache.h \
-		/qt-5.5.0-install/include/QtCore/qcollator.h \
-		/qt-5.5.0-install/include/QtCore/qcommandlineoption.h \
-		/qt-5.5.0-install/include/QtCore/qcommandlineparser.h \
-		/qt-5.5.0-install/include/QtCore/qcryptographichash.h \
-		/qt-5.5.0-install/include/QtCore/qelapsedtimer.h \
-		/qt-5.5.0-install/include/QtCore/qline.h \
-		/qt-5.5.0-install/include/QtCore/qlinkedlist.h \
-		/qt-5.5.0-install/include/QtCore/qmargins.h \
-		/qt-5.5.0-install/include/QtCore/qmessageauthenticationcode.h \
-		/qt-5.5.0-install/include/QtCore/qqueue.h \
-		/qt-5.5.0-install/include/QtCore/qrect.h \
-		/qt-5.5.0-install/include/QtCore/qsize.h \
-		/qt-5.5.0-install/include/QtCore/qregularexpression.h \
-		/qt-5.5.0-install/include/QtCore/qscopedvaluerollback.h \
-		/qt-5.5.0-install/include/QtCore/qstack.h \
-		/qt-5.5.0-install/include/QtCore/qtextboundaryfinder.h \
-		/qt-5.5.0-install/include/QtCore/qtimeline.h \
-		/qt-5.5.0-install/include/QtCore/qtimezone.h \
-		/qt-5.5.0-install/include/QtCore/qxmlstream.h \
-		/qt-5.5.0-install/include/QtCore/qtcoreversion.h \
-		/qt-5.5.0-install/include/QtWidgets/QTableWidgetItem \
-		/qt-5.5.0-install/include/QtWidgets/qtablewidget.h \
-		/qt-5.5.0-install/include/QtWidgets/qtableview.h \
-		/qt-5.5.0-install/include/QtWidgets/qabstractitemview.h \
-		/qt-5.5.0-install/include/QtWidgets/qabstractscrollarea.h \
-		/qt-5.5.0-install/include/QtWidgets/qframe.h \
-		/qt-5.5.0-install/include/QtWidgets/qwidget.h \
-		/qt-5.5.0-install/include/QtGui/qwindowdefs.h \
-		/qt-5.5.0-install/include/QtGui/qwindowdefs_win.h \
-		/qt-5.5.0-install/include/QtGui/qpaintdevice.h \
-		/qt-5.5.0-install/include/QtGui/qpalette.h \
-		/qt-5.5.0-install/include/QtGui/qcolor.h \
-		/qt-5.5.0-install/include/QtGui/qrgb.h \
-		/qt-5.5.0-install/include/QtGui/qbrush.h \
-		/qt-5.5.0-install/include/QtGui/qmatrix.h \
-		/qt-5.5.0-install/include/QtGui/qpolygon.h \
-		/qt-5.5.0-install/include/QtGui/qregion.h \
-		/qt-5.5.0-install/include/QtGui/qtransform.h \
-		/qt-5.5.0-install/include/QtGui/qpainterpath.h \
-		/qt-5.5.0-install/include/QtGui/qimage.h \
-		/qt-5.5.0-install/include/QtGui/qpixelformat.h \
-		/qt-5.5.0-install/include/QtGui/qpixmap.h \
-		/qt-5.5.0-install/include/QtGui/qfont.h \
-		/qt-5.5.0-install/include/QtGui/qfontmetrics.h \
-		/qt-5.5.0-install/include/QtGui/qfontinfo.h \
-		/qt-5.5.0-install/include/QtWidgets/qsizepolicy.h \
-		/qt-5.5.0-install/include/QtGui/qcursor.h \
-		/qt-5.5.0-install/include/QtGui/qkeysequence.h \
-		/qt-5.5.0-install/include/QtGui/qevent.h \
-		/qt-5.5.0-install/include/QtGui/qvector2d.h \
-		/qt-5.5.0-install/include/QtGui/qtouchdevice.h \
-		/qt-5.5.0-install/include/QtWidgets/qabstractitemdelegate.h \
-		/qt-5.5.0-install/include/QtWidgets/qstyleoption.h \
-		/qt-5.5.0-install/include/QtWidgets/qabstractspinbox.h \
-		/qt-5.5.0-install/include/QtGui/qvalidator.h \
-		/qt-5.5.0-install/include/QtGui/qicon.h \
-		/qt-5.5.0-install/include/QtWidgets/qslider.h \
-		/qt-5.5.0-install/include/QtWidgets/qabstractslider.h \
-		/qt-5.5.0-install/include/QtWidgets/qstyle.h \
-		/qt-5.5.0-install/include/QtWidgets/qtabbar.h \
-		/qt-5.5.0-install/include/QtWidgets/qtabwidget.h \
-		/qt-5.5.0-install/include/QtWidgets/qrubberband.h \
-		/qt-5.5.0-install/include/QtWidgets/QTableWidget \
+		/qt-5.5.0-install/include/QtCore/QMutex \
 		net/usb_wifi.h
 	/qt-5.5.0-install/bin/moc $(DEFINES) -I/qt-5.5.0-install/mkspecs/linux-arm-gnueabi-g++ -I/home/wyl/Desktop/service-robot -I/usr/local/include -I/qt-5.5.0-install/include -I/qt-5.5.0-install/include/QtWidgets -I/qt-5.5.0-install/include/QtGui -I/qt-5.5.0-install/include/QtNetwork -I/qt-5.5.0-install/include/QtSerialPort -I/qt-5.5.0-install/include/QtCore -I/opt/FriendlyARM/toolschain/4.5.1/arm-none-linux-gnueabi/include/c++/4.5.1 -I/opt/FriendlyARM/toolschain/4.5.1/arm-none-linux-gnueabi/include/c++/4.5.1/arm-none-linux-gnueabi -I/opt/FriendlyARM/toolschain/4.5.1/arm-none-linux-gnueabi/include/c++/4.5.1/backward -I/opt/FriendlyARM/toolschain/4.5.1/lib/gcc/arm-none-linux-gnueabi/4.5.1/include -I/opt/FriendlyARM/toolschain/4.5.1/lib/gcc/arm-none-linux-gnueabi/4.5.1/include-fixed -I/opt/FriendlyARM/toolschain/4.5.1/arm-none-linux-gnueabi/include net/usb_wifi.h -o moc_usb_wifi.cpp
 
-moc_videoplayer.cpp: /qt-5.5.0-install/include/QtCore/QObject \
+moc_videoplayer.cpp: /qt-5.5.0-install/include/QtCore/QThread \
+		/qt-5.5.0-install/include/QtCore/qthread.h \
 		/qt-5.5.0-install/include/QtCore/qobject.h \
 		/qt-5.5.0-install/include/QtCore/qobjectdefs.h \
 		/qt-5.5.0-install/include/QtCore/qnamespace.h \
@@ -1394,423 +1009,80 @@ moc_videoplayer.cpp: /qt-5.5.0-install/include/QtCore/QObject \
 		/qt-5.5.0-install/include/QtCore/qcontainerfwd.h \
 		/qt-5.5.0-install/include/QtCore/qisenum.h \
 		/qt-5.5.0-install/include/QtCore/qobject_impl.h \
-		/qt-5.5.0-install/include/QtCore/QtCore \
-		/qt-5.5.0-install/include/QtCore/QtCoreDepends \
-		/qt-5.5.0-install/include/QtCore/qabstractanimation.h \
-		/qt-5.5.0-install/include/QtCore/qanimationgroup.h \
-		/qt-5.5.0-install/include/QtCore/qparallelanimationgroup.h \
-		/qt-5.5.0-install/include/QtCore/qpauseanimation.h \
-		/qt-5.5.0-install/include/QtCore/qpropertyanimation.h \
-		/qt-5.5.0-install/include/QtCore/qvariantanimation.h \
-		/qt-5.5.0-install/include/QtCore/qeasingcurve.h \
-		/qt-5.5.0-install/include/QtCore/qvector.h \
-		/qt-5.5.0-install/include/QtCore/qpoint.h \
-		/qt-5.5.0-install/include/QtCore/qvariant.h \
-		/qt-5.5.0-install/include/QtCore/qmap.h \
-		/qt-5.5.0-install/include/QtCore/qpair.h \
-		/qt-5.5.0-install/include/QtCore/qdebug.h \
-		/qt-5.5.0-install/include/QtCore/qhash.h \
-		/qt-5.5.0-install/include/QtCore/qtextstream.h \
-		/qt-5.5.0-install/include/QtCore/qiodevice.h \
-		/qt-5.5.0-install/include/QtCore/qlocale.h \
-		/qt-5.5.0-install/include/QtCore/qshareddata.h \
-		/qt-5.5.0-install/include/QtCore/qset.h \
-		/qt-5.5.0-install/include/QtCore/qcontiguouscache.h \
-		/qt-5.5.0-install/include/QtCore/qsequentialanimationgroup.h \
-		/qt-5.5.0-install/include/QtCore/qtextcodec.h \
-		/qt-5.5.0-install/include/QtCore/qendian.h \
-		/qt-5.5.0-install/include/QtCore/qlibraryinfo.h \
-		/qt-5.5.0-install/include/QtCore/qdatetime.h \
-		/qt-5.5.0-install/include/QtCore/qbuffer.h \
-		/qt-5.5.0-install/include/QtCore/qdatastream.h \
-		/qt-5.5.0-install/include/QtCore/qdir.h \
+		/qt-5.5.0-install/include/QtCore/QMutex \
+		/qt-5.5.0-install/include/QtCore/QFileInfo \
 		/qt-5.5.0-install/include/QtCore/qfileinfo.h \
 		/qt-5.5.0-install/include/QtCore/qfile.h \
 		/qt-5.5.0-install/include/QtCore/qfiledevice.h \
-		/qt-5.5.0-install/include/QtCore/qdiriterator.h \
-		/qt-5.5.0-install/include/QtCore/qfileselector.h \
-		/qt-5.5.0-install/include/QtCore/QStringList \
-		/qt-5.5.0-install/include/QtCore/qfilesystemwatcher.h \
-		/qt-5.5.0-install/include/QtCore/qlockfile.h \
-		/qt-5.5.0-install/include/QtCore/qloggingcategory.h \
-		/qt-5.5.0-install/include/QtCore/qprocess.h \
-		/qt-5.5.0-install/include/QtCore/qresource.h \
-		/qt-5.5.0-install/include/QtCore/qsavefile.h \
-		/qt-5.5.0-install/include/QtCore/qsettings.h \
-		/qt-5.5.0-install/include/QtCore/qstandardpaths.h \
-		/qt-5.5.0-install/include/QtCore/qstorageinfo.h \
-		/qt-5.5.0-install/include/QtCore/qtemporarydir.h \
-		/qt-5.5.0-install/include/QtCore/QScopedPointer \
-		/qt-5.5.0-install/include/QtCore/qtemporaryfile.h \
-		/qt-5.5.0-install/include/QtCore/qurl.h \
-		/qt-5.5.0-install/include/QtCore/qurlquery.h \
-		/qt-5.5.0-install/include/QtCore/qabstractitemmodel.h \
-		/qt-5.5.0-install/include/QtCore/qabstractproxymodel.h \
-		/qt-5.5.0-install/include/QtCore/qidentityproxymodel.h \
-		/qt-5.5.0-install/include/QtCore/qitemselectionmodel.h \
-		/qt-5.5.0-install/include/QtCore/qsortfilterproxymodel.h \
-		/qt-5.5.0-install/include/QtCore/qstringlistmodel.h \
-		/qt-5.5.0-install/include/QtCore/qjsonarray.h \
-		/qt-5.5.0-install/include/QtCore/qjsonvalue.h \
-		/qt-5.5.0-install/include/QtCore/qjsondocument.h \
-		/qt-5.5.0-install/include/QtCore/qjsonobject.h \
-		/qt-5.5.0-install/include/QtCore/qabstracteventdispatcher.h \
-		/qt-5.5.0-install/include/QtCore/qeventloop.h \
-		/qt-5.5.0-install/include/QtCore/qabstractnativeeventfilter.h \
-		/qt-5.5.0-install/include/QtCore/qbasictimer.h \
-		/qt-5.5.0-install/include/QtCore/qcoreapplication.h \
-		/qt-5.5.0-install/include/QtCore/qmath.h \
-		/qt-5.5.0-install/include/QtCore/qmetaobject.h \
-		/qt-5.5.0-install/include/QtCore/qmimedata.h \
-		/qt-5.5.0-install/include/QtCore/qobjectcleanuphandler.h \
-		/qt-5.5.0-install/include/QtCore/qpointer.h \
-		/qt-5.5.0-install/include/QtCore/qsharedpointer.h \
-		/qt-5.5.0-install/include/QtCore/qsharedpointer_impl.h \
-		/qt-5.5.0-install/include/QtCore/qsharedmemory.h \
-		/qt-5.5.0-install/include/QtCore/qsignalmapper.h \
-		/qt-5.5.0-install/include/QtCore/qsocketnotifier.h \
-		/qt-5.5.0-install/include/QtCore/qsystemsemaphore.h \
-		/qt-5.5.0-install/include/QtCore/qtimer.h \
-		/qt-5.5.0-install/include/QtCore/qtranslator.h \
-		/qt-5.5.0-install/include/QtCore/qwineventnotifier.h \
-		/qt-5.5.0-install/include/QtCore/qmimedatabase.h \
-		/qt-5.5.0-install/include/QtCore/qmimetype.h \
-		/qt-5.5.0-install/include/QtCore/qfactoryinterface.h \
-		/qt-5.5.0-install/include/QtCore/qlibrary.h \
-		/qt-5.5.0-install/include/QtCore/qplugin.h \
-		/qt-5.5.0-install/include/QtCore/qpluginloader.h \
-		/qt-5.5.0-install/include/QtCore/quuid.h \
-		/qt-5.5.0-install/include/QtCore/qabstractstate.h \
-		/qt-5.5.0-install/include/QtCore/qabstracttransition.h \
-		/qt-5.5.0-install/include/QtCore/qeventtransition.h \
-		/qt-5.5.0-install/include/QtCore/qfinalstate.h \
-		/qt-5.5.0-install/include/QtCore/qhistorystate.h \
-		/qt-5.5.0-install/include/QtCore/qsignaltransition.h \
-		/qt-5.5.0-install/include/QtCore/qstate.h \
-		/qt-5.5.0-install/include/QtCore/qstatemachine.h \
-		/qt-5.5.0-install/include/QtCore/qexception.h \
-		/qt-5.5.0-install/include/QtCore/qfuture.h \
-		/qt-5.5.0-install/include/QtCore/qfutureinterface.h \
-		/qt-5.5.0-install/include/QtCore/qrunnable.h \
-		/qt-5.5.0-install/include/QtCore/qresultstore.h \
-		/qt-5.5.0-install/include/QtCore/qfuturesynchronizer.h \
-		/qt-5.5.0-install/include/QtCore/qfuturewatcher.h \
-		/qt-5.5.0-install/include/QtCore/qreadwritelock.h \
-		/qt-5.5.0-install/include/QtCore/qsemaphore.h \
-		/qt-5.5.0-install/include/QtCore/qthread.h \
-		/qt-5.5.0-install/include/QtCore/qthreadpool.h \
-		/qt-5.5.0-install/include/QtCore/qthreadstorage.h \
-		/qt-5.5.0-install/include/QtCore/qwaitcondition.h \
-		/qt-5.5.0-install/include/QtCore/qarraydataops.h \
-		/qt-5.5.0-install/include/QtCore/qarraydatapointer.h \
-		/qt-5.5.0-install/include/QtCore/qbitarray.h \
-		/qt-5.5.0-install/include/QtCore/qbytearraymatcher.h \
-		/qt-5.5.0-install/include/QtCore/qcache.h \
-		/qt-5.5.0-install/include/QtCore/qcollator.h \
-		/qt-5.5.0-install/include/QtCore/qcommandlineoption.h \
-		/qt-5.5.0-install/include/QtCore/qcommandlineparser.h \
-		/qt-5.5.0-install/include/QtCore/qcryptographichash.h \
-		/qt-5.5.0-install/include/QtCore/qelapsedtimer.h \
-		/qt-5.5.0-install/include/QtCore/qline.h \
-		/qt-5.5.0-install/include/QtCore/qlinkedlist.h \
-		/qt-5.5.0-install/include/QtCore/qmargins.h \
-		/qt-5.5.0-install/include/QtCore/qmessageauthenticationcode.h \
-		/qt-5.5.0-install/include/QtCore/qqueue.h \
-		/qt-5.5.0-install/include/QtCore/qrect.h \
-		/qt-5.5.0-install/include/QtCore/qsize.h \
-		/qt-5.5.0-install/include/QtCore/qregularexpression.h \
-		/qt-5.5.0-install/include/QtCore/qscopedvaluerollback.h \
-		/qt-5.5.0-install/include/QtCore/qstack.h \
-		/qt-5.5.0-install/include/QtCore/qtextboundaryfinder.h \
-		/qt-5.5.0-install/include/QtCore/qtimeline.h \
-		/qt-5.5.0-install/include/QtCore/qtimezone.h \
-		/qt-5.5.0-install/include/QtCore/qxmlstream.h \
-		/qt-5.5.0-install/include/QtCore/qtcoreversion.h \
-		/qt-5.5.0-install/include/QtWidgets/QtWidgets \
-		/qt-5.5.0-install/include/QtWidgets/QtWidgetsDepends \
-		/qt-5.5.0-install/include/QtGui/QtGui \
-		/qt-5.5.0-install/include/QtGui/QtGuiDepends \
-		/qt-5.5.0-install/include/QtGui/qaccessible.h \
-		/qt-5.5.0-install/include/QtGui/qcolor.h \
-		/qt-5.5.0-install/include/QtGui/qrgb.h \
-		/qt-5.5.0-install/include/QtGui/qevent.h \
-		/qt-5.5.0-install/include/QtGui/qwindowdefs.h \
-		/qt-5.5.0-install/include/QtGui/qwindowdefs_win.h \
-		/qt-5.5.0-install/include/QtGui/qregion.h \
-		/qt-5.5.0-install/include/QtGui/qkeysequence.h \
-		/qt-5.5.0-install/include/QtGui/qvector2d.h \
-		/qt-5.5.0-install/include/QtGui/qtouchdevice.h \
-		/qt-5.5.0-install/include/QtGui/qaccessiblebridge.h \
-		/qt-5.5.0-install/include/QtGui/qaccessibleobject.h \
-		/qt-5.5.0-install/include/QtGui/qaccessibleplugin.h \
-		/qt-5.5.0-install/include/QtGui/qbitmap.h \
-		/qt-5.5.0-install/include/QtGui/qpixmap.h \
-		/qt-5.5.0-install/include/QtGui/qpaintdevice.h \
-		/qt-5.5.0-install/include/QtGui/qimage.h \
-		/qt-5.5.0-install/include/QtGui/qtransform.h \
-		/qt-5.5.0-install/include/QtGui/qmatrix.h \
-		/qt-5.5.0-install/include/QtGui/qpolygon.h \
-		/qt-5.5.0-install/include/QtGui/qpainterpath.h \
-		/qt-5.5.0-install/include/QtGui/qpixelformat.h \
-		/qt-5.5.0-install/include/QtGui/qicon.h \
-		/qt-5.5.0-install/include/QtGui/qiconengine.h \
-		/qt-5.5.0-install/include/QtGui/qiconengineplugin.h \
-		/qt-5.5.0-install/include/QtGui/qimageiohandler.h \
-		/qt-5.5.0-install/include/QtGui/qimagereader.h \
-		/qt-5.5.0-install/include/QtGui/qimagewriter.h \
-		/qt-5.5.0-install/include/QtGui/qmovie.h \
-		/qt-5.5.0-install/include/QtGui/qpicture.h \
-		/qt-5.5.0-install/include/QtGui/qpictureformatplugin.h \
-		/qt-5.5.0-install/include/QtGui/qpixmapcache.h \
-		/qt-5.5.0-install/include/QtGui/qstandarditemmodel.h \
-		/qt-5.5.0-install/include/QtGui/qbrush.h \
-		/qt-5.5.0-install/include/QtGui/qfont.h \
-		/qt-5.5.0-install/include/QtGui/qclipboard.h \
-		/qt-5.5.0-install/include/QtGui/qcursor.h \
-		/qt-5.5.0-install/include/QtGui/qdrag.h \
-		/qt-5.5.0-install/include/QtGui/qgenericplugin.h \
-		/qt-5.5.0-install/include/QtGui/qgenericpluginfactory.h \
-		/qt-5.5.0-install/include/QtGui/qguiapplication.h \
-		/qt-5.5.0-install/include/QtGui/qinputmethod.h \
-		/qt-5.5.0-install/include/QtGui/qoffscreensurface.h \
-		/qt-5.5.0-install/include/QtGui/qsurface.h \
-		/qt-5.5.0-install/include/QtGui/qsurfaceformat.h \
-		/qt-5.5.0-install/include/QtGui/qopenglcontext.h \
-		/qt-5.5.0-install/include/QtGui/QSurfaceFormat \
-		/qt-5.5.0-install/include/QtGui/qopengl.h \
-		/qt-5.5.0-install/include/QtCore/qt_windows.h \
-		/qt-5.5.0-install/include/QtGui/qopengles2ext.h \
-		/qt-5.5.0-install/include/QtGui/qopenglext.h \
-		/qt-5.5.0-install/include/QtGui/qopenglversionfunctions.h \
-		/qt-5.5.0-install/include/QtGui/qopenglwindow.h \
-		/qt-5.5.0-install/include/QtGui/QPaintDeviceWindow \
-		/qt-5.5.0-install/include/QtGui/qpaintdevicewindow.h \
-		/qt-5.5.0-install/include/QtGui/QWindow \
-		/qt-5.5.0-install/include/QtGui/qwindow.h \
-		/qt-5.5.0-install/include/QtCore/QEvent \
-		/qt-5.5.0-install/include/QtCore/QMargins \
-		/qt-5.5.0-install/include/QtCore/QRect \
-		/qt-5.5.0-install/include/QtGui/QPaintDevice \
-		/qt-5.5.0-install/include/QtGui/QOpenGLContext \
-		/qt-5.5.0-install/include/QtGui/QImage \
-		/qt-5.5.0-install/include/QtGui/qpalette.h \
-		/qt-5.5.0-install/include/QtGui/qrasterwindow.h \
-		/qt-5.5.0-install/include/QtGui/qscreen.h \
-		/qt-5.5.0-install/include/QtCore/QList \
-		/qt-5.5.0-install/include/QtCore/QSize \
-		/qt-5.5.0-install/include/QtCore/QSizeF \
-		/qt-5.5.0-install/include/QtGui/QTransform \
-		/qt-5.5.0-install/include/QtGui/qsessionmanager.h \
-		/qt-5.5.0-install/include/QtGui/qstylehints.h \
-		/qt-5.5.0-install/include/QtGui/qgenericmatrix.h \
-		/qt-5.5.0-install/include/QtGui/qmatrix4x4.h \
-		/qt-5.5.0-install/include/QtGui/qvector3d.h \
-		/qt-5.5.0-install/include/QtGui/qvector4d.h \
-		/qt-5.5.0-install/include/QtGui/qquaternion.h \
-		/qt-5.5.0-install/include/QtGui/qopenglbuffer.h \
-		/qt-5.5.0-install/include/QtGui/qopengldebug.h \
-		/qt-5.5.0-install/include/QtGui/qopenglframebufferobject.h \
-		/qt-5.5.0-install/include/QtGui/qopenglfunctions.h \
-		/qt-5.5.0-install/include/QtGui/qopenglpaintdevice.h \
-		/qt-5.5.0-install/include/QtGui/qopenglpixeltransferoptions.h \
-		/qt-5.5.0-install/include/QtCore/QSharedDataPointer \
-		/qt-5.5.0-install/include/QtGui/qopenglshaderprogram.h \
-		/qt-5.5.0-install/include/QtGui/qopengltexture.h \
-		/qt-5.5.0-install/include/QtGui/qopengltimerquery.h \
-		/qt-5.5.0-install/include/QtGui/qopenglvertexarrayobject.h \
-		/qt-5.5.0-install/include/QtGui/qbackingstore.h \
-		/qt-5.5.0-install/include/QtGui/qpagedpaintdevice.h \
-		/qt-5.5.0-install/include/QtGui/qpagelayout.h \
-		/qt-5.5.0-install/include/QtGui/qpagesize.h \
-		/qt-5.5.0-install/include/QtGui/qpaintengine.h \
-		/qt-5.5.0-install/include/QtGui/qpainter.h \
-		/qt-5.5.0-install/include/QtGui/qtextoption.h \
-		/qt-5.5.0-install/include/QtGui/qpen.h \
-		/qt-5.5.0-install/include/QtGui/qfontinfo.h \
-		/qt-5.5.0-install/include/QtGui/qfontmetrics.h \
-		/qt-5.5.0-install/include/QtGui/qpdfwriter.h \
-		/qt-5.5.0-install/include/QtGui/qabstracttextdocumentlayout.h \
-		/qt-5.5.0-install/include/QtGui/qtextlayout.h \
-		/qt-5.5.0-install/include/QtGui/qtextformat.h \
-		/qt-5.5.0-install/include/QtGui/qglyphrun.h \
-		/qt-5.5.0-install/include/QtGui/qrawfont.h \
-		/qt-5.5.0-install/include/QtGui/qfontdatabase.h \
-		/qt-5.5.0-install/include/QtGui/qtextcursor.h \
-		/qt-5.5.0-install/include/QtGui/qtextdocument.h \
-		/qt-5.5.0-install/include/QtGui/qstatictext.h \
-		/qt-5.5.0-install/include/QtGui/qsyntaxhighlighter.h \
-		/qt-5.5.0-install/include/QtGui/qtextobject.h \
-		/qt-5.5.0-install/include/QtGui/qtextdocumentfragment.h \
-		/qt-5.5.0-install/include/QtGui/qtextdocumentwriter.h \
-		/qt-5.5.0-install/include/QtGui/qtextlist.h \
-		/qt-5.5.0-install/include/QtGui/qtexttable.h \
-		/qt-5.5.0-install/include/QtGui/qdesktopservices.h \
-		/qt-5.5.0-install/include/QtGui/qvalidator.h \
-		/qt-5.5.0-install/include/QtGui/qtguiversion.h \
-		/qt-5.5.0-install/include/QtWidgets/complexwidgets.h \
-		/qt-5.5.0-install/include/QtWidgets/qaccessiblewidget.h \
-		/qt-5.5.0-install/include/QtWidgets/qabstractitemview.h \
-		/qt-5.5.0-install/include/QtWidgets/qabstractscrollarea.h \
-		/qt-5.5.0-install/include/QtWidgets/qframe.h \
-		/qt-5.5.0-install/include/QtWidgets/qwidget.h \
-		/qt-5.5.0-install/include/QtWidgets/qsizepolicy.h \
-		/qt-5.5.0-install/include/QtWidgets/qabstractitemdelegate.h \
-		/qt-5.5.0-install/include/QtWidgets/qstyleoption.h \
-		/qt-5.5.0-install/include/QtWidgets/qabstractspinbox.h \
-		/qt-5.5.0-install/include/QtWidgets/qslider.h \
-		/qt-5.5.0-install/include/QtWidgets/qabstractslider.h \
-		/qt-5.5.0-install/include/QtWidgets/qstyle.h \
-		/qt-5.5.0-install/include/QtWidgets/qtabbar.h \
-		/qt-5.5.0-install/include/QtWidgets/qtabwidget.h \
-		/qt-5.5.0-install/include/QtWidgets/qrubberband.h \
-		/qt-5.5.0-install/include/QtWidgets/itemviews.h \
-		/qt-5.5.0-install/include/QtWidgets/qheaderview.h \
-		/qt-5.5.0-install/include/QtWidgets/qaccessiblemenu.h \
-		/qt-5.5.0-install/include/QtWidgets/qaccessiblewidgets.h \
-		/qt-5.5.0-install/include/QtCore/QPointer \
-		/qt-5.5.0-install/include/QtCore/QPair \
-		/qt-5.5.0-install/include/QtWidgets/rangecontrols.h \
-		/qt-5.5.0-install/include/QtWidgets/simplewidgets.h \
-		/qt-5.5.0-install/include/QtWidgets/qcolordialog.h \
-		/qt-5.5.0-install/include/QtWidgets/qdialog.h \
-		/qt-5.5.0-install/include/QtWidgets/qerrormessage.h \
-		/qt-5.5.0-install/include/QtWidgets/qfiledialog.h \
-		/qt-5.5.0-install/include/QtWidgets/qfilesystemmodel.h \
-		/qt-5.5.0-install/include/QtWidgets/qfontdialog.h \
-		/qt-5.5.0-install/include/QtWidgets/qinputdialog.h \
-		/qt-5.5.0-install/include/QtWidgets/qlineedit.h \
-		/qt-5.5.0-install/include/QtWidgets/qmessagebox.h \
-		/qt-5.5.0-install/include/QtWidgets/qprogressdialog.h \
-		/qt-5.5.0-install/include/QtWidgets/qwizard.h \
-		/qt-5.5.0-install/include/QtWidgets/qgraphicseffect.h \
-		/qt-5.5.0-install/include/QtWidgets/qgraphicsanchorlayout.h \
-		/qt-5.5.0-install/include/QtWidgets/qgraphicsitem.h \
-		/qt-5.5.0-install/include/QtWidgets/qgraphicslayout.h \
-		/qt-5.5.0-install/include/QtWidgets/qgraphicslayoutitem.h \
-		/qt-5.5.0-install/include/QtWidgets/qgraphicsgridlayout.h \
-		/qt-5.5.0-install/include/QtWidgets/qgraphicsitemanimation.h \
-		/qt-5.5.0-install/include/QtWidgets/qgraphicslinearlayout.h \
-		/qt-5.5.0-install/include/QtWidgets/qgraphicsproxywidget.h \
-		/qt-5.5.0-install/include/QtWidgets/qgraphicswidget.h \
-		/qt-5.5.0-install/include/QtWidgets/qgraphicsscene.h \
-		/qt-5.5.0-install/include/QtWidgets/qgraphicssceneevent.h \
-		/qt-5.5.0-install/include/QtWidgets/qgraphicstransform.h \
-		/qt-5.5.0-install/include/QtGui/QVector3D \
-		/qt-5.5.0-install/include/QtGui/QMatrix4x4 \
-		/qt-5.5.0-install/include/QtWidgets/qgraphicsview.h \
-		/qt-5.5.0-install/include/QtWidgets/qscrollarea.h \
-		/qt-5.5.0-install/include/QtWidgets/qcolumnview.h \
-		/qt-5.5.0-install/include/QtWidgets/qdatawidgetmapper.h \
-		/qt-5.5.0-install/include/QtWidgets/qdirmodel.h \
-		/qt-5.5.0-install/include/QtWidgets/qfileiconprovider.h \
-		/qt-5.5.0-install/include/QtWidgets/qitemdelegate.h \
-		/qt-5.5.0-install/include/QtWidgets/qitemeditorfactory.h \
-		/qt-5.5.0-install/include/QtWidgets/qlistview.h \
-		/qt-5.5.0-install/include/QtWidgets/qlistwidget.h \
-		/qt-5.5.0-install/include/QtWidgets/qstyleditemdelegate.h \
-		/qt-5.5.0-install/include/QtWidgets/qtableview.h \
-		/qt-5.5.0-install/include/QtWidgets/qtablewidget.h \
-		/qt-5.5.0-install/include/QtWidgets/qtreeview.h \
-		/qt-5.5.0-install/include/QtWidgets/qtreewidget.h \
-		/qt-5.5.0-install/include/QtWidgets/qtreewidgetitemiterator.h \
-		/qt-5.5.0-install/include/QtWidgets/qaction.h \
-		/qt-5.5.0-install/include/QtWidgets/qactiongroup.h \
-		/qt-5.5.0-install/include/QtWidgets/qapplication.h \
-		/qt-5.5.0-install/include/QtWidgets/qdesktopwidget.h \
-		/qt-5.5.0-install/include/QtWidgets/qboxlayout.h \
-		/qt-5.5.0-install/include/QtWidgets/qlayout.h \
-		/qt-5.5.0-install/include/QtWidgets/qlayoutitem.h \
-		/qt-5.5.0-install/include/QtWidgets/qgridlayout.h \
-		/qt-5.5.0-install/include/QtWidgets/qformlayout.h \
-		/qt-5.5.0-install/include/QtWidgets/QLayout \
-		/qt-5.5.0-install/include/QtWidgets/qgesture.h \
-		/qt-5.5.0-install/include/QtWidgets/qgesturerecognizer.h \
-		/qt-5.5.0-install/include/QtWidgets/qopenglwidget.h \
-		/qt-5.5.0-install/include/QtWidgets/QWidget \
-		/qt-5.5.0-install/include/QtWidgets/qshortcut.h \
-		/qt-5.5.0-install/include/QtWidgets/qstackedlayout.h \
-		/qt-5.5.0-install/include/QtWidgets/qtooltip.h \
-		/qt-5.5.0-install/include/QtWidgets/qwhatsthis.h \
-		/qt-5.5.0-install/include/QtWidgets/qwidgetaction.h \
-		/qt-5.5.0-install/include/QtWidgets/qkeyeventtransition.h \
-		/qt-5.5.0-install/include/QtWidgets/qmouseeventtransition.h \
-		/qt-5.5.0-install/include/QtWidgets/qcommonstyle.h \
-		/qt-5.5.0-install/include/QtWidgets/qdrawutil.h \
-		/qt-5.5.0-install/include/QtWidgets/qproxystyle.h \
-		/qt-5.5.0-install/include/QtWidgets/QCommonStyle \
-		/qt-5.5.0-install/include/QtWidgets/qstylefactory.h \
-		/qt-5.5.0-install/include/QtWidgets/qstylepainter.h \
-		/qt-5.5.0-install/include/QtWidgets/qstyleplugin.h \
-		/qt-5.5.0-install/include/QtWidgets/qcolormap.h \
-		/qt-5.5.0-install/include/QtWidgets/qcompleter.h \
-		/qt-5.5.0-install/include/QtWidgets/qscroller.h \
-		/qt-5.5.0-install/include/QtCore/QPointF \
-		/qt-5.5.0-install/include/QtWidgets/QScrollerProperties \
-		/qt-5.5.0-install/include/QtWidgets/qscrollerproperties.h \
-		/qt-5.5.0-install/include/QtCore/QMetaType \
-		/qt-5.5.0-install/include/QtCore/QVariant \
-		/qt-5.5.0-install/include/QtWidgets/qsystemtrayicon.h \
-		/qt-5.5.0-install/include/QtWidgets/qundogroup.h \
-		/qt-5.5.0-install/include/QtWidgets/qundostack.h \
-		/qt-5.5.0-install/include/QtWidgets/qundoview.h \
-		/qt-5.5.0-install/include/QtWidgets/qabstractbutton.h \
-		/qt-5.5.0-install/include/QtWidgets/qbuttongroup.h \
-		/qt-5.5.0-install/include/QtWidgets/qcalendarwidget.h \
-		/qt-5.5.0-install/include/QtWidgets/qcheckbox.h \
-		/qt-5.5.0-install/include/QtWidgets/qcombobox.h \
-		/qt-5.5.0-install/include/QtWidgets/qcommandlinkbutton.h \
-		/qt-5.5.0-install/include/QtWidgets/qpushbutton.h \
-		/qt-5.5.0-install/include/QtWidgets/qdatetimeedit.h \
-		/qt-5.5.0-install/include/QtWidgets/qdial.h \
-		/qt-5.5.0-install/include/QtWidgets/qdialogbuttonbox.h \
-		/qt-5.5.0-install/include/QtWidgets/qdockwidget.h \
-		/qt-5.5.0-install/include/QtWidgets/qfocusframe.h \
-		/qt-5.5.0-install/include/QtWidgets/qfontcombobox.h \
-		/qt-5.5.0-install/include/QtWidgets/qgroupbox.h \
-		/qt-5.5.0-install/include/QtWidgets/qkeysequenceedit.h \
-		/qt-5.5.0-install/include/QtWidgets/qlabel.h \
-		/qt-5.5.0-install/include/QtWidgets/qlcdnumber.h \
-		/qt-5.5.0-install/include/QtWidgets/qmainwindow.h \
-		/qt-5.5.0-install/include/QtWidgets/qmdiarea.h \
-		/qt-5.5.0-install/include/QtWidgets/qmdisubwindow.h \
-		/qt-5.5.0-install/include/QtWidgets/qmenu.h \
-		/qt-5.5.0-install/include/QtWidgets/qmenubar.h \
-		/qt-5.5.0-install/include/QtWidgets/qplaintextedit.h \
-		/qt-5.5.0-install/include/QtWidgets/qtextedit.h \
-		/qt-5.5.0-install/include/QtWidgets/qprogressbar.h \
-		/qt-5.5.0-install/include/QtWidgets/qradiobutton.h \
-		/qt-5.5.0-install/include/QtWidgets/qscrollbar.h \
-		/qt-5.5.0-install/include/QtWidgets/qsizegrip.h \
-		/qt-5.5.0-install/include/QtWidgets/qspinbox.h \
-		/qt-5.5.0-install/include/QtWidgets/qsplashscreen.h \
-		/qt-5.5.0-install/include/QtWidgets/qsplitter.h \
-		/qt-5.5.0-install/include/QtWidgets/qstackedwidget.h \
-		/qt-5.5.0-install/include/QtWidgets/qstatusbar.h \
-		/qt-5.5.0-install/include/QtWidgets/qtextbrowser.h \
-		/qt-5.5.0-install/include/QtWidgets/qtoolbar.h \
-		/qt-5.5.0-install/include/QtWidgets/qtoolbox.h \
-		/qt-5.5.0-install/include/QtWidgets/qtoolbutton.h \
-		/qt-5.5.0-install/include/QtWidgets/qtwidgetsversion.h \
-		/qt-5.5.0-install/include/QtCore/QTimer \
+		/qt-5.5.0-install/include/QtCore/qiodevice.h \
+		/qt-5.5.0-install/include/QtCore/qshareddata.h \
+		/qt-5.5.0-install/include/QtCore/qhash.h \
+		/qt-5.5.0-install/include/QtCore/qpair.h \
+		/qt-5.5.0-install/include/QtCore/QDir \
+		/qt-5.5.0-install/include/QtCore/qdir.h \
 		global.h \
-		/qt-5.5.0-install/include/QtCore/QString \
+		/qt-5.5.0-install/include/QtCore/QVariant \
+		/qt-5.5.0-install/include/QtCore/qvariant.h \
+		/qt-5.5.0-install/include/QtCore/qmap.h \
+		/qt-5.5.0-install/include/QtCore/qdebug.h \
+		/qt-5.5.0-install/include/QtCore/qtextstream.h \
+		/qt-5.5.0-install/include/QtCore/qlocale.h \
+		/qt-5.5.0-install/include/QtCore/qvector.h \
+		/qt-5.5.0-install/include/QtCore/qpoint.h \
+		/qt-5.5.0-install/include/QtCore/qset.h \
+		/qt-5.5.0-install/include/QtCore/qcontiguouscache.h \
 		/qt-5.5.0-install/include/QtCore/QSettings \
+		/qt-5.5.0-install/include/QtCore/qsettings.h \
 		/qt-5.5.0-install/include/QtCore/QTextCodec \
+		/qt-5.5.0-install/include/QtCore/qtextcodec.h \
 		audioplayer/audioplayer.h \
+		/qt-5.5.0-install/include/QtCore/QObject \
 		/qt-5.5.0-install/include/QtCore/QProcess \
+		/qt-5.5.0-install/include/QtCore/qprocess.h \
 		screenemotion/label.h \
 		/qt-5.5.0-install/include/QtWidgets/QLabel \
+		/qt-5.5.0-install/include/QtWidgets/qlabel.h \
+		/qt-5.5.0-install/include/QtWidgets/qframe.h \
+		/qt-5.5.0-install/include/QtWidgets/qwidget.h \
+		/qt-5.5.0-install/include/QtGui/qwindowdefs.h \
+		/qt-5.5.0-install/include/QtGui/qwindowdefs_win.h \
+		/qt-5.5.0-install/include/QtCore/qmargins.h \
+		/qt-5.5.0-install/include/QtGui/qpaintdevice.h \
+		/qt-5.5.0-install/include/QtCore/qrect.h \
+		/qt-5.5.0-install/include/QtCore/qsize.h \
+		/qt-5.5.0-install/include/QtGui/qpalette.h \
+		/qt-5.5.0-install/include/QtGui/qcolor.h \
+		/qt-5.5.0-install/include/QtGui/qrgb.h \
+		/qt-5.5.0-install/include/QtGui/qbrush.h \
+		/qt-5.5.0-install/include/QtGui/qmatrix.h \
+		/qt-5.5.0-install/include/QtGui/qpolygon.h \
+		/qt-5.5.0-install/include/QtGui/qregion.h \
+		/qt-5.5.0-install/include/QtCore/qdatastream.h \
+		/qt-5.5.0-install/include/QtCore/qline.h \
+		/qt-5.5.0-install/include/QtGui/qtransform.h \
+		/qt-5.5.0-install/include/QtGui/qpainterpath.h \
+		/qt-5.5.0-install/include/QtGui/qimage.h \
+		/qt-5.5.0-install/include/QtGui/qpixelformat.h \
+		/qt-5.5.0-install/include/QtGui/qpixmap.h \
+		/qt-5.5.0-install/include/QtCore/qsharedpointer.h \
+		/qt-5.5.0-install/include/QtCore/qsharedpointer_impl.h \
+		/qt-5.5.0-install/include/QtGui/qfont.h \
+		/qt-5.5.0-install/include/QtGui/qfontmetrics.h \
+		/qt-5.5.0-install/include/QtGui/qfontinfo.h \
+		/qt-5.5.0-install/include/QtWidgets/qsizepolicy.h \
+		/qt-5.5.0-install/include/QtGui/qcursor.h \
+		/qt-5.5.0-install/include/QtGui/qkeysequence.h \
+		/qt-5.5.0-install/include/QtGui/qevent.h \
+		/qt-5.5.0-install/include/QtCore/qurl.h \
+		/qt-5.5.0-install/include/QtCore/qurlquery.h \
+		/qt-5.5.0-install/include/QtGui/qvector2d.h \
+		/qt-5.5.0-install/include/QtGui/qtouchdevice.h \
 		videoplayer/videoplayer.h
 	/qt-5.5.0-install/bin/moc $(DEFINES) -I/qt-5.5.0-install/mkspecs/linux-arm-gnueabi-g++ -I/home/wyl/Desktop/service-robot -I/usr/local/include -I/qt-5.5.0-install/include -I/qt-5.5.0-install/include/QtWidgets -I/qt-5.5.0-install/include/QtGui -I/qt-5.5.0-install/include/QtNetwork -I/qt-5.5.0-install/include/QtSerialPort -I/qt-5.5.0-install/include/QtCore -I/opt/FriendlyARM/toolschain/4.5.1/arm-none-linux-gnueabi/include/c++/4.5.1 -I/opt/FriendlyARM/toolschain/4.5.1/arm-none-linux-gnueabi/include/c++/4.5.1/arm-none-linux-gnueabi -I/opt/FriendlyARM/toolschain/4.5.1/arm-none-linux-gnueabi/include/c++/4.5.1/backward -I/opt/FriendlyARM/toolschain/4.5.1/lib/gcc/arm-none-linux-gnueabi/4.5.1/include -I/opt/FriendlyARM/toolschain/4.5.1/lib/gcc/arm-none-linux-gnueabi/4.5.1/include-fixed -I/opt/FriendlyARM/toolschain/4.5.1/arm-none-linux-gnueabi/include videoplayer/videoplayer.h -o moc_videoplayer.cpp
 
-moc_serialport.cpp: /qt-5.5.0-install/include/QtSerialPort/QtSerialPort \
-		/qt-5.5.0-install/include/QtSerialPort/QtSerialPortDepends \
-		/qt-5.5.0-install/include/QtCore/QtCore \
-		/qt-5.5.0-install/include/QtCore/QtCoreDepends \
-		/qt-5.5.0-install/include/QtCore/qabstractanimation.h \
-		/qt-5.5.0-install/include/QtCore/qobject.h \
-		/qt-5.5.0-install/include/QtCore/qobjectdefs.h \
-		/qt-5.5.0-install/include/QtCore/qnamespace.h \
+moc_serialport.cpp: /qt-5.5.0-install/include/QtSerialPort/QSerialPort \
+		/qt-5.5.0-install/include/QtSerialPort/qserialport.h \
+		/qt-5.5.0-install/include/QtCore/qiodevice.h \
 		/qt-5.5.0-install/include/QtCore/qglobal.h \
 		/qt-5.5.0-install/include/QtCore/qconfig.h \
 		/qt-5.5.0-install/include/QtCore/qfeatures.h \
@@ -1839,6 +1111,9 @@ moc_serialport.cpp: /qt-5.5.0-install/include/QtSerialPort/QtSerialPort \
 		/qt-5.5.0-install/include/QtCore/qglobalstatic.h \
 		/qt-5.5.0-install/include/QtCore/qmutex.h \
 		/qt-5.5.0-install/include/QtCore/qnumeric.h \
+		/qt-5.5.0-install/include/QtCore/qobject.h \
+		/qt-5.5.0-install/include/QtCore/qobjectdefs.h \
+		/qt-5.5.0-install/include/QtCore/qnamespace.h \
 		/qt-5.5.0-install/include/QtCore/qobjectdefs_impl.h \
 		/qt-5.5.0-install/include/QtCore/qstring.h \
 		/qt-5.5.0-install/include/QtCore/qchar.h \
@@ -1860,146 +1135,28 @@ moc_serialport.cpp: /qt-5.5.0-install/include/QtSerialPort/QtSerialPort \
 		/qt-5.5.0-install/include/QtCore/qcontainerfwd.h \
 		/qt-5.5.0-install/include/QtCore/qisenum.h \
 		/qt-5.5.0-install/include/QtCore/qobject_impl.h \
-		/qt-5.5.0-install/include/QtCore/qanimationgroup.h \
-		/qt-5.5.0-install/include/QtCore/qparallelanimationgroup.h \
-		/qt-5.5.0-install/include/QtCore/qpauseanimation.h \
-		/qt-5.5.0-install/include/QtCore/qpropertyanimation.h \
-		/qt-5.5.0-install/include/QtCore/qvariantanimation.h \
-		/qt-5.5.0-install/include/QtCore/qeasingcurve.h \
-		/qt-5.5.0-install/include/QtCore/qvector.h \
-		/qt-5.5.0-install/include/QtCore/qpoint.h \
+		/qt-5.5.0-install/include/QtSerialPort/qserialportglobal.h \
+		/qt-5.5.0-install/include/QtCore/QTimer \
+		/qt-5.5.0-install/include/QtCore/qtimer.h \
+		/qt-5.5.0-install/include/QtCore/qbasictimer.h \
+		global.h \
+		/qt-5.5.0-install/include/QtCore/QVariant \
 		/qt-5.5.0-install/include/QtCore/qvariant.h \
 		/qt-5.5.0-install/include/QtCore/qmap.h \
 		/qt-5.5.0-install/include/QtCore/qpair.h \
 		/qt-5.5.0-install/include/QtCore/qdebug.h \
 		/qt-5.5.0-install/include/QtCore/qhash.h \
 		/qt-5.5.0-install/include/QtCore/qtextstream.h \
-		/qt-5.5.0-install/include/QtCore/qiodevice.h \
 		/qt-5.5.0-install/include/QtCore/qlocale.h \
 		/qt-5.5.0-install/include/QtCore/qshareddata.h \
+		/qt-5.5.0-install/include/QtCore/qvector.h \
+		/qt-5.5.0-install/include/QtCore/qpoint.h \
 		/qt-5.5.0-install/include/QtCore/qset.h \
 		/qt-5.5.0-install/include/QtCore/qcontiguouscache.h \
-		/qt-5.5.0-install/include/QtCore/qsequentialanimationgroup.h \
-		/qt-5.5.0-install/include/QtCore/qtextcodec.h \
-		/qt-5.5.0-install/include/QtCore/qendian.h \
-		/qt-5.5.0-install/include/QtCore/qlibraryinfo.h \
-		/qt-5.5.0-install/include/QtCore/qdatetime.h \
-		/qt-5.5.0-install/include/QtCore/qbuffer.h \
-		/qt-5.5.0-install/include/QtCore/qdatastream.h \
-		/qt-5.5.0-install/include/QtCore/qdir.h \
-		/qt-5.5.0-install/include/QtCore/qfileinfo.h \
-		/qt-5.5.0-install/include/QtCore/qfile.h \
-		/qt-5.5.0-install/include/QtCore/qfiledevice.h \
-		/qt-5.5.0-install/include/QtCore/qdiriterator.h \
-		/qt-5.5.0-install/include/QtCore/qfileselector.h \
-		/qt-5.5.0-install/include/QtCore/QObject \
-		/qt-5.5.0-install/include/QtCore/QStringList \
-		/qt-5.5.0-install/include/QtCore/qfilesystemwatcher.h \
-		/qt-5.5.0-install/include/QtCore/qlockfile.h \
-		/qt-5.5.0-install/include/QtCore/qloggingcategory.h \
-		/qt-5.5.0-install/include/QtCore/qprocess.h \
-		/qt-5.5.0-install/include/QtCore/qresource.h \
-		/qt-5.5.0-install/include/QtCore/qsavefile.h \
-		/qt-5.5.0-install/include/QtCore/qsettings.h \
-		/qt-5.5.0-install/include/QtCore/qstandardpaths.h \
-		/qt-5.5.0-install/include/QtCore/qstorageinfo.h \
-		/qt-5.5.0-install/include/QtCore/qtemporarydir.h \
-		/qt-5.5.0-install/include/QtCore/QScopedPointer \
-		/qt-5.5.0-install/include/QtCore/qtemporaryfile.h \
-		/qt-5.5.0-install/include/QtCore/qurl.h \
-		/qt-5.5.0-install/include/QtCore/qurlquery.h \
-		/qt-5.5.0-install/include/QtCore/qabstractitemmodel.h \
-		/qt-5.5.0-install/include/QtCore/qabstractproxymodel.h \
-		/qt-5.5.0-install/include/QtCore/qidentityproxymodel.h \
-		/qt-5.5.0-install/include/QtCore/qitemselectionmodel.h \
-		/qt-5.5.0-install/include/QtCore/qsortfilterproxymodel.h \
-		/qt-5.5.0-install/include/QtCore/qstringlistmodel.h \
-		/qt-5.5.0-install/include/QtCore/qjsonarray.h \
-		/qt-5.5.0-install/include/QtCore/qjsonvalue.h \
-		/qt-5.5.0-install/include/QtCore/qjsondocument.h \
-		/qt-5.5.0-install/include/QtCore/qjsonobject.h \
-		/qt-5.5.0-install/include/QtCore/qabstracteventdispatcher.h \
-		/qt-5.5.0-install/include/QtCore/qeventloop.h \
-		/qt-5.5.0-install/include/QtCore/qabstractnativeeventfilter.h \
-		/qt-5.5.0-install/include/QtCore/qbasictimer.h \
-		/qt-5.5.0-install/include/QtCore/qcoreapplication.h \
-		/qt-5.5.0-install/include/QtCore/qmath.h \
-		/qt-5.5.0-install/include/QtCore/qmetaobject.h \
-		/qt-5.5.0-install/include/QtCore/qmimedata.h \
-		/qt-5.5.0-install/include/QtCore/qobjectcleanuphandler.h \
-		/qt-5.5.0-install/include/QtCore/qpointer.h \
-		/qt-5.5.0-install/include/QtCore/qsharedpointer.h \
-		/qt-5.5.0-install/include/QtCore/qsharedpointer_impl.h \
-		/qt-5.5.0-install/include/QtCore/qsharedmemory.h \
-		/qt-5.5.0-install/include/QtCore/qsignalmapper.h \
-		/qt-5.5.0-install/include/QtCore/qsocketnotifier.h \
-		/qt-5.5.0-install/include/QtCore/qsystemsemaphore.h \
-		/qt-5.5.0-install/include/QtCore/qtimer.h \
-		/qt-5.5.0-install/include/QtCore/qtranslator.h \
-		/qt-5.5.0-install/include/QtCore/qwineventnotifier.h \
-		/qt-5.5.0-install/include/QtCore/qmimedatabase.h \
-		/qt-5.5.0-install/include/QtCore/qmimetype.h \
-		/qt-5.5.0-install/include/QtCore/qfactoryinterface.h \
-		/qt-5.5.0-install/include/QtCore/qlibrary.h \
-		/qt-5.5.0-install/include/QtCore/qplugin.h \
-		/qt-5.5.0-install/include/QtCore/qpluginloader.h \
-		/qt-5.5.0-install/include/QtCore/quuid.h \
-		/qt-5.5.0-install/include/QtCore/qabstractstate.h \
-		/qt-5.5.0-install/include/QtCore/qabstracttransition.h \
-		/qt-5.5.0-install/include/QtCore/qeventtransition.h \
-		/qt-5.5.0-install/include/QtCore/qfinalstate.h \
-		/qt-5.5.0-install/include/QtCore/qhistorystate.h \
-		/qt-5.5.0-install/include/QtCore/qsignaltransition.h \
-		/qt-5.5.0-install/include/QtCore/qstate.h \
-		/qt-5.5.0-install/include/QtCore/qstatemachine.h \
-		/qt-5.5.0-install/include/QtCore/qexception.h \
-		/qt-5.5.0-install/include/QtCore/qfuture.h \
-		/qt-5.5.0-install/include/QtCore/qfutureinterface.h \
-		/qt-5.5.0-install/include/QtCore/qrunnable.h \
-		/qt-5.5.0-install/include/QtCore/qresultstore.h \
-		/qt-5.5.0-install/include/QtCore/qfuturesynchronizer.h \
-		/qt-5.5.0-install/include/QtCore/qfuturewatcher.h \
-		/qt-5.5.0-install/include/QtCore/qreadwritelock.h \
-		/qt-5.5.0-install/include/QtCore/qsemaphore.h \
-		/qt-5.5.0-install/include/QtCore/qthread.h \
-		/qt-5.5.0-install/include/QtCore/qthreadpool.h \
-		/qt-5.5.0-install/include/QtCore/qthreadstorage.h \
-		/qt-5.5.0-install/include/QtCore/qwaitcondition.h \
-		/qt-5.5.0-install/include/QtCore/qarraydataops.h \
-		/qt-5.5.0-install/include/QtCore/qarraydatapointer.h \
-		/qt-5.5.0-install/include/QtCore/qbitarray.h \
-		/qt-5.5.0-install/include/QtCore/qbytearraymatcher.h \
-		/qt-5.5.0-install/include/QtCore/qcache.h \
-		/qt-5.5.0-install/include/QtCore/qcollator.h \
-		/qt-5.5.0-install/include/QtCore/qcommandlineoption.h \
-		/qt-5.5.0-install/include/QtCore/qcommandlineparser.h \
-		/qt-5.5.0-install/include/QtCore/qcryptographichash.h \
-		/qt-5.5.0-install/include/QtCore/qelapsedtimer.h \
-		/qt-5.5.0-install/include/QtCore/qline.h \
-		/qt-5.5.0-install/include/QtCore/qlinkedlist.h \
-		/qt-5.5.0-install/include/QtCore/qmargins.h \
-		/qt-5.5.0-install/include/QtCore/qmessageauthenticationcode.h \
-		/qt-5.5.0-install/include/QtCore/qqueue.h \
-		/qt-5.5.0-install/include/QtCore/qrect.h \
-		/qt-5.5.0-install/include/QtCore/qsize.h \
-		/qt-5.5.0-install/include/QtCore/qregularexpression.h \
-		/qt-5.5.0-install/include/QtCore/qscopedvaluerollback.h \
-		/qt-5.5.0-install/include/QtCore/qstack.h \
-		/qt-5.5.0-install/include/QtCore/qtextboundaryfinder.h \
-		/qt-5.5.0-install/include/QtCore/qtimeline.h \
-		/qt-5.5.0-install/include/QtCore/qtimezone.h \
-		/qt-5.5.0-install/include/QtCore/qxmlstream.h \
-		/qt-5.5.0-install/include/QtCore/qtcoreversion.h \
-		/qt-5.5.0-install/include/QtSerialPort/qserialport.h \
-		/qt-5.5.0-install/include/QtSerialPort/qserialportglobal.h \
-		/qt-5.5.0-install/include/QtSerialPort/qserialportinfo.h \
-		/qt-5.5.0-install/include/QtSerialPort/qtserialportversion.h \
-		/qt-5.5.0-install/include/QtCore/QElapsedTimer \
-		global.h \
-		/qt-5.5.0-install/include/QtCore/QString \
-		/qt-5.5.0-install/include/QtCore/QVariant \
 		/qt-5.5.0-install/include/QtCore/QSettings \
+		/qt-5.5.0-install/include/QtCore/qsettings.h \
 		/qt-5.5.0-install/include/QtCore/QTextCodec \
+		/qt-5.5.0-install/include/QtCore/qtextcodec.h \
 		serialport/serialport.h
 	/qt-5.5.0-install/bin/moc $(DEFINES) -I/qt-5.5.0-install/mkspecs/linux-arm-gnueabi-g++ -I/home/wyl/Desktop/service-robot -I/usr/local/include -I/qt-5.5.0-install/include -I/qt-5.5.0-install/include/QtWidgets -I/qt-5.5.0-install/include/QtGui -I/qt-5.5.0-install/include/QtNetwork -I/qt-5.5.0-install/include/QtSerialPort -I/qt-5.5.0-install/include/QtCore -I/opt/FriendlyARM/toolschain/4.5.1/arm-none-linux-gnueabi/include/c++/4.5.1 -I/opt/FriendlyARM/toolschain/4.5.1/arm-none-linux-gnueabi/include/c++/4.5.1/arm-none-linux-gnueabi -I/opt/FriendlyARM/toolschain/4.5.1/arm-none-linux-gnueabi/include/c++/4.5.1/backward -I/opt/FriendlyARM/toolschain/4.5.1/lib/gcc/arm-none-linux-gnueabi/4.5.1/include -I/opt/FriendlyARM/toolschain/4.5.1/lib/gcc/arm-none-linux-gnueabi/4.5.1/include-fixed -I/opt/FriendlyARM/toolschain/4.5.1/arm-none-linux-gnueabi/include serialport/serialport.h -o moc_serialport.cpp
 
@@ -2113,173 +1270,11 @@ moc_ipinfotable.cpp: /qt-5.5.0-install/include/QtWidgets/QTextEdit \
 		/qt-5.5.0-install/include/QtGui/qtextcursor.h \
 		/qt-5.5.0-install/include/QtGui/qtextformat.h \
 		/qt-5.5.0-install/include/QtGui/qpen.h \
-		/qt-5.5.0-install/include/QtNetwork/QtNetwork \
-		/qt-5.5.0-install/include/QtNetwork/QtNetworkDepends \
-		/qt-5.5.0-install/include/QtCore/QtCore \
-		/qt-5.5.0-install/include/QtCore/QtCoreDepends \
-		/qt-5.5.0-install/include/QtCore/qabstractanimation.h \
-		/qt-5.5.0-install/include/QtCore/qanimationgroup.h \
-		/qt-5.5.0-install/include/QtCore/qparallelanimationgroup.h \
-		/qt-5.5.0-install/include/QtCore/qpauseanimation.h \
-		/qt-5.5.0-install/include/QtCore/qpropertyanimation.h \
-		/qt-5.5.0-install/include/QtCore/qvariantanimation.h \
-		/qt-5.5.0-install/include/QtCore/qeasingcurve.h \
-		/qt-5.5.0-install/include/QtCore/qsequentialanimationgroup.h \
-		/qt-5.5.0-install/include/QtCore/qtextcodec.h \
-		/qt-5.5.0-install/include/QtCore/qendian.h \
-		/qt-5.5.0-install/include/QtCore/qlibraryinfo.h \
-		/qt-5.5.0-install/include/QtCore/qdatetime.h \
-		/qt-5.5.0-install/include/QtCore/qbuffer.h \
-		/qt-5.5.0-install/include/QtCore/qdir.h \
-		/qt-5.5.0-install/include/QtCore/qfileinfo.h \
-		/qt-5.5.0-install/include/QtCore/qdiriterator.h \
-		/qt-5.5.0-install/include/QtCore/qfileselector.h \
-		/qt-5.5.0-install/include/QtCore/QObject \
-		/qt-5.5.0-install/include/QtCore/QStringList \
-		/qt-5.5.0-install/include/QtCore/qfilesystemwatcher.h \
-		/qt-5.5.0-install/include/QtCore/qlockfile.h \
-		/qt-5.5.0-install/include/QtCore/qloggingcategory.h \
-		/qt-5.5.0-install/include/QtCore/qprocess.h \
-		/qt-5.5.0-install/include/QtCore/qresource.h \
-		/qt-5.5.0-install/include/QtCore/qsavefile.h \
-		/qt-5.5.0-install/include/QtCore/qsettings.h \
-		/qt-5.5.0-install/include/QtCore/qstandardpaths.h \
-		/qt-5.5.0-install/include/QtCore/qstorageinfo.h \
-		/qt-5.5.0-install/include/QtCore/qtemporarydir.h \
-		/qt-5.5.0-install/include/QtCore/QScopedPointer \
-		/qt-5.5.0-install/include/QtCore/qtemporaryfile.h \
-		/qt-5.5.0-install/include/QtCore/qabstractitemmodel.h \
-		/qt-5.5.0-install/include/QtCore/qabstractproxymodel.h \
-		/qt-5.5.0-install/include/QtCore/qidentityproxymodel.h \
-		/qt-5.5.0-install/include/QtCore/qitemselectionmodel.h \
-		/qt-5.5.0-install/include/QtCore/qsortfilterproxymodel.h \
-		/qt-5.5.0-install/include/QtCore/qstringlistmodel.h \
-		/qt-5.5.0-install/include/QtCore/qjsonarray.h \
-		/qt-5.5.0-install/include/QtCore/qjsonvalue.h \
-		/qt-5.5.0-install/include/QtCore/qjsondocument.h \
-		/qt-5.5.0-install/include/QtCore/qjsonobject.h \
-		/qt-5.5.0-install/include/QtCore/qabstracteventdispatcher.h \
-		/qt-5.5.0-install/include/QtCore/qeventloop.h \
-		/qt-5.5.0-install/include/QtCore/qabstractnativeeventfilter.h \
-		/qt-5.5.0-install/include/QtCore/qbasictimer.h \
-		/qt-5.5.0-install/include/QtCore/qcoreapplication.h \
-		/qt-5.5.0-install/include/QtCore/qmath.h \
-		/qt-5.5.0-install/include/QtCore/qmetaobject.h \
-		/qt-5.5.0-install/include/QtCore/qmimedata.h \
-		/qt-5.5.0-install/include/QtCore/qobjectcleanuphandler.h \
-		/qt-5.5.0-install/include/QtCore/qpointer.h \
-		/qt-5.5.0-install/include/QtCore/qsharedmemory.h \
-		/qt-5.5.0-install/include/QtCore/qsignalmapper.h \
-		/qt-5.5.0-install/include/QtCore/qsocketnotifier.h \
-		/qt-5.5.0-install/include/QtCore/qsystemsemaphore.h \
-		/qt-5.5.0-install/include/QtCore/qtimer.h \
-		/qt-5.5.0-install/include/QtCore/qtranslator.h \
-		/qt-5.5.0-install/include/QtCore/qwineventnotifier.h \
-		/qt-5.5.0-install/include/QtCore/qmimedatabase.h \
-		/qt-5.5.0-install/include/QtCore/qmimetype.h \
-		/qt-5.5.0-install/include/QtCore/qfactoryinterface.h \
-		/qt-5.5.0-install/include/QtCore/qlibrary.h \
-		/qt-5.5.0-install/include/QtCore/qplugin.h \
-		/qt-5.5.0-install/include/QtCore/qpluginloader.h \
-		/qt-5.5.0-install/include/QtCore/quuid.h \
-		/qt-5.5.0-install/include/QtCore/qabstractstate.h \
-		/qt-5.5.0-install/include/QtCore/qabstracttransition.h \
-		/qt-5.5.0-install/include/QtCore/qeventtransition.h \
-		/qt-5.5.0-install/include/QtCore/qfinalstate.h \
-		/qt-5.5.0-install/include/QtCore/qhistorystate.h \
-		/qt-5.5.0-install/include/QtCore/qsignaltransition.h \
-		/qt-5.5.0-install/include/QtCore/qstate.h \
-		/qt-5.5.0-install/include/QtCore/qstatemachine.h \
-		/qt-5.5.0-install/include/QtCore/qexception.h \
-		/qt-5.5.0-install/include/QtCore/qfuture.h \
-		/qt-5.5.0-install/include/QtCore/qfutureinterface.h \
-		/qt-5.5.0-install/include/QtCore/qrunnable.h \
-		/qt-5.5.0-install/include/QtCore/qresultstore.h \
-		/qt-5.5.0-install/include/QtCore/qfuturesynchronizer.h \
-		/qt-5.5.0-install/include/QtCore/qfuturewatcher.h \
-		/qt-5.5.0-install/include/QtCore/qreadwritelock.h \
-		/qt-5.5.0-install/include/QtCore/qsemaphore.h \
-		/qt-5.5.0-install/include/QtCore/qthread.h \
-		/qt-5.5.0-install/include/QtCore/qthreadpool.h \
-		/qt-5.5.0-install/include/QtCore/qthreadstorage.h \
-		/qt-5.5.0-install/include/QtCore/qwaitcondition.h \
-		/qt-5.5.0-install/include/QtCore/qarraydataops.h \
-		/qt-5.5.0-install/include/QtCore/qarraydatapointer.h \
-		/qt-5.5.0-install/include/QtCore/qbitarray.h \
-		/qt-5.5.0-install/include/QtCore/qbytearraymatcher.h \
-		/qt-5.5.0-install/include/QtCore/qcache.h \
-		/qt-5.5.0-install/include/QtCore/qcollator.h \
-		/qt-5.5.0-install/include/QtCore/qcommandlineoption.h \
-		/qt-5.5.0-install/include/QtCore/qcommandlineparser.h \
-		/qt-5.5.0-install/include/QtCore/qcryptographichash.h \
-		/qt-5.5.0-install/include/QtCore/qelapsedtimer.h \
-		/qt-5.5.0-install/include/QtCore/qlinkedlist.h \
-		/qt-5.5.0-install/include/QtCore/qmessageauthenticationcode.h \
-		/qt-5.5.0-install/include/QtCore/qqueue.h \
-		/qt-5.5.0-install/include/QtCore/qregularexpression.h \
-		/qt-5.5.0-install/include/QtCore/qscopedvaluerollback.h \
-		/qt-5.5.0-install/include/QtCore/qstack.h \
-		/qt-5.5.0-install/include/QtCore/qtextboundaryfinder.h \
-		/qt-5.5.0-install/include/QtCore/qtimeline.h \
-		/qt-5.5.0-install/include/QtCore/qtimezone.h \
-		/qt-5.5.0-install/include/QtCore/qxmlstream.h \
-		/qt-5.5.0-install/include/QtCore/qtcoreversion.h \
-		/qt-5.5.0-install/include/QtNetwork/qabstractnetworkcache.h \
-		/qt-5.5.0-install/include/QtNetwork/qnetworkrequest.h \
-		/qt-5.5.0-install/include/QtCore/QSharedDataPointer \
-		/qt-5.5.0-install/include/QtCore/QString \
-		/qt-5.5.0-install/include/QtCore/QUrl \
-		/qt-5.5.0-install/include/QtCore/QVariant \
-		/qt-5.5.0-install/include/QtNetwork/qhttpmultipart.h \
-		/qt-5.5.0-install/include/QtCore/QByteArray \
-		/qt-5.5.0-install/include/QtCore/QIODevice \
-		/qt-5.5.0-install/include/QtNetwork/QNetworkRequest \
-		/qt-5.5.0-install/include/QtNetwork/qnetworkaccessmanager.h \
-		/qt-5.5.0-install/include/QtNetwork/QSslConfiguration \
-		/qt-5.5.0-install/include/QtNetwork/qsslconfiguration.h \
-		/qt-5.5.0-install/include/QtNetwork/qsslsocket.h \
-		/qt-5.5.0-install/include/QtNetwork/qtcpsocket.h \
-		/qt-5.5.0-install/include/QtNetwork/qabstractsocket.h \
-		/qt-5.5.0-install/include/QtNetwork/qsslerror.h \
-		/qt-5.5.0-install/include/QtNetwork/qsslcertificate.h \
-		/qt-5.5.0-install/include/QtNetwork/qssl.h \
-		/qt-5.5.0-install/include/QtCore/QFlags \
-		/qt-5.5.0-install/include/QtNetwork/QSslPreSharedKeyAuthenticator \
-		/qt-5.5.0-install/include/QtNetwork/qsslpresharedkeyauthenticator.h \
-		/qt-5.5.0-install/include/QtCore/QtGlobal \
-		/qt-5.5.0-install/include/QtCore/QMetaType \
-		/qt-5.5.0-install/include/QtNetwork/qnetworkcookie.h \
-		/qt-5.5.0-install/include/QtCore/QList \
-		/qt-5.5.0-install/include/QtNetwork/qnetworkcookiejar.h \
-		/qt-5.5.0-install/include/QtNetwork/qnetworkdiskcache.h \
-		/qt-5.5.0-install/include/QtNetwork/qnetworkreply.h \
-		/qt-5.5.0-install/include/QtNetwork/QNetworkAccessManager \
-		/qt-5.5.0-install/include/QtNetwork/qnetworkconfigmanager.h \
-		/qt-5.5.0-install/include/QtNetwork/qnetworkconfiguration.h \
-		/qt-5.5.0-install/include/QtNetwork/qnetworksession.h \
-		/qt-5.5.0-install/include/QtNetwork/qnetworkinterface.h \
-		/qt-5.5.0-install/include/QtNetwork/qhostaddress.h \
-		/qt-5.5.0-install/include/QtNetwork/qauthenticator.h \
-		/qt-5.5.0-install/include/QtNetwork/qdnslookup.h \
-		/qt-5.5.0-install/include/QtNetwork/qhostinfo.h \
-		/qt-5.5.0-install/include/QtNetwork/qnetworkproxy.h \
-		/qt-5.5.0-install/include/QtNetwork/qlocalserver.h \
-		/qt-5.5.0-install/include/QtNetwork/qlocalsocket.h \
-		/qt-5.5.0-install/include/QtNetwork/qtcpserver.h \
-		/qt-5.5.0-install/include/QtNetwork/qudpsocket.h \
-		/qt-5.5.0-install/include/QtNetwork/qsslcertificateextension.h \
-		/qt-5.5.0-install/include/QtNetwork/qsslcipher.h \
-		/qt-5.5.0-install/include/QtNetwork/qsslellipticcurve.h \
-		/qt-5.5.0-install/include/QtCore/QHash \
-		/qt-5.5.0-install/include/QtNetwork/qsslkey.h \
-		/qt-5.5.0-install/include/QtNetwork/qtnetworkversion.h \
-		global.h \
-		/qt-5.5.0-install/include/QtCore/QSettings \
-		/qt-5.5.0-install/include/QtCore/QTextCodec \
 		net/ipinfotable.h
 	/qt-5.5.0-install/bin/moc $(DEFINES) -I/qt-5.5.0-install/mkspecs/linux-arm-gnueabi-g++ -I/home/wyl/Desktop/service-robot -I/usr/local/include -I/qt-5.5.0-install/include -I/qt-5.5.0-install/include/QtWidgets -I/qt-5.5.0-install/include/QtGui -I/qt-5.5.0-install/include/QtNetwork -I/qt-5.5.0-install/include/QtSerialPort -I/qt-5.5.0-install/include/QtCore -I/opt/FriendlyARM/toolschain/4.5.1/arm-none-linux-gnueabi/include/c++/4.5.1 -I/opt/FriendlyARM/toolschain/4.5.1/arm-none-linux-gnueabi/include/c++/4.5.1/arm-none-linux-gnueabi -I/opt/FriendlyARM/toolschain/4.5.1/arm-none-linux-gnueabi/include/c++/4.5.1/backward -I/opt/FriendlyARM/toolschain/4.5.1/lib/gcc/arm-none-linux-gnueabi/4.5.1/include -I/opt/FriendlyARM/toolschain/4.5.1/lib/gcc/arm-none-linux-gnueabi/4.5.1/include-fixed -I/opt/FriendlyARM/toolschain/4.5.1/arm-none-linux-gnueabi/include net/ipinfotable.h -o moc_ipinfotable.cpp
 
-moc_ssdb_client_.cpp: /qt-5.5.0-install/include/QtCore/QObject \
+moc_ssdb_client_.cpp: /qt-5.5.0-install/include/QtCore/QThread \
+		/qt-5.5.0-install/include/QtCore/qthread.h \
 		/qt-5.5.0-install/include/QtCore/qobject.h \
 		/qt-5.5.0-install/include/QtCore/qobjectdefs.h \
 		/qt-5.5.0-install/include/QtCore/qnamespace.h \
@@ -2332,17 +1327,13 @@ moc_ssdb_client_.cpp: /qt-5.5.0-install/include/QtCore/QObject \
 		/qt-5.5.0-install/include/QtCore/qcontainerfwd.h \
 		/qt-5.5.0-install/include/QtCore/qisenum.h \
 		/qt-5.5.0-install/include/QtCore/qobject_impl.h \
-		/qt-5.5.0-install/include/QtCore/QtCore \
-		/qt-5.5.0-install/include/QtCore/QtCoreDepends \
-		/qt-5.5.0-install/include/QtCore/qabstractanimation.h \
-		/qt-5.5.0-install/include/QtCore/qanimationgroup.h \
-		/qt-5.5.0-install/include/QtCore/qparallelanimationgroup.h \
-		/qt-5.5.0-install/include/QtCore/qpauseanimation.h \
-		/qt-5.5.0-install/include/QtCore/qpropertyanimation.h \
-		/qt-5.5.0-install/include/QtCore/qvariantanimation.h \
-		/qt-5.5.0-install/include/QtCore/qeasingcurve.h \
+		/qt-5.5.0-install/include/QtCore/QMutex \
+		/qt-5.5.0-install/include/QtCore/QVector \
 		/qt-5.5.0-install/include/QtCore/qvector.h \
 		/qt-5.5.0-install/include/QtCore/qpoint.h \
+		SSDB/ssdb_client.h \
+		global.h \
+		/qt-5.5.0-install/include/QtCore/QVariant \
 		/qt-5.5.0-install/include/QtCore/qvariant.h \
 		/qt-5.5.0-install/include/QtCore/qmap.h \
 		/qt-5.5.0-install/include/QtCore/qpair.h \
@@ -2354,130 +1345,17 @@ moc_ssdb_client_.cpp: /qt-5.5.0-install/include/QtCore/QObject \
 		/qt-5.5.0-install/include/QtCore/qshareddata.h \
 		/qt-5.5.0-install/include/QtCore/qset.h \
 		/qt-5.5.0-install/include/QtCore/qcontiguouscache.h \
-		/qt-5.5.0-install/include/QtCore/qsequentialanimationgroup.h \
-		/qt-5.5.0-install/include/QtCore/qtextcodec.h \
-		/qt-5.5.0-install/include/QtCore/qendian.h \
-		/qt-5.5.0-install/include/QtCore/qlibraryinfo.h \
-		/qt-5.5.0-install/include/QtCore/qdatetime.h \
-		/qt-5.5.0-install/include/QtCore/qbuffer.h \
-		/qt-5.5.0-install/include/QtCore/qdatastream.h \
-		/qt-5.5.0-install/include/QtCore/qdir.h \
-		/qt-5.5.0-install/include/QtCore/qfileinfo.h \
-		/qt-5.5.0-install/include/QtCore/qfile.h \
-		/qt-5.5.0-install/include/QtCore/qfiledevice.h \
-		/qt-5.5.0-install/include/QtCore/qdiriterator.h \
-		/qt-5.5.0-install/include/QtCore/qfileselector.h \
-		/qt-5.5.0-install/include/QtCore/QStringList \
-		/qt-5.5.0-install/include/QtCore/qfilesystemwatcher.h \
-		/qt-5.5.0-install/include/QtCore/qlockfile.h \
-		/qt-5.5.0-install/include/QtCore/qloggingcategory.h \
-		/qt-5.5.0-install/include/QtCore/qprocess.h \
-		/qt-5.5.0-install/include/QtCore/qresource.h \
-		/qt-5.5.0-install/include/QtCore/qsavefile.h \
-		/qt-5.5.0-install/include/QtCore/qsettings.h \
-		/qt-5.5.0-install/include/QtCore/qstandardpaths.h \
-		/qt-5.5.0-install/include/QtCore/qstorageinfo.h \
-		/qt-5.5.0-install/include/QtCore/qtemporarydir.h \
-		/qt-5.5.0-install/include/QtCore/QScopedPointer \
-		/qt-5.5.0-install/include/QtCore/qtemporaryfile.h \
-		/qt-5.5.0-install/include/QtCore/qurl.h \
-		/qt-5.5.0-install/include/QtCore/qurlquery.h \
-		/qt-5.5.0-install/include/QtCore/qabstractitemmodel.h \
-		/qt-5.5.0-install/include/QtCore/qabstractproxymodel.h \
-		/qt-5.5.0-install/include/QtCore/qidentityproxymodel.h \
-		/qt-5.5.0-install/include/QtCore/qitemselectionmodel.h \
-		/qt-5.5.0-install/include/QtCore/qsortfilterproxymodel.h \
-		/qt-5.5.0-install/include/QtCore/qstringlistmodel.h \
-		/qt-5.5.0-install/include/QtCore/qjsonarray.h \
-		/qt-5.5.0-install/include/QtCore/qjsonvalue.h \
-		/qt-5.5.0-install/include/QtCore/qjsondocument.h \
-		/qt-5.5.0-install/include/QtCore/qjsonobject.h \
-		/qt-5.5.0-install/include/QtCore/qabstracteventdispatcher.h \
-		/qt-5.5.0-install/include/QtCore/qeventloop.h \
-		/qt-5.5.0-install/include/QtCore/qabstractnativeeventfilter.h \
-		/qt-5.5.0-install/include/QtCore/qbasictimer.h \
-		/qt-5.5.0-install/include/QtCore/qcoreapplication.h \
-		/qt-5.5.0-install/include/QtCore/qmath.h \
-		/qt-5.5.0-install/include/QtCore/qmetaobject.h \
-		/qt-5.5.0-install/include/QtCore/qmimedata.h \
-		/qt-5.5.0-install/include/QtCore/qobjectcleanuphandler.h \
-		/qt-5.5.0-install/include/QtCore/qpointer.h \
-		/qt-5.5.0-install/include/QtCore/qsharedpointer.h \
-		/qt-5.5.0-install/include/QtCore/qsharedpointer_impl.h \
-		/qt-5.5.0-install/include/QtCore/qsharedmemory.h \
-		/qt-5.5.0-install/include/QtCore/qsignalmapper.h \
-		/qt-5.5.0-install/include/QtCore/qsocketnotifier.h \
-		/qt-5.5.0-install/include/QtCore/qsystemsemaphore.h \
-		/qt-5.5.0-install/include/QtCore/qtimer.h \
-		/qt-5.5.0-install/include/QtCore/qtranslator.h \
-		/qt-5.5.0-install/include/QtCore/qwineventnotifier.h \
-		/qt-5.5.0-install/include/QtCore/qmimedatabase.h \
-		/qt-5.5.0-install/include/QtCore/qmimetype.h \
-		/qt-5.5.0-install/include/QtCore/qfactoryinterface.h \
-		/qt-5.5.0-install/include/QtCore/qlibrary.h \
-		/qt-5.5.0-install/include/QtCore/qplugin.h \
-		/qt-5.5.0-install/include/QtCore/qpluginloader.h \
-		/qt-5.5.0-install/include/QtCore/quuid.h \
-		/qt-5.5.0-install/include/QtCore/qabstractstate.h \
-		/qt-5.5.0-install/include/QtCore/qabstracttransition.h \
-		/qt-5.5.0-install/include/QtCore/qeventtransition.h \
-		/qt-5.5.0-install/include/QtCore/qfinalstate.h \
-		/qt-5.5.0-install/include/QtCore/qhistorystate.h \
-		/qt-5.5.0-install/include/QtCore/qsignaltransition.h \
-		/qt-5.5.0-install/include/QtCore/qstate.h \
-		/qt-5.5.0-install/include/QtCore/qstatemachine.h \
-		/qt-5.5.0-install/include/QtCore/qexception.h \
-		/qt-5.5.0-install/include/QtCore/qfuture.h \
-		/qt-5.5.0-install/include/QtCore/qfutureinterface.h \
-		/qt-5.5.0-install/include/QtCore/qrunnable.h \
-		/qt-5.5.0-install/include/QtCore/qresultstore.h \
-		/qt-5.5.0-install/include/QtCore/qfuturesynchronizer.h \
-		/qt-5.5.0-install/include/QtCore/qfuturewatcher.h \
-		/qt-5.5.0-install/include/QtCore/qreadwritelock.h \
-		/qt-5.5.0-install/include/QtCore/qsemaphore.h \
-		/qt-5.5.0-install/include/QtCore/qthread.h \
-		/qt-5.5.0-install/include/QtCore/qthreadpool.h \
-		/qt-5.5.0-install/include/QtCore/qthreadstorage.h \
-		/qt-5.5.0-install/include/QtCore/qwaitcondition.h \
-		/qt-5.5.0-install/include/QtCore/qarraydataops.h \
-		/qt-5.5.0-install/include/QtCore/qarraydatapointer.h \
-		/qt-5.5.0-install/include/QtCore/qbitarray.h \
-		/qt-5.5.0-install/include/QtCore/qbytearraymatcher.h \
-		/qt-5.5.0-install/include/QtCore/qcache.h \
-		/qt-5.5.0-install/include/QtCore/qcollator.h \
-		/qt-5.5.0-install/include/QtCore/qcommandlineoption.h \
-		/qt-5.5.0-install/include/QtCore/qcommandlineparser.h \
-		/qt-5.5.0-install/include/QtCore/qcryptographichash.h \
-		/qt-5.5.0-install/include/QtCore/qelapsedtimer.h \
-		/qt-5.5.0-install/include/QtCore/qline.h \
-		/qt-5.5.0-install/include/QtCore/qlinkedlist.h \
-		/qt-5.5.0-install/include/QtCore/qmargins.h \
-		/qt-5.5.0-install/include/QtCore/qmessageauthenticationcode.h \
-		/qt-5.5.0-install/include/QtCore/qqueue.h \
-		/qt-5.5.0-install/include/QtCore/qrect.h \
-		/qt-5.5.0-install/include/QtCore/qsize.h \
-		/qt-5.5.0-install/include/QtCore/qregularexpression.h \
-		/qt-5.5.0-install/include/QtCore/qscopedvaluerollback.h \
-		/qt-5.5.0-install/include/QtCore/qstack.h \
-		/qt-5.5.0-install/include/QtCore/qtextboundaryfinder.h \
-		/qt-5.5.0-install/include/QtCore/qtimeline.h \
-		/qt-5.5.0-install/include/QtCore/qtimezone.h \
-		/qt-5.5.0-install/include/QtCore/qxmlstream.h \
-		/qt-5.5.0-install/include/QtCore/qtcoreversion.h \
-		SSDB/ssdb_client.h \
-		global.h \
-		/qt-5.5.0-install/include/QtCore/QString \
-		/qt-5.5.0-install/include/QtCore/QVariant \
 		/qt-5.5.0-install/include/QtCore/QSettings \
+		/qt-5.5.0-install/include/QtCore/qsettings.h \
 		/qt-5.5.0-install/include/QtCore/QTextCodec \
+		/qt-5.5.0-install/include/QtCore/qtextcodec.h \
 		serialport/serialport.h \
-		/qt-5.5.0-install/include/QtSerialPort/QtSerialPort \
-		/qt-5.5.0-install/include/QtSerialPort/QtSerialPortDepends \
+		/qt-5.5.0-install/include/QtSerialPort/QSerialPort \
 		/qt-5.5.0-install/include/QtSerialPort/qserialport.h \
 		/qt-5.5.0-install/include/QtSerialPort/qserialportglobal.h \
-		/qt-5.5.0-install/include/QtSerialPort/qserialportinfo.h \
-		/qt-5.5.0-install/include/QtSerialPort/qtserialportversion.h \
-		/qt-5.5.0-install/include/QtCore/QElapsedTimer \
+		/qt-5.5.0-install/include/QtCore/QTimer \
+		/qt-5.5.0-install/include/QtCore/qtimer.h \
+		/qt-5.5.0-install/include/QtCore/qbasictimer.h \
 		SSDB/ssdb_client_.h
 	/qt-5.5.0-install/bin/moc $(DEFINES) -I/qt-5.5.0-install/mkspecs/linux-arm-gnueabi-g++ -I/home/wyl/Desktop/service-robot -I/usr/local/include -I/qt-5.5.0-install/include -I/qt-5.5.0-install/include/QtWidgets -I/qt-5.5.0-install/include/QtGui -I/qt-5.5.0-install/include/QtNetwork -I/qt-5.5.0-install/include/QtSerialPort -I/qt-5.5.0-install/include/QtCore -I/opt/FriendlyARM/toolschain/4.5.1/arm-none-linux-gnueabi/include/c++/4.5.1 -I/opt/FriendlyARM/toolschain/4.5.1/arm-none-linux-gnueabi/include/c++/4.5.1/arm-none-linux-gnueabi -I/opt/FriendlyARM/toolschain/4.5.1/arm-none-linux-gnueabi/include/c++/4.5.1/backward -I/opt/FriendlyARM/toolschain/4.5.1/lib/gcc/arm-none-linux-gnueabi/4.5.1/include -I/opt/FriendlyARM/toolschain/4.5.1/lib/gcc/arm-none-linux-gnueabi/4.5.1/include-fixed -I/opt/FriendlyARM/toolschain/4.5.1/arm-none-linux-gnueabi/include SSDB/ssdb_client_.h -o moc_ssdb_client_.cpp
 
@@ -2773,138 +1651,9 @@ moc_netspeed.cpp: /qt-5.5.0-install/include/QtCore/QObject \
 		/qt-5.5.0-install/include/QtCore/qcontainerfwd.h \
 		/qt-5.5.0-install/include/QtCore/qisenum.h \
 		/qt-5.5.0-install/include/QtCore/qobject_impl.h \
-		/qt-5.5.0-install/include/QtCore/QtCore \
-		/qt-5.5.0-install/include/QtCore/QtCoreDepends \
-		/qt-5.5.0-install/include/QtCore/qabstractanimation.h \
-		/qt-5.5.0-install/include/QtCore/qanimationgroup.h \
-		/qt-5.5.0-install/include/QtCore/qparallelanimationgroup.h \
-		/qt-5.5.0-install/include/QtCore/qpauseanimation.h \
-		/qt-5.5.0-install/include/QtCore/qpropertyanimation.h \
-		/qt-5.5.0-install/include/QtCore/qvariantanimation.h \
-		/qt-5.5.0-install/include/QtCore/qeasingcurve.h \
-		/qt-5.5.0-install/include/QtCore/qvector.h \
-		/qt-5.5.0-install/include/QtCore/qpoint.h \
-		/qt-5.5.0-install/include/QtCore/qvariant.h \
-		/qt-5.5.0-install/include/QtCore/qmap.h \
-		/qt-5.5.0-install/include/QtCore/qpair.h \
-		/qt-5.5.0-install/include/QtCore/qdebug.h \
-		/qt-5.5.0-install/include/QtCore/qhash.h \
-		/qt-5.5.0-install/include/QtCore/qtextstream.h \
-		/qt-5.5.0-install/include/QtCore/qiodevice.h \
-		/qt-5.5.0-install/include/QtCore/qlocale.h \
-		/qt-5.5.0-install/include/QtCore/qshareddata.h \
-		/qt-5.5.0-install/include/QtCore/qset.h \
-		/qt-5.5.0-install/include/QtCore/qcontiguouscache.h \
-		/qt-5.5.0-install/include/QtCore/qsequentialanimationgroup.h \
-		/qt-5.5.0-install/include/QtCore/qtextcodec.h \
-		/qt-5.5.0-install/include/QtCore/qendian.h \
-		/qt-5.5.0-install/include/QtCore/qlibraryinfo.h \
-		/qt-5.5.0-install/include/QtCore/qdatetime.h \
-		/qt-5.5.0-install/include/QtCore/qbuffer.h \
-		/qt-5.5.0-install/include/QtCore/qdatastream.h \
-		/qt-5.5.0-install/include/QtCore/qdir.h \
-		/qt-5.5.0-install/include/QtCore/qfileinfo.h \
-		/qt-5.5.0-install/include/QtCore/qfile.h \
-		/qt-5.5.0-install/include/QtCore/qfiledevice.h \
-		/qt-5.5.0-install/include/QtCore/qdiriterator.h \
-		/qt-5.5.0-install/include/QtCore/qfileselector.h \
-		/qt-5.5.0-install/include/QtCore/QStringList \
-		/qt-5.5.0-install/include/QtCore/qfilesystemwatcher.h \
-		/qt-5.5.0-install/include/QtCore/qlockfile.h \
-		/qt-5.5.0-install/include/QtCore/qloggingcategory.h \
-		/qt-5.5.0-install/include/QtCore/qprocess.h \
-		/qt-5.5.0-install/include/QtCore/qresource.h \
-		/qt-5.5.0-install/include/QtCore/qsavefile.h \
-		/qt-5.5.0-install/include/QtCore/qsettings.h \
-		/qt-5.5.0-install/include/QtCore/qstandardpaths.h \
-		/qt-5.5.0-install/include/QtCore/qstorageinfo.h \
-		/qt-5.5.0-install/include/QtCore/qtemporarydir.h \
-		/qt-5.5.0-install/include/QtCore/QScopedPointer \
-		/qt-5.5.0-install/include/QtCore/qtemporaryfile.h \
-		/qt-5.5.0-install/include/QtCore/qurl.h \
-		/qt-5.5.0-install/include/QtCore/qurlquery.h \
-		/qt-5.5.0-install/include/QtCore/qabstractitemmodel.h \
-		/qt-5.5.0-install/include/QtCore/qabstractproxymodel.h \
-		/qt-5.5.0-install/include/QtCore/qidentityproxymodel.h \
-		/qt-5.5.0-install/include/QtCore/qitemselectionmodel.h \
-		/qt-5.5.0-install/include/QtCore/qsortfilterproxymodel.h \
-		/qt-5.5.0-install/include/QtCore/qstringlistmodel.h \
-		/qt-5.5.0-install/include/QtCore/qjsonarray.h \
-		/qt-5.5.0-install/include/QtCore/qjsonvalue.h \
-		/qt-5.5.0-install/include/QtCore/qjsondocument.h \
-		/qt-5.5.0-install/include/QtCore/qjsonobject.h \
-		/qt-5.5.0-install/include/QtCore/qabstracteventdispatcher.h \
-		/qt-5.5.0-install/include/QtCore/qeventloop.h \
-		/qt-5.5.0-install/include/QtCore/qabstractnativeeventfilter.h \
-		/qt-5.5.0-install/include/QtCore/qbasictimer.h \
-		/qt-5.5.0-install/include/QtCore/qcoreapplication.h \
-		/qt-5.5.0-install/include/QtCore/qmath.h \
-		/qt-5.5.0-install/include/QtCore/qmetaobject.h \
-		/qt-5.5.0-install/include/QtCore/qmimedata.h \
-		/qt-5.5.0-install/include/QtCore/qobjectcleanuphandler.h \
-		/qt-5.5.0-install/include/QtCore/qpointer.h \
-		/qt-5.5.0-install/include/QtCore/qsharedpointer.h \
-		/qt-5.5.0-install/include/QtCore/qsharedpointer_impl.h \
-		/qt-5.5.0-install/include/QtCore/qsharedmemory.h \
-		/qt-5.5.0-install/include/QtCore/qsignalmapper.h \
-		/qt-5.5.0-install/include/QtCore/qsocketnotifier.h \
-		/qt-5.5.0-install/include/QtCore/qsystemsemaphore.h \
+		/qt-5.5.0-install/include/QtCore/QTimer \
 		/qt-5.5.0-install/include/QtCore/qtimer.h \
-		/qt-5.5.0-install/include/QtCore/qtranslator.h \
-		/qt-5.5.0-install/include/QtCore/qwineventnotifier.h \
-		/qt-5.5.0-install/include/QtCore/qmimedatabase.h \
-		/qt-5.5.0-install/include/QtCore/qmimetype.h \
-		/qt-5.5.0-install/include/QtCore/qfactoryinterface.h \
-		/qt-5.5.0-install/include/QtCore/qlibrary.h \
-		/qt-5.5.0-install/include/QtCore/qplugin.h \
-		/qt-5.5.0-install/include/QtCore/qpluginloader.h \
-		/qt-5.5.0-install/include/QtCore/quuid.h \
-		/qt-5.5.0-install/include/QtCore/qabstractstate.h \
-		/qt-5.5.0-install/include/QtCore/qabstracttransition.h \
-		/qt-5.5.0-install/include/QtCore/qeventtransition.h \
-		/qt-5.5.0-install/include/QtCore/qfinalstate.h \
-		/qt-5.5.0-install/include/QtCore/qhistorystate.h \
-		/qt-5.5.0-install/include/QtCore/qsignaltransition.h \
-		/qt-5.5.0-install/include/QtCore/qstate.h \
-		/qt-5.5.0-install/include/QtCore/qstatemachine.h \
-		/qt-5.5.0-install/include/QtCore/qexception.h \
-		/qt-5.5.0-install/include/QtCore/qfuture.h \
-		/qt-5.5.0-install/include/QtCore/qfutureinterface.h \
-		/qt-5.5.0-install/include/QtCore/qrunnable.h \
-		/qt-5.5.0-install/include/QtCore/qresultstore.h \
-		/qt-5.5.0-install/include/QtCore/qfuturesynchronizer.h \
-		/qt-5.5.0-install/include/QtCore/qfuturewatcher.h \
-		/qt-5.5.0-install/include/QtCore/qreadwritelock.h \
-		/qt-5.5.0-install/include/QtCore/qsemaphore.h \
-		/qt-5.5.0-install/include/QtCore/qthread.h \
-		/qt-5.5.0-install/include/QtCore/qthreadpool.h \
-		/qt-5.5.0-install/include/QtCore/qthreadstorage.h \
-		/qt-5.5.0-install/include/QtCore/qwaitcondition.h \
-		/qt-5.5.0-install/include/QtCore/qarraydataops.h \
-		/qt-5.5.0-install/include/QtCore/qarraydatapointer.h \
-		/qt-5.5.0-install/include/QtCore/qbitarray.h \
-		/qt-5.5.0-install/include/QtCore/qbytearraymatcher.h \
-		/qt-5.5.0-install/include/QtCore/qcache.h \
-		/qt-5.5.0-install/include/QtCore/qcollator.h \
-		/qt-5.5.0-install/include/QtCore/qcommandlineoption.h \
-		/qt-5.5.0-install/include/QtCore/qcommandlineparser.h \
-		/qt-5.5.0-install/include/QtCore/qcryptographichash.h \
-		/qt-5.5.0-install/include/QtCore/qelapsedtimer.h \
-		/qt-5.5.0-install/include/QtCore/qline.h \
-		/qt-5.5.0-install/include/QtCore/qlinkedlist.h \
-		/qt-5.5.0-install/include/QtCore/qmargins.h \
-		/qt-5.5.0-install/include/QtCore/qmessageauthenticationcode.h \
-		/qt-5.5.0-install/include/QtCore/qqueue.h \
-		/qt-5.5.0-install/include/QtCore/qrect.h \
-		/qt-5.5.0-install/include/QtCore/qsize.h \
-		/qt-5.5.0-install/include/QtCore/qregularexpression.h \
-		/qt-5.5.0-install/include/QtCore/qscopedvaluerollback.h \
-		/qt-5.5.0-install/include/QtCore/qstack.h \
-		/qt-5.5.0-install/include/QtCore/qtextboundaryfinder.h \
-		/qt-5.5.0-install/include/QtCore/qtimeline.h \
-		/qt-5.5.0-install/include/QtCore/qtimezone.h \
-		/qt-5.5.0-install/include/QtCore/qxmlstream.h \
-		/qt-5.5.0-install/include/QtCore/qtcoreversion.h \
+		/qt-5.5.0-install/include/QtCore/qbasictimer.h \
 		net/netspeed.h
 	/qt-5.5.0-install/bin/moc $(DEFINES) -I/qt-5.5.0-install/mkspecs/linux-arm-gnueabi-g++ -I/home/wyl/Desktop/service-robot -I/usr/local/include -I/qt-5.5.0-install/include -I/qt-5.5.0-install/include/QtWidgets -I/qt-5.5.0-install/include/QtGui -I/qt-5.5.0-install/include/QtNetwork -I/qt-5.5.0-install/include/QtSerialPort -I/qt-5.5.0-install/include/QtCore -I/opt/FriendlyARM/toolschain/4.5.1/arm-none-linux-gnueabi/include/c++/4.5.1 -I/opt/FriendlyARM/toolschain/4.5.1/arm-none-linux-gnueabi/include/c++/4.5.1/arm-none-linux-gnueabi -I/opt/FriendlyARM/toolschain/4.5.1/arm-none-linux-gnueabi/include/c++/4.5.1/backward -I/opt/FriendlyARM/toolschain/4.5.1/lib/gcc/arm-none-linux-gnueabi/4.5.1/include -I/opt/FriendlyARM/toolschain/4.5.1/lib/gcc/arm-none-linux-gnueabi/4.5.1/include-fixed -I/opt/FriendlyARM/toolschain/4.5.1/arm-none-linux-gnueabi/include net/netspeed.h -o moc_netspeed.cpp
 
@@ -2961,17 +1710,15 @@ moc_keyinput.cpp: /qt-5.5.0-install/include/QtCore/QObject \
 		/qt-5.5.0-install/include/QtCore/qcontainerfwd.h \
 		/qt-5.5.0-install/include/QtCore/qisenum.h \
 		/qt-5.5.0-install/include/QtCore/qobject_impl.h \
-		/qt-5.5.0-install/include/QtCore/QSocketNotifier \
-		/qt-5.5.0-install/include/QtCore/qsocketnotifier.h \
 		keyinput.h
 	/qt-5.5.0-install/bin/moc $(DEFINES) -I/qt-5.5.0-install/mkspecs/linux-arm-gnueabi-g++ -I/home/wyl/Desktop/service-robot -I/usr/local/include -I/qt-5.5.0-install/include -I/qt-5.5.0-install/include/QtWidgets -I/qt-5.5.0-install/include/QtGui -I/qt-5.5.0-install/include/QtNetwork -I/qt-5.5.0-install/include/QtSerialPort -I/qt-5.5.0-install/include/QtCore -I/opt/FriendlyARM/toolschain/4.5.1/arm-none-linux-gnueabi/include/c++/4.5.1 -I/opt/FriendlyARM/toolschain/4.5.1/arm-none-linux-gnueabi/include/c++/4.5.1/arm-none-linux-gnueabi -I/opt/FriendlyARM/toolschain/4.5.1/arm-none-linux-gnueabi/include/c++/4.5.1/backward -I/opt/FriendlyARM/toolschain/4.5.1/lib/gcc/arm-none-linux-gnueabi/4.5.1/include -I/opt/FriendlyARM/toolschain/4.5.1/lib/gcc/arm-none-linux-gnueabi/4.5.1/include-fixed -I/opt/FriendlyARM/toolschain/4.5.1/arm-none-linux-gnueabi/include keyinput.h -o moc_keyinput.cpp
 
-moc_screenemotion.cpp: /qt-5.5.0-install/include/QtCore/QtCore \
-		/qt-5.5.0-install/include/QtCore/QtCoreDepends \
-		/qt-5.5.0-install/include/QtCore/qabstractanimation.h \
-		/qt-5.5.0-install/include/QtCore/qobject.h \
-		/qt-5.5.0-install/include/QtCore/qobjectdefs.h \
-		/qt-5.5.0-install/include/QtCore/qnamespace.h \
+moc_screenemotion.cpp: screenemotion/label.h \
+		/qt-5.5.0-install/include/QtWidgets/QLabel \
+		/qt-5.5.0-install/include/QtWidgets/qlabel.h \
+		/qt-5.5.0-install/include/QtWidgets/qframe.h \
+		/qt-5.5.0-install/include/QtWidgets/qwidget.h \
+		/qt-5.5.0-install/include/QtGui/qwindowdefs.h \
 		/qt-5.5.0-install/include/QtCore/qglobal.h \
 		/qt-5.5.0-install/include/QtCore/qconfig.h \
 		/qt-5.5.0-install/include/QtCore/qfeatures.h \
@@ -3000,7 +1747,11 @@ moc_screenemotion.cpp: /qt-5.5.0-install/include/QtCore/QtCore \
 		/qt-5.5.0-install/include/QtCore/qglobalstatic.h \
 		/qt-5.5.0-install/include/QtCore/qmutex.h \
 		/qt-5.5.0-install/include/QtCore/qnumeric.h \
+		/qt-5.5.0-install/include/QtCore/qobjectdefs.h \
+		/qt-5.5.0-install/include/QtCore/qnamespace.h \
 		/qt-5.5.0-install/include/QtCore/qobjectdefs_impl.h \
+		/qt-5.5.0-install/include/QtGui/qwindowdefs_win.h \
+		/qt-5.5.0-install/include/QtCore/qobject.h \
 		/qt-5.5.0-install/include/QtCore/qstring.h \
 		/qt-5.5.0-install/include/QtCore/qchar.h \
 		/qt-5.5.0-install/include/QtCore/qbytearray.h \
@@ -3021,408 +1772,58 @@ moc_screenemotion.cpp: /qt-5.5.0-install/include/QtCore/QtCore \
 		/qt-5.5.0-install/include/QtCore/qcontainerfwd.h \
 		/qt-5.5.0-install/include/QtCore/qisenum.h \
 		/qt-5.5.0-install/include/QtCore/qobject_impl.h \
-		/qt-5.5.0-install/include/QtCore/qanimationgroup.h \
-		/qt-5.5.0-install/include/QtCore/qparallelanimationgroup.h \
-		/qt-5.5.0-install/include/QtCore/qpauseanimation.h \
-		/qt-5.5.0-install/include/QtCore/qpropertyanimation.h \
-		/qt-5.5.0-install/include/QtCore/qvariantanimation.h \
-		/qt-5.5.0-install/include/QtCore/qeasingcurve.h \
-		/qt-5.5.0-install/include/QtCore/qvector.h \
-		/qt-5.5.0-install/include/QtCore/qpoint.h \
-		/qt-5.5.0-install/include/QtCore/qvariant.h \
-		/qt-5.5.0-install/include/QtCore/qmap.h \
-		/qt-5.5.0-install/include/QtCore/qpair.h \
-		/qt-5.5.0-install/include/QtCore/qdebug.h \
-		/qt-5.5.0-install/include/QtCore/qhash.h \
-		/qt-5.5.0-install/include/QtCore/qtextstream.h \
-		/qt-5.5.0-install/include/QtCore/qiodevice.h \
-		/qt-5.5.0-install/include/QtCore/qlocale.h \
-		/qt-5.5.0-install/include/QtCore/qshareddata.h \
-		/qt-5.5.0-install/include/QtCore/qset.h \
-		/qt-5.5.0-install/include/QtCore/qcontiguouscache.h \
-		/qt-5.5.0-install/include/QtCore/qsequentialanimationgroup.h \
-		/qt-5.5.0-install/include/QtCore/qtextcodec.h \
-		/qt-5.5.0-install/include/QtCore/qendian.h \
-		/qt-5.5.0-install/include/QtCore/qlibraryinfo.h \
-		/qt-5.5.0-install/include/QtCore/qdatetime.h \
-		/qt-5.5.0-install/include/QtCore/qbuffer.h \
-		/qt-5.5.0-install/include/QtCore/qdatastream.h \
-		/qt-5.5.0-install/include/QtCore/qdir.h \
-		/qt-5.5.0-install/include/QtCore/qfileinfo.h \
-		/qt-5.5.0-install/include/QtCore/qfile.h \
-		/qt-5.5.0-install/include/QtCore/qfiledevice.h \
-		/qt-5.5.0-install/include/QtCore/qdiriterator.h \
-		/qt-5.5.0-install/include/QtCore/qfileselector.h \
-		/qt-5.5.0-install/include/QtCore/QObject \
-		/qt-5.5.0-install/include/QtCore/QStringList \
-		/qt-5.5.0-install/include/QtCore/qfilesystemwatcher.h \
-		/qt-5.5.0-install/include/QtCore/qlockfile.h \
-		/qt-5.5.0-install/include/QtCore/qloggingcategory.h \
-		/qt-5.5.0-install/include/QtCore/qprocess.h \
-		/qt-5.5.0-install/include/QtCore/qresource.h \
-		/qt-5.5.0-install/include/QtCore/qsavefile.h \
-		/qt-5.5.0-install/include/QtCore/qsettings.h \
-		/qt-5.5.0-install/include/QtCore/qstandardpaths.h \
-		/qt-5.5.0-install/include/QtCore/qstorageinfo.h \
-		/qt-5.5.0-install/include/QtCore/qtemporarydir.h \
-		/qt-5.5.0-install/include/QtCore/QScopedPointer \
-		/qt-5.5.0-install/include/QtCore/qtemporaryfile.h \
-		/qt-5.5.0-install/include/QtCore/qurl.h \
-		/qt-5.5.0-install/include/QtCore/qurlquery.h \
-		/qt-5.5.0-install/include/QtCore/qabstractitemmodel.h \
-		/qt-5.5.0-install/include/QtCore/qabstractproxymodel.h \
-		/qt-5.5.0-install/include/QtCore/qidentityproxymodel.h \
-		/qt-5.5.0-install/include/QtCore/qitemselectionmodel.h \
-		/qt-5.5.0-install/include/QtCore/qsortfilterproxymodel.h \
-		/qt-5.5.0-install/include/QtCore/qstringlistmodel.h \
-		/qt-5.5.0-install/include/QtCore/qjsonarray.h \
-		/qt-5.5.0-install/include/QtCore/qjsonvalue.h \
-		/qt-5.5.0-install/include/QtCore/qjsondocument.h \
-		/qt-5.5.0-install/include/QtCore/qjsonobject.h \
-		/qt-5.5.0-install/include/QtCore/qabstracteventdispatcher.h \
-		/qt-5.5.0-install/include/QtCore/qeventloop.h \
-		/qt-5.5.0-install/include/QtCore/qabstractnativeeventfilter.h \
-		/qt-5.5.0-install/include/QtCore/qbasictimer.h \
-		/qt-5.5.0-install/include/QtCore/qcoreapplication.h \
-		/qt-5.5.0-install/include/QtCore/qmath.h \
-		/qt-5.5.0-install/include/QtCore/qmetaobject.h \
-		/qt-5.5.0-install/include/QtCore/qmimedata.h \
-		/qt-5.5.0-install/include/QtCore/qobjectcleanuphandler.h \
-		/qt-5.5.0-install/include/QtCore/qpointer.h \
-		/qt-5.5.0-install/include/QtCore/qsharedpointer.h \
-		/qt-5.5.0-install/include/QtCore/qsharedpointer_impl.h \
-		/qt-5.5.0-install/include/QtCore/qsharedmemory.h \
-		/qt-5.5.0-install/include/QtCore/qsignalmapper.h \
-		/qt-5.5.0-install/include/QtCore/qsocketnotifier.h \
-		/qt-5.5.0-install/include/QtCore/qsystemsemaphore.h \
-		/qt-5.5.0-install/include/QtCore/qtimer.h \
-		/qt-5.5.0-install/include/QtCore/qtranslator.h \
-		/qt-5.5.0-install/include/QtCore/qwineventnotifier.h \
-		/qt-5.5.0-install/include/QtCore/qmimedatabase.h \
-		/qt-5.5.0-install/include/QtCore/qmimetype.h \
-		/qt-5.5.0-install/include/QtCore/qfactoryinterface.h \
-		/qt-5.5.0-install/include/QtCore/qlibrary.h \
-		/qt-5.5.0-install/include/QtCore/qplugin.h \
-		/qt-5.5.0-install/include/QtCore/qpluginloader.h \
-		/qt-5.5.0-install/include/QtCore/quuid.h \
-		/qt-5.5.0-install/include/QtCore/qabstractstate.h \
-		/qt-5.5.0-install/include/QtCore/qabstracttransition.h \
-		/qt-5.5.0-install/include/QtCore/qeventtransition.h \
-		/qt-5.5.0-install/include/QtCore/qfinalstate.h \
-		/qt-5.5.0-install/include/QtCore/qhistorystate.h \
-		/qt-5.5.0-install/include/QtCore/qsignaltransition.h \
-		/qt-5.5.0-install/include/QtCore/qstate.h \
-		/qt-5.5.0-install/include/QtCore/qstatemachine.h \
-		/qt-5.5.0-install/include/QtCore/qexception.h \
-		/qt-5.5.0-install/include/QtCore/qfuture.h \
-		/qt-5.5.0-install/include/QtCore/qfutureinterface.h \
-		/qt-5.5.0-install/include/QtCore/qrunnable.h \
-		/qt-5.5.0-install/include/QtCore/qresultstore.h \
-		/qt-5.5.0-install/include/QtCore/qfuturesynchronizer.h \
-		/qt-5.5.0-install/include/QtCore/qfuturewatcher.h \
-		/qt-5.5.0-install/include/QtCore/qreadwritelock.h \
-		/qt-5.5.0-install/include/QtCore/qsemaphore.h \
-		/qt-5.5.0-install/include/QtCore/qthread.h \
-		/qt-5.5.0-install/include/QtCore/qthreadpool.h \
-		/qt-5.5.0-install/include/QtCore/qthreadstorage.h \
-		/qt-5.5.0-install/include/QtCore/qwaitcondition.h \
-		/qt-5.5.0-install/include/QtCore/qarraydataops.h \
-		/qt-5.5.0-install/include/QtCore/qarraydatapointer.h \
-		/qt-5.5.0-install/include/QtCore/qbitarray.h \
-		/qt-5.5.0-install/include/QtCore/qbytearraymatcher.h \
-		/qt-5.5.0-install/include/QtCore/qcache.h \
-		/qt-5.5.0-install/include/QtCore/qcollator.h \
-		/qt-5.5.0-install/include/QtCore/qcommandlineoption.h \
-		/qt-5.5.0-install/include/QtCore/qcommandlineparser.h \
-		/qt-5.5.0-install/include/QtCore/qcryptographichash.h \
-		/qt-5.5.0-install/include/QtCore/qelapsedtimer.h \
-		/qt-5.5.0-install/include/QtCore/qline.h \
-		/qt-5.5.0-install/include/QtCore/qlinkedlist.h \
 		/qt-5.5.0-install/include/QtCore/qmargins.h \
-		/qt-5.5.0-install/include/QtCore/qmessageauthenticationcode.h \
-		/qt-5.5.0-install/include/QtCore/qqueue.h \
+		/qt-5.5.0-install/include/QtGui/qpaintdevice.h \
 		/qt-5.5.0-install/include/QtCore/qrect.h \
 		/qt-5.5.0-install/include/QtCore/qsize.h \
-		/qt-5.5.0-install/include/QtCore/qregularexpression.h \
-		/qt-5.5.0-install/include/QtCore/qscopedvaluerollback.h \
-		/qt-5.5.0-install/include/QtCore/qstack.h \
-		/qt-5.5.0-install/include/QtCore/qtextboundaryfinder.h \
-		/qt-5.5.0-install/include/QtCore/qtimeline.h \
-		/qt-5.5.0-install/include/QtCore/qtimezone.h \
-		/qt-5.5.0-install/include/QtCore/qxmlstream.h \
-		/qt-5.5.0-install/include/QtCore/qtcoreversion.h \
-		/qt-5.5.0-install/include/QtWidgets/QtWidgets \
-		/qt-5.5.0-install/include/QtWidgets/QtWidgetsDepends \
-		/qt-5.5.0-install/include/QtGui/QtGui \
-		/qt-5.5.0-install/include/QtGui/QtGuiDepends \
-		/qt-5.5.0-install/include/QtGui/qaccessible.h \
+		/qt-5.5.0-install/include/QtCore/qpoint.h \
+		/qt-5.5.0-install/include/QtGui/qpalette.h \
 		/qt-5.5.0-install/include/QtGui/qcolor.h \
 		/qt-5.5.0-install/include/QtGui/qrgb.h \
-		/qt-5.5.0-install/include/QtGui/qevent.h \
-		/qt-5.5.0-install/include/QtGui/qwindowdefs.h \
-		/qt-5.5.0-install/include/QtGui/qwindowdefs_win.h \
-		/qt-5.5.0-install/include/QtGui/qregion.h \
-		/qt-5.5.0-install/include/QtGui/qkeysequence.h \
-		/qt-5.5.0-install/include/QtGui/qvector2d.h \
-		/qt-5.5.0-install/include/QtGui/qtouchdevice.h \
-		/qt-5.5.0-install/include/QtGui/qaccessiblebridge.h \
-		/qt-5.5.0-install/include/QtGui/qaccessibleobject.h \
-		/qt-5.5.0-install/include/QtGui/qaccessibleplugin.h \
-		/qt-5.5.0-install/include/QtGui/qbitmap.h \
-		/qt-5.5.0-install/include/QtGui/qpixmap.h \
-		/qt-5.5.0-install/include/QtGui/qpaintdevice.h \
-		/qt-5.5.0-install/include/QtGui/qimage.h \
-		/qt-5.5.0-install/include/QtGui/qtransform.h \
+		/qt-5.5.0-install/include/QtGui/qbrush.h \
+		/qt-5.5.0-install/include/QtCore/qpair.h \
+		/qt-5.5.0-install/include/QtCore/qvector.h \
 		/qt-5.5.0-install/include/QtGui/qmatrix.h \
 		/qt-5.5.0-install/include/QtGui/qpolygon.h \
+		/qt-5.5.0-install/include/QtGui/qregion.h \
+		/qt-5.5.0-install/include/QtCore/qdatastream.h \
+		/qt-5.5.0-install/include/QtCore/qiodevice.h \
+		/qt-5.5.0-install/include/QtCore/qline.h \
+		/qt-5.5.0-install/include/QtGui/qtransform.h \
 		/qt-5.5.0-install/include/QtGui/qpainterpath.h \
+		/qt-5.5.0-install/include/QtGui/qimage.h \
 		/qt-5.5.0-install/include/QtGui/qpixelformat.h \
-		/qt-5.5.0-install/include/QtGui/qicon.h \
-		/qt-5.5.0-install/include/QtGui/qiconengine.h \
-		/qt-5.5.0-install/include/QtGui/qiconengineplugin.h \
-		/qt-5.5.0-install/include/QtGui/qimageiohandler.h \
-		/qt-5.5.0-install/include/QtGui/qimagereader.h \
-		/qt-5.5.0-install/include/QtGui/qimagewriter.h \
-		/qt-5.5.0-install/include/QtGui/qmovie.h \
-		/qt-5.5.0-install/include/QtGui/qpicture.h \
-		/qt-5.5.0-install/include/QtGui/qpictureformatplugin.h \
-		/qt-5.5.0-install/include/QtGui/qpixmapcache.h \
-		/qt-5.5.0-install/include/QtGui/qstandarditemmodel.h \
-		/qt-5.5.0-install/include/QtGui/qbrush.h \
+		/qt-5.5.0-install/include/QtGui/qpixmap.h \
+		/qt-5.5.0-install/include/QtCore/qsharedpointer.h \
+		/qt-5.5.0-install/include/QtCore/qshareddata.h \
+		/qt-5.5.0-install/include/QtCore/qhash.h \
+		/qt-5.5.0-install/include/QtCore/qsharedpointer_impl.h \
 		/qt-5.5.0-install/include/QtGui/qfont.h \
-		/qt-5.5.0-install/include/QtGui/qclipboard.h \
-		/qt-5.5.0-install/include/QtGui/qcursor.h \
-		/qt-5.5.0-install/include/QtGui/qdrag.h \
-		/qt-5.5.0-install/include/QtGui/qgenericplugin.h \
-		/qt-5.5.0-install/include/QtGui/qgenericpluginfactory.h \
-		/qt-5.5.0-install/include/QtGui/qguiapplication.h \
-		/qt-5.5.0-install/include/QtGui/qinputmethod.h \
-		/qt-5.5.0-install/include/QtGui/qoffscreensurface.h \
-		/qt-5.5.0-install/include/QtGui/qsurface.h \
-		/qt-5.5.0-install/include/QtGui/qsurfaceformat.h \
-		/qt-5.5.0-install/include/QtGui/qopenglcontext.h \
-		/qt-5.5.0-install/include/QtGui/QSurfaceFormat \
-		/qt-5.5.0-install/include/QtGui/qopengl.h \
-		/qt-5.5.0-install/include/QtCore/qt_windows.h \
-		/qt-5.5.0-install/include/QtGui/qopengles2ext.h \
-		/qt-5.5.0-install/include/QtGui/qopenglext.h \
-		/qt-5.5.0-install/include/QtGui/qopenglversionfunctions.h \
-		/qt-5.5.0-install/include/QtGui/qopenglwindow.h \
-		/qt-5.5.0-install/include/QtGui/QPaintDeviceWindow \
-		/qt-5.5.0-install/include/QtGui/qpaintdevicewindow.h \
-		/qt-5.5.0-install/include/QtGui/QWindow \
-		/qt-5.5.0-install/include/QtGui/qwindow.h \
-		/qt-5.5.0-install/include/QtCore/QEvent \
-		/qt-5.5.0-install/include/QtCore/QMargins \
-		/qt-5.5.0-install/include/QtCore/QRect \
-		/qt-5.5.0-install/include/QtGui/QPaintDevice \
-		/qt-5.5.0-install/include/QtGui/QOpenGLContext \
-		/qt-5.5.0-install/include/QtGui/QImage \
-		/qt-5.5.0-install/include/QtGui/qpalette.h \
-		/qt-5.5.0-install/include/QtGui/qrasterwindow.h \
-		/qt-5.5.0-install/include/QtGui/qscreen.h \
-		/qt-5.5.0-install/include/QtCore/QList \
-		/qt-5.5.0-install/include/QtCore/QSize \
-		/qt-5.5.0-install/include/QtCore/QSizeF \
-		/qt-5.5.0-install/include/QtGui/QTransform \
-		/qt-5.5.0-install/include/QtGui/qsessionmanager.h \
-		/qt-5.5.0-install/include/QtGui/qstylehints.h \
-		/qt-5.5.0-install/include/QtGui/qgenericmatrix.h \
-		/qt-5.5.0-install/include/QtGui/qmatrix4x4.h \
-		/qt-5.5.0-install/include/QtGui/qvector3d.h \
-		/qt-5.5.0-install/include/QtGui/qvector4d.h \
-		/qt-5.5.0-install/include/QtGui/qquaternion.h \
-		/qt-5.5.0-install/include/QtGui/qopenglbuffer.h \
-		/qt-5.5.0-install/include/QtGui/qopengldebug.h \
-		/qt-5.5.0-install/include/QtGui/qopenglframebufferobject.h \
-		/qt-5.5.0-install/include/QtGui/qopenglfunctions.h \
-		/qt-5.5.0-install/include/QtGui/qopenglpaintdevice.h \
-		/qt-5.5.0-install/include/QtGui/qopenglpixeltransferoptions.h \
-		/qt-5.5.0-install/include/QtCore/QSharedDataPointer \
-		/qt-5.5.0-install/include/QtGui/qopenglshaderprogram.h \
-		/qt-5.5.0-install/include/QtGui/qopengltexture.h \
-		/qt-5.5.0-install/include/QtGui/qopengltimerquery.h \
-		/qt-5.5.0-install/include/QtGui/qopenglvertexarrayobject.h \
-		/qt-5.5.0-install/include/QtGui/qbackingstore.h \
-		/qt-5.5.0-install/include/QtGui/qpagedpaintdevice.h \
-		/qt-5.5.0-install/include/QtGui/qpagelayout.h \
-		/qt-5.5.0-install/include/QtGui/qpagesize.h \
-		/qt-5.5.0-install/include/QtGui/qpaintengine.h \
-		/qt-5.5.0-install/include/QtGui/qpainter.h \
-		/qt-5.5.0-install/include/QtGui/qtextoption.h \
-		/qt-5.5.0-install/include/QtGui/qpen.h \
-		/qt-5.5.0-install/include/QtGui/qfontinfo.h \
 		/qt-5.5.0-install/include/QtGui/qfontmetrics.h \
-		/qt-5.5.0-install/include/QtGui/qpdfwriter.h \
-		/qt-5.5.0-install/include/QtGui/qabstracttextdocumentlayout.h \
-		/qt-5.5.0-install/include/QtGui/qtextlayout.h \
-		/qt-5.5.0-install/include/QtGui/qtextformat.h \
-		/qt-5.5.0-install/include/QtGui/qglyphrun.h \
-		/qt-5.5.0-install/include/QtGui/qrawfont.h \
-		/qt-5.5.0-install/include/QtGui/qfontdatabase.h \
-		/qt-5.5.0-install/include/QtGui/qtextcursor.h \
-		/qt-5.5.0-install/include/QtGui/qtextdocument.h \
-		/qt-5.5.0-install/include/QtGui/qstatictext.h \
-		/qt-5.5.0-install/include/QtGui/qsyntaxhighlighter.h \
-		/qt-5.5.0-install/include/QtGui/qtextobject.h \
-		/qt-5.5.0-install/include/QtGui/qtextdocumentfragment.h \
-		/qt-5.5.0-install/include/QtGui/qtextdocumentwriter.h \
-		/qt-5.5.0-install/include/QtGui/qtextlist.h \
-		/qt-5.5.0-install/include/QtGui/qtexttable.h \
-		/qt-5.5.0-install/include/QtGui/qdesktopservices.h \
-		/qt-5.5.0-install/include/QtGui/qvalidator.h \
-		/qt-5.5.0-install/include/QtGui/qtguiversion.h \
-		/qt-5.5.0-install/include/QtWidgets/complexwidgets.h \
-		/qt-5.5.0-install/include/QtWidgets/qaccessiblewidget.h \
-		/qt-5.5.0-install/include/QtWidgets/qabstractitemview.h \
-		/qt-5.5.0-install/include/QtWidgets/qabstractscrollarea.h \
-		/qt-5.5.0-install/include/QtWidgets/qframe.h \
-		/qt-5.5.0-install/include/QtWidgets/qwidget.h \
+		/qt-5.5.0-install/include/QtGui/qfontinfo.h \
 		/qt-5.5.0-install/include/QtWidgets/qsizepolicy.h \
-		/qt-5.5.0-install/include/QtWidgets/qabstractitemdelegate.h \
-		/qt-5.5.0-install/include/QtWidgets/qstyleoption.h \
-		/qt-5.5.0-install/include/QtWidgets/qabstractspinbox.h \
-		/qt-5.5.0-install/include/QtWidgets/qslider.h \
-		/qt-5.5.0-install/include/QtWidgets/qabstractslider.h \
-		/qt-5.5.0-install/include/QtWidgets/qstyle.h \
-		/qt-5.5.0-install/include/QtWidgets/qtabbar.h \
-		/qt-5.5.0-install/include/QtWidgets/qtabwidget.h \
-		/qt-5.5.0-install/include/QtWidgets/qrubberband.h \
-		/qt-5.5.0-install/include/QtWidgets/itemviews.h \
-		/qt-5.5.0-install/include/QtWidgets/qheaderview.h \
-		/qt-5.5.0-install/include/QtWidgets/qaccessiblemenu.h \
-		/qt-5.5.0-install/include/QtWidgets/qaccessiblewidgets.h \
-		/qt-5.5.0-install/include/QtCore/QPointer \
-		/qt-5.5.0-install/include/QtCore/QPair \
-		/qt-5.5.0-install/include/QtWidgets/rangecontrols.h \
-		/qt-5.5.0-install/include/QtWidgets/simplewidgets.h \
-		/qt-5.5.0-install/include/QtWidgets/qcolordialog.h \
-		/qt-5.5.0-install/include/QtWidgets/qdialog.h \
-		/qt-5.5.0-install/include/QtWidgets/qerrormessage.h \
-		/qt-5.5.0-install/include/QtWidgets/qfiledialog.h \
-		/qt-5.5.0-install/include/QtWidgets/qfilesystemmodel.h \
-		/qt-5.5.0-install/include/QtWidgets/qfontdialog.h \
-		/qt-5.5.0-install/include/QtWidgets/qinputdialog.h \
-		/qt-5.5.0-install/include/QtWidgets/qlineedit.h \
-		/qt-5.5.0-install/include/QtWidgets/qmessagebox.h \
-		/qt-5.5.0-install/include/QtWidgets/qprogressdialog.h \
-		/qt-5.5.0-install/include/QtWidgets/qwizard.h \
-		/qt-5.5.0-install/include/QtWidgets/qgraphicseffect.h \
-		/qt-5.5.0-install/include/QtWidgets/qgraphicsanchorlayout.h \
-		/qt-5.5.0-install/include/QtWidgets/qgraphicsitem.h \
-		/qt-5.5.0-install/include/QtWidgets/qgraphicslayout.h \
-		/qt-5.5.0-install/include/QtWidgets/qgraphicslayoutitem.h \
-		/qt-5.5.0-install/include/QtWidgets/qgraphicsgridlayout.h \
-		/qt-5.5.0-install/include/QtWidgets/qgraphicsitemanimation.h \
-		/qt-5.5.0-install/include/QtWidgets/qgraphicslinearlayout.h \
-		/qt-5.5.0-install/include/QtWidgets/qgraphicsproxywidget.h \
-		/qt-5.5.0-install/include/QtWidgets/qgraphicswidget.h \
-		/qt-5.5.0-install/include/QtWidgets/qgraphicsscene.h \
-		/qt-5.5.0-install/include/QtWidgets/qgraphicssceneevent.h \
-		/qt-5.5.0-install/include/QtWidgets/qgraphicstransform.h \
-		/qt-5.5.0-install/include/QtGui/QVector3D \
-		/qt-5.5.0-install/include/QtGui/QMatrix4x4 \
-		/qt-5.5.0-install/include/QtWidgets/qgraphicsview.h \
-		/qt-5.5.0-install/include/QtWidgets/qscrollarea.h \
-		/qt-5.5.0-install/include/QtWidgets/qcolumnview.h \
-		/qt-5.5.0-install/include/QtWidgets/qdatawidgetmapper.h \
-		/qt-5.5.0-install/include/QtWidgets/qdirmodel.h \
-		/qt-5.5.0-install/include/QtWidgets/qfileiconprovider.h \
-		/qt-5.5.0-install/include/QtWidgets/qitemdelegate.h \
-		/qt-5.5.0-install/include/QtWidgets/qitemeditorfactory.h \
-		/qt-5.5.0-install/include/QtWidgets/qlistview.h \
-		/qt-5.5.0-install/include/QtWidgets/qlistwidget.h \
-		/qt-5.5.0-install/include/QtWidgets/qstyleditemdelegate.h \
-		/qt-5.5.0-install/include/QtWidgets/qtableview.h \
-		/qt-5.5.0-install/include/QtWidgets/qtablewidget.h \
-		/qt-5.5.0-install/include/QtWidgets/qtreeview.h \
-		/qt-5.5.0-install/include/QtWidgets/qtreewidget.h \
-		/qt-5.5.0-install/include/QtWidgets/qtreewidgetitemiterator.h \
-		/qt-5.5.0-install/include/QtWidgets/qaction.h \
-		/qt-5.5.0-install/include/QtWidgets/qactiongroup.h \
-		/qt-5.5.0-install/include/QtWidgets/qapplication.h \
-		/qt-5.5.0-install/include/QtWidgets/qdesktopwidget.h \
-		/qt-5.5.0-install/include/QtWidgets/qboxlayout.h \
-		/qt-5.5.0-install/include/QtWidgets/qlayout.h \
-		/qt-5.5.0-install/include/QtWidgets/qlayoutitem.h \
-		/qt-5.5.0-install/include/QtWidgets/qgridlayout.h \
-		/qt-5.5.0-install/include/QtWidgets/qformlayout.h \
-		/qt-5.5.0-install/include/QtWidgets/QLayout \
-		/qt-5.5.0-install/include/QtWidgets/qgesture.h \
-		/qt-5.5.0-install/include/QtWidgets/qgesturerecognizer.h \
-		/qt-5.5.0-install/include/QtWidgets/qopenglwidget.h \
-		/qt-5.5.0-install/include/QtWidgets/QWidget \
-		/qt-5.5.0-install/include/QtWidgets/qshortcut.h \
-		/qt-5.5.0-install/include/QtWidgets/qstackedlayout.h \
-		/qt-5.5.0-install/include/QtWidgets/qtooltip.h \
-		/qt-5.5.0-install/include/QtWidgets/qwhatsthis.h \
-		/qt-5.5.0-install/include/QtWidgets/qwidgetaction.h \
-		/qt-5.5.0-install/include/QtWidgets/qkeyeventtransition.h \
-		/qt-5.5.0-install/include/QtWidgets/qmouseeventtransition.h \
-		/qt-5.5.0-install/include/QtWidgets/qcommonstyle.h \
-		/qt-5.5.0-install/include/QtWidgets/qdrawutil.h \
-		/qt-5.5.0-install/include/QtWidgets/qproxystyle.h \
-		/qt-5.5.0-install/include/QtWidgets/QCommonStyle \
-		/qt-5.5.0-install/include/QtWidgets/qstylefactory.h \
-		/qt-5.5.0-install/include/QtWidgets/qstylepainter.h \
-		/qt-5.5.0-install/include/QtWidgets/qstyleplugin.h \
-		/qt-5.5.0-install/include/QtWidgets/qcolormap.h \
-		/qt-5.5.0-install/include/QtWidgets/qcompleter.h \
-		/qt-5.5.0-install/include/QtWidgets/qscroller.h \
-		/qt-5.5.0-install/include/QtCore/QPointF \
-		/qt-5.5.0-install/include/QtWidgets/QScrollerProperties \
-		/qt-5.5.0-install/include/QtWidgets/qscrollerproperties.h \
-		/qt-5.5.0-install/include/QtCore/QMetaType \
-		/qt-5.5.0-install/include/QtCore/QVariant \
-		/qt-5.5.0-install/include/QtWidgets/qsystemtrayicon.h \
-		/qt-5.5.0-install/include/QtWidgets/qundogroup.h \
-		/qt-5.5.0-install/include/QtWidgets/qundostack.h \
-		/qt-5.5.0-install/include/QtWidgets/qundoview.h \
-		/qt-5.5.0-install/include/QtWidgets/qabstractbutton.h \
-		/qt-5.5.0-install/include/QtWidgets/qbuttongroup.h \
-		/qt-5.5.0-install/include/QtWidgets/qcalendarwidget.h \
-		/qt-5.5.0-install/include/QtWidgets/qcheckbox.h \
-		/qt-5.5.0-install/include/QtWidgets/qcombobox.h \
-		/qt-5.5.0-install/include/QtWidgets/qcommandlinkbutton.h \
-		/qt-5.5.0-install/include/QtWidgets/qpushbutton.h \
-		/qt-5.5.0-install/include/QtWidgets/qdatetimeedit.h \
-		/qt-5.5.0-install/include/QtWidgets/qdial.h \
-		/qt-5.5.0-install/include/QtWidgets/qdialogbuttonbox.h \
-		/qt-5.5.0-install/include/QtWidgets/qdockwidget.h \
-		/qt-5.5.0-install/include/QtWidgets/qfocusframe.h \
-		/qt-5.5.0-install/include/QtWidgets/qfontcombobox.h \
-		/qt-5.5.0-install/include/QtWidgets/qgroupbox.h \
-		/qt-5.5.0-install/include/QtWidgets/qkeysequenceedit.h \
-		/qt-5.5.0-install/include/QtWidgets/qlabel.h \
-		/qt-5.5.0-install/include/QtWidgets/qlcdnumber.h \
-		/qt-5.5.0-install/include/QtWidgets/qmainwindow.h \
-		/qt-5.5.0-install/include/QtWidgets/qmdiarea.h \
-		/qt-5.5.0-install/include/QtWidgets/qmdisubwindow.h \
-		/qt-5.5.0-install/include/QtWidgets/qmenu.h \
-		/qt-5.5.0-install/include/QtWidgets/qmenubar.h \
-		/qt-5.5.0-install/include/QtWidgets/qplaintextedit.h \
-		/qt-5.5.0-install/include/QtWidgets/qtextedit.h \
-		/qt-5.5.0-install/include/QtWidgets/qprogressbar.h \
-		/qt-5.5.0-install/include/QtWidgets/qradiobutton.h \
-		/qt-5.5.0-install/include/QtWidgets/qscrollbar.h \
-		/qt-5.5.0-install/include/QtWidgets/qsizegrip.h \
-		/qt-5.5.0-install/include/QtWidgets/qspinbox.h \
-		/qt-5.5.0-install/include/QtWidgets/qsplashscreen.h \
-		/qt-5.5.0-install/include/QtWidgets/qsplitter.h \
-		/qt-5.5.0-install/include/QtWidgets/qstackedwidget.h \
-		/qt-5.5.0-install/include/QtWidgets/qstatusbar.h \
-		/qt-5.5.0-install/include/QtWidgets/qtextbrowser.h \
-		/qt-5.5.0-install/include/QtWidgets/qtoolbar.h \
-		/qt-5.5.0-install/include/QtWidgets/qtoolbox.h \
-		/qt-5.5.0-install/include/QtWidgets/qtoolbutton.h \
-		/qt-5.5.0-install/include/QtWidgets/qtwidgetsversion.h \
-		/qt-5.5.0-install/include/QtWidgets/QLabel \
-		/qt-5.5.0-install/include/QtGui/QMovie \
+		/qt-5.5.0-install/include/QtGui/qcursor.h \
+		/qt-5.5.0-install/include/QtGui/qkeysequence.h \
+		/qt-5.5.0-install/include/QtGui/qevent.h \
+		/qt-5.5.0-install/include/QtCore/qvariant.h \
+		/qt-5.5.0-install/include/QtCore/qmap.h \
+		/qt-5.5.0-install/include/QtCore/qdebug.h \
+		/qt-5.5.0-install/include/QtCore/qtextstream.h \
+		/qt-5.5.0-install/include/QtCore/qlocale.h \
+		/qt-5.5.0-install/include/QtCore/qset.h \
+		/qt-5.5.0-install/include/QtCore/qcontiguouscache.h \
+		/qt-5.5.0-install/include/QtCore/qurl.h \
+		/qt-5.5.0-install/include/QtCore/qurlquery.h \
+		/qt-5.5.0-install/include/QtCore/qfile.h \
+		/qt-5.5.0-install/include/QtCore/qfiledevice.h \
+		/qt-5.5.0-install/include/QtGui/qvector2d.h \
+		/qt-5.5.0-install/include/QtGui/qtouchdevice.h \
 		global.h \
-		/qt-5.5.0-install/include/QtCore/QString \
+		/qt-5.5.0-install/include/QtCore/QVariant \
 		/qt-5.5.0-install/include/QtCore/QSettings \
+		/qt-5.5.0-install/include/QtCore/qsettings.h \
 		/qt-5.5.0-install/include/QtCore/QTextCodec \
-		screenemotion/label.h \
+		/qt-5.5.0-install/include/QtCore/qtextcodec.h \
 		screenemotion/screenemotion.h
 	/qt-5.5.0-install/bin/moc $(DEFINES) -I/qt-5.5.0-install/mkspecs/linux-arm-gnueabi-g++ -I/home/wyl/Desktop/service-robot -I/usr/local/include -I/qt-5.5.0-install/include -I/qt-5.5.0-install/include/QtWidgets -I/qt-5.5.0-install/include/QtGui -I/qt-5.5.0-install/include/QtNetwork -I/qt-5.5.0-install/include/QtSerialPort -I/qt-5.5.0-install/include/QtCore -I/opt/FriendlyARM/toolschain/4.5.1/arm-none-linux-gnueabi/include/c++/4.5.1 -I/opt/FriendlyARM/toolschain/4.5.1/arm-none-linux-gnueabi/include/c++/4.5.1/arm-none-linux-gnueabi -I/opt/FriendlyARM/toolschain/4.5.1/arm-none-linux-gnueabi/include/c++/4.5.1/backward -I/opt/FriendlyARM/toolschain/4.5.1/lib/gcc/arm-none-linux-gnueabi/4.5.1/include -I/opt/FriendlyARM/toolschain/4.5.1/lib/gcc/arm-none-linux-gnueabi/4.5.1/include-fixed -I/opt/FriendlyARM/toolschain/4.5.1/arm-none-linux-gnueabi/include screenemotion/screenemotion.h -o moc_screenemotion.cpp
 
@@ -3584,13 +1985,10 @@ moc_login.cpp: /qt-5.5.0-install/include/QtCore/QObject \
 		/qt-5.5.0-install/include/QtCore/QUrl \
 		/qt-5.5.0-install/include/QtCore/qurl.h \
 		/qt-5.5.0-install/include/QtCore/qurlquery.h \
-		/qt-5.5.0-install/include/QtCore/QThread \
-		/qt-5.5.0-install/include/QtCore/qthread.h \
 		/qt-5.5.0-install/include/QtCore/QElapsedTimer \
 		/qt-5.5.0-install/include/QtCore/qelapsedtimer.h \
 		/qt-5.5.0-install/include/QtCore/QEventLoop \
 		/qt-5.5.0-install/include/QtCore/qeventloop.h \
-		/qt-5.5.0-install/include/QtCore/QDebug \
 		net/login.h
 	/qt-5.5.0-install/bin/moc $(DEFINES) -I/qt-5.5.0-install/mkspecs/linux-arm-gnueabi-g++ -I/home/wyl/Desktop/service-robot -I/usr/local/include -I/qt-5.5.0-install/include -I/qt-5.5.0-install/include/QtWidgets -I/qt-5.5.0-install/include/QtGui -I/qt-5.5.0-install/include/QtNetwork -I/qt-5.5.0-install/include/QtSerialPort -I/qt-5.5.0-install/include/QtCore -I/opt/FriendlyARM/toolschain/4.5.1/arm-none-linux-gnueabi/include/c++/4.5.1 -I/opt/FriendlyARM/toolschain/4.5.1/arm-none-linux-gnueabi/include/c++/4.5.1/arm-none-linux-gnueabi -I/opt/FriendlyARM/toolschain/4.5.1/arm-none-linux-gnueabi/include/c++/4.5.1/backward -I/opt/FriendlyARM/toolschain/4.5.1/lib/gcc/arm-none-linux-gnueabi/4.5.1/include -I/opt/FriendlyARM/toolschain/4.5.1/lib/gcc/arm-none-linux-gnueabi/4.5.1/include-fixed -I/opt/FriendlyARM/toolschain/4.5.1/arm-none-linux-gnueabi/include net/login.h -o moc_login.cpp
 
@@ -3755,412 +2153,75 @@ moc_emotionplayer.cpp: /qt-5.5.0-install/include/QtCore/QObject \
 		/qt-5.5.0-install/include/QtCore/qisenum.h \
 		/qt-5.5.0-install/include/QtCore/qobject_impl.h \
 		videoplayer/videoplayer.h \
-		/qt-5.5.0-install/include/QtCore/QtCore \
-		/qt-5.5.0-install/include/QtCore/QtCoreDepends \
-		/qt-5.5.0-install/include/QtCore/qabstractanimation.h \
-		/qt-5.5.0-install/include/QtCore/qanimationgroup.h \
-		/qt-5.5.0-install/include/QtCore/qparallelanimationgroup.h \
-		/qt-5.5.0-install/include/QtCore/qpauseanimation.h \
-		/qt-5.5.0-install/include/QtCore/qpropertyanimation.h \
-		/qt-5.5.0-install/include/QtCore/qvariantanimation.h \
-		/qt-5.5.0-install/include/QtCore/qeasingcurve.h \
-		/qt-5.5.0-install/include/QtCore/qvector.h \
-		/qt-5.5.0-install/include/QtCore/qpoint.h \
-		/qt-5.5.0-install/include/QtCore/qvariant.h \
-		/qt-5.5.0-install/include/QtCore/qmap.h \
-		/qt-5.5.0-install/include/QtCore/qpair.h \
-		/qt-5.5.0-install/include/QtCore/qdebug.h \
-		/qt-5.5.0-install/include/QtCore/qhash.h \
-		/qt-5.5.0-install/include/QtCore/qtextstream.h \
-		/qt-5.5.0-install/include/QtCore/qiodevice.h \
-		/qt-5.5.0-install/include/QtCore/qlocale.h \
-		/qt-5.5.0-install/include/QtCore/qshareddata.h \
-		/qt-5.5.0-install/include/QtCore/qset.h \
-		/qt-5.5.0-install/include/QtCore/qcontiguouscache.h \
-		/qt-5.5.0-install/include/QtCore/qsequentialanimationgroup.h \
-		/qt-5.5.0-install/include/QtCore/qtextcodec.h \
-		/qt-5.5.0-install/include/QtCore/qendian.h \
-		/qt-5.5.0-install/include/QtCore/qlibraryinfo.h \
-		/qt-5.5.0-install/include/QtCore/qdatetime.h \
-		/qt-5.5.0-install/include/QtCore/qbuffer.h \
-		/qt-5.5.0-install/include/QtCore/qdatastream.h \
-		/qt-5.5.0-install/include/QtCore/qdir.h \
+		/qt-5.5.0-install/include/QtCore/QThread \
+		/qt-5.5.0-install/include/QtCore/qthread.h \
+		/qt-5.5.0-install/include/QtCore/QMutex \
+		/qt-5.5.0-install/include/QtCore/QFileInfo \
 		/qt-5.5.0-install/include/QtCore/qfileinfo.h \
 		/qt-5.5.0-install/include/QtCore/qfile.h \
 		/qt-5.5.0-install/include/QtCore/qfiledevice.h \
-		/qt-5.5.0-install/include/QtCore/qdiriterator.h \
-		/qt-5.5.0-install/include/QtCore/qfileselector.h \
-		/qt-5.5.0-install/include/QtCore/QStringList \
-		/qt-5.5.0-install/include/QtCore/qfilesystemwatcher.h \
-		/qt-5.5.0-install/include/QtCore/qlockfile.h \
-		/qt-5.5.0-install/include/QtCore/qloggingcategory.h \
-		/qt-5.5.0-install/include/QtCore/qprocess.h \
-		/qt-5.5.0-install/include/QtCore/qresource.h \
-		/qt-5.5.0-install/include/QtCore/qsavefile.h \
-		/qt-5.5.0-install/include/QtCore/qsettings.h \
-		/qt-5.5.0-install/include/QtCore/qstandardpaths.h \
-		/qt-5.5.0-install/include/QtCore/qstorageinfo.h \
-		/qt-5.5.0-install/include/QtCore/qtemporarydir.h \
-		/qt-5.5.0-install/include/QtCore/QScopedPointer \
-		/qt-5.5.0-install/include/QtCore/qtemporaryfile.h \
-		/qt-5.5.0-install/include/QtCore/qurl.h \
-		/qt-5.5.0-install/include/QtCore/qurlquery.h \
-		/qt-5.5.0-install/include/QtCore/qabstractitemmodel.h \
-		/qt-5.5.0-install/include/QtCore/qabstractproxymodel.h \
-		/qt-5.5.0-install/include/QtCore/qidentityproxymodel.h \
-		/qt-5.5.0-install/include/QtCore/qitemselectionmodel.h \
-		/qt-5.5.0-install/include/QtCore/qsortfilterproxymodel.h \
-		/qt-5.5.0-install/include/QtCore/qstringlistmodel.h \
-		/qt-5.5.0-install/include/QtCore/qjsonarray.h \
-		/qt-5.5.0-install/include/QtCore/qjsonvalue.h \
-		/qt-5.5.0-install/include/QtCore/qjsondocument.h \
-		/qt-5.5.0-install/include/QtCore/qjsonobject.h \
-		/qt-5.5.0-install/include/QtCore/qabstracteventdispatcher.h \
-		/qt-5.5.0-install/include/QtCore/qeventloop.h \
-		/qt-5.5.0-install/include/QtCore/qabstractnativeeventfilter.h \
-		/qt-5.5.0-install/include/QtCore/qbasictimer.h \
-		/qt-5.5.0-install/include/QtCore/qcoreapplication.h \
-		/qt-5.5.0-install/include/QtCore/qmath.h \
-		/qt-5.5.0-install/include/QtCore/qmetaobject.h \
-		/qt-5.5.0-install/include/QtCore/qmimedata.h \
-		/qt-5.5.0-install/include/QtCore/qobjectcleanuphandler.h \
-		/qt-5.5.0-install/include/QtCore/qpointer.h \
-		/qt-5.5.0-install/include/QtCore/qsharedpointer.h \
-		/qt-5.5.0-install/include/QtCore/qsharedpointer_impl.h \
-		/qt-5.5.0-install/include/QtCore/qsharedmemory.h \
-		/qt-5.5.0-install/include/QtCore/qsignalmapper.h \
-		/qt-5.5.0-install/include/QtCore/qsocketnotifier.h \
-		/qt-5.5.0-install/include/QtCore/qsystemsemaphore.h \
-		/qt-5.5.0-install/include/QtCore/qtimer.h \
-		/qt-5.5.0-install/include/QtCore/qtranslator.h \
-		/qt-5.5.0-install/include/QtCore/qwineventnotifier.h \
-		/qt-5.5.0-install/include/QtCore/qmimedatabase.h \
-		/qt-5.5.0-install/include/QtCore/qmimetype.h \
-		/qt-5.5.0-install/include/QtCore/qfactoryinterface.h \
-		/qt-5.5.0-install/include/QtCore/qlibrary.h \
-		/qt-5.5.0-install/include/QtCore/qplugin.h \
-		/qt-5.5.0-install/include/QtCore/qpluginloader.h \
-		/qt-5.5.0-install/include/QtCore/quuid.h \
-		/qt-5.5.0-install/include/QtCore/qabstractstate.h \
-		/qt-5.5.0-install/include/QtCore/qabstracttransition.h \
-		/qt-5.5.0-install/include/QtCore/qeventtransition.h \
-		/qt-5.5.0-install/include/QtCore/qfinalstate.h \
-		/qt-5.5.0-install/include/QtCore/qhistorystate.h \
-		/qt-5.5.0-install/include/QtCore/qsignaltransition.h \
-		/qt-5.5.0-install/include/QtCore/qstate.h \
-		/qt-5.5.0-install/include/QtCore/qstatemachine.h \
-		/qt-5.5.0-install/include/QtCore/qexception.h \
-		/qt-5.5.0-install/include/QtCore/qfuture.h \
-		/qt-5.5.0-install/include/QtCore/qfutureinterface.h \
-		/qt-5.5.0-install/include/QtCore/qrunnable.h \
-		/qt-5.5.0-install/include/QtCore/qresultstore.h \
-		/qt-5.5.0-install/include/QtCore/qfuturesynchronizer.h \
-		/qt-5.5.0-install/include/QtCore/qfuturewatcher.h \
-		/qt-5.5.0-install/include/QtCore/qreadwritelock.h \
-		/qt-5.5.0-install/include/QtCore/qsemaphore.h \
-		/qt-5.5.0-install/include/QtCore/qthread.h \
-		/qt-5.5.0-install/include/QtCore/qthreadpool.h \
-		/qt-5.5.0-install/include/QtCore/qthreadstorage.h \
-		/qt-5.5.0-install/include/QtCore/qwaitcondition.h \
-		/qt-5.5.0-install/include/QtCore/qarraydataops.h \
-		/qt-5.5.0-install/include/QtCore/qarraydatapointer.h \
-		/qt-5.5.0-install/include/QtCore/qbitarray.h \
-		/qt-5.5.0-install/include/QtCore/qbytearraymatcher.h \
-		/qt-5.5.0-install/include/QtCore/qcache.h \
-		/qt-5.5.0-install/include/QtCore/qcollator.h \
-		/qt-5.5.0-install/include/QtCore/qcommandlineoption.h \
-		/qt-5.5.0-install/include/QtCore/qcommandlineparser.h \
-		/qt-5.5.0-install/include/QtCore/qcryptographichash.h \
-		/qt-5.5.0-install/include/QtCore/qelapsedtimer.h \
-		/qt-5.5.0-install/include/QtCore/qline.h \
-		/qt-5.5.0-install/include/QtCore/qlinkedlist.h \
-		/qt-5.5.0-install/include/QtCore/qmargins.h \
-		/qt-5.5.0-install/include/QtCore/qmessageauthenticationcode.h \
-		/qt-5.5.0-install/include/QtCore/qqueue.h \
-		/qt-5.5.0-install/include/QtCore/qrect.h \
-		/qt-5.5.0-install/include/QtCore/qsize.h \
-		/qt-5.5.0-install/include/QtCore/qregularexpression.h \
-		/qt-5.5.0-install/include/QtCore/qscopedvaluerollback.h \
-		/qt-5.5.0-install/include/QtCore/qstack.h \
-		/qt-5.5.0-install/include/QtCore/qtextboundaryfinder.h \
-		/qt-5.5.0-install/include/QtCore/qtimeline.h \
-		/qt-5.5.0-install/include/QtCore/qtimezone.h \
-		/qt-5.5.0-install/include/QtCore/qxmlstream.h \
-		/qt-5.5.0-install/include/QtCore/qtcoreversion.h \
-		/qt-5.5.0-install/include/QtWidgets/QtWidgets \
-		/qt-5.5.0-install/include/QtWidgets/QtWidgetsDepends \
-		/qt-5.5.0-install/include/QtGui/QtGui \
-		/qt-5.5.0-install/include/QtGui/QtGuiDepends \
-		/qt-5.5.0-install/include/QtGui/qaccessible.h \
-		/qt-5.5.0-install/include/QtGui/qcolor.h \
-		/qt-5.5.0-install/include/QtGui/qrgb.h \
-		/qt-5.5.0-install/include/QtGui/qevent.h \
-		/qt-5.5.0-install/include/QtGui/qwindowdefs.h \
-		/qt-5.5.0-install/include/QtGui/qwindowdefs_win.h \
-		/qt-5.5.0-install/include/QtGui/qregion.h \
-		/qt-5.5.0-install/include/QtGui/qkeysequence.h \
-		/qt-5.5.0-install/include/QtGui/qvector2d.h \
-		/qt-5.5.0-install/include/QtGui/qtouchdevice.h \
-		/qt-5.5.0-install/include/QtGui/qaccessiblebridge.h \
-		/qt-5.5.0-install/include/QtGui/qaccessibleobject.h \
-		/qt-5.5.0-install/include/QtGui/qaccessibleplugin.h \
-		/qt-5.5.0-install/include/QtGui/qbitmap.h \
-		/qt-5.5.0-install/include/QtGui/qpixmap.h \
-		/qt-5.5.0-install/include/QtGui/qpaintdevice.h \
-		/qt-5.5.0-install/include/QtGui/qimage.h \
-		/qt-5.5.0-install/include/QtGui/qtransform.h \
-		/qt-5.5.0-install/include/QtGui/qmatrix.h \
-		/qt-5.5.0-install/include/QtGui/qpolygon.h \
-		/qt-5.5.0-install/include/QtGui/qpainterpath.h \
-		/qt-5.5.0-install/include/QtGui/qpixelformat.h \
-		/qt-5.5.0-install/include/QtGui/qicon.h \
-		/qt-5.5.0-install/include/QtGui/qiconengine.h \
-		/qt-5.5.0-install/include/QtGui/qiconengineplugin.h \
-		/qt-5.5.0-install/include/QtGui/qimageiohandler.h \
-		/qt-5.5.0-install/include/QtGui/qimagereader.h \
-		/qt-5.5.0-install/include/QtGui/qimagewriter.h \
-		/qt-5.5.0-install/include/QtGui/qmovie.h \
-		/qt-5.5.0-install/include/QtGui/qpicture.h \
-		/qt-5.5.0-install/include/QtGui/qpictureformatplugin.h \
-		/qt-5.5.0-install/include/QtGui/qpixmapcache.h \
-		/qt-5.5.0-install/include/QtGui/qstandarditemmodel.h \
-		/qt-5.5.0-install/include/QtGui/qbrush.h \
-		/qt-5.5.0-install/include/QtGui/qfont.h \
-		/qt-5.5.0-install/include/QtGui/qclipboard.h \
-		/qt-5.5.0-install/include/QtGui/qcursor.h \
-		/qt-5.5.0-install/include/QtGui/qdrag.h \
-		/qt-5.5.0-install/include/QtGui/qgenericplugin.h \
-		/qt-5.5.0-install/include/QtGui/qgenericpluginfactory.h \
-		/qt-5.5.0-install/include/QtGui/qguiapplication.h \
-		/qt-5.5.0-install/include/QtGui/qinputmethod.h \
-		/qt-5.5.0-install/include/QtGui/qoffscreensurface.h \
-		/qt-5.5.0-install/include/QtGui/qsurface.h \
-		/qt-5.5.0-install/include/QtGui/qsurfaceformat.h \
-		/qt-5.5.0-install/include/QtGui/qopenglcontext.h \
-		/qt-5.5.0-install/include/QtGui/QSurfaceFormat \
-		/qt-5.5.0-install/include/QtGui/qopengl.h \
-		/qt-5.5.0-install/include/QtCore/qt_windows.h \
-		/qt-5.5.0-install/include/QtGui/qopengles2ext.h \
-		/qt-5.5.0-install/include/QtGui/qopenglext.h \
-		/qt-5.5.0-install/include/QtGui/qopenglversionfunctions.h \
-		/qt-5.5.0-install/include/QtGui/qopenglwindow.h \
-		/qt-5.5.0-install/include/QtGui/QPaintDeviceWindow \
-		/qt-5.5.0-install/include/QtGui/qpaintdevicewindow.h \
-		/qt-5.5.0-install/include/QtGui/QWindow \
-		/qt-5.5.0-install/include/QtGui/qwindow.h \
-		/qt-5.5.0-install/include/QtCore/QEvent \
-		/qt-5.5.0-install/include/QtCore/QMargins \
-		/qt-5.5.0-install/include/QtCore/QRect \
-		/qt-5.5.0-install/include/QtGui/QPaintDevice \
-		/qt-5.5.0-install/include/QtGui/QOpenGLContext \
-		/qt-5.5.0-install/include/QtGui/QImage \
-		/qt-5.5.0-install/include/QtGui/qpalette.h \
-		/qt-5.5.0-install/include/QtGui/qrasterwindow.h \
-		/qt-5.5.0-install/include/QtGui/qscreen.h \
-		/qt-5.5.0-install/include/QtCore/QList \
-		/qt-5.5.0-install/include/QtCore/QSize \
-		/qt-5.5.0-install/include/QtCore/QSizeF \
-		/qt-5.5.0-install/include/QtGui/QTransform \
-		/qt-5.5.0-install/include/QtGui/qsessionmanager.h \
-		/qt-5.5.0-install/include/QtGui/qstylehints.h \
-		/qt-5.5.0-install/include/QtGui/qgenericmatrix.h \
-		/qt-5.5.0-install/include/QtGui/qmatrix4x4.h \
-		/qt-5.5.0-install/include/QtGui/qvector3d.h \
-		/qt-5.5.0-install/include/QtGui/qvector4d.h \
-		/qt-5.5.0-install/include/QtGui/qquaternion.h \
-		/qt-5.5.0-install/include/QtGui/qopenglbuffer.h \
-		/qt-5.5.0-install/include/QtGui/qopengldebug.h \
-		/qt-5.5.0-install/include/QtGui/qopenglframebufferobject.h \
-		/qt-5.5.0-install/include/QtGui/qopenglfunctions.h \
-		/qt-5.5.0-install/include/QtGui/qopenglpaintdevice.h \
-		/qt-5.5.0-install/include/QtGui/qopenglpixeltransferoptions.h \
-		/qt-5.5.0-install/include/QtCore/QSharedDataPointer \
-		/qt-5.5.0-install/include/QtGui/qopenglshaderprogram.h \
-		/qt-5.5.0-install/include/QtGui/qopengltexture.h \
-		/qt-5.5.0-install/include/QtGui/qopengltimerquery.h \
-		/qt-5.5.0-install/include/QtGui/qopenglvertexarrayobject.h \
-		/qt-5.5.0-install/include/QtGui/qbackingstore.h \
-		/qt-5.5.0-install/include/QtGui/qpagedpaintdevice.h \
-		/qt-5.5.0-install/include/QtGui/qpagelayout.h \
-		/qt-5.5.0-install/include/QtGui/qpagesize.h \
-		/qt-5.5.0-install/include/QtGui/qpaintengine.h \
-		/qt-5.5.0-install/include/QtGui/qpainter.h \
-		/qt-5.5.0-install/include/QtGui/qtextoption.h \
-		/qt-5.5.0-install/include/QtGui/qpen.h \
-		/qt-5.5.0-install/include/QtGui/qfontinfo.h \
-		/qt-5.5.0-install/include/QtGui/qfontmetrics.h \
-		/qt-5.5.0-install/include/QtGui/qpdfwriter.h \
-		/qt-5.5.0-install/include/QtGui/qabstracttextdocumentlayout.h \
-		/qt-5.5.0-install/include/QtGui/qtextlayout.h \
-		/qt-5.5.0-install/include/QtGui/qtextformat.h \
-		/qt-5.5.0-install/include/QtGui/qglyphrun.h \
-		/qt-5.5.0-install/include/QtGui/qrawfont.h \
-		/qt-5.5.0-install/include/QtGui/qfontdatabase.h \
-		/qt-5.5.0-install/include/QtGui/qtextcursor.h \
-		/qt-5.5.0-install/include/QtGui/qtextdocument.h \
-		/qt-5.5.0-install/include/QtGui/qstatictext.h \
-		/qt-5.5.0-install/include/QtGui/qsyntaxhighlighter.h \
-		/qt-5.5.0-install/include/QtGui/qtextobject.h \
-		/qt-5.5.0-install/include/QtGui/qtextdocumentfragment.h \
-		/qt-5.5.0-install/include/QtGui/qtextdocumentwriter.h \
-		/qt-5.5.0-install/include/QtGui/qtextlist.h \
-		/qt-5.5.0-install/include/QtGui/qtexttable.h \
-		/qt-5.5.0-install/include/QtGui/qdesktopservices.h \
-		/qt-5.5.0-install/include/QtGui/qvalidator.h \
-		/qt-5.5.0-install/include/QtGui/qtguiversion.h \
-		/qt-5.5.0-install/include/QtWidgets/complexwidgets.h \
-		/qt-5.5.0-install/include/QtWidgets/qaccessiblewidget.h \
-		/qt-5.5.0-install/include/QtWidgets/qabstractitemview.h \
-		/qt-5.5.0-install/include/QtWidgets/qabstractscrollarea.h \
-		/qt-5.5.0-install/include/QtWidgets/qframe.h \
-		/qt-5.5.0-install/include/QtWidgets/qwidget.h \
-		/qt-5.5.0-install/include/QtWidgets/qsizepolicy.h \
-		/qt-5.5.0-install/include/QtWidgets/qabstractitemdelegate.h \
-		/qt-5.5.0-install/include/QtWidgets/qstyleoption.h \
-		/qt-5.5.0-install/include/QtWidgets/qabstractspinbox.h \
-		/qt-5.5.0-install/include/QtWidgets/qslider.h \
-		/qt-5.5.0-install/include/QtWidgets/qabstractslider.h \
-		/qt-5.5.0-install/include/QtWidgets/qstyle.h \
-		/qt-5.5.0-install/include/QtWidgets/qtabbar.h \
-		/qt-5.5.0-install/include/QtWidgets/qtabwidget.h \
-		/qt-5.5.0-install/include/QtWidgets/qrubberband.h \
-		/qt-5.5.0-install/include/QtWidgets/itemviews.h \
-		/qt-5.5.0-install/include/QtWidgets/qheaderview.h \
-		/qt-5.5.0-install/include/QtWidgets/qaccessiblemenu.h \
-		/qt-5.5.0-install/include/QtWidgets/qaccessiblewidgets.h \
-		/qt-5.5.0-install/include/QtCore/QPointer \
-		/qt-5.5.0-install/include/QtCore/QPair \
-		/qt-5.5.0-install/include/QtWidgets/rangecontrols.h \
-		/qt-5.5.0-install/include/QtWidgets/simplewidgets.h \
-		/qt-5.5.0-install/include/QtWidgets/qcolordialog.h \
-		/qt-5.5.0-install/include/QtWidgets/qdialog.h \
-		/qt-5.5.0-install/include/QtWidgets/qerrormessage.h \
-		/qt-5.5.0-install/include/QtWidgets/qfiledialog.h \
-		/qt-5.5.0-install/include/QtWidgets/qfilesystemmodel.h \
-		/qt-5.5.0-install/include/QtWidgets/qfontdialog.h \
-		/qt-5.5.0-install/include/QtWidgets/qinputdialog.h \
-		/qt-5.5.0-install/include/QtWidgets/qlineedit.h \
-		/qt-5.5.0-install/include/QtWidgets/qmessagebox.h \
-		/qt-5.5.0-install/include/QtWidgets/qprogressdialog.h \
-		/qt-5.5.0-install/include/QtWidgets/qwizard.h \
-		/qt-5.5.0-install/include/QtWidgets/qgraphicseffect.h \
-		/qt-5.5.0-install/include/QtWidgets/qgraphicsanchorlayout.h \
-		/qt-5.5.0-install/include/QtWidgets/qgraphicsitem.h \
-		/qt-5.5.0-install/include/QtWidgets/qgraphicslayout.h \
-		/qt-5.5.0-install/include/QtWidgets/qgraphicslayoutitem.h \
-		/qt-5.5.0-install/include/QtWidgets/qgraphicsgridlayout.h \
-		/qt-5.5.0-install/include/QtWidgets/qgraphicsitemanimation.h \
-		/qt-5.5.0-install/include/QtWidgets/qgraphicslinearlayout.h \
-		/qt-5.5.0-install/include/QtWidgets/qgraphicsproxywidget.h \
-		/qt-5.5.0-install/include/QtWidgets/qgraphicswidget.h \
-		/qt-5.5.0-install/include/QtWidgets/qgraphicsscene.h \
-		/qt-5.5.0-install/include/QtWidgets/qgraphicssceneevent.h \
-		/qt-5.5.0-install/include/QtWidgets/qgraphicstransform.h \
-		/qt-5.5.0-install/include/QtGui/QVector3D \
-		/qt-5.5.0-install/include/QtGui/QMatrix4x4 \
-		/qt-5.5.0-install/include/QtWidgets/qgraphicsview.h \
-		/qt-5.5.0-install/include/QtWidgets/qscrollarea.h \
-		/qt-5.5.0-install/include/QtWidgets/qcolumnview.h \
-		/qt-5.5.0-install/include/QtWidgets/qdatawidgetmapper.h \
-		/qt-5.5.0-install/include/QtWidgets/qdirmodel.h \
-		/qt-5.5.0-install/include/QtWidgets/qfileiconprovider.h \
-		/qt-5.5.0-install/include/QtWidgets/qitemdelegate.h \
-		/qt-5.5.0-install/include/QtWidgets/qitemeditorfactory.h \
-		/qt-5.5.0-install/include/QtWidgets/qlistview.h \
-		/qt-5.5.0-install/include/QtWidgets/qlistwidget.h \
-		/qt-5.5.0-install/include/QtWidgets/qstyleditemdelegate.h \
-		/qt-5.5.0-install/include/QtWidgets/qtableview.h \
-		/qt-5.5.0-install/include/QtWidgets/qtablewidget.h \
-		/qt-5.5.0-install/include/QtWidgets/qtreeview.h \
-		/qt-5.5.0-install/include/QtWidgets/qtreewidget.h \
-		/qt-5.5.0-install/include/QtWidgets/qtreewidgetitemiterator.h \
-		/qt-5.5.0-install/include/QtWidgets/qaction.h \
-		/qt-5.5.0-install/include/QtWidgets/qactiongroup.h \
-		/qt-5.5.0-install/include/QtWidgets/qapplication.h \
-		/qt-5.5.0-install/include/QtWidgets/qdesktopwidget.h \
-		/qt-5.5.0-install/include/QtWidgets/qboxlayout.h \
-		/qt-5.5.0-install/include/QtWidgets/qlayout.h \
-		/qt-5.5.0-install/include/QtWidgets/qlayoutitem.h \
-		/qt-5.5.0-install/include/QtWidgets/qgridlayout.h \
-		/qt-5.5.0-install/include/QtWidgets/qformlayout.h \
-		/qt-5.5.0-install/include/QtWidgets/QLayout \
-		/qt-5.5.0-install/include/QtWidgets/qgesture.h \
-		/qt-5.5.0-install/include/QtWidgets/qgesturerecognizer.h \
-		/qt-5.5.0-install/include/QtWidgets/qopenglwidget.h \
-		/qt-5.5.0-install/include/QtWidgets/QWidget \
-		/qt-5.5.0-install/include/QtWidgets/qshortcut.h \
-		/qt-5.5.0-install/include/QtWidgets/qstackedlayout.h \
-		/qt-5.5.0-install/include/QtWidgets/qtooltip.h \
-		/qt-5.5.0-install/include/QtWidgets/qwhatsthis.h \
-		/qt-5.5.0-install/include/QtWidgets/qwidgetaction.h \
-		/qt-5.5.0-install/include/QtWidgets/qkeyeventtransition.h \
-		/qt-5.5.0-install/include/QtWidgets/qmouseeventtransition.h \
-		/qt-5.5.0-install/include/QtWidgets/qcommonstyle.h \
-		/qt-5.5.0-install/include/QtWidgets/qdrawutil.h \
-		/qt-5.5.0-install/include/QtWidgets/qproxystyle.h \
-		/qt-5.5.0-install/include/QtWidgets/QCommonStyle \
-		/qt-5.5.0-install/include/QtWidgets/qstylefactory.h \
-		/qt-5.5.0-install/include/QtWidgets/qstylepainter.h \
-		/qt-5.5.0-install/include/QtWidgets/qstyleplugin.h \
-		/qt-5.5.0-install/include/QtWidgets/qcolormap.h \
-		/qt-5.5.0-install/include/QtWidgets/qcompleter.h \
-		/qt-5.5.0-install/include/QtWidgets/qscroller.h \
-		/qt-5.5.0-install/include/QtCore/QPointF \
-		/qt-5.5.0-install/include/QtWidgets/QScrollerProperties \
-		/qt-5.5.0-install/include/QtWidgets/qscrollerproperties.h \
-		/qt-5.5.0-install/include/QtCore/QMetaType \
-		/qt-5.5.0-install/include/QtCore/QVariant \
-		/qt-5.5.0-install/include/QtWidgets/qsystemtrayicon.h \
-		/qt-5.5.0-install/include/QtWidgets/qundogroup.h \
-		/qt-5.5.0-install/include/QtWidgets/qundostack.h \
-		/qt-5.5.0-install/include/QtWidgets/qundoview.h \
-		/qt-5.5.0-install/include/QtWidgets/qabstractbutton.h \
-		/qt-5.5.0-install/include/QtWidgets/qbuttongroup.h \
-		/qt-5.5.0-install/include/QtWidgets/qcalendarwidget.h \
-		/qt-5.5.0-install/include/QtWidgets/qcheckbox.h \
-		/qt-5.5.0-install/include/QtWidgets/qcombobox.h \
-		/qt-5.5.0-install/include/QtWidgets/qcommandlinkbutton.h \
-		/qt-5.5.0-install/include/QtWidgets/qpushbutton.h \
-		/qt-5.5.0-install/include/QtWidgets/qdatetimeedit.h \
-		/qt-5.5.0-install/include/QtWidgets/qdial.h \
-		/qt-5.5.0-install/include/QtWidgets/qdialogbuttonbox.h \
-		/qt-5.5.0-install/include/QtWidgets/qdockwidget.h \
-		/qt-5.5.0-install/include/QtWidgets/qfocusframe.h \
-		/qt-5.5.0-install/include/QtWidgets/qfontcombobox.h \
-		/qt-5.5.0-install/include/QtWidgets/qgroupbox.h \
-		/qt-5.5.0-install/include/QtWidgets/qkeysequenceedit.h \
-		/qt-5.5.0-install/include/QtWidgets/qlabel.h \
-		/qt-5.5.0-install/include/QtWidgets/qlcdnumber.h \
-		/qt-5.5.0-install/include/QtWidgets/qmainwindow.h \
-		/qt-5.5.0-install/include/QtWidgets/qmdiarea.h \
-		/qt-5.5.0-install/include/QtWidgets/qmdisubwindow.h \
-		/qt-5.5.0-install/include/QtWidgets/qmenu.h \
-		/qt-5.5.0-install/include/QtWidgets/qmenubar.h \
-		/qt-5.5.0-install/include/QtWidgets/qplaintextedit.h \
-		/qt-5.5.0-install/include/QtWidgets/qtextedit.h \
-		/qt-5.5.0-install/include/QtWidgets/qprogressbar.h \
-		/qt-5.5.0-install/include/QtWidgets/qradiobutton.h \
-		/qt-5.5.0-install/include/QtWidgets/qscrollbar.h \
-		/qt-5.5.0-install/include/QtWidgets/qsizegrip.h \
-		/qt-5.5.0-install/include/QtWidgets/qspinbox.h \
-		/qt-5.5.0-install/include/QtWidgets/qsplashscreen.h \
-		/qt-5.5.0-install/include/QtWidgets/qsplitter.h \
-		/qt-5.5.0-install/include/QtWidgets/qstackedwidget.h \
-		/qt-5.5.0-install/include/QtWidgets/qstatusbar.h \
-		/qt-5.5.0-install/include/QtWidgets/qtextbrowser.h \
-		/qt-5.5.0-install/include/QtWidgets/qtoolbar.h \
-		/qt-5.5.0-install/include/QtWidgets/qtoolbox.h \
-		/qt-5.5.0-install/include/QtWidgets/qtoolbutton.h \
-		/qt-5.5.0-install/include/QtWidgets/qtwidgetsversion.h \
-		/qt-5.5.0-install/include/QtCore/QTimer \
+		/qt-5.5.0-install/include/QtCore/qiodevice.h \
+		/qt-5.5.0-install/include/QtCore/qshareddata.h \
+		/qt-5.5.0-install/include/QtCore/qhash.h \
+		/qt-5.5.0-install/include/QtCore/qpair.h \
+		/qt-5.5.0-install/include/QtCore/QDir \
+		/qt-5.5.0-install/include/QtCore/qdir.h \
 		global.h \
-		/qt-5.5.0-install/include/QtCore/QString \
+		/qt-5.5.0-install/include/QtCore/QVariant \
+		/qt-5.5.0-install/include/QtCore/qvariant.h \
+		/qt-5.5.0-install/include/QtCore/qmap.h \
+		/qt-5.5.0-install/include/QtCore/qdebug.h \
+		/qt-5.5.0-install/include/QtCore/qtextstream.h \
+		/qt-5.5.0-install/include/QtCore/qlocale.h \
+		/qt-5.5.0-install/include/QtCore/qvector.h \
+		/qt-5.5.0-install/include/QtCore/qpoint.h \
+		/qt-5.5.0-install/include/QtCore/qset.h \
+		/qt-5.5.0-install/include/QtCore/qcontiguouscache.h \
 		/qt-5.5.0-install/include/QtCore/QSettings \
+		/qt-5.5.0-install/include/QtCore/qsettings.h \
 		/qt-5.5.0-install/include/QtCore/QTextCodec \
+		/qt-5.5.0-install/include/QtCore/qtextcodec.h \
 		audioplayer/audioplayer.h \
 		/qt-5.5.0-install/include/QtCore/QProcess \
+		/qt-5.5.0-install/include/QtCore/qprocess.h \
 		screenemotion/label.h \
 		/qt-5.5.0-install/include/QtWidgets/QLabel \
+		/qt-5.5.0-install/include/QtWidgets/qlabel.h \
+		/qt-5.5.0-install/include/QtWidgets/qframe.h \
+		/qt-5.5.0-install/include/QtWidgets/qwidget.h \
+		/qt-5.5.0-install/include/QtGui/qwindowdefs.h \
+		/qt-5.5.0-install/include/QtGui/qwindowdefs_win.h \
+		/qt-5.5.0-install/include/QtCore/qmargins.h \
+		/qt-5.5.0-install/include/QtGui/qpaintdevice.h \
+		/qt-5.5.0-install/include/QtCore/qrect.h \
+		/qt-5.5.0-install/include/QtCore/qsize.h \
+		/qt-5.5.0-install/include/QtGui/qpalette.h \
+		/qt-5.5.0-install/include/QtGui/qcolor.h \
+		/qt-5.5.0-install/include/QtGui/qrgb.h \
+		/qt-5.5.0-install/include/QtGui/qbrush.h \
+		/qt-5.5.0-install/include/QtGui/qmatrix.h \
+		/qt-5.5.0-install/include/QtGui/qpolygon.h \
+		/qt-5.5.0-install/include/QtGui/qregion.h \
+		/qt-5.5.0-install/include/QtCore/qdatastream.h \
+		/qt-5.5.0-install/include/QtCore/qline.h \
+		/qt-5.5.0-install/include/QtGui/qtransform.h \
+		/qt-5.5.0-install/include/QtGui/qpainterpath.h \
+		/qt-5.5.0-install/include/QtGui/qimage.h \
+		/qt-5.5.0-install/include/QtGui/qpixelformat.h \
+		/qt-5.5.0-install/include/QtGui/qpixmap.h \
+		/qt-5.5.0-install/include/QtCore/qsharedpointer.h \
+		/qt-5.5.0-install/include/QtCore/qsharedpointer_impl.h \
+		/qt-5.5.0-install/include/QtGui/qfont.h \
+		/qt-5.5.0-install/include/QtGui/qfontmetrics.h \
+		/qt-5.5.0-install/include/QtGui/qfontinfo.h \
+		/qt-5.5.0-install/include/QtWidgets/qsizepolicy.h \
+		/qt-5.5.0-install/include/QtGui/qcursor.h \
+		/qt-5.5.0-install/include/QtGui/qkeysequence.h \
+		/qt-5.5.0-install/include/QtGui/qevent.h \
+		/qt-5.5.0-install/include/QtCore/qurl.h \
+		/qt-5.5.0-install/include/QtCore/qurlquery.h \
+		/qt-5.5.0-install/include/QtGui/qvector2d.h \
+		/qt-5.5.0-install/include/QtGui/qtouchdevice.h \
 		videoplayer/emotionplayer.h
 	/qt-5.5.0-install/bin/moc $(DEFINES) -I/qt-5.5.0-install/mkspecs/linux-arm-gnueabi-g++ -I/home/wyl/Desktop/service-robot -I/usr/local/include -I/qt-5.5.0-install/include -I/qt-5.5.0-install/include/QtWidgets -I/qt-5.5.0-install/include/QtGui -I/qt-5.5.0-install/include/QtNetwork -I/qt-5.5.0-install/include/QtSerialPort -I/qt-5.5.0-install/include/QtCore -I/opt/FriendlyARM/toolschain/4.5.1/arm-none-linux-gnueabi/include/c++/4.5.1 -I/opt/FriendlyARM/toolschain/4.5.1/arm-none-linux-gnueabi/include/c++/4.5.1/arm-none-linux-gnueabi -I/opt/FriendlyARM/toolschain/4.5.1/arm-none-linux-gnueabi/include/c++/4.5.1/backward -I/opt/FriendlyARM/toolschain/4.5.1/lib/gcc/arm-none-linux-gnueabi/4.5.1/include -I/opt/FriendlyARM/toolschain/4.5.1/lib/gcc/arm-none-linux-gnueabi/4.5.1/include-fixed -I/opt/FriendlyARM/toolschain/4.5.1/arm-none-linux-gnueabi/include videoplayer/emotionplayer.h -o moc_emotionplayer.cpp
 
@@ -4218,153 +2279,6 @@ moc_networkqualitythread.cpp: /qt-5.5.0-install/include/QtCore/QThread \
 		/qt-5.5.0-install/include/QtCore/qcontainerfwd.h \
 		/qt-5.5.0-install/include/QtCore/qisenum.h \
 		/qt-5.5.0-install/include/QtCore/qobject_impl.h \
-		/qt-5.5.0-install/include/QtCore/QtCore \
-		/qt-5.5.0-install/include/QtCore/QtCoreDepends \
-		/qt-5.5.0-install/include/QtCore/qabstractanimation.h \
-		/qt-5.5.0-install/include/QtCore/qanimationgroup.h \
-		/qt-5.5.0-install/include/QtCore/qparallelanimationgroup.h \
-		/qt-5.5.0-install/include/QtCore/qpauseanimation.h \
-		/qt-5.5.0-install/include/QtCore/qpropertyanimation.h \
-		/qt-5.5.0-install/include/QtCore/qvariantanimation.h \
-		/qt-5.5.0-install/include/QtCore/qeasingcurve.h \
-		/qt-5.5.0-install/include/QtCore/qvector.h \
-		/qt-5.5.0-install/include/QtCore/qpoint.h \
-		/qt-5.5.0-install/include/QtCore/qvariant.h \
-		/qt-5.5.0-install/include/QtCore/qmap.h \
-		/qt-5.5.0-install/include/QtCore/qpair.h \
-		/qt-5.5.0-install/include/QtCore/qdebug.h \
-		/qt-5.5.0-install/include/QtCore/qhash.h \
-		/qt-5.5.0-install/include/QtCore/qtextstream.h \
-		/qt-5.5.0-install/include/QtCore/qiodevice.h \
-		/qt-5.5.0-install/include/QtCore/qlocale.h \
-		/qt-5.5.0-install/include/QtCore/qshareddata.h \
-		/qt-5.5.0-install/include/QtCore/qset.h \
-		/qt-5.5.0-install/include/QtCore/qcontiguouscache.h \
-		/qt-5.5.0-install/include/QtCore/qsequentialanimationgroup.h \
-		/qt-5.5.0-install/include/QtCore/qtextcodec.h \
-		/qt-5.5.0-install/include/QtCore/qendian.h \
-		/qt-5.5.0-install/include/QtCore/qlibraryinfo.h \
-		/qt-5.5.0-install/include/QtCore/qdatetime.h \
-		/qt-5.5.0-install/include/QtCore/qbuffer.h \
-		/qt-5.5.0-install/include/QtCore/qdatastream.h \
-		/qt-5.5.0-install/include/QtCore/qdir.h \
-		/qt-5.5.0-install/include/QtCore/qfileinfo.h \
-		/qt-5.5.0-install/include/QtCore/qfile.h \
-		/qt-5.5.0-install/include/QtCore/qfiledevice.h \
-		/qt-5.5.0-install/include/QtCore/qdiriterator.h \
-		/qt-5.5.0-install/include/QtCore/qfileselector.h \
-		/qt-5.5.0-install/include/QtCore/QObject \
-		/qt-5.5.0-install/include/QtCore/QStringList \
-		/qt-5.5.0-install/include/QtCore/qfilesystemwatcher.h \
-		/qt-5.5.0-install/include/QtCore/qlockfile.h \
-		/qt-5.5.0-install/include/QtCore/qloggingcategory.h \
-		/qt-5.5.0-install/include/QtCore/qprocess.h \
-		/qt-5.5.0-install/include/QtCore/qresource.h \
-		/qt-5.5.0-install/include/QtCore/qsavefile.h \
-		/qt-5.5.0-install/include/QtCore/qsettings.h \
-		/qt-5.5.0-install/include/QtCore/qstandardpaths.h \
-		/qt-5.5.0-install/include/QtCore/qstorageinfo.h \
-		/qt-5.5.0-install/include/QtCore/qtemporarydir.h \
-		/qt-5.5.0-install/include/QtCore/QScopedPointer \
-		/qt-5.5.0-install/include/QtCore/qtemporaryfile.h \
-		/qt-5.5.0-install/include/QtCore/qurl.h \
-		/qt-5.5.0-install/include/QtCore/qurlquery.h \
-		/qt-5.5.0-install/include/QtCore/qabstractitemmodel.h \
-		/qt-5.5.0-install/include/QtCore/qabstractproxymodel.h \
-		/qt-5.5.0-install/include/QtCore/qidentityproxymodel.h \
-		/qt-5.5.0-install/include/QtCore/qitemselectionmodel.h \
-		/qt-5.5.0-install/include/QtCore/qsortfilterproxymodel.h \
-		/qt-5.5.0-install/include/QtCore/qstringlistmodel.h \
-		/qt-5.5.0-install/include/QtCore/qjsonarray.h \
-		/qt-5.5.0-install/include/QtCore/qjsonvalue.h \
-		/qt-5.5.0-install/include/QtCore/qjsondocument.h \
-		/qt-5.5.0-install/include/QtCore/qjsonobject.h \
-		/qt-5.5.0-install/include/QtCore/qabstracteventdispatcher.h \
-		/qt-5.5.0-install/include/QtCore/qeventloop.h \
-		/qt-5.5.0-install/include/QtCore/qabstractnativeeventfilter.h \
-		/qt-5.5.0-install/include/QtCore/qbasictimer.h \
-		/qt-5.5.0-install/include/QtCore/qcoreapplication.h \
-		/qt-5.5.0-install/include/QtCore/qmath.h \
-		/qt-5.5.0-install/include/QtCore/qmetaobject.h \
-		/qt-5.5.0-install/include/QtCore/qmimedata.h \
-		/qt-5.5.0-install/include/QtCore/qobjectcleanuphandler.h \
-		/qt-5.5.0-install/include/QtCore/qpointer.h \
-		/qt-5.5.0-install/include/QtCore/qsharedpointer.h \
-		/qt-5.5.0-install/include/QtCore/qsharedpointer_impl.h \
-		/qt-5.5.0-install/include/QtCore/qsharedmemory.h \
-		/qt-5.5.0-install/include/QtCore/qsignalmapper.h \
-		/qt-5.5.0-install/include/QtCore/qsocketnotifier.h \
-		/qt-5.5.0-install/include/QtCore/qsystemsemaphore.h \
-		/qt-5.5.0-install/include/QtCore/qtimer.h \
-		/qt-5.5.0-install/include/QtCore/qtranslator.h \
-		/qt-5.5.0-install/include/QtCore/qwineventnotifier.h \
-		/qt-5.5.0-install/include/QtCore/qmimedatabase.h \
-		/qt-5.5.0-install/include/QtCore/qmimetype.h \
-		/qt-5.5.0-install/include/QtCore/qfactoryinterface.h \
-		/qt-5.5.0-install/include/QtCore/qlibrary.h \
-		/qt-5.5.0-install/include/QtCore/qplugin.h \
-		/qt-5.5.0-install/include/QtCore/qpluginloader.h \
-		/qt-5.5.0-install/include/QtCore/quuid.h \
-		/qt-5.5.0-install/include/QtCore/qabstractstate.h \
-		/qt-5.5.0-install/include/QtCore/qabstracttransition.h \
-		/qt-5.5.0-install/include/QtCore/qeventtransition.h \
-		/qt-5.5.0-install/include/QtCore/qfinalstate.h \
-		/qt-5.5.0-install/include/QtCore/qhistorystate.h \
-		/qt-5.5.0-install/include/QtCore/qsignaltransition.h \
-		/qt-5.5.0-install/include/QtCore/qstate.h \
-		/qt-5.5.0-install/include/QtCore/qstatemachine.h \
-		/qt-5.5.0-install/include/QtCore/qexception.h \
-		/qt-5.5.0-install/include/QtCore/qfuture.h \
-		/qt-5.5.0-install/include/QtCore/qfutureinterface.h \
-		/qt-5.5.0-install/include/QtCore/qrunnable.h \
-		/qt-5.5.0-install/include/QtCore/qresultstore.h \
-		/qt-5.5.0-install/include/QtCore/qfuturesynchronizer.h \
-		/qt-5.5.0-install/include/QtCore/qfuturewatcher.h \
-		/qt-5.5.0-install/include/QtCore/qreadwritelock.h \
-		/qt-5.5.0-install/include/QtCore/qsemaphore.h \
-		/qt-5.5.0-install/include/QtCore/qthreadpool.h \
-		/qt-5.5.0-install/include/QtCore/qthreadstorage.h \
-		/qt-5.5.0-install/include/QtCore/qwaitcondition.h \
-		/qt-5.5.0-install/include/QtCore/qarraydataops.h \
-		/qt-5.5.0-install/include/QtCore/qarraydatapointer.h \
-		/qt-5.5.0-install/include/QtCore/qbitarray.h \
-		/qt-5.5.0-install/include/QtCore/qbytearraymatcher.h \
-		/qt-5.5.0-install/include/QtCore/qcache.h \
-		/qt-5.5.0-install/include/QtCore/qcollator.h \
-		/qt-5.5.0-install/include/QtCore/qcommandlineoption.h \
-		/qt-5.5.0-install/include/QtCore/qcommandlineparser.h \
-		/qt-5.5.0-install/include/QtCore/qcryptographichash.h \
-		/qt-5.5.0-install/include/QtCore/qelapsedtimer.h \
-		/qt-5.5.0-install/include/QtCore/qline.h \
-		/qt-5.5.0-install/include/QtCore/qlinkedlist.h \
-		/qt-5.5.0-install/include/QtCore/qmargins.h \
-		/qt-5.5.0-install/include/QtCore/qmessageauthenticationcode.h \
-		/qt-5.5.0-install/include/QtCore/qqueue.h \
-		/qt-5.5.0-install/include/QtCore/qrect.h \
-		/qt-5.5.0-install/include/QtCore/qsize.h \
-		/qt-5.5.0-install/include/QtCore/qregularexpression.h \
-		/qt-5.5.0-install/include/QtCore/qscopedvaluerollback.h \
-		/qt-5.5.0-install/include/QtCore/qstack.h \
-		/qt-5.5.0-install/include/QtCore/qtextboundaryfinder.h \
-		/qt-5.5.0-install/include/QtCore/qtimeline.h \
-		/qt-5.5.0-install/include/QtCore/qtimezone.h \
-		/qt-5.5.0-install/include/QtCore/qxmlstream.h \
-		/qt-5.5.0-install/include/QtCore/qtcoreversion.h \
-		SSDB/ssdb_client_.h \
-		SSDB/ssdb_client.h \
-		global.h \
-		/qt-5.5.0-install/include/QtCore/QString \
-		/qt-5.5.0-install/include/QtCore/QVariant \
-		/qt-5.5.0-install/include/QtCore/QSettings \
-		/qt-5.5.0-install/include/QtCore/QTextCodec \
-		serialport/serialport.h \
-		/qt-5.5.0-install/include/QtSerialPort/QtSerialPort \
-		/qt-5.5.0-install/include/QtSerialPort/QtSerialPortDepends \
-		/qt-5.5.0-install/include/QtSerialPort/qserialport.h \
-		/qt-5.5.0-install/include/QtSerialPort/qserialportglobal.h \
-		/qt-5.5.0-install/include/QtSerialPort/qserialportinfo.h \
-		/qt-5.5.0-install/include/QtSerialPort/qtserialportversion.h \
-		/qt-5.5.0-install/include/QtCore/QElapsedTimer \
 		net/networkqualitythread.h
 	/qt-5.5.0-install/bin/moc $(DEFINES) -I/qt-5.5.0-install/mkspecs/linux-arm-gnueabi-g++ -I/home/wyl/Desktop/service-robot -I/usr/local/include -I/qt-5.5.0-install/include -I/qt-5.5.0-install/include/QtWidgets -I/qt-5.5.0-install/include/QtGui -I/qt-5.5.0-install/include/QtNetwork -I/qt-5.5.0-install/include/QtSerialPort -I/qt-5.5.0-install/include/QtCore -I/opt/FriendlyARM/toolschain/4.5.1/arm-none-linux-gnueabi/include/c++/4.5.1 -I/opt/FriendlyARM/toolschain/4.5.1/arm-none-linux-gnueabi/include/c++/4.5.1/arm-none-linux-gnueabi -I/opt/FriendlyARM/toolschain/4.5.1/arm-none-linux-gnueabi/include/c++/4.5.1/backward -I/opt/FriendlyARM/toolschain/4.5.1/lib/gcc/arm-none-linux-gnueabi/4.5.1/include -I/opt/FriendlyARM/toolschain/4.5.1/lib/gcc/arm-none-linux-gnueabi/4.5.1/include-fixed -I/opt/FriendlyARM/toolschain/4.5.1/arm-none-linux-gnueabi/include net/networkqualitythread.h -o moc_networkqualitythread.cpp
 
@@ -4451,14 +2365,10 @@ compiler_clean: compiler_rcc_clean compiler_moc_header_clean compiler_uic_clean
 ####### Compile
 
 main.o: main.cpp mainwindow.h \
-		/qt-5.5.0-install/include/QtWidgets/QtWidgets \
-		/qt-5.5.0-install/include/QtWidgets/QtWidgetsDepends \
-		/qt-5.5.0-install/include/QtCore/QtCore \
-		/qt-5.5.0-install/include/QtCore/QtCoreDepends \
-		/qt-5.5.0-install/include/QtCore/qabstractanimation.h \
-		/qt-5.5.0-install/include/QtCore/qobject.h \
-		/qt-5.5.0-install/include/QtCore/qobjectdefs.h \
-		/qt-5.5.0-install/include/QtCore/qnamespace.h \
+		/qt-5.5.0-install/include/QtWidgets/QMainWindow \
+		/qt-5.5.0-install/include/QtWidgets/qmainwindow.h \
+		/qt-5.5.0-install/include/QtWidgets/qwidget.h \
+		/qt-5.5.0-install/include/QtGui/qwindowdefs.h \
 		/qt-5.5.0-install/include/QtCore/qglobal.h \
 		/qt-5.5.0-install/include/QtCore/qconfig.h \
 		/qt-5.5.0-install/include/QtCore/qfeatures.h \
@@ -4487,7 +2397,11 @@ main.o: main.cpp mainwindow.h \
 		/qt-5.5.0-install/include/QtCore/qglobalstatic.h \
 		/qt-5.5.0-install/include/QtCore/qmutex.h \
 		/qt-5.5.0-install/include/QtCore/qnumeric.h \
+		/qt-5.5.0-install/include/QtCore/qobjectdefs.h \
+		/qt-5.5.0-install/include/QtCore/qnamespace.h \
 		/qt-5.5.0-install/include/QtCore/qobjectdefs_impl.h \
+		/qt-5.5.0-install/include/QtGui/qwindowdefs_win.h \
+		/qt-5.5.0-install/include/QtCore/qobject.h \
 		/qt-5.5.0-install/include/QtCore/qstring.h \
 		/qt-5.5.0-install/include/QtCore/qchar.h \
 		/qt-5.5.0-install/include/QtCore/qbytearray.h \
@@ -4508,58 +2422,146 @@ main.o: main.cpp mainwindow.h \
 		/qt-5.5.0-install/include/QtCore/qcontainerfwd.h \
 		/qt-5.5.0-install/include/QtCore/qisenum.h \
 		/qt-5.5.0-install/include/QtCore/qobject_impl.h \
+		/qt-5.5.0-install/include/QtCore/qmargins.h \
+		/qt-5.5.0-install/include/QtGui/qpaintdevice.h \
+		/qt-5.5.0-install/include/QtCore/qrect.h \
+		/qt-5.5.0-install/include/QtCore/qsize.h \
+		/qt-5.5.0-install/include/QtCore/qpoint.h \
+		/qt-5.5.0-install/include/QtGui/qpalette.h \
+		/qt-5.5.0-install/include/QtGui/qcolor.h \
+		/qt-5.5.0-install/include/QtGui/qrgb.h \
+		/qt-5.5.0-install/include/QtGui/qbrush.h \
+		/qt-5.5.0-install/include/QtCore/qpair.h \
+		/qt-5.5.0-install/include/QtCore/qvector.h \
+		/qt-5.5.0-install/include/QtGui/qmatrix.h \
+		/qt-5.5.0-install/include/QtGui/qpolygon.h \
+		/qt-5.5.0-install/include/QtGui/qregion.h \
+		/qt-5.5.0-install/include/QtCore/qdatastream.h \
+		/qt-5.5.0-install/include/QtCore/qiodevice.h \
+		/qt-5.5.0-install/include/QtCore/qline.h \
+		/qt-5.5.0-install/include/QtGui/qtransform.h \
+		/qt-5.5.0-install/include/QtGui/qpainterpath.h \
+		/qt-5.5.0-install/include/QtGui/qimage.h \
+		/qt-5.5.0-install/include/QtGui/qpixelformat.h \
+		/qt-5.5.0-install/include/QtGui/qpixmap.h \
+		/qt-5.5.0-install/include/QtCore/qsharedpointer.h \
+		/qt-5.5.0-install/include/QtCore/qshareddata.h \
+		/qt-5.5.0-install/include/QtCore/qhash.h \
+		/qt-5.5.0-install/include/QtCore/qsharedpointer_impl.h \
+		/qt-5.5.0-install/include/QtGui/qfont.h \
+		/qt-5.5.0-install/include/QtGui/qfontmetrics.h \
+		/qt-5.5.0-install/include/QtGui/qfontinfo.h \
+		/qt-5.5.0-install/include/QtWidgets/qsizepolicy.h \
+		/qt-5.5.0-install/include/QtGui/qcursor.h \
+		/qt-5.5.0-install/include/QtGui/qkeysequence.h \
+		/qt-5.5.0-install/include/QtGui/qevent.h \
+		/qt-5.5.0-install/include/QtCore/qvariant.h \
+		/qt-5.5.0-install/include/QtCore/qmap.h \
+		/qt-5.5.0-install/include/QtCore/qdebug.h \
+		/qt-5.5.0-install/include/QtCore/qtextstream.h \
+		/qt-5.5.0-install/include/QtCore/qlocale.h \
+		/qt-5.5.0-install/include/QtCore/qset.h \
+		/qt-5.5.0-install/include/QtCore/qcontiguouscache.h \
+		/qt-5.5.0-install/include/QtCore/qurl.h \
+		/qt-5.5.0-install/include/QtCore/qurlquery.h \
+		/qt-5.5.0-install/include/QtCore/qfile.h \
+		/qt-5.5.0-install/include/QtCore/qfiledevice.h \
+		/qt-5.5.0-install/include/QtGui/qvector2d.h \
+		/qt-5.5.0-install/include/QtGui/qtouchdevice.h \
+		/qt-5.5.0-install/include/QtWidgets/qtabwidget.h \
+		/qt-5.5.0-install/include/QtGui/qicon.h \
+		/qt-5.5.0-install/include/QtWidgets/QTableWidget \
+		/qt-5.5.0-install/include/QtWidgets/qtablewidget.h \
+		/qt-5.5.0-install/include/QtWidgets/qtableview.h \
+		/qt-5.5.0-install/include/QtWidgets/qabstractitemview.h \
+		/qt-5.5.0-install/include/QtWidgets/qabstractscrollarea.h \
+		/qt-5.5.0-install/include/QtWidgets/qframe.h \
+		/qt-5.5.0-install/include/QtCore/qabstractitemmodel.h \
+		/qt-5.5.0-install/include/QtCore/qitemselectionmodel.h \
+		/qt-5.5.0-install/include/QtWidgets/qabstractitemdelegate.h \
+		/qt-5.5.0-install/include/QtWidgets/qstyleoption.h \
+		/qt-5.5.0-install/include/QtWidgets/qabstractspinbox.h \
+		/qt-5.5.0-install/include/QtGui/qvalidator.h \
+		/qt-5.5.0-install/include/QtCore/qregularexpression.h \
+		/qt-5.5.0-install/include/QtWidgets/qslider.h \
+		/qt-5.5.0-install/include/QtWidgets/qabstractslider.h \
+		/qt-5.5.0-install/include/QtWidgets/qstyle.h \
+		/qt-5.5.0-install/include/QtWidgets/qtabbar.h \
+		/qt-5.5.0-install/include/QtWidgets/qrubberband.h \
+		keyboard/keyboard.h \
+		global.h \
+		/qt-5.5.0-install/include/QtCore/QVariant \
+		/qt-5.5.0-install/include/QtCore/QSettings \
+		/qt-5.5.0-install/include/QtCore/qsettings.h \
+		/qt-5.5.0-install/include/QtCore/QTextCodec \
+		/qt-5.5.0-install/include/QtCore/qtextcodec.h \
+		/qt-5.5.0-install/include/QtWidgets/QWidget \
+		net/ipinfotable.h \
+		/qt-5.5.0-install/include/QtWidgets/QTextEdit \
+		/qt-5.5.0-install/include/QtWidgets/qtextedit.h \
+		/qt-5.5.0-install/include/QtGui/qtextdocument.h \
+		/qt-5.5.0-install/include/QtGui/qtextoption.h \
+		/qt-5.5.0-install/include/QtGui/qtextcursor.h \
+		/qt-5.5.0-install/include/QtGui/qtextformat.h \
+		/qt-5.5.0-install/include/QtGui/qpen.h \
+		net/usb_wifi.h \
+		/qt-5.5.0-install/include/QtCore/QObject \
+		/qt-5.5.0-install/include/QtCore/QMutex \
+		serialport/serialport.h \
+		/qt-5.5.0-install/include/QtSerialPort/QSerialPort \
+		/qt-5.5.0-install/include/QtSerialPort/qserialport.h \
+		/qt-5.5.0-install/include/QtSerialPort/qserialportglobal.h \
+		/qt-5.5.0-install/include/QtCore/QTimer \
+		/qt-5.5.0-install/include/QtCore/qtimer.h \
+		/qt-5.5.0-install/include/QtCore/qbasictimer.h \
+		videoplayer/videoplayer.h \
+		/qt-5.5.0-install/include/QtCore/QThread \
+		/qt-5.5.0-install/include/QtCore/qthread.h \
+		/qt-5.5.0-install/include/QtCore/QFileInfo \
+		/qt-5.5.0-install/include/QtCore/qfileinfo.h \
+		/qt-5.5.0-install/include/QtCore/QDir \
+		/qt-5.5.0-install/include/QtCore/qdir.h \
+		audioplayer/audioplayer.h \
+		/qt-5.5.0-install/include/QtCore/QProcess \
+		/qt-5.5.0-install/include/QtCore/qprocess.h \
+		screenemotion/label.h \
+		/qt-5.5.0-install/include/QtWidgets/QLabel \
+		/qt-5.5.0-install/include/QtWidgets/qlabel.h \
+		SSDB/ssdb_client_.h \
+		/qt-5.5.0-install/include/QtCore/QVector \
+		SSDB/ssdb_client.h \
+		net/downloader.h \
+		/qt-5.5.0-install/include/QtNetwork/QtNetwork \
+		/qt-5.5.0-install/include/QtNetwork/QtNetworkDepends \
+		/qt-5.5.0-install/include/QtCore/QtCore \
+		/qt-5.5.0-install/include/QtCore/QtCoreDepends \
+		/qt-5.5.0-install/include/QtCore/qabstractanimation.h \
 		/qt-5.5.0-install/include/QtCore/qanimationgroup.h \
 		/qt-5.5.0-install/include/QtCore/qparallelanimationgroup.h \
 		/qt-5.5.0-install/include/QtCore/qpauseanimation.h \
 		/qt-5.5.0-install/include/QtCore/qpropertyanimation.h \
 		/qt-5.5.0-install/include/QtCore/qvariantanimation.h \
 		/qt-5.5.0-install/include/QtCore/qeasingcurve.h \
-		/qt-5.5.0-install/include/QtCore/qvector.h \
-		/qt-5.5.0-install/include/QtCore/qpoint.h \
-		/qt-5.5.0-install/include/QtCore/qvariant.h \
-		/qt-5.5.0-install/include/QtCore/qmap.h \
-		/qt-5.5.0-install/include/QtCore/qpair.h \
-		/qt-5.5.0-install/include/QtCore/qdebug.h \
-		/qt-5.5.0-install/include/QtCore/qhash.h \
-		/qt-5.5.0-install/include/QtCore/qtextstream.h \
-		/qt-5.5.0-install/include/QtCore/qiodevice.h \
-		/qt-5.5.0-install/include/QtCore/qlocale.h \
-		/qt-5.5.0-install/include/QtCore/qshareddata.h \
-		/qt-5.5.0-install/include/QtCore/qset.h \
-		/qt-5.5.0-install/include/QtCore/qcontiguouscache.h \
 		/qt-5.5.0-install/include/QtCore/qsequentialanimationgroup.h \
-		/qt-5.5.0-install/include/QtCore/qtextcodec.h \
 		/qt-5.5.0-install/include/QtCore/qendian.h \
 		/qt-5.5.0-install/include/QtCore/qlibraryinfo.h \
 		/qt-5.5.0-install/include/QtCore/qdatetime.h \
 		/qt-5.5.0-install/include/QtCore/qbuffer.h \
-		/qt-5.5.0-install/include/QtCore/qdatastream.h \
-		/qt-5.5.0-install/include/QtCore/qdir.h \
-		/qt-5.5.0-install/include/QtCore/qfileinfo.h \
-		/qt-5.5.0-install/include/QtCore/qfile.h \
-		/qt-5.5.0-install/include/QtCore/qfiledevice.h \
 		/qt-5.5.0-install/include/QtCore/qdiriterator.h \
 		/qt-5.5.0-install/include/QtCore/qfileselector.h \
-		/qt-5.5.0-install/include/QtCore/QObject \
 		/qt-5.5.0-install/include/QtCore/QStringList \
 		/qt-5.5.0-install/include/QtCore/qfilesystemwatcher.h \
 		/qt-5.5.0-install/include/QtCore/qlockfile.h \
 		/qt-5.5.0-install/include/QtCore/qloggingcategory.h \
-		/qt-5.5.0-install/include/QtCore/qprocess.h \
 		/qt-5.5.0-install/include/QtCore/qresource.h \
 		/qt-5.5.0-install/include/QtCore/qsavefile.h \
-		/qt-5.5.0-install/include/QtCore/qsettings.h \
 		/qt-5.5.0-install/include/QtCore/qstandardpaths.h \
 		/qt-5.5.0-install/include/QtCore/qstorageinfo.h \
 		/qt-5.5.0-install/include/QtCore/qtemporarydir.h \
 		/qt-5.5.0-install/include/QtCore/QScopedPointer \
 		/qt-5.5.0-install/include/QtCore/qtemporaryfile.h \
-		/qt-5.5.0-install/include/QtCore/qurl.h \
-		/qt-5.5.0-install/include/QtCore/qurlquery.h \
-		/qt-5.5.0-install/include/QtCore/qabstractitemmodel.h \
 		/qt-5.5.0-install/include/QtCore/qabstractproxymodel.h \
 		/qt-5.5.0-install/include/QtCore/qidentityproxymodel.h \
-		/qt-5.5.0-install/include/QtCore/qitemselectionmodel.h \
 		/qt-5.5.0-install/include/QtCore/qsortfilterproxymodel.h \
 		/qt-5.5.0-install/include/QtCore/qstringlistmodel.h \
 		/qt-5.5.0-install/include/QtCore/qjsonarray.h \
@@ -4569,20 +2571,16 @@ main.o: main.cpp mainwindow.h \
 		/qt-5.5.0-install/include/QtCore/qabstracteventdispatcher.h \
 		/qt-5.5.0-install/include/QtCore/qeventloop.h \
 		/qt-5.5.0-install/include/QtCore/qabstractnativeeventfilter.h \
-		/qt-5.5.0-install/include/QtCore/qbasictimer.h \
 		/qt-5.5.0-install/include/QtCore/qcoreapplication.h \
 		/qt-5.5.0-install/include/QtCore/qmath.h \
 		/qt-5.5.0-install/include/QtCore/qmetaobject.h \
 		/qt-5.5.0-install/include/QtCore/qmimedata.h \
 		/qt-5.5.0-install/include/QtCore/qobjectcleanuphandler.h \
 		/qt-5.5.0-install/include/QtCore/qpointer.h \
-		/qt-5.5.0-install/include/QtCore/qsharedpointer.h \
-		/qt-5.5.0-install/include/QtCore/qsharedpointer_impl.h \
 		/qt-5.5.0-install/include/QtCore/qsharedmemory.h \
 		/qt-5.5.0-install/include/QtCore/qsignalmapper.h \
 		/qt-5.5.0-install/include/QtCore/qsocketnotifier.h \
 		/qt-5.5.0-install/include/QtCore/qsystemsemaphore.h \
-		/qt-5.5.0-install/include/QtCore/qtimer.h \
 		/qt-5.5.0-install/include/QtCore/qtranslator.h \
 		/qt-5.5.0-install/include/QtCore/qwineventnotifier.h \
 		/qt-5.5.0-install/include/QtCore/qmimedatabase.h \
@@ -4609,7 +2607,6 @@ main.o: main.cpp mainwindow.h \
 		/qt-5.5.0-install/include/QtCore/qfuturewatcher.h \
 		/qt-5.5.0-install/include/QtCore/qreadwritelock.h \
 		/qt-5.5.0-install/include/QtCore/qsemaphore.h \
-		/qt-5.5.0-install/include/QtCore/qthread.h \
 		/qt-5.5.0-install/include/QtCore/qthreadpool.h \
 		/qt-5.5.0-install/include/QtCore/qthreadstorage.h \
 		/qt-5.5.0-install/include/QtCore/qwaitcondition.h \
@@ -4623,14 +2620,9 @@ main.o: main.cpp mainwindow.h \
 		/qt-5.5.0-install/include/QtCore/qcommandlineparser.h \
 		/qt-5.5.0-install/include/QtCore/qcryptographichash.h \
 		/qt-5.5.0-install/include/QtCore/qelapsedtimer.h \
-		/qt-5.5.0-install/include/QtCore/qline.h \
 		/qt-5.5.0-install/include/QtCore/qlinkedlist.h \
-		/qt-5.5.0-install/include/QtCore/qmargins.h \
 		/qt-5.5.0-install/include/QtCore/qmessageauthenticationcode.h \
 		/qt-5.5.0-install/include/QtCore/qqueue.h \
-		/qt-5.5.0-install/include/QtCore/qrect.h \
-		/qt-5.5.0-install/include/QtCore/qsize.h \
-		/qt-5.5.0-install/include/QtCore/qregularexpression.h \
 		/qt-5.5.0-install/include/QtCore/qscopedvaluerollback.h \
 		/qt-5.5.0-install/include/QtCore/qstack.h \
 		/qt-5.5.0-install/include/QtCore/qtextboundaryfinder.h \
@@ -4638,279 +2630,9 @@ main.o: main.cpp mainwindow.h \
 		/qt-5.5.0-install/include/QtCore/qtimezone.h \
 		/qt-5.5.0-install/include/QtCore/qxmlstream.h \
 		/qt-5.5.0-install/include/QtCore/qtcoreversion.h \
-		/qt-5.5.0-install/include/QtGui/QtGui \
-		/qt-5.5.0-install/include/QtGui/QtGuiDepends \
-		/qt-5.5.0-install/include/QtGui/qaccessible.h \
-		/qt-5.5.0-install/include/QtGui/qcolor.h \
-		/qt-5.5.0-install/include/QtGui/qrgb.h \
-		/qt-5.5.0-install/include/QtGui/qevent.h \
-		/qt-5.5.0-install/include/QtGui/qwindowdefs.h \
-		/qt-5.5.0-install/include/QtGui/qwindowdefs_win.h \
-		/qt-5.5.0-install/include/QtGui/qregion.h \
-		/qt-5.5.0-install/include/QtGui/qkeysequence.h \
-		/qt-5.5.0-install/include/QtGui/qvector2d.h \
-		/qt-5.5.0-install/include/QtGui/qtouchdevice.h \
-		/qt-5.5.0-install/include/QtGui/qaccessiblebridge.h \
-		/qt-5.5.0-install/include/QtGui/qaccessibleobject.h \
-		/qt-5.5.0-install/include/QtGui/qaccessibleplugin.h \
-		/qt-5.5.0-install/include/QtGui/qbitmap.h \
-		/qt-5.5.0-install/include/QtGui/qpixmap.h \
-		/qt-5.5.0-install/include/QtGui/qpaintdevice.h \
-		/qt-5.5.0-install/include/QtGui/qimage.h \
-		/qt-5.5.0-install/include/QtGui/qtransform.h \
-		/qt-5.5.0-install/include/QtGui/qmatrix.h \
-		/qt-5.5.0-install/include/QtGui/qpolygon.h \
-		/qt-5.5.0-install/include/QtGui/qpainterpath.h \
-		/qt-5.5.0-install/include/QtGui/qpixelformat.h \
-		/qt-5.5.0-install/include/QtGui/qicon.h \
-		/qt-5.5.0-install/include/QtGui/qiconengine.h \
-		/qt-5.5.0-install/include/QtGui/qiconengineplugin.h \
-		/qt-5.5.0-install/include/QtGui/qimageiohandler.h \
-		/qt-5.5.0-install/include/QtGui/qimagereader.h \
-		/qt-5.5.0-install/include/QtGui/qimagewriter.h \
-		/qt-5.5.0-install/include/QtGui/qmovie.h \
-		/qt-5.5.0-install/include/QtGui/qpicture.h \
-		/qt-5.5.0-install/include/QtGui/qpictureformatplugin.h \
-		/qt-5.5.0-install/include/QtGui/qpixmapcache.h \
-		/qt-5.5.0-install/include/QtGui/qstandarditemmodel.h \
-		/qt-5.5.0-install/include/QtGui/qbrush.h \
-		/qt-5.5.0-install/include/QtGui/qfont.h \
-		/qt-5.5.0-install/include/QtGui/qclipboard.h \
-		/qt-5.5.0-install/include/QtGui/qcursor.h \
-		/qt-5.5.0-install/include/QtGui/qdrag.h \
-		/qt-5.5.0-install/include/QtGui/qgenericplugin.h \
-		/qt-5.5.0-install/include/QtGui/qgenericpluginfactory.h \
-		/qt-5.5.0-install/include/QtGui/qguiapplication.h \
-		/qt-5.5.0-install/include/QtGui/qinputmethod.h \
-		/qt-5.5.0-install/include/QtGui/qoffscreensurface.h \
-		/qt-5.5.0-install/include/QtGui/qsurface.h \
-		/qt-5.5.0-install/include/QtGui/qsurfaceformat.h \
-		/qt-5.5.0-install/include/QtGui/qopenglcontext.h \
-		/qt-5.5.0-install/include/QtGui/QSurfaceFormat \
-		/qt-5.5.0-install/include/QtGui/qopengl.h \
-		/qt-5.5.0-install/include/QtCore/qt_windows.h \
-		/qt-5.5.0-install/include/QtGui/qopengles2ext.h \
-		/qt-5.5.0-install/include/QtGui/qopenglext.h \
-		/qt-5.5.0-install/include/QtGui/qopenglversionfunctions.h \
-		/qt-5.5.0-install/include/QtGui/qopenglwindow.h \
-		/qt-5.5.0-install/include/QtGui/QPaintDeviceWindow \
-		/qt-5.5.0-install/include/QtGui/qpaintdevicewindow.h \
-		/qt-5.5.0-install/include/QtGui/QWindow \
-		/qt-5.5.0-install/include/QtGui/qwindow.h \
-		/qt-5.5.0-install/include/QtCore/QEvent \
-		/qt-5.5.0-install/include/QtCore/QMargins \
-		/qt-5.5.0-install/include/QtCore/QRect \
-		/qt-5.5.0-install/include/QtGui/QPaintDevice \
-		/qt-5.5.0-install/include/QtGui/QOpenGLContext \
-		/qt-5.5.0-install/include/QtGui/QImage \
-		/qt-5.5.0-install/include/QtGui/qpalette.h \
-		/qt-5.5.0-install/include/QtGui/qrasterwindow.h \
-		/qt-5.5.0-install/include/QtGui/qscreen.h \
-		/qt-5.5.0-install/include/QtCore/QList \
-		/qt-5.5.0-install/include/QtCore/QSize \
-		/qt-5.5.0-install/include/QtCore/QSizeF \
-		/qt-5.5.0-install/include/QtGui/QTransform \
-		/qt-5.5.0-install/include/QtGui/qsessionmanager.h \
-		/qt-5.5.0-install/include/QtGui/qstylehints.h \
-		/qt-5.5.0-install/include/QtGui/qgenericmatrix.h \
-		/qt-5.5.0-install/include/QtGui/qmatrix4x4.h \
-		/qt-5.5.0-install/include/QtGui/qvector3d.h \
-		/qt-5.5.0-install/include/QtGui/qvector4d.h \
-		/qt-5.5.0-install/include/QtGui/qquaternion.h \
-		/qt-5.5.0-install/include/QtGui/qopenglbuffer.h \
-		/qt-5.5.0-install/include/QtGui/qopengldebug.h \
-		/qt-5.5.0-install/include/QtGui/qopenglframebufferobject.h \
-		/qt-5.5.0-install/include/QtGui/qopenglfunctions.h \
-		/qt-5.5.0-install/include/QtGui/qopenglpaintdevice.h \
-		/qt-5.5.0-install/include/QtGui/qopenglpixeltransferoptions.h \
-		/qt-5.5.0-install/include/QtCore/QSharedDataPointer \
-		/qt-5.5.0-install/include/QtGui/qopenglshaderprogram.h \
-		/qt-5.5.0-install/include/QtGui/qopengltexture.h \
-		/qt-5.5.0-install/include/QtGui/qopengltimerquery.h \
-		/qt-5.5.0-install/include/QtGui/qopenglvertexarrayobject.h \
-		/qt-5.5.0-install/include/QtGui/qbackingstore.h \
-		/qt-5.5.0-install/include/QtGui/qpagedpaintdevice.h \
-		/qt-5.5.0-install/include/QtGui/qpagelayout.h \
-		/qt-5.5.0-install/include/QtGui/qpagesize.h \
-		/qt-5.5.0-install/include/QtGui/qpaintengine.h \
-		/qt-5.5.0-install/include/QtGui/qpainter.h \
-		/qt-5.5.0-install/include/QtGui/qtextoption.h \
-		/qt-5.5.0-install/include/QtGui/qpen.h \
-		/qt-5.5.0-install/include/QtGui/qfontinfo.h \
-		/qt-5.5.0-install/include/QtGui/qfontmetrics.h \
-		/qt-5.5.0-install/include/QtGui/qpdfwriter.h \
-		/qt-5.5.0-install/include/QtGui/qabstracttextdocumentlayout.h \
-		/qt-5.5.0-install/include/QtGui/qtextlayout.h \
-		/qt-5.5.0-install/include/QtGui/qtextformat.h \
-		/qt-5.5.0-install/include/QtGui/qglyphrun.h \
-		/qt-5.5.0-install/include/QtGui/qrawfont.h \
-		/qt-5.5.0-install/include/QtGui/qfontdatabase.h \
-		/qt-5.5.0-install/include/QtGui/qtextcursor.h \
-		/qt-5.5.0-install/include/QtGui/qtextdocument.h \
-		/qt-5.5.0-install/include/QtGui/qstatictext.h \
-		/qt-5.5.0-install/include/QtGui/qsyntaxhighlighter.h \
-		/qt-5.5.0-install/include/QtGui/qtextobject.h \
-		/qt-5.5.0-install/include/QtGui/qtextdocumentfragment.h \
-		/qt-5.5.0-install/include/QtGui/qtextdocumentwriter.h \
-		/qt-5.5.0-install/include/QtGui/qtextlist.h \
-		/qt-5.5.0-install/include/QtGui/qtexttable.h \
-		/qt-5.5.0-install/include/QtGui/qdesktopservices.h \
-		/qt-5.5.0-install/include/QtGui/qvalidator.h \
-		/qt-5.5.0-install/include/QtGui/qtguiversion.h \
-		/qt-5.5.0-install/include/QtWidgets/complexwidgets.h \
-		/qt-5.5.0-install/include/QtWidgets/qaccessiblewidget.h \
-		/qt-5.5.0-install/include/QtWidgets/qabstractitemview.h \
-		/qt-5.5.0-install/include/QtWidgets/qabstractscrollarea.h \
-		/qt-5.5.0-install/include/QtWidgets/qframe.h \
-		/qt-5.5.0-install/include/QtWidgets/qwidget.h \
-		/qt-5.5.0-install/include/QtWidgets/qsizepolicy.h \
-		/qt-5.5.0-install/include/QtWidgets/qabstractitemdelegate.h \
-		/qt-5.5.0-install/include/QtWidgets/qstyleoption.h \
-		/qt-5.5.0-install/include/QtWidgets/qabstractspinbox.h \
-		/qt-5.5.0-install/include/QtWidgets/qslider.h \
-		/qt-5.5.0-install/include/QtWidgets/qabstractslider.h \
-		/qt-5.5.0-install/include/QtWidgets/qstyle.h \
-		/qt-5.5.0-install/include/QtWidgets/qtabbar.h \
-		/qt-5.5.0-install/include/QtWidgets/qtabwidget.h \
-		/qt-5.5.0-install/include/QtWidgets/qrubberband.h \
-		/qt-5.5.0-install/include/QtWidgets/itemviews.h \
-		/qt-5.5.0-install/include/QtWidgets/qheaderview.h \
-		/qt-5.5.0-install/include/QtWidgets/qaccessiblemenu.h \
-		/qt-5.5.0-install/include/QtWidgets/qaccessiblewidgets.h \
-		/qt-5.5.0-install/include/QtCore/QPointer \
-		/qt-5.5.0-install/include/QtCore/QPair \
-		/qt-5.5.0-install/include/QtWidgets/rangecontrols.h \
-		/qt-5.5.0-install/include/QtWidgets/simplewidgets.h \
-		/qt-5.5.0-install/include/QtWidgets/qcolordialog.h \
-		/qt-5.5.0-install/include/QtWidgets/qdialog.h \
-		/qt-5.5.0-install/include/QtWidgets/qerrormessage.h \
-		/qt-5.5.0-install/include/QtWidgets/qfiledialog.h \
-		/qt-5.5.0-install/include/QtWidgets/qfilesystemmodel.h \
-		/qt-5.5.0-install/include/QtWidgets/qfontdialog.h \
-		/qt-5.5.0-install/include/QtWidgets/qinputdialog.h \
-		/qt-5.5.0-install/include/QtWidgets/qlineedit.h \
-		/qt-5.5.0-install/include/QtWidgets/qmessagebox.h \
-		/qt-5.5.0-install/include/QtWidgets/qprogressdialog.h \
-		/qt-5.5.0-install/include/QtWidgets/qwizard.h \
-		/qt-5.5.0-install/include/QtWidgets/qgraphicseffect.h \
-		/qt-5.5.0-install/include/QtWidgets/qgraphicsanchorlayout.h \
-		/qt-5.5.0-install/include/QtWidgets/qgraphicsitem.h \
-		/qt-5.5.0-install/include/QtWidgets/qgraphicslayout.h \
-		/qt-5.5.0-install/include/QtWidgets/qgraphicslayoutitem.h \
-		/qt-5.5.0-install/include/QtWidgets/qgraphicsgridlayout.h \
-		/qt-5.5.0-install/include/QtWidgets/qgraphicsitemanimation.h \
-		/qt-5.5.0-install/include/QtWidgets/qgraphicslinearlayout.h \
-		/qt-5.5.0-install/include/QtWidgets/qgraphicsproxywidget.h \
-		/qt-5.5.0-install/include/QtWidgets/qgraphicswidget.h \
-		/qt-5.5.0-install/include/QtWidgets/qgraphicsscene.h \
-		/qt-5.5.0-install/include/QtWidgets/qgraphicssceneevent.h \
-		/qt-5.5.0-install/include/QtWidgets/qgraphicstransform.h \
-		/qt-5.5.0-install/include/QtGui/QVector3D \
-		/qt-5.5.0-install/include/QtGui/QMatrix4x4 \
-		/qt-5.5.0-install/include/QtWidgets/qgraphicsview.h \
-		/qt-5.5.0-install/include/QtWidgets/qscrollarea.h \
-		/qt-5.5.0-install/include/QtWidgets/qcolumnview.h \
-		/qt-5.5.0-install/include/QtWidgets/qdatawidgetmapper.h \
-		/qt-5.5.0-install/include/QtWidgets/qdirmodel.h \
-		/qt-5.5.0-install/include/QtWidgets/qfileiconprovider.h \
-		/qt-5.5.0-install/include/QtWidgets/qitemdelegate.h \
-		/qt-5.5.0-install/include/QtWidgets/qitemeditorfactory.h \
-		/qt-5.5.0-install/include/QtWidgets/qlistview.h \
-		/qt-5.5.0-install/include/QtWidgets/qlistwidget.h \
-		/qt-5.5.0-install/include/QtWidgets/qstyleditemdelegate.h \
-		/qt-5.5.0-install/include/QtWidgets/qtableview.h \
-		/qt-5.5.0-install/include/QtWidgets/qtablewidget.h \
-		/qt-5.5.0-install/include/QtWidgets/qtreeview.h \
-		/qt-5.5.0-install/include/QtWidgets/qtreewidget.h \
-		/qt-5.5.0-install/include/QtWidgets/qtreewidgetitemiterator.h \
-		/qt-5.5.0-install/include/QtWidgets/qaction.h \
-		/qt-5.5.0-install/include/QtWidgets/qactiongroup.h \
-		/qt-5.5.0-install/include/QtWidgets/qapplication.h \
-		/qt-5.5.0-install/include/QtWidgets/qdesktopwidget.h \
-		/qt-5.5.0-install/include/QtWidgets/qboxlayout.h \
-		/qt-5.5.0-install/include/QtWidgets/qlayout.h \
-		/qt-5.5.0-install/include/QtWidgets/qlayoutitem.h \
-		/qt-5.5.0-install/include/QtWidgets/qgridlayout.h \
-		/qt-5.5.0-install/include/QtWidgets/qformlayout.h \
-		/qt-5.5.0-install/include/QtWidgets/QLayout \
-		/qt-5.5.0-install/include/QtWidgets/qgesture.h \
-		/qt-5.5.0-install/include/QtWidgets/qgesturerecognizer.h \
-		/qt-5.5.0-install/include/QtWidgets/qopenglwidget.h \
-		/qt-5.5.0-install/include/QtWidgets/QWidget \
-		/qt-5.5.0-install/include/QtWidgets/qshortcut.h \
-		/qt-5.5.0-install/include/QtWidgets/qstackedlayout.h \
-		/qt-5.5.0-install/include/QtWidgets/qtooltip.h \
-		/qt-5.5.0-install/include/QtWidgets/qwhatsthis.h \
-		/qt-5.5.0-install/include/QtWidgets/qwidgetaction.h \
-		/qt-5.5.0-install/include/QtWidgets/qkeyeventtransition.h \
-		/qt-5.5.0-install/include/QtWidgets/qmouseeventtransition.h \
-		/qt-5.5.0-install/include/QtWidgets/qcommonstyle.h \
-		/qt-5.5.0-install/include/QtWidgets/qdrawutil.h \
-		/qt-5.5.0-install/include/QtWidgets/qproxystyle.h \
-		/qt-5.5.0-install/include/QtWidgets/QCommonStyle \
-		/qt-5.5.0-install/include/QtWidgets/qstylefactory.h \
-		/qt-5.5.0-install/include/QtWidgets/qstylepainter.h \
-		/qt-5.5.0-install/include/QtWidgets/qstyleplugin.h \
-		/qt-5.5.0-install/include/QtWidgets/qcolormap.h \
-		/qt-5.5.0-install/include/QtWidgets/qcompleter.h \
-		/qt-5.5.0-install/include/QtWidgets/qscroller.h \
-		/qt-5.5.0-install/include/QtCore/QPointF \
-		/qt-5.5.0-install/include/QtWidgets/QScrollerProperties \
-		/qt-5.5.0-install/include/QtWidgets/qscrollerproperties.h \
-		/qt-5.5.0-install/include/QtCore/QMetaType \
-		/qt-5.5.0-install/include/QtCore/QVariant \
-		/qt-5.5.0-install/include/QtWidgets/qsystemtrayicon.h \
-		/qt-5.5.0-install/include/QtWidgets/qundogroup.h \
-		/qt-5.5.0-install/include/QtWidgets/qundostack.h \
-		/qt-5.5.0-install/include/QtWidgets/qundoview.h \
-		/qt-5.5.0-install/include/QtWidgets/qabstractbutton.h \
-		/qt-5.5.0-install/include/QtWidgets/qbuttongroup.h \
-		/qt-5.5.0-install/include/QtWidgets/qcalendarwidget.h \
-		/qt-5.5.0-install/include/QtWidgets/qcheckbox.h \
-		/qt-5.5.0-install/include/QtWidgets/qcombobox.h \
-		/qt-5.5.0-install/include/QtWidgets/qcommandlinkbutton.h \
-		/qt-5.5.0-install/include/QtWidgets/qpushbutton.h \
-		/qt-5.5.0-install/include/QtWidgets/qdatetimeedit.h \
-		/qt-5.5.0-install/include/QtWidgets/qdial.h \
-		/qt-5.5.0-install/include/QtWidgets/qdialogbuttonbox.h \
-		/qt-5.5.0-install/include/QtWidgets/qdockwidget.h \
-		/qt-5.5.0-install/include/QtWidgets/qfocusframe.h \
-		/qt-5.5.0-install/include/QtWidgets/qfontcombobox.h \
-		/qt-5.5.0-install/include/QtWidgets/qgroupbox.h \
-		/qt-5.5.0-install/include/QtWidgets/qkeysequenceedit.h \
-		/qt-5.5.0-install/include/QtWidgets/qlabel.h \
-		/qt-5.5.0-install/include/QtWidgets/qlcdnumber.h \
-		/qt-5.5.0-install/include/QtWidgets/qmainwindow.h \
-		/qt-5.5.0-install/include/QtWidgets/qmdiarea.h \
-		/qt-5.5.0-install/include/QtWidgets/qmdisubwindow.h \
-		/qt-5.5.0-install/include/QtWidgets/qmenu.h \
-		/qt-5.5.0-install/include/QtWidgets/qmenubar.h \
-		/qt-5.5.0-install/include/QtWidgets/qplaintextedit.h \
-		/qt-5.5.0-install/include/QtWidgets/qtextedit.h \
-		/qt-5.5.0-install/include/QtWidgets/qprogressbar.h \
-		/qt-5.5.0-install/include/QtWidgets/qradiobutton.h \
-		/qt-5.5.0-install/include/QtWidgets/qscrollbar.h \
-		/qt-5.5.0-install/include/QtWidgets/qsizegrip.h \
-		/qt-5.5.0-install/include/QtWidgets/qspinbox.h \
-		/qt-5.5.0-install/include/QtWidgets/qsplashscreen.h \
-		/qt-5.5.0-install/include/QtWidgets/qsplitter.h \
-		/qt-5.5.0-install/include/QtWidgets/qstackedwidget.h \
-		/qt-5.5.0-install/include/QtWidgets/qstatusbar.h \
-		/qt-5.5.0-install/include/QtWidgets/qtextbrowser.h \
-		/qt-5.5.0-install/include/QtWidgets/qtoolbar.h \
-		/qt-5.5.0-install/include/QtWidgets/qtoolbox.h \
-		/qt-5.5.0-install/include/QtWidgets/qtoolbutton.h \
-		/qt-5.5.0-install/include/QtWidgets/qtwidgetsversion.h \
-		keyboard/keyboard.h \
-		/qt-5.5.0-install/include/QtCore/QSignalMapper \
-		/qt-5.5.0-install/include/QtGui/QMouseEvent \
-		/qt-5.5.0-install/include/QtCore/QDebug \
-		net/ipinfotable.h \
-		/qt-5.5.0-install/include/QtWidgets/QTextEdit \
-		/qt-5.5.0-install/include/QtNetwork/QtNetwork \
-		/qt-5.5.0-install/include/QtNetwork/QtNetworkDepends \
 		/qt-5.5.0-install/include/QtNetwork/qabstractnetworkcache.h \
 		/qt-5.5.0-install/include/QtNetwork/qnetworkrequest.h \
+		/qt-5.5.0-install/include/QtCore/QSharedDataPointer \
 		/qt-5.5.0-install/include/QtCore/QString \
 		/qt-5.5.0-install/include/QtCore/QUrl \
 		/qt-5.5.0-install/include/QtNetwork/qhttpmultipart.h \
@@ -4930,7 +2652,9 @@ main.o: main.cpp mainwindow.h \
 		/qt-5.5.0-install/include/QtNetwork/QSslPreSharedKeyAuthenticator \
 		/qt-5.5.0-install/include/QtNetwork/qsslpresharedkeyauthenticator.h \
 		/qt-5.5.0-install/include/QtCore/QtGlobal \
+		/qt-5.5.0-install/include/QtCore/QMetaType \
 		/qt-5.5.0-install/include/QtNetwork/qnetworkcookie.h \
+		/qt-5.5.0-install/include/QtCore/QList \
 		/qt-5.5.0-install/include/QtNetwork/qnetworkcookiejar.h \
 		/qt-5.5.0-install/include/QtNetwork/qnetworkdiskcache.h \
 		/qt-5.5.0-install/include/QtNetwork/qnetworkreply.h \
@@ -4954,45 +2678,25 @@ main.o: main.cpp mainwindow.h \
 		/qt-5.5.0-install/include/QtCore/QHash \
 		/qt-5.5.0-install/include/QtNetwork/qsslkey.h \
 		/qt-5.5.0-install/include/QtNetwork/qtnetworkversion.h \
-		global.h \
-		/qt-5.5.0-install/include/QtCore/QSettings \
-		/qt-5.5.0-install/include/QtCore/QTextCodec \
-		net/usb_wifi.h \
-		/qt-5.5.0-install/include/QtWidgets/QTableWidgetItem \
-		/qt-5.5.0-install/include/QtWidgets/QTableWidget \
-		serialport/serialport.h \
-		/qt-5.5.0-install/include/QtSerialPort/QtSerialPort \
-		/qt-5.5.0-install/include/QtSerialPort/QtSerialPortDepends \
-		/qt-5.5.0-install/include/QtSerialPort/qserialport.h \
-		/qt-5.5.0-install/include/QtSerialPort/qserialportglobal.h \
-		/qt-5.5.0-install/include/QtSerialPort/qserialportinfo.h \
-		/qt-5.5.0-install/include/QtSerialPort/qtserialportversion.h \
-		/qt-5.5.0-install/include/QtCore/QElapsedTimer \
-		videoplayer/videoplayer.h \
-		/qt-5.5.0-install/include/QtCore/QTimer \
-		audioplayer/audioplayer.h \
-		/qt-5.5.0-install/include/QtCore/QProcess \
-		screenemotion/label.h \
-		/qt-5.5.0-install/include/QtWidgets/QLabel \
-		SSDB/ssdb_client_.h \
-		SSDB/ssdb_client.h \
-		net/downloader.h \
 		videoplayer/emotionplayer.h \
 		net/netspeed.h \
 		keyinput.h \
-		/qt-5.5.0-install/include/QtCore/QSocketNotifier \
 		net/login.h \
 		/qt-5.5.0-install/include/QtNetwork/QNetworkReply \
-		/qt-5.5.0-install/include/QtCore/QThread \
+		/qt-5.5.0-install/include/QtCore/QElapsedTimer \
 		/qt-5.5.0-install/include/QtCore/QEventLoop \
 		net/networkqualitythread.h \
-		/qt-5.5.0-install/include/QtWidgets/QApplication
+		/qt-5.5.0-install/include/QtWidgets/QApplication \
+		/qt-5.5.0-install/include/QtWidgets/qapplication.h \
+		/qt-5.5.0-install/include/QtWidgets/qdesktopwidget.h \
+		/qt-5.5.0-install/include/QtGui/qguiapplication.h \
+		/qt-5.5.0-install/include/QtGui/qinputmethod.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o main.o main.cpp
 
-mainwindow.o: mainwindow.cpp ui_mainwindow.h \
-		/qt-5.5.0-install/include/QtCore/QVariant \
-		/qt-5.5.0-install/include/QtCore/qvariant.h \
-		/qt-5.5.0-install/include/QtCore/qatomic.h \
+mainwindow.o: mainwindow.cpp /qt-5.5.0-install/include/QtWidgets/QDesktopWidget \
+		/qt-5.5.0-install/include/QtWidgets/qdesktopwidget.h \
+		/qt-5.5.0-install/include/QtWidgets/qwidget.h \
+		/qt-5.5.0-install/include/QtGui/qwindowdefs.h \
 		/qt-5.5.0-install/include/QtCore/qglobal.h \
 		/qt-5.5.0-install/include/QtCore/qconfig.h \
 		/qt-5.5.0-install/include/QtCore/qfeatures.h \
@@ -5004,9 +2708,7 @@ mainwindow.o: mainwindow.cpp ui_mainwindow.h \
 		/qt-5.5.0-install/include/QtCore/qsysinfo.h \
 		/qt-5.5.0-install/include/QtCore/qlogging.h \
 		/qt-5.5.0-install/include/QtCore/qflags.h \
-		/qt-5.5.0-install/include/QtCore/qglobalstatic.h \
-		/qt-5.5.0-install/include/QtCore/qmutex.h \
-		/qt-5.5.0-install/include/QtCore/qnumeric.h \
+		/qt-5.5.0-install/include/QtCore/qatomic.h \
 		/qt-5.5.0-install/include/QtCore/qbasicatomic.h \
 		/qt-5.5.0-install/include/QtCore/qatomic_bootstrap.h \
 		/qt-5.5.0-install/include/QtCore/qgenericatomic.h \
@@ -5020,12 +2722,19 @@ mainwindow.o: mainwindow.cpp ui_mainwindow.h \
 		/qt-5.5.0-install/include/QtCore/qatomic_mips.h \
 		/qt-5.5.0-install/include/QtCore/qatomic_x86.h \
 		/qt-5.5.0-install/include/QtCore/qatomic_unix.h \
-		/qt-5.5.0-install/include/QtCore/qbytearray.h \
-		/qt-5.5.0-install/include/QtCore/qrefcount.h \
+		/qt-5.5.0-install/include/QtCore/qglobalstatic.h \
+		/qt-5.5.0-install/include/QtCore/qmutex.h \
+		/qt-5.5.0-install/include/QtCore/qnumeric.h \
+		/qt-5.5.0-install/include/QtCore/qobjectdefs.h \
 		/qt-5.5.0-install/include/QtCore/qnamespace.h \
-		/qt-5.5.0-install/include/QtCore/qarraydata.h \
+		/qt-5.5.0-install/include/QtCore/qobjectdefs_impl.h \
+		/qt-5.5.0-install/include/QtGui/qwindowdefs_win.h \
+		/qt-5.5.0-install/include/QtCore/qobject.h \
 		/qt-5.5.0-install/include/QtCore/qstring.h \
 		/qt-5.5.0-install/include/QtCore/qchar.h \
+		/qt-5.5.0-install/include/QtCore/qbytearray.h \
+		/qt-5.5.0-install/include/QtCore/qrefcount.h \
+		/qt-5.5.0-install/include/QtCore/qarraydata.h \
 		/qt-5.5.0-install/include/QtCore/qstringbuilder.h \
 		/qt-5.5.0-install/include/QtCore/qlist.h \
 		/qt-5.5.0-install/include/QtCore/qalgorithms.h \
@@ -5034,46 +2743,29 @@ mainwindow.o: mainwindow.cpp ui_mainwindow.h \
 		/qt-5.5.0-install/include/QtCore/qstringlist.h \
 		/qt-5.5.0-install/include/QtCore/qregexp.h \
 		/qt-5.5.0-install/include/QtCore/qstringmatcher.h \
+		/qt-5.5.0-install/include/QtCore/qcoreevent.h \
+		/qt-5.5.0-install/include/QtCore/qscopedpointer.h \
 		/qt-5.5.0-install/include/QtCore/qmetatype.h \
 		/qt-5.5.0-install/include/QtCore/qvarlengtharray.h \
 		/qt-5.5.0-install/include/QtCore/qcontainerfwd.h \
 		/qt-5.5.0-install/include/QtCore/qisenum.h \
-		/qt-5.5.0-install/include/QtCore/qobjectdefs.h \
-		/qt-5.5.0-install/include/QtCore/qobjectdefs_impl.h \
-		/qt-5.5.0-install/include/QtCore/qmap.h \
-		/qt-5.5.0-install/include/QtCore/qpair.h \
-		/qt-5.5.0-install/include/QtCore/qdebug.h \
-		/qt-5.5.0-install/include/QtCore/qhash.h \
-		/qt-5.5.0-install/include/QtCore/qtextstream.h \
-		/qt-5.5.0-install/include/QtCore/qiodevice.h \
-		/qt-5.5.0-install/include/QtCore/qobject.h \
-		/qt-5.5.0-install/include/QtCore/qcoreevent.h \
-		/qt-5.5.0-install/include/QtCore/qscopedpointer.h \
 		/qt-5.5.0-install/include/QtCore/qobject_impl.h \
-		/qt-5.5.0-install/include/QtCore/qlocale.h \
-		/qt-5.5.0-install/include/QtCore/qshareddata.h \
-		/qt-5.5.0-install/include/QtCore/qvector.h \
-		/qt-5.5.0-install/include/QtCore/qpoint.h \
-		/qt-5.5.0-install/include/QtCore/qset.h \
-		/qt-5.5.0-install/include/QtCore/qcontiguouscache.h \
-		/qt-5.5.0-install/include/QtWidgets/QAction \
-		/qt-5.5.0-install/include/QtWidgets/qaction.h \
-		/qt-5.5.0-install/include/QtGui/qkeysequence.h \
-		/qt-5.5.0-install/include/QtWidgets/qwidget.h \
-		/qt-5.5.0-install/include/QtGui/qwindowdefs.h \
-		/qt-5.5.0-install/include/QtGui/qwindowdefs_win.h \
 		/qt-5.5.0-install/include/QtCore/qmargins.h \
 		/qt-5.5.0-install/include/QtGui/qpaintdevice.h \
 		/qt-5.5.0-install/include/QtCore/qrect.h \
 		/qt-5.5.0-install/include/QtCore/qsize.h \
+		/qt-5.5.0-install/include/QtCore/qpoint.h \
 		/qt-5.5.0-install/include/QtGui/qpalette.h \
 		/qt-5.5.0-install/include/QtGui/qcolor.h \
 		/qt-5.5.0-install/include/QtGui/qrgb.h \
 		/qt-5.5.0-install/include/QtGui/qbrush.h \
+		/qt-5.5.0-install/include/QtCore/qpair.h \
+		/qt-5.5.0-install/include/QtCore/qvector.h \
 		/qt-5.5.0-install/include/QtGui/qmatrix.h \
 		/qt-5.5.0-install/include/QtGui/qpolygon.h \
 		/qt-5.5.0-install/include/QtGui/qregion.h \
 		/qt-5.5.0-install/include/QtCore/qdatastream.h \
+		/qt-5.5.0-install/include/QtCore/qiodevice.h \
 		/qt-5.5.0-install/include/QtCore/qline.h \
 		/qt-5.5.0-install/include/QtGui/qtransform.h \
 		/qt-5.5.0-install/include/QtGui/qpainterpath.h \
@@ -5081,26 +2773,39 @@ mainwindow.o: mainwindow.cpp ui_mainwindow.h \
 		/qt-5.5.0-install/include/QtGui/qpixelformat.h \
 		/qt-5.5.0-install/include/QtGui/qpixmap.h \
 		/qt-5.5.0-install/include/QtCore/qsharedpointer.h \
+		/qt-5.5.0-install/include/QtCore/qshareddata.h \
+		/qt-5.5.0-install/include/QtCore/qhash.h \
 		/qt-5.5.0-install/include/QtCore/qsharedpointer_impl.h \
 		/qt-5.5.0-install/include/QtGui/qfont.h \
 		/qt-5.5.0-install/include/QtGui/qfontmetrics.h \
 		/qt-5.5.0-install/include/QtGui/qfontinfo.h \
 		/qt-5.5.0-install/include/QtWidgets/qsizepolicy.h \
 		/qt-5.5.0-install/include/QtGui/qcursor.h \
+		/qt-5.5.0-install/include/QtGui/qkeysequence.h \
 		/qt-5.5.0-install/include/QtGui/qevent.h \
+		/qt-5.5.0-install/include/QtCore/qvariant.h \
+		/qt-5.5.0-install/include/QtCore/qmap.h \
+		/qt-5.5.0-install/include/QtCore/qdebug.h \
+		/qt-5.5.0-install/include/QtCore/qtextstream.h \
+		/qt-5.5.0-install/include/QtCore/qlocale.h \
+		/qt-5.5.0-install/include/QtCore/qset.h \
+		/qt-5.5.0-install/include/QtCore/qcontiguouscache.h \
 		/qt-5.5.0-install/include/QtCore/qurl.h \
 		/qt-5.5.0-install/include/QtCore/qurlquery.h \
 		/qt-5.5.0-install/include/QtCore/qfile.h \
 		/qt-5.5.0-install/include/QtCore/qfiledevice.h \
 		/qt-5.5.0-install/include/QtGui/qvector2d.h \
 		/qt-5.5.0-install/include/QtGui/qtouchdevice.h \
+		ui_mainwindow.h \
+		/qt-5.5.0-install/include/QtCore/QVariant \
+		/qt-5.5.0-install/include/QtWidgets/QAction \
+		/qt-5.5.0-install/include/QtWidgets/qaction.h \
 		/qt-5.5.0-install/include/QtGui/qicon.h \
 		/qt-5.5.0-install/include/QtWidgets/qactiongroup.h \
 		/qt-5.5.0-install/include/QtWidgets/QApplication \
 		/qt-5.5.0-install/include/QtWidgets/qapplication.h \
 		/qt-5.5.0-install/include/QtCore/qcoreapplication.h \
 		/qt-5.5.0-install/include/QtCore/qeventloop.h \
-		/qt-5.5.0-install/include/QtWidgets/qdesktopwidget.h \
 		/qt-5.5.0-install/include/QtGui/qguiapplication.h \
 		/qt-5.5.0-install/include/QtGui/qinputmethod.h \
 		/qt-5.5.0-install/include/QtWidgets/QButtonGroup \
@@ -5148,21 +2853,14 @@ mainwindow.o: mainwindow.cpp ui_mainwindow.h \
 		/qt-5.5.0-install/include/QtWidgets/QToolButton \
 		/qt-5.5.0-install/include/QtWidgets/qtoolbutton.h \
 		/qt-5.5.0-install/include/QtWidgets/QVBoxLayout \
-		/qt-5.5.0-install/include/QtWidgets/QWidget \
-		/qt-5.5.0-install/include/QtWidgets/QInputDialog \
-		/qt-5.5.0-install/include/QtWidgets/qinputdialog.h \
-		/qt-5.5.0-install/include/QtWidgets/qdialog.h \
-		/qt-5.5.0-install/include/QtWidgets/qlineedit.h \
-		/qt-5.5.0-install/include/QtGui/qtextcursor.h \
-		/qt-5.5.0-install/include/QtGui/qtextformat.h \
-		/qt-5.5.0-install/include/QtGui/qpen.h \
-		/qt-5.5.0-install/include/QtGui/qtextoption.h
+		/qt-5.5.0-install/include/QtWidgets/QWidget
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o mainwindow.o mainwindow.cpp
 
 keyboard.o: keyboard/keyboard.cpp keyboard/keyboard.h \
-		/qt-5.5.0-install/include/QtWidgets/QWidget \
-		/qt-5.5.0-install/include/QtWidgets/qwidget.h \
-		/qt-5.5.0-install/include/QtGui/qwindowdefs.h \
+		global.h \
+		/qt-5.5.0-install/include/QtCore/QVariant \
+		/qt-5.5.0-install/include/QtCore/qvariant.h \
+		/qt-5.5.0-install/include/QtCore/qatomic.h \
 		/qt-5.5.0-install/include/QtCore/qglobal.h \
 		/qt-5.5.0-install/include/QtCore/qconfig.h \
 		/qt-5.5.0-install/include/QtCore/qfeatures.h \
@@ -5174,7 +2872,9 @@ keyboard.o: keyboard/keyboard.cpp keyboard/keyboard.h \
 		/qt-5.5.0-install/include/QtCore/qsysinfo.h \
 		/qt-5.5.0-install/include/QtCore/qlogging.h \
 		/qt-5.5.0-install/include/QtCore/qflags.h \
-		/qt-5.5.0-install/include/QtCore/qatomic.h \
+		/qt-5.5.0-install/include/QtCore/qglobalstatic.h \
+		/qt-5.5.0-install/include/QtCore/qmutex.h \
+		/qt-5.5.0-install/include/QtCore/qnumeric.h \
 		/qt-5.5.0-install/include/QtCore/qbasicatomic.h \
 		/qt-5.5.0-install/include/QtCore/qatomic_bootstrap.h \
 		/qt-5.5.0-install/include/QtCore/qgenericatomic.h \
@@ -5188,19 +2888,12 @@ keyboard.o: keyboard/keyboard.cpp keyboard/keyboard.h \
 		/qt-5.5.0-install/include/QtCore/qatomic_mips.h \
 		/qt-5.5.0-install/include/QtCore/qatomic_x86.h \
 		/qt-5.5.0-install/include/QtCore/qatomic_unix.h \
-		/qt-5.5.0-install/include/QtCore/qglobalstatic.h \
-		/qt-5.5.0-install/include/QtCore/qmutex.h \
-		/qt-5.5.0-install/include/QtCore/qnumeric.h \
-		/qt-5.5.0-install/include/QtCore/qobjectdefs.h \
-		/qt-5.5.0-install/include/QtCore/qnamespace.h \
-		/qt-5.5.0-install/include/QtCore/qobjectdefs_impl.h \
-		/qt-5.5.0-install/include/QtGui/qwindowdefs_win.h \
-		/qt-5.5.0-install/include/QtCore/qobject.h \
-		/qt-5.5.0-install/include/QtCore/qstring.h \
-		/qt-5.5.0-install/include/QtCore/qchar.h \
 		/qt-5.5.0-install/include/QtCore/qbytearray.h \
 		/qt-5.5.0-install/include/QtCore/qrefcount.h \
+		/qt-5.5.0-install/include/QtCore/qnamespace.h \
 		/qt-5.5.0-install/include/QtCore/qarraydata.h \
+		/qt-5.5.0-install/include/QtCore/qstring.h \
+		/qt-5.5.0-install/include/QtCore/qchar.h \
 		/qt-5.5.0-install/include/QtCore/qstringbuilder.h \
 		/qt-5.5.0-install/include/QtCore/qlist.h \
 		/qt-5.5.0-install/include/QtCore/qalgorithms.h \
@@ -5209,29 +2902,48 @@ keyboard.o: keyboard/keyboard.cpp keyboard/keyboard.h \
 		/qt-5.5.0-install/include/QtCore/qstringlist.h \
 		/qt-5.5.0-install/include/QtCore/qregexp.h \
 		/qt-5.5.0-install/include/QtCore/qstringmatcher.h \
-		/qt-5.5.0-install/include/QtCore/qcoreevent.h \
-		/qt-5.5.0-install/include/QtCore/qscopedpointer.h \
 		/qt-5.5.0-install/include/QtCore/qmetatype.h \
 		/qt-5.5.0-install/include/QtCore/qvarlengtharray.h \
 		/qt-5.5.0-install/include/QtCore/qcontainerfwd.h \
 		/qt-5.5.0-install/include/QtCore/qisenum.h \
+		/qt-5.5.0-install/include/QtCore/qobjectdefs.h \
+		/qt-5.5.0-install/include/QtCore/qobjectdefs_impl.h \
+		/qt-5.5.0-install/include/QtCore/qmap.h \
+		/qt-5.5.0-install/include/QtCore/qpair.h \
+		/qt-5.5.0-install/include/QtCore/qdebug.h \
+		/qt-5.5.0-install/include/QtCore/qhash.h \
+		/qt-5.5.0-install/include/QtCore/qtextstream.h \
+		/qt-5.5.0-install/include/QtCore/qiodevice.h \
+		/qt-5.5.0-install/include/QtCore/qobject.h \
+		/qt-5.5.0-install/include/QtCore/qcoreevent.h \
+		/qt-5.5.0-install/include/QtCore/qscopedpointer.h \
 		/qt-5.5.0-install/include/QtCore/qobject_impl.h \
+		/qt-5.5.0-install/include/QtCore/qlocale.h \
+		/qt-5.5.0-install/include/QtCore/qshareddata.h \
+		/qt-5.5.0-install/include/QtCore/qvector.h \
+		/qt-5.5.0-install/include/QtCore/qpoint.h \
+		/qt-5.5.0-install/include/QtCore/qset.h \
+		/qt-5.5.0-install/include/QtCore/qcontiguouscache.h \
+		/qt-5.5.0-install/include/QtCore/QSettings \
+		/qt-5.5.0-install/include/QtCore/qsettings.h \
+		/qt-5.5.0-install/include/QtCore/QTextCodec \
+		/qt-5.5.0-install/include/QtCore/qtextcodec.h \
+		/qt-5.5.0-install/include/QtWidgets/QWidget \
+		/qt-5.5.0-install/include/QtWidgets/qwidget.h \
+		/qt-5.5.0-install/include/QtGui/qwindowdefs.h \
+		/qt-5.5.0-install/include/QtGui/qwindowdefs_win.h \
 		/qt-5.5.0-install/include/QtCore/qmargins.h \
 		/qt-5.5.0-install/include/QtGui/qpaintdevice.h \
 		/qt-5.5.0-install/include/QtCore/qrect.h \
 		/qt-5.5.0-install/include/QtCore/qsize.h \
-		/qt-5.5.0-install/include/QtCore/qpoint.h \
 		/qt-5.5.0-install/include/QtGui/qpalette.h \
 		/qt-5.5.0-install/include/QtGui/qcolor.h \
 		/qt-5.5.0-install/include/QtGui/qrgb.h \
 		/qt-5.5.0-install/include/QtGui/qbrush.h \
-		/qt-5.5.0-install/include/QtCore/qpair.h \
-		/qt-5.5.0-install/include/QtCore/qvector.h \
 		/qt-5.5.0-install/include/QtGui/qmatrix.h \
 		/qt-5.5.0-install/include/QtGui/qpolygon.h \
 		/qt-5.5.0-install/include/QtGui/qregion.h \
 		/qt-5.5.0-install/include/QtCore/qdatastream.h \
-		/qt-5.5.0-install/include/QtCore/qiodevice.h \
 		/qt-5.5.0-install/include/QtCore/qline.h \
 		/qt-5.5.0-install/include/QtGui/qtransform.h \
 		/qt-5.5.0-install/include/QtGui/qpainterpath.h \
@@ -5239,8 +2951,6 @@ keyboard.o: keyboard/keyboard.cpp keyboard/keyboard.h \
 		/qt-5.5.0-install/include/QtGui/qpixelformat.h \
 		/qt-5.5.0-install/include/QtGui/qpixmap.h \
 		/qt-5.5.0-install/include/QtCore/qsharedpointer.h \
-		/qt-5.5.0-install/include/QtCore/qshareddata.h \
-		/qt-5.5.0-install/include/QtCore/qhash.h \
 		/qt-5.5.0-install/include/QtCore/qsharedpointer_impl.h \
 		/qt-5.5.0-install/include/QtGui/qfont.h \
 		/qt-5.5.0-install/include/QtGui/qfontmetrics.h \
@@ -5249,13 +2959,6 @@ keyboard.o: keyboard/keyboard.cpp keyboard/keyboard.h \
 		/qt-5.5.0-install/include/QtGui/qcursor.h \
 		/qt-5.5.0-install/include/QtGui/qkeysequence.h \
 		/qt-5.5.0-install/include/QtGui/qevent.h \
-		/qt-5.5.0-install/include/QtCore/qvariant.h \
-		/qt-5.5.0-install/include/QtCore/qmap.h \
-		/qt-5.5.0-install/include/QtCore/qdebug.h \
-		/qt-5.5.0-install/include/QtCore/qtextstream.h \
-		/qt-5.5.0-install/include/QtCore/qlocale.h \
-		/qt-5.5.0-install/include/QtCore/qset.h \
-		/qt-5.5.0-install/include/QtCore/qcontiguouscache.h \
 		/qt-5.5.0-install/include/QtCore/qurl.h \
 		/qt-5.5.0-install/include/QtCore/qurlquery.h \
 		/qt-5.5.0-install/include/QtCore/qfile.h \
@@ -5266,13 +2969,6 @@ keyboard.o: keyboard/keyboard.cpp keyboard/keyboard.h \
 		/qt-5.5.0-install/include/QtCore/qsignalmapper.h \
 		/qt-5.5.0-install/include/QtGui/QMouseEvent \
 		/qt-5.5.0-install/include/QtCore/QDebug \
-		global.h \
-		/qt-5.5.0-install/include/QtCore/QString \
-		/qt-5.5.0-install/include/QtCore/QVariant \
-		/qt-5.5.0-install/include/QtCore/QSettings \
-		/qt-5.5.0-install/include/QtCore/qsettings.h \
-		/qt-5.5.0-install/include/QtCore/QTextCodec \
-		/qt-5.5.0-install/include/QtCore/qtextcodec.h \
 		ui_keyboard.h \
 		/qt-5.5.0-install/include/QtWidgets/QAction \
 		/qt-5.5.0-install/include/QtWidgets/qaction.h \
@@ -5329,9 +3025,7 @@ keyboard.o: keyboard/keyboard.cpp keyboard/keyboard.h \
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o keyboard.o keyboard/keyboard.cpp
 
 usb_wifi.o: net/usb_wifi.cpp net/usb_wifi.h \
-		/qt-5.5.0-install/include/QtCore/QtCore \
-		/qt-5.5.0-install/include/QtCore/QtCoreDepends \
-		/qt-5.5.0-install/include/QtCore/qabstractanimation.h \
+		/qt-5.5.0-install/include/QtCore/QObject \
 		/qt-5.5.0-install/include/QtCore/qobject.h \
 		/qt-5.5.0-install/include/QtCore/qobjectdefs.h \
 		/qt-5.5.0-install/include/QtCore/qnamespace.h \
@@ -5384,192 +3078,38 @@ usb_wifi.o: net/usb_wifi.cpp net/usb_wifi.h \
 		/qt-5.5.0-install/include/QtCore/qcontainerfwd.h \
 		/qt-5.5.0-install/include/QtCore/qisenum.h \
 		/qt-5.5.0-install/include/QtCore/qobject_impl.h \
-		/qt-5.5.0-install/include/QtCore/qanimationgroup.h \
-		/qt-5.5.0-install/include/QtCore/qparallelanimationgroup.h \
-		/qt-5.5.0-install/include/QtCore/qpauseanimation.h \
-		/qt-5.5.0-install/include/QtCore/qpropertyanimation.h \
-		/qt-5.5.0-install/include/QtCore/qvariantanimation.h \
-		/qt-5.5.0-install/include/QtCore/qeasingcurve.h \
-		/qt-5.5.0-install/include/QtCore/qvector.h \
-		/qt-5.5.0-install/include/QtCore/qpoint.h \
-		/qt-5.5.0-install/include/QtCore/qvariant.h \
-		/qt-5.5.0-install/include/QtCore/qmap.h \
-		/qt-5.5.0-install/include/QtCore/qpair.h \
-		/qt-5.5.0-install/include/QtCore/qdebug.h \
-		/qt-5.5.0-install/include/QtCore/qhash.h \
-		/qt-5.5.0-install/include/QtCore/qtextstream.h \
-		/qt-5.5.0-install/include/QtCore/qiodevice.h \
-		/qt-5.5.0-install/include/QtCore/qlocale.h \
-		/qt-5.5.0-install/include/QtCore/qshareddata.h \
-		/qt-5.5.0-install/include/QtCore/qset.h \
-		/qt-5.5.0-install/include/QtCore/qcontiguouscache.h \
-		/qt-5.5.0-install/include/QtCore/qsequentialanimationgroup.h \
-		/qt-5.5.0-install/include/QtCore/qtextcodec.h \
-		/qt-5.5.0-install/include/QtCore/qendian.h \
-		/qt-5.5.0-install/include/QtCore/qlibraryinfo.h \
-		/qt-5.5.0-install/include/QtCore/qdatetime.h \
-		/qt-5.5.0-install/include/QtCore/qbuffer.h \
-		/qt-5.5.0-install/include/QtCore/qdatastream.h \
-		/qt-5.5.0-install/include/QtCore/qdir.h \
-		/qt-5.5.0-install/include/QtCore/qfileinfo.h \
-		/qt-5.5.0-install/include/QtCore/qfile.h \
-		/qt-5.5.0-install/include/QtCore/qfiledevice.h \
-		/qt-5.5.0-install/include/QtCore/qdiriterator.h \
-		/qt-5.5.0-install/include/QtCore/qfileselector.h \
-		/qt-5.5.0-install/include/QtCore/QObject \
-		/qt-5.5.0-install/include/QtCore/QStringList \
-		/qt-5.5.0-install/include/QtCore/qfilesystemwatcher.h \
-		/qt-5.5.0-install/include/QtCore/qlockfile.h \
-		/qt-5.5.0-install/include/QtCore/qloggingcategory.h \
-		/qt-5.5.0-install/include/QtCore/qprocess.h \
-		/qt-5.5.0-install/include/QtCore/qresource.h \
-		/qt-5.5.0-install/include/QtCore/qsavefile.h \
-		/qt-5.5.0-install/include/QtCore/qsettings.h \
-		/qt-5.5.0-install/include/QtCore/qstandardpaths.h \
-		/qt-5.5.0-install/include/QtCore/qstorageinfo.h \
-		/qt-5.5.0-install/include/QtCore/qtemporarydir.h \
-		/qt-5.5.0-install/include/QtCore/QScopedPointer \
-		/qt-5.5.0-install/include/QtCore/qtemporaryfile.h \
-		/qt-5.5.0-install/include/QtCore/qurl.h \
-		/qt-5.5.0-install/include/QtCore/qurlquery.h \
-		/qt-5.5.0-install/include/QtCore/qabstractitemmodel.h \
-		/qt-5.5.0-install/include/QtCore/qabstractproxymodel.h \
-		/qt-5.5.0-install/include/QtCore/qidentityproxymodel.h \
-		/qt-5.5.0-install/include/QtCore/qitemselectionmodel.h \
-		/qt-5.5.0-install/include/QtCore/qsortfilterproxymodel.h \
-		/qt-5.5.0-install/include/QtCore/qstringlistmodel.h \
-		/qt-5.5.0-install/include/QtCore/qjsonarray.h \
-		/qt-5.5.0-install/include/QtCore/qjsonvalue.h \
-		/qt-5.5.0-install/include/QtCore/qjsondocument.h \
-		/qt-5.5.0-install/include/QtCore/qjsonobject.h \
-		/qt-5.5.0-install/include/QtCore/qabstracteventdispatcher.h \
-		/qt-5.5.0-install/include/QtCore/qeventloop.h \
-		/qt-5.5.0-install/include/QtCore/qabstractnativeeventfilter.h \
-		/qt-5.5.0-install/include/QtCore/qbasictimer.h \
-		/qt-5.5.0-install/include/QtCore/qcoreapplication.h \
-		/qt-5.5.0-install/include/QtCore/qmath.h \
-		/qt-5.5.0-install/include/QtCore/qmetaobject.h \
-		/qt-5.5.0-install/include/QtCore/qmimedata.h \
-		/qt-5.5.0-install/include/QtCore/qobjectcleanuphandler.h \
-		/qt-5.5.0-install/include/QtCore/qpointer.h \
-		/qt-5.5.0-install/include/QtCore/qsharedpointer.h \
-		/qt-5.5.0-install/include/QtCore/qsharedpointer_impl.h \
-		/qt-5.5.0-install/include/QtCore/qsharedmemory.h \
-		/qt-5.5.0-install/include/QtCore/qsignalmapper.h \
-		/qt-5.5.0-install/include/QtCore/qsocketnotifier.h \
-		/qt-5.5.0-install/include/QtCore/qsystemsemaphore.h \
-		/qt-5.5.0-install/include/QtCore/qtimer.h \
-		/qt-5.5.0-install/include/QtCore/qtranslator.h \
-		/qt-5.5.0-install/include/QtCore/qwineventnotifier.h \
-		/qt-5.5.0-install/include/QtCore/qmimedatabase.h \
-		/qt-5.5.0-install/include/QtCore/qmimetype.h \
-		/qt-5.5.0-install/include/QtCore/qfactoryinterface.h \
-		/qt-5.5.0-install/include/QtCore/qlibrary.h \
-		/qt-5.5.0-install/include/QtCore/qplugin.h \
-		/qt-5.5.0-install/include/QtCore/qpluginloader.h \
-		/qt-5.5.0-install/include/QtCore/quuid.h \
-		/qt-5.5.0-install/include/QtCore/qabstractstate.h \
-		/qt-5.5.0-install/include/QtCore/qabstracttransition.h \
-		/qt-5.5.0-install/include/QtCore/qeventtransition.h \
-		/qt-5.5.0-install/include/QtCore/qfinalstate.h \
-		/qt-5.5.0-install/include/QtCore/qhistorystate.h \
-		/qt-5.5.0-install/include/QtCore/qsignaltransition.h \
-		/qt-5.5.0-install/include/QtCore/qstate.h \
-		/qt-5.5.0-install/include/QtCore/qstatemachine.h \
-		/qt-5.5.0-install/include/QtCore/qexception.h \
-		/qt-5.5.0-install/include/QtCore/qfuture.h \
-		/qt-5.5.0-install/include/QtCore/qfutureinterface.h \
-		/qt-5.5.0-install/include/QtCore/qrunnable.h \
-		/qt-5.5.0-install/include/QtCore/qresultstore.h \
-		/qt-5.5.0-install/include/QtCore/qfuturesynchronizer.h \
-		/qt-5.5.0-install/include/QtCore/qfuturewatcher.h \
-		/qt-5.5.0-install/include/QtCore/qreadwritelock.h \
-		/qt-5.5.0-install/include/QtCore/qsemaphore.h \
-		/qt-5.5.0-install/include/QtCore/qthread.h \
-		/qt-5.5.0-install/include/QtCore/qthreadpool.h \
-		/qt-5.5.0-install/include/QtCore/qthreadstorage.h \
-		/qt-5.5.0-install/include/QtCore/qwaitcondition.h \
-		/qt-5.5.0-install/include/QtCore/qarraydataops.h \
-		/qt-5.5.0-install/include/QtCore/qarraydatapointer.h \
-		/qt-5.5.0-install/include/QtCore/qbitarray.h \
-		/qt-5.5.0-install/include/QtCore/qbytearraymatcher.h \
-		/qt-5.5.0-install/include/QtCore/qcache.h \
-		/qt-5.5.0-install/include/QtCore/qcollator.h \
-		/qt-5.5.0-install/include/QtCore/qcommandlineoption.h \
-		/qt-5.5.0-install/include/QtCore/qcommandlineparser.h \
-		/qt-5.5.0-install/include/QtCore/qcryptographichash.h \
-		/qt-5.5.0-install/include/QtCore/qelapsedtimer.h \
-		/qt-5.5.0-install/include/QtCore/qline.h \
-		/qt-5.5.0-install/include/QtCore/qlinkedlist.h \
-		/qt-5.5.0-install/include/QtCore/qmargins.h \
-		/qt-5.5.0-install/include/QtCore/qmessageauthenticationcode.h \
-		/qt-5.5.0-install/include/QtCore/qqueue.h \
-		/qt-5.5.0-install/include/QtCore/qrect.h \
-		/qt-5.5.0-install/include/QtCore/qsize.h \
-		/qt-5.5.0-install/include/QtCore/qregularexpression.h \
-		/qt-5.5.0-install/include/QtCore/qscopedvaluerollback.h \
-		/qt-5.5.0-install/include/QtCore/qstack.h \
-		/qt-5.5.0-install/include/QtCore/qtextboundaryfinder.h \
-		/qt-5.5.0-install/include/QtCore/qtimeline.h \
-		/qt-5.5.0-install/include/QtCore/qtimezone.h \
-		/qt-5.5.0-install/include/QtCore/qxmlstream.h \
-		/qt-5.5.0-install/include/QtCore/qtcoreversion.h \
-		/qt-5.5.0-install/include/QtWidgets/QTableWidgetItem \
-		/qt-5.5.0-install/include/QtWidgets/qtablewidget.h \
-		/qt-5.5.0-install/include/QtWidgets/qtableview.h \
-		/qt-5.5.0-install/include/QtWidgets/qabstractitemview.h \
-		/qt-5.5.0-install/include/QtWidgets/qabstractscrollarea.h \
-		/qt-5.5.0-install/include/QtWidgets/qframe.h \
-		/qt-5.5.0-install/include/QtWidgets/qwidget.h \
-		/qt-5.5.0-install/include/QtGui/qwindowdefs.h \
-		/qt-5.5.0-install/include/QtGui/qwindowdefs_win.h \
-		/qt-5.5.0-install/include/QtGui/qpaintdevice.h \
-		/qt-5.5.0-install/include/QtGui/qpalette.h \
-		/qt-5.5.0-install/include/QtGui/qcolor.h \
-		/qt-5.5.0-install/include/QtGui/qrgb.h \
-		/qt-5.5.0-install/include/QtGui/qbrush.h \
-		/qt-5.5.0-install/include/QtGui/qmatrix.h \
-		/qt-5.5.0-install/include/QtGui/qpolygon.h \
-		/qt-5.5.0-install/include/QtGui/qregion.h \
-		/qt-5.5.0-install/include/QtGui/qtransform.h \
-		/qt-5.5.0-install/include/QtGui/qpainterpath.h \
-		/qt-5.5.0-install/include/QtGui/qimage.h \
-		/qt-5.5.0-install/include/QtGui/qpixelformat.h \
-		/qt-5.5.0-install/include/QtGui/qpixmap.h \
-		/qt-5.5.0-install/include/QtGui/qfont.h \
-		/qt-5.5.0-install/include/QtGui/qfontmetrics.h \
-		/qt-5.5.0-install/include/QtGui/qfontinfo.h \
-		/qt-5.5.0-install/include/QtWidgets/qsizepolicy.h \
-		/qt-5.5.0-install/include/QtGui/qcursor.h \
-		/qt-5.5.0-install/include/QtGui/qkeysequence.h \
-		/qt-5.5.0-install/include/QtGui/qevent.h \
-		/qt-5.5.0-install/include/QtGui/qvector2d.h \
-		/qt-5.5.0-install/include/QtGui/qtouchdevice.h \
-		/qt-5.5.0-install/include/QtWidgets/qabstractitemdelegate.h \
-		/qt-5.5.0-install/include/QtWidgets/qstyleoption.h \
-		/qt-5.5.0-install/include/QtWidgets/qabstractspinbox.h \
-		/qt-5.5.0-install/include/QtGui/qvalidator.h \
-		/qt-5.5.0-install/include/QtGui/qicon.h \
-		/qt-5.5.0-install/include/QtWidgets/qslider.h \
-		/qt-5.5.0-install/include/QtWidgets/qabstractslider.h \
-		/qt-5.5.0-install/include/QtWidgets/qstyle.h \
-		/qt-5.5.0-install/include/QtWidgets/qtabbar.h \
-		/qt-5.5.0-install/include/QtWidgets/qtabwidget.h \
-		/qt-5.5.0-install/include/QtWidgets/qrubberband.h \
-		/qt-5.5.0-install/include/QtWidgets/QTableWidget \
-		/qt-5.5.0-install/include/QtWidgets/QApplication \
-		/qt-5.5.0-install/include/QtWidgets/qapplication.h \
-		/qt-5.5.0-install/include/QtWidgets/qdesktopwidget.h \
-		/qt-5.5.0-install/include/QtGui/qguiapplication.h \
-		/qt-5.5.0-install/include/QtGui/qinputmethod.h \
+		/qt-5.5.0-install/include/QtCore/QMutex \
 		/qt-5.5.0-install/include/QtNetwork/QNetworkInterface \
 		/qt-5.5.0-install/include/QtNetwork/qnetworkinterface.h \
+		/qt-5.5.0-install/include/QtCore/qshareddata.h \
+		/qt-5.5.0-install/include/QtCore/qhash.h \
+		/qt-5.5.0-install/include/QtCore/qpair.h \
 		/qt-5.5.0-install/include/QtNetwork/qhostaddress.h \
-		/qt-5.5.0-install/include/QtNetwork/qabstractsocket.h
+		/qt-5.5.0-install/include/QtNetwork/qabstractsocket.h \
+		/qt-5.5.0-install/include/QtCore/qiodevice.h \
+		/qt-5.5.0-install/include/QtCore/qdebug.h \
+		/qt-5.5.0-install/include/QtCore/qmap.h \
+		/qt-5.5.0-install/include/QtCore/qtextstream.h \
+		/qt-5.5.0-install/include/QtCore/qlocale.h \
+		/qt-5.5.0-install/include/QtCore/qvariant.h \
+		/qt-5.5.0-install/include/QtCore/qvector.h \
+		/qt-5.5.0-install/include/QtCore/qpoint.h \
+		/qt-5.5.0-install/include/QtCore/qset.h \
+		/qt-5.5.0-install/include/QtCore/qcontiguouscache.h \
+		/qt-5.5.0-install/include/QtCore/QProcess \
+		/qt-5.5.0-install/include/QtCore/qprocess.h \
+		/qt-5.5.0-install/include/QtCore/QElapsedTimer \
+		/qt-5.5.0-install/include/QtCore/qelapsedtimer.h \
+		/qt-5.5.0-install/include/QtCore/QThread \
+		/qt-5.5.0-install/include/QtCore/qthread.h \
+		/qt-5.5.0-install/include/QtCore/QCoreApplication \
+		/qt-5.5.0-install/include/QtCore/qcoreapplication.h \
+		/qt-5.5.0-install/include/QtCore/qeventloop.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o usb_wifi.o net/usb_wifi.cpp
 
 videoplayer.o: videoplayer/videoplayer.cpp videoplayer/videoplayer.h \
-		/qt-5.5.0-install/include/QtCore/QObject \
+		/qt-5.5.0-install/include/QtCore/QThread \
+		/qt-5.5.0-install/include/QtCore/qthread.h \
 		/qt-5.5.0-install/include/QtCore/qobject.h \
 		/qt-5.5.0-install/include/QtCore/qobjectdefs.h \
 		/qt-5.5.0-install/include/QtCore/qnamespace.h \
@@ -5622,414 +3162,78 @@ videoplayer.o: videoplayer/videoplayer.cpp videoplayer/videoplayer.h \
 		/qt-5.5.0-install/include/QtCore/qcontainerfwd.h \
 		/qt-5.5.0-install/include/QtCore/qisenum.h \
 		/qt-5.5.0-install/include/QtCore/qobject_impl.h \
-		/qt-5.5.0-install/include/QtCore/QtCore \
-		/qt-5.5.0-install/include/QtCore/QtCoreDepends \
-		/qt-5.5.0-install/include/QtCore/qabstractanimation.h \
-		/qt-5.5.0-install/include/QtCore/qanimationgroup.h \
-		/qt-5.5.0-install/include/QtCore/qparallelanimationgroup.h \
-		/qt-5.5.0-install/include/QtCore/qpauseanimation.h \
-		/qt-5.5.0-install/include/QtCore/qpropertyanimation.h \
-		/qt-5.5.0-install/include/QtCore/qvariantanimation.h \
-		/qt-5.5.0-install/include/QtCore/qeasingcurve.h \
-		/qt-5.5.0-install/include/QtCore/qvector.h \
-		/qt-5.5.0-install/include/QtCore/qpoint.h \
-		/qt-5.5.0-install/include/QtCore/qvariant.h \
-		/qt-5.5.0-install/include/QtCore/qmap.h \
-		/qt-5.5.0-install/include/QtCore/qpair.h \
-		/qt-5.5.0-install/include/QtCore/qdebug.h \
-		/qt-5.5.0-install/include/QtCore/qhash.h \
-		/qt-5.5.0-install/include/QtCore/qtextstream.h \
-		/qt-5.5.0-install/include/QtCore/qiodevice.h \
-		/qt-5.5.0-install/include/QtCore/qlocale.h \
-		/qt-5.5.0-install/include/QtCore/qshareddata.h \
-		/qt-5.5.0-install/include/QtCore/qset.h \
-		/qt-5.5.0-install/include/QtCore/qcontiguouscache.h \
-		/qt-5.5.0-install/include/QtCore/qsequentialanimationgroup.h \
-		/qt-5.5.0-install/include/QtCore/qtextcodec.h \
-		/qt-5.5.0-install/include/QtCore/qendian.h \
-		/qt-5.5.0-install/include/QtCore/qlibraryinfo.h \
-		/qt-5.5.0-install/include/QtCore/qdatetime.h \
-		/qt-5.5.0-install/include/QtCore/qbuffer.h \
-		/qt-5.5.0-install/include/QtCore/qdatastream.h \
-		/qt-5.5.0-install/include/QtCore/qdir.h \
+		/qt-5.5.0-install/include/QtCore/QMutex \
+		/qt-5.5.0-install/include/QtCore/QFileInfo \
 		/qt-5.5.0-install/include/QtCore/qfileinfo.h \
 		/qt-5.5.0-install/include/QtCore/qfile.h \
 		/qt-5.5.0-install/include/QtCore/qfiledevice.h \
-		/qt-5.5.0-install/include/QtCore/qdiriterator.h \
-		/qt-5.5.0-install/include/QtCore/qfileselector.h \
-		/qt-5.5.0-install/include/QtCore/QStringList \
-		/qt-5.5.0-install/include/QtCore/qfilesystemwatcher.h \
-		/qt-5.5.0-install/include/QtCore/qlockfile.h \
-		/qt-5.5.0-install/include/QtCore/qloggingcategory.h \
-		/qt-5.5.0-install/include/QtCore/qprocess.h \
-		/qt-5.5.0-install/include/QtCore/qresource.h \
-		/qt-5.5.0-install/include/QtCore/qsavefile.h \
-		/qt-5.5.0-install/include/QtCore/qsettings.h \
-		/qt-5.5.0-install/include/QtCore/qstandardpaths.h \
-		/qt-5.5.0-install/include/QtCore/qstorageinfo.h \
-		/qt-5.5.0-install/include/QtCore/qtemporarydir.h \
-		/qt-5.5.0-install/include/QtCore/QScopedPointer \
-		/qt-5.5.0-install/include/QtCore/qtemporaryfile.h \
-		/qt-5.5.0-install/include/QtCore/qurl.h \
-		/qt-5.5.0-install/include/QtCore/qurlquery.h \
-		/qt-5.5.0-install/include/QtCore/qabstractitemmodel.h \
-		/qt-5.5.0-install/include/QtCore/qabstractproxymodel.h \
-		/qt-5.5.0-install/include/QtCore/qidentityproxymodel.h \
-		/qt-5.5.0-install/include/QtCore/qitemselectionmodel.h \
-		/qt-5.5.0-install/include/QtCore/qsortfilterproxymodel.h \
-		/qt-5.5.0-install/include/QtCore/qstringlistmodel.h \
-		/qt-5.5.0-install/include/QtCore/qjsonarray.h \
-		/qt-5.5.0-install/include/QtCore/qjsonvalue.h \
-		/qt-5.5.0-install/include/QtCore/qjsondocument.h \
-		/qt-5.5.0-install/include/QtCore/qjsonobject.h \
-		/qt-5.5.0-install/include/QtCore/qabstracteventdispatcher.h \
-		/qt-5.5.0-install/include/QtCore/qeventloop.h \
-		/qt-5.5.0-install/include/QtCore/qabstractnativeeventfilter.h \
-		/qt-5.5.0-install/include/QtCore/qbasictimer.h \
-		/qt-5.5.0-install/include/QtCore/qcoreapplication.h \
-		/qt-5.5.0-install/include/QtCore/qmath.h \
-		/qt-5.5.0-install/include/QtCore/qmetaobject.h \
-		/qt-5.5.0-install/include/QtCore/qmimedata.h \
-		/qt-5.5.0-install/include/QtCore/qobjectcleanuphandler.h \
-		/qt-5.5.0-install/include/QtCore/qpointer.h \
-		/qt-5.5.0-install/include/QtCore/qsharedpointer.h \
-		/qt-5.5.0-install/include/QtCore/qsharedpointer_impl.h \
-		/qt-5.5.0-install/include/QtCore/qsharedmemory.h \
-		/qt-5.5.0-install/include/QtCore/qsignalmapper.h \
-		/qt-5.5.0-install/include/QtCore/qsocketnotifier.h \
-		/qt-5.5.0-install/include/QtCore/qsystemsemaphore.h \
-		/qt-5.5.0-install/include/QtCore/qtimer.h \
-		/qt-5.5.0-install/include/QtCore/qtranslator.h \
-		/qt-5.5.0-install/include/QtCore/qwineventnotifier.h \
-		/qt-5.5.0-install/include/QtCore/qmimedatabase.h \
-		/qt-5.5.0-install/include/QtCore/qmimetype.h \
-		/qt-5.5.0-install/include/QtCore/qfactoryinterface.h \
-		/qt-5.5.0-install/include/QtCore/qlibrary.h \
-		/qt-5.5.0-install/include/QtCore/qplugin.h \
-		/qt-5.5.0-install/include/QtCore/qpluginloader.h \
-		/qt-5.5.0-install/include/QtCore/quuid.h \
-		/qt-5.5.0-install/include/QtCore/qabstractstate.h \
-		/qt-5.5.0-install/include/QtCore/qabstracttransition.h \
-		/qt-5.5.0-install/include/QtCore/qeventtransition.h \
-		/qt-5.5.0-install/include/QtCore/qfinalstate.h \
-		/qt-5.5.0-install/include/QtCore/qhistorystate.h \
-		/qt-5.5.0-install/include/QtCore/qsignaltransition.h \
-		/qt-5.5.0-install/include/QtCore/qstate.h \
-		/qt-5.5.0-install/include/QtCore/qstatemachine.h \
-		/qt-5.5.0-install/include/QtCore/qexception.h \
-		/qt-5.5.0-install/include/QtCore/qfuture.h \
-		/qt-5.5.0-install/include/QtCore/qfutureinterface.h \
-		/qt-5.5.0-install/include/QtCore/qrunnable.h \
-		/qt-5.5.0-install/include/QtCore/qresultstore.h \
-		/qt-5.5.0-install/include/QtCore/qfuturesynchronizer.h \
-		/qt-5.5.0-install/include/QtCore/qfuturewatcher.h \
-		/qt-5.5.0-install/include/QtCore/qreadwritelock.h \
-		/qt-5.5.0-install/include/QtCore/qsemaphore.h \
-		/qt-5.5.0-install/include/QtCore/qthread.h \
-		/qt-5.5.0-install/include/QtCore/qthreadpool.h \
-		/qt-5.5.0-install/include/QtCore/qthreadstorage.h \
-		/qt-5.5.0-install/include/QtCore/qwaitcondition.h \
-		/qt-5.5.0-install/include/QtCore/qarraydataops.h \
-		/qt-5.5.0-install/include/QtCore/qarraydatapointer.h \
-		/qt-5.5.0-install/include/QtCore/qbitarray.h \
-		/qt-5.5.0-install/include/QtCore/qbytearraymatcher.h \
-		/qt-5.5.0-install/include/QtCore/qcache.h \
-		/qt-5.5.0-install/include/QtCore/qcollator.h \
-		/qt-5.5.0-install/include/QtCore/qcommandlineoption.h \
-		/qt-5.5.0-install/include/QtCore/qcommandlineparser.h \
-		/qt-5.5.0-install/include/QtCore/qcryptographichash.h \
-		/qt-5.5.0-install/include/QtCore/qelapsedtimer.h \
-		/qt-5.5.0-install/include/QtCore/qline.h \
-		/qt-5.5.0-install/include/QtCore/qlinkedlist.h \
-		/qt-5.5.0-install/include/QtCore/qmargins.h \
-		/qt-5.5.0-install/include/QtCore/qmessageauthenticationcode.h \
-		/qt-5.5.0-install/include/QtCore/qqueue.h \
-		/qt-5.5.0-install/include/QtCore/qrect.h \
-		/qt-5.5.0-install/include/QtCore/qsize.h \
-		/qt-5.5.0-install/include/QtCore/qregularexpression.h \
-		/qt-5.5.0-install/include/QtCore/qscopedvaluerollback.h \
-		/qt-5.5.0-install/include/QtCore/qstack.h \
-		/qt-5.5.0-install/include/QtCore/qtextboundaryfinder.h \
-		/qt-5.5.0-install/include/QtCore/qtimeline.h \
-		/qt-5.5.0-install/include/QtCore/qtimezone.h \
-		/qt-5.5.0-install/include/QtCore/qxmlstream.h \
-		/qt-5.5.0-install/include/QtCore/qtcoreversion.h \
-		/qt-5.5.0-install/include/QtWidgets/QtWidgets \
-		/qt-5.5.0-install/include/QtWidgets/QtWidgetsDepends \
-		/qt-5.5.0-install/include/QtGui/QtGui \
-		/qt-5.5.0-install/include/QtGui/QtGuiDepends \
-		/qt-5.5.0-install/include/QtGui/qaccessible.h \
-		/qt-5.5.0-install/include/QtGui/qcolor.h \
-		/qt-5.5.0-install/include/QtGui/qrgb.h \
-		/qt-5.5.0-install/include/QtGui/qevent.h \
-		/qt-5.5.0-install/include/QtGui/qwindowdefs.h \
-		/qt-5.5.0-install/include/QtGui/qwindowdefs_win.h \
-		/qt-5.5.0-install/include/QtGui/qregion.h \
-		/qt-5.5.0-install/include/QtGui/qkeysequence.h \
-		/qt-5.5.0-install/include/QtGui/qvector2d.h \
-		/qt-5.5.0-install/include/QtGui/qtouchdevice.h \
-		/qt-5.5.0-install/include/QtGui/qaccessiblebridge.h \
-		/qt-5.5.0-install/include/QtGui/qaccessibleobject.h \
-		/qt-5.5.0-install/include/QtGui/qaccessibleplugin.h \
-		/qt-5.5.0-install/include/QtGui/qbitmap.h \
-		/qt-5.5.0-install/include/QtGui/qpixmap.h \
-		/qt-5.5.0-install/include/QtGui/qpaintdevice.h \
-		/qt-5.5.0-install/include/QtGui/qimage.h \
-		/qt-5.5.0-install/include/QtGui/qtransform.h \
-		/qt-5.5.0-install/include/QtGui/qmatrix.h \
-		/qt-5.5.0-install/include/QtGui/qpolygon.h \
-		/qt-5.5.0-install/include/QtGui/qpainterpath.h \
-		/qt-5.5.0-install/include/QtGui/qpixelformat.h \
-		/qt-5.5.0-install/include/QtGui/qicon.h \
-		/qt-5.5.0-install/include/QtGui/qiconengine.h \
-		/qt-5.5.0-install/include/QtGui/qiconengineplugin.h \
-		/qt-5.5.0-install/include/QtGui/qimageiohandler.h \
-		/qt-5.5.0-install/include/QtGui/qimagereader.h \
-		/qt-5.5.0-install/include/QtGui/qimagewriter.h \
-		/qt-5.5.0-install/include/QtGui/qmovie.h \
-		/qt-5.5.0-install/include/QtGui/qpicture.h \
-		/qt-5.5.0-install/include/QtGui/qpictureformatplugin.h \
-		/qt-5.5.0-install/include/QtGui/qpixmapcache.h \
-		/qt-5.5.0-install/include/QtGui/qstandarditemmodel.h \
-		/qt-5.5.0-install/include/QtGui/qbrush.h \
-		/qt-5.5.0-install/include/QtGui/qfont.h \
-		/qt-5.5.0-install/include/QtGui/qclipboard.h \
-		/qt-5.5.0-install/include/QtGui/qcursor.h \
-		/qt-5.5.0-install/include/QtGui/qdrag.h \
-		/qt-5.5.0-install/include/QtGui/qgenericplugin.h \
-		/qt-5.5.0-install/include/QtGui/qgenericpluginfactory.h \
-		/qt-5.5.0-install/include/QtGui/qguiapplication.h \
-		/qt-5.5.0-install/include/QtGui/qinputmethod.h \
-		/qt-5.5.0-install/include/QtGui/qoffscreensurface.h \
-		/qt-5.5.0-install/include/QtGui/qsurface.h \
-		/qt-5.5.0-install/include/QtGui/qsurfaceformat.h \
-		/qt-5.5.0-install/include/QtGui/qopenglcontext.h \
-		/qt-5.5.0-install/include/QtGui/QSurfaceFormat \
-		/qt-5.5.0-install/include/QtGui/qopengl.h \
-		/qt-5.5.0-install/include/QtCore/qt_windows.h \
-		/qt-5.5.0-install/include/QtGui/qopengles2ext.h \
-		/qt-5.5.0-install/include/QtGui/qopenglext.h \
-		/qt-5.5.0-install/include/QtGui/qopenglversionfunctions.h \
-		/qt-5.5.0-install/include/QtGui/qopenglwindow.h \
-		/qt-5.5.0-install/include/QtGui/QPaintDeviceWindow \
-		/qt-5.5.0-install/include/QtGui/qpaintdevicewindow.h \
-		/qt-5.5.0-install/include/QtGui/QWindow \
-		/qt-5.5.0-install/include/QtGui/qwindow.h \
-		/qt-5.5.0-install/include/QtCore/QEvent \
-		/qt-5.5.0-install/include/QtCore/QMargins \
-		/qt-5.5.0-install/include/QtCore/QRect \
-		/qt-5.5.0-install/include/QtGui/QPaintDevice \
-		/qt-5.5.0-install/include/QtGui/QOpenGLContext \
-		/qt-5.5.0-install/include/QtGui/QImage \
-		/qt-5.5.0-install/include/QtGui/qpalette.h \
-		/qt-5.5.0-install/include/QtGui/qrasterwindow.h \
-		/qt-5.5.0-install/include/QtGui/qscreen.h \
-		/qt-5.5.0-install/include/QtCore/QList \
-		/qt-5.5.0-install/include/QtCore/QSize \
-		/qt-5.5.0-install/include/QtCore/QSizeF \
-		/qt-5.5.0-install/include/QtGui/QTransform \
-		/qt-5.5.0-install/include/QtGui/qsessionmanager.h \
-		/qt-5.5.0-install/include/QtGui/qstylehints.h \
-		/qt-5.5.0-install/include/QtGui/qgenericmatrix.h \
-		/qt-5.5.0-install/include/QtGui/qmatrix4x4.h \
-		/qt-5.5.0-install/include/QtGui/qvector3d.h \
-		/qt-5.5.0-install/include/QtGui/qvector4d.h \
-		/qt-5.5.0-install/include/QtGui/qquaternion.h \
-		/qt-5.5.0-install/include/QtGui/qopenglbuffer.h \
-		/qt-5.5.0-install/include/QtGui/qopengldebug.h \
-		/qt-5.5.0-install/include/QtGui/qopenglframebufferobject.h \
-		/qt-5.5.0-install/include/QtGui/qopenglfunctions.h \
-		/qt-5.5.0-install/include/QtGui/qopenglpaintdevice.h \
-		/qt-5.5.0-install/include/QtGui/qopenglpixeltransferoptions.h \
-		/qt-5.5.0-install/include/QtCore/QSharedDataPointer \
-		/qt-5.5.0-install/include/QtGui/qopenglshaderprogram.h \
-		/qt-5.5.0-install/include/QtGui/qopengltexture.h \
-		/qt-5.5.0-install/include/QtGui/qopengltimerquery.h \
-		/qt-5.5.0-install/include/QtGui/qopenglvertexarrayobject.h \
-		/qt-5.5.0-install/include/QtGui/qbackingstore.h \
-		/qt-5.5.0-install/include/QtGui/qpagedpaintdevice.h \
-		/qt-5.5.0-install/include/QtGui/qpagelayout.h \
-		/qt-5.5.0-install/include/QtGui/qpagesize.h \
-		/qt-5.5.0-install/include/QtGui/qpaintengine.h \
-		/qt-5.5.0-install/include/QtGui/qpainter.h \
-		/qt-5.5.0-install/include/QtGui/qtextoption.h \
-		/qt-5.5.0-install/include/QtGui/qpen.h \
-		/qt-5.5.0-install/include/QtGui/qfontinfo.h \
-		/qt-5.5.0-install/include/QtGui/qfontmetrics.h \
-		/qt-5.5.0-install/include/QtGui/qpdfwriter.h \
-		/qt-5.5.0-install/include/QtGui/qabstracttextdocumentlayout.h \
-		/qt-5.5.0-install/include/QtGui/qtextlayout.h \
-		/qt-5.5.0-install/include/QtGui/qtextformat.h \
-		/qt-5.5.0-install/include/QtGui/qglyphrun.h \
-		/qt-5.5.0-install/include/QtGui/qrawfont.h \
-		/qt-5.5.0-install/include/QtGui/qfontdatabase.h \
-		/qt-5.5.0-install/include/QtGui/qtextcursor.h \
-		/qt-5.5.0-install/include/QtGui/qtextdocument.h \
-		/qt-5.5.0-install/include/QtGui/qstatictext.h \
-		/qt-5.5.0-install/include/QtGui/qsyntaxhighlighter.h \
-		/qt-5.5.0-install/include/QtGui/qtextobject.h \
-		/qt-5.5.0-install/include/QtGui/qtextdocumentfragment.h \
-		/qt-5.5.0-install/include/QtGui/qtextdocumentwriter.h \
-		/qt-5.5.0-install/include/QtGui/qtextlist.h \
-		/qt-5.5.0-install/include/QtGui/qtexttable.h \
-		/qt-5.5.0-install/include/QtGui/qdesktopservices.h \
-		/qt-5.5.0-install/include/QtGui/qvalidator.h \
-		/qt-5.5.0-install/include/QtGui/qtguiversion.h \
-		/qt-5.5.0-install/include/QtWidgets/complexwidgets.h \
-		/qt-5.5.0-install/include/QtWidgets/qaccessiblewidget.h \
-		/qt-5.5.0-install/include/QtWidgets/qabstractitemview.h \
-		/qt-5.5.0-install/include/QtWidgets/qabstractscrollarea.h \
-		/qt-5.5.0-install/include/QtWidgets/qframe.h \
-		/qt-5.5.0-install/include/QtWidgets/qwidget.h \
-		/qt-5.5.0-install/include/QtWidgets/qsizepolicy.h \
-		/qt-5.5.0-install/include/QtWidgets/qabstractitemdelegate.h \
-		/qt-5.5.0-install/include/QtWidgets/qstyleoption.h \
-		/qt-5.5.0-install/include/QtWidgets/qabstractspinbox.h \
-		/qt-5.5.0-install/include/QtWidgets/qslider.h \
-		/qt-5.5.0-install/include/QtWidgets/qabstractslider.h \
-		/qt-5.5.0-install/include/QtWidgets/qstyle.h \
-		/qt-5.5.0-install/include/QtWidgets/qtabbar.h \
-		/qt-5.5.0-install/include/QtWidgets/qtabwidget.h \
-		/qt-5.5.0-install/include/QtWidgets/qrubberband.h \
-		/qt-5.5.0-install/include/QtWidgets/itemviews.h \
-		/qt-5.5.0-install/include/QtWidgets/qheaderview.h \
-		/qt-5.5.0-install/include/QtWidgets/qaccessiblemenu.h \
-		/qt-5.5.0-install/include/QtWidgets/qaccessiblewidgets.h \
-		/qt-5.5.0-install/include/QtCore/QPointer \
-		/qt-5.5.0-install/include/QtCore/QPair \
-		/qt-5.5.0-install/include/QtWidgets/rangecontrols.h \
-		/qt-5.5.0-install/include/QtWidgets/simplewidgets.h \
-		/qt-5.5.0-install/include/QtWidgets/qcolordialog.h \
-		/qt-5.5.0-install/include/QtWidgets/qdialog.h \
-		/qt-5.5.0-install/include/QtWidgets/qerrormessage.h \
-		/qt-5.5.0-install/include/QtWidgets/qfiledialog.h \
-		/qt-5.5.0-install/include/QtWidgets/qfilesystemmodel.h \
-		/qt-5.5.0-install/include/QtWidgets/qfontdialog.h \
-		/qt-5.5.0-install/include/QtWidgets/qinputdialog.h \
-		/qt-5.5.0-install/include/QtWidgets/qlineedit.h \
-		/qt-5.5.0-install/include/QtWidgets/qmessagebox.h \
-		/qt-5.5.0-install/include/QtWidgets/qprogressdialog.h \
-		/qt-5.5.0-install/include/QtWidgets/qwizard.h \
-		/qt-5.5.0-install/include/QtWidgets/qgraphicseffect.h \
-		/qt-5.5.0-install/include/QtWidgets/qgraphicsanchorlayout.h \
-		/qt-5.5.0-install/include/QtWidgets/qgraphicsitem.h \
-		/qt-5.5.0-install/include/QtWidgets/qgraphicslayout.h \
-		/qt-5.5.0-install/include/QtWidgets/qgraphicslayoutitem.h \
-		/qt-5.5.0-install/include/QtWidgets/qgraphicsgridlayout.h \
-		/qt-5.5.0-install/include/QtWidgets/qgraphicsitemanimation.h \
-		/qt-5.5.0-install/include/QtWidgets/qgraphicslinearlayout.h \
-		/qt-5.5.0-install/include/QtWidgets/qgraphicsproxywidget.h \
-		/qt-5.5.0-install/include/QtWidgets/qgraphicswidget.h \
-		/qt-5.5.0-install/include/QtWidgets/qgraphicsscene.h \
-		/qt-5.5.0-install/include/QtWidgets/qgraphicssceneevent.h \
-		/qt-5.5.0-install/include/QtWidgets/qgraphicstransform.h \
-		/qt-5.5.0-install/include/QtGui/QVector3D \
-		/qt-5.5.0-install/include/QtGui/QMatrix4x4 \
-		/qt-5.5.0-install/include/QtWidgets/qgraphicsview.h \
-		/qt-5.5.0-install/include/QtWidgets/qscrollarea.h \
-		/qt-5.5.0-install/include/QtWidgets/qcolumnview.h \
-		/qt-5.5.0-install/include/QtWidgets/qdatawidgetmapper.h \
-		/qt-5.5.0-install/include/QtWidgets/qdirmodel.h \
-		/qt-5.5.0-install/include/QtWidgets/qfileiconprovider.h \
-		/qt-5.5.0-install/include/QtWidgets/qitemdelegate.h \
-		/qt-5.5.0-install/include/QtWidgets/qitemeditorfactory.h \
-		/qt-5.5.0-install/include/QtWidgets/qlistview.h \
-		/qt-5.5.0-install/include/QtWidgets/qlistwidget.h \
-		/qt-5.5.0-install/include/QtWidgets/qstyleditemdelegate.h \
-		/qt-5.5.0-install/include/QtWidgets/qtableview.h \
-		/qt-5.5.0-install/include/QtWidgets/qtablewidget.h \
-		/qt-5.5.0-install/include/QtWidgets/qtreeview.h \
-		/qt-5.5.0-install/include/QtWidgets/qtreewidget.h \
-		/qt-5.5.0-install/include/QtWidgets/qtreewidgetitemiterator.h \
-		/qt-5.5.0-install/include/QtWidgets/qaction.h \
-		/qt-5.5.0-install/include/QtWidgets/qactiongroup.h \
-		/qt-5.5.0-install/include/QtWidgets/qapplication.h \
-		/qt-5.5.0-install/include/QtWidgets/qdesktopwidget.h \
-		/qt-5.5.0-install/include/QtWidgets/qboxlayout.h \
-		/qt-5.5.0-install/include/QtWidgets/qlayout.h \
-		/qt-5.5.0-install/include/QtWidgets/qlayoutitem.h \
-		/qt-5.5.0-install/include/QtWidgets/qgridlayout.h \
-		/qt-5.5.0-install/include/QtWidgets/qformlayout.h \
-		/qt-5.5.0-install/include/QtWidgets/QLayout \
-		/qt-5.5.0-install/include/QtWidgets/qgesture.h \
-		/qt-5.5.0-install/include/QtWidgets/qgesturerecognizer.h \
-		/qt-5.5.0-install/include/QtWidgets/qopenglwidget.h \
-		/qt-5.5.0-install/include/QtWidgets/QWidget \
-		/qt-5.5.0-install/include/QtWidgets/qshortcut.h \
-		/qt-5.5.0-install/include/QtWidgets/qstackedlayout.h \
-		/qt-5.5.0-install/include/QtWidgets/qtooltip.h \
-		/qt-5.5.0-install/include/QtWidgets/qwhatsthis.h \
-		/qt-5.5.0-install/include/QtWidgets/qwidgetaction.h \
-		/qt-5.5.0-install/include/QtWidgets/qkeyeventtransition.h \
-		/qt-5.5.0-install/include/QtWidgets/qmouseeventtransition.h \
-		/qt-5.5.0-install/include/QtWidgets/qcommonstyle.h \
-		/qt-5.5.0-install/include/QtWidgets/qdrawutil.h \
-		/qt-5.5.0-install/include/QtWidgets/qproxystyle.h \
-		/qt-5.5.0-install/include/QtWidgets/QCommonStyle \
-		/qt-5.5.0-install/include/QtWidgets/qstylefactory.h \
-		/qt-5.5.0-install/include/QtWidgets/qstylepainter.h \
-		/qt-5.5.0-install/include/QtWidgets/qstyleplugin.h \
-		/qt-5.5.0-install/include/QtWidgets/qcolormap.h \
-		/qt-5.5.0-install/include/QtWidgets/qcompleter.h \
-		/qt-5.5.0-install/include/QtWidgets/qscroller.h \
-		/qt-5.5.0-install/include/QtCore/QPointF \
-		/qt-5.5.0-install/include/QtWidgets/QScrollerProperties \
-		/qt-5.5.0-install/include/QtWidgets/qscrollerproperties.h \
-		/qt-5.5.0-install/include/QtCore/QMetaType \
-		/qt-5.5.0-install/include/QtCore/QVariant \
-		/qt-5.5.0-install/include/QtWidgets/qsystemtrayicon.h \
-		/qt-5.5.0-install/include/QtWidgets/qundogroup.h \
-		/qt-5.5.0-install/include/QtWidgets/qundostack.h \
-		/qt-5.5.0-install/include/QtWidgets/qundoview.h \
-		/qt-5.5.0-install/include/QtWidgets/qabstractbutton.h \
-		/qt-5.5.0-install/include/QtWidgets/qbuttongroup.h \
-		/qt-5.5.0-install/include/QtWidgets/qcalendarwidget.h \
-		/qt-5.5.0-install/include/QtWidgets/qcheckbox.h \
-		/qt-5.5.0-install/include/QtWidgets/qcombobox.h \
-		/qt-5.5.0-install/include/QtWidgets/qcommandlinkbutton.h \
-		/qt-5.5.0-install/include/QtWidgets/qpushbutton.h \
-		/qt-5.5.0-install/include/QtWidgets/qdatetimeedit.h \
-		/qt-5.5.0-install/include/QtWidgets/qdial.h \
-		/qt-5.5.0-install/include/QtWidgets/qdialogbuttonbox.h \
-		/qt-5.5.0-install/include/QtWidgets/qdockwidget.h \
-		/qt-5.5.0-install/include/QtWidgets/qfocusframe.h \
-		/qt-5.5.0-install/include/QtWidgets/qfontcombobox.h \
-		/qt-5.5.0-install/include/QtWidgets/qgroupbox.h \
-		/qt-5.5.0-install/include/QtWidgets/qkeysequenceedit.h \
-		/qt-5.5.0-install/include/QtWidgets/qlabel.h \
-		/qt-5.5.0-install/include/QtWidgets/qlcdnumber.h \
-		/qt-5.5.0-install/include/QtWidgets/qmainwindow.h \
-		/qt-5.5.0-install/include/QtWidgets/qmdiarea.h \
-		/qt-5.5.0-install/include/QtWidgets/qmdisubwindow.h \
-		/qt-5.5.0-install/include/QtWidgets/qmenu.h \
-		/qt-5.5.0-install/include/QtWidgets/qmenubar.h \
-		/qt-5.5.0-install/include/QtWidgets/qplaintextedit.h \
-		/qt-5.5.0-install/include/QtWidgets/qtextedit.h \
-		/qt-5.5.0-install/include/QtWidgets/qprogressbar.h \
-		/qt-5.5.0-install/include/QtWidgets/qradiobutton.h \
-		/qt-5.5.0-install/include/QtWidgets/qscrollbar.h \
-		/qt-5.5.0-install/include/QtWidgets/qsizegrip.h \
-		/qt-5.5.0-install/include/QtWidgets/qspinbox.h \
-		/qt-5.5.0-install/include/QtWidgets/qsplashscreen.h \
-		/qt-5.5.0-install/include/QtWidgets/qsplitter.h \
-		/qt-5.5.0-install/include/QtWidgets/qstackedwidget.h \
-		/qt-5.5.0-install/include/QtWidgets/qstatusbar.h \
-		/qt-5.5.0-install/include/QtWidgets/qtextbrowser.h \
-		/qt-5.5.0-install/include/QtWidgets/qtoolbar.h \
-		/qt-5.5.0-install/include/QtWidgets/qtoolbox.h \
-		/qt-5.5.0-install/include/QtWidgets/qtoolbutton.h \
-		/qt-5.5.0-install/include/QtWidgets/qtwidgetsversion.h \
-		/qt-5.5.0-install/include/QtCore/QTimer \
+		/qt-5.5.0-install/include/QtCore/qiodevice.h \
+		/qt-5.5.0-install/include/QtCore/qshareddata.h \
+		/qt-5.5.0-install/include/QtCore/qhash.h \
+		/qt-5.5.0-install/include/QtCore/qpair.h \
+		/qt-5.5.0-install/include/QtCore/QDir \
+		/qt-5.5.0-install/include/QtCore/qdir.h \
 		global.h \
-		/qt-5.5.0-install/include/QtCore/QString \
+		/qt-5.5.0-install/include/QtCore/QVariant \
+		/qt-5.5.0-install/include/QtCore/qvariant.h \
+		/qt-5.5.0-install/include/QtCore/qmap.h \
+		/qt-5.5.0-install/include/QtCore/qdebug.h \
+		/qt-5.5.0-install/include/QtCore/qtextstream.h \
+		/qt-5.5.0-install/include/QtCore/qlocale.h \
+		/qt-5.5.0-install/include/QtCore/qvector.h \
+		/qt-5.5.0-install/include/QtCore/qpoint.h \
+		/qt-5.5.0-install/include/QtCore/qset.h \
+		/qt-5.5.0-install/include/QtCore/qcontiguouscache.h \
 		/qt-5.5.0-install/include/QtCore/QSettings \
+		/qt-5.5.0-install/include/QtCore/qsettings.h \
 		/qt-5.5.0-install/include/QtCore/QTextCodec \
+		/qt-5.5.0-install/include/QtCore/qtextcodec.h \
 		audioplayer/audioplayer.h \
+		/qt-5.5.0-install/include/QtCore/QObject \
 		/qt-5.5.0-install/include/QtCore/QProcess \
+		/qt-5.5.0-install/include/QtCore/qprocess.h \
 		screenemotion/label.h \
 		/qt-5.5.0-install/include/QtWidgets/QLabel \
+		/qt-5.5.0-install/include/QtWidgets/qlabel.h \
+		/qt-5.5.0-install/include/QtWidgets/qframe.h \
+		/qt-5.5.0-install/include/QtWidgets/qwidget.h \
+		/qt-5.5.0-install/include/QtGui/qwindowdefs.h \
+		/qt-5.5.0-install/include/QtGui/qwindowdefs_win.h \
+		/qt-5.5.0-install/include/QtCore/qmargins.h \
+		/qt-5.5.0-install/include/QtGui/qpaintdevice.h \
+		/qt-5.5.0-install/include/QtCore/qrect.h \
+		/qt-5.5.0-install/include/QtCore/qsize.h \
+		/qt-5.5.0-install/include/QtGui/qpalette.h \
+		/qt-5.5.0-install/include/QtGui/qcolor.h \
+		/qt-5.5.0-install/include/QtGui/qrgb.h \
+		/qt-5.5.0-install/include/QtGui/qbrush.h \
+		/qt-5.5.0-install/include/QtGui/qmatrix.h \
+		/qt-5.5.0-install/include/QtGui/qpolygon.h \
+		/qt-5.5.0-install/include/QtGui/qregion.h \
+		/qt-5.5.0-install/include/QtCore/qdatastream.h \
+		/qt-5.5.0-install/include/QtCore/qline.h \
+		/qt-5.5.0-install/include/QtGui/qtransform.h \
+		/qt-5.5.0-install/include/QtGui/qpainterpath.h \
+		/qt-5.5.0-install/include/QtGui/qimage.h \
+		/qt-5.5.0-install/include/QtGui/qpixelformat.h \
+		/qt-5.5.0-install/include/QtGui/qpixmap.h \
+		/qt-5.5.0-install/include/QtCore/qsharedpointer.h \
+		/qt-5.5.0-install/include/QtCore/qsharedpointer_impl.h \
+		/qt-5.5.0-install/include/QtGui/qfont.h \
+		/qt-5.5.0-install/include/QtGui/qfontmetrics.h \
+		/qt-5.5.0-install/include/QtGui/qfontinfo.h \
+		/qt-5.5.0-install/include/QtWidgets/qsizepolicy.h \
+		/qt-5.5.0-install/include/QtGui/qcursor.h \
+		/qt-5.5.0-install/include/QtGui/qkeysequence.h \
+		/qt-5.5.0-install/include/QtGui/qevent.h \
+		/qt-5.5.0-install/include/QtCore/qurl.h \
+		/qt-5.5.0-install/include/QtCore/qurlquery.h \
+		/qt-5.5.0-install/include/QtGui/qvector2d.h \
+		/qt-5.5.0-install/include/QtGui/qtouchdevice.h \
 		videoplayer/video.h \
-		/qt-5.5.0-install/include/QtWidgets/QApplication \
+		/qt-5.5.0-install/include/QtCore/QDebug \
+		/qt-5.5.0-install/include/QtCore/QElapsedTimer \
+		/qt-5.5.0-install/include/QtCore/qelapsedtimer.h \
 		/usr/local/include/libavcodec/avcodec.h \
 		/usr/local/include/libavutil/samplefmt.h \
 		/usr/local/include/libavutil/avutil.h \
@@ -6091,18 +3295,21 @@ videoplayer.o: videoplayer/videoplayer.cpp videoplayer/videoplayer.h \
 		/usr/local/include/SDL/SDL_quit.h \
 		/usr/local/include/SDL/SDL_loadso.h \
 		/usr/local/include/SDL/SDL_timer.h \
-		/usr/local/include/SDL/SDL_version.h
+		/usr/local/include/SDL/SDL_version.h \
+		/qt-5.5.0-install/include/QtCore/QDateTime \
+		/qt-5.5.0-install/include/QtCore/qdatetime.h \
+		/qt-5.5.0-install/include/QtCore/QTimer \
+		/qt-5.5.0-install/include/QtCore/qtimer.h \
+		/qt-5.5.0-install/include/QtCore/qbasictimer.h \
+		/qt-5.5.0-install/include/QtCore/QCoreApplication \
+		/qt-5.5.0-install/include/QtCore/qcoreapplication.h \
+		/qt-5.5.0-install/include/QtCore/qeventloop.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o videoplayer.o videoplayer/videoplayer.cpp
 
 serialport.o: serialport/serialport.cpp serialport/serialport.h \
-		/qt-5.5.0-install/include/QtSerialPort/QtSerialPort \
-		/qt-5.5.0-install/include/QtSerialPort/QtSerialPortDepends \
-		/qt-5.5.0-install/include/QtCore/QtCore \
-		/qt-5.5.0-install/include/QtCore/QtCoreDepends \
-		/qt-5.5.0-install/include/QtCore/qabstractanimation.h \
-		/qt-5.5.0-install/include/QtCore/qobject.h \
-		/qt-5.5.0-install/include/QtCore/qobjectdefs.h \
-		/qt-5.5.0-install/include/QtCore/qnamespace.h \
+		/qt-5.5.0-install/include/QtSerialPort/QSerialPort \
+		/qt-5.5.0-install/include/QtSerialPort/qserialport.h \
+		/qt-5.5.0-install/include/QtCore/qiodevice.h \
 		/qt-5.5.0-install/include/QtCore/qglobal.h \
 		/qt-5.5.0-install/include/QtCore/qconfig.h \
 		/qt-5.5.0-install/include/QtCore/qfeatures.h \
@@ -6131,6 +3338,9 @@ serialport.o: serialport/serialport.cpp serialport/serialport.h \
 		/qt-5.5.0-install/include/QtCore/qglobalstatic.h \
 		/qt-5.5.0-install/include/QtCore/qmutex.h \
 		/qt-5.5.0-install/include/QtCore/qnumeric.h \
+		/qt-5.5.0-install/include/QtCore/qobject.h \
+		/qt-5.5.0-install/include/QtCore/qobjectdefs.h \
+		/qt-5.5.0-install/include/QtCore/qnamespace.h \
 		/qt-5.5.0-install/include/QtCore/qobjectdefs_impl.h \
 		/qt-5.5.0-install/include/QtCore/qstring.h \
 		/qt-5.5.0-install/include/QtCore/qchar.h \
@@ -6152,27 +3362,42 @@ serialport.o: serialport/serialport.cpp serialport/serialport.h \
 		/qt-5.5.0-install/include/QtCore/qcontainerfwd.h \
 		/qt-5.5.0-install/include/QtCore/qisenum.h \
 		/qt-5.5.0-install/include/QtCore/qobject_impl.h \
-		/qt-5.5.0-install/include/QtCore/qanimationgroup.h \
-		/qt-5.5.0-install/include/QtCore/qparallelanimationgroup.h \
-		/qt-5.5.0-install/include/QtCore/qpauseanimation.h \
-		/qt-5.5.0-install/include/QtCore/qpropertyanimation.h \
-		/qt-5.5.0-install/include/QtCore/qvariantanimation.h \
-		/qt-5.5.0-install/include/QtCore/qeasingcurve.h \
-		/qt-5.5.0-install/include/QtCore/qvector.h \
-		/qt-5.5.0-install/include/QtCore/qpoint.h \
+		/qt-5.5.0-install/include/QtSerialPort/qserialportglobal.h \
+		/qt-5.5.0-install/include/QtCore/QTimer \
+		/qt-5.5.0-install/include/QtCore/qtimer.h \
+		/qt-5.5.0-install/include/QtCore/qbasictimer.h \
+		global.h \
+		/qt-5.5.0-install/include/QtCore/QVariant \
 		/qt-5.5.0-install/include/QtCore/qvariant.h \
 		/qt-5.5.0-install/include/QtCore/qmap.h \
 		/qt-5.5.0-install/include/QtCore/qpair.h \
 		/qt-5.5.0-install/include/QtCore/qdebug.h \
 		/qt-5.5.0-install/include/QtCore/qhash.h \
 		/qt-5.5.0-install/include/QtCore/qtextstream.h \
-		/qt-5.5.0-install/include/QtCore/qiodevice.h \
 		/qt-5.5.0-install/include/QtCore/qlocale.h \
 		/qt-5.5.0-install/include/QtCore/qshareddata.h \
+		/qt-5.5.0-install/include/QtCore/qvector.h \
+		/qt-5.5.0-install/include/QtCore/qpoint.h \
 		/qt-5.5.0-install/include/QtCore/qset.h \
 		/qt-5.5.0-install/include/QtCore/qcontiguouscache.h \
-		/qt-5.5.0-install/include/QtCore/qsequentialanimationgroup.h \
+		/qt-5.5.0-install/include/QtCore/QSettings \
+		/qt-5.5.0-install/include/QtCore/qsettings.h \
+		/qt-5.5.0-install/include/QtCore/QTextCodec \
 		/qt-5.5.0-install/include/QtCore/qtextcodec.h \
+		/qt-5.5.0-install/include/QtCore/QElapsedTimer \
+		/qt-5.5.0-install/include/QtCore/qelapsedtimer.h \
+		/qt-5.5.0-install/include/QtSerialPort/QtSerialPort \
+		/qt-5.5.0-install/include/QtSerialPort/QtSerialPortDepends \
+		/qt-5.5.0-install/include/QtCore/QtCore \
+		/qt-5.5.0-install/include/QtCore/QtCoreDepends \
+		/qt-5.5.0-install/include/QtCore/qabstractanimation.h \
+		/qt-5.5.0-install/include/QtCore/qanimationgroup.h \
+		/qt-5.5.0-install/include/QtCore/qparallelanimationgroup.h \
+		/qt-5.5.0-install/include/QtCore/qpauseanimation.h \
+		/qt-5.5.0-install/include/QtCore/qpropertyanimation.h \
+		/qt-5.5.0-install/include/QtCore/qvariantanimation.h \
+		/qt-5.5.0-install/include/QtCore/qeasingcurve.h \
+		/qt-5.5.0-install/include/QtCore/qsequentialanimationgroup.h \
 		/qt-5.5.0-install/include/QtCore/qendian.h \
 		/qt-5.5.0-install/include/QtCore/qlibraryinfo.h \
 		/qt-5.5.0-install/include/QtCore/qdatetime.h \
@@ -6192,7 +3417,6 @@ serialport.o: serialport/serialport.cpp serialport/serialport.h \
 		/qt-5.5.0-install/include/QtCore/qprocess.h \
 		/qt-5.5.0-install/include/QtCore/qresource.h \
 		/qt-5.5.0-install/include/QtCore/qsavefile.h \
-		/qt-5.5.0-install/include/QtCore/qsettings.h \
 		/qt-5.5.0-install/include/QtCore/qstandardpaths.h \
 		/qt-5.5.0-install/include/QtCore/qstorageinfo.h \
 		/qt-5.5.0-install/include/QtCore/qtemporarydir.h \
@@ -6213,7 +3437,6 @@ serialport.o: serialport/serialport.cpp serialport/serialport.h \
 		/qt-5.5.0-install/include/QtCore/qabstracteventdispatcher.h \
 		/qt-5.5.0-install/include/QtCore/qeventloop.h \
 		/qt-5.5.0-install/include/QtCore/qabstractnativeeventfilter.h \
-		/qt-5.5.0-install/include/QtCore/qbasictimer.h \
 		/qt-5.5.0-install/include/QtCore/qcoreapplication.h \
 		/qt-5.5.0-install/include/QtCore/qmath.h \
 		/qt-5.5.0-install/include/QtCore/qmetaobject.h \
@@ -6226,7 +3449,6 @@ serialport.o: serialport/serialport.cpp serialport/serialport.h \
 		/qt-5.5.0-install/include/QtCore/qsignalmapper.h \
 		/qt-5.5.0-install/include/QtCore/qsocketnotifier.h \
 		/qt-5.5.0-install/include/QtCore/qsystemsemaphore.h \
-		/qt-5.5.0-install/include/QtCore/qtimer.h \
 		/qt-5.5.0-install/include/QtCore/qtranslator.h \
 		/qt-5.5.0-install/include/QtCore/qwineventnotifier.h \
 		/qt-5.5.0-install/include/QtCore/qmimedatabase.h \
@@ -6266,7 +3488,6 @@ serialport.o: serialport/serialport.cpp serialport/serialport.h \
 		/qt-5.5.0-install/include/QtCore/qcommandlineoption.h \
 		/qt-5.5.0-install/include/QtCore/qcommandlineparser.h \
 		/qt-5.5.0-install/include/QtCore/qcryptographichash.h \
-		/qt-5.5.0-install/include/QtCore/qelapsedtimer.h \
 		/qt-5.5.0-install/include/QtCore/qline.h \
 		/qt-5.5.0-install/include/QtCore/qlinkedlist.h \
 		/qt-5.5.0-install/include/QtCore/qmargins.h \
@@ -6282,16 +3503,8 @@ serialport.o: serialport/serialport.cpp serialport/serialport.h \
 		/qt-5.5.0-install/include/QtCore/qtimezone.h \
 		/qt-5.5.0-install/include/QtCore/qxmlstream.h \
 		/qt-5.5.0-install/include/QtCore/qtcoreversion.h \
-		/qt-5.5.0-install/include/QtSerialPort/qserialport.h \
-		/qt-5.5.0-install/include/QtSerialPort/qserialportglobal.h \
 		/qt-5.5.0-install/include/QtSerialPort/qserialportinfo.h \
-		/qt-5.5.0-install/include/QtSerialPort/qtserialportversion.h \
-		/qt-5.5.0-install/include/QtCore/QElapsedTimer \
-		global.h \
-		/qt-5.5.0-install/include/QtCore/QString \
-		/qt-5.5.0-install/include/QtCore/QVariant \
-		/qt-5.5.0-install/include/QtCore/QSettings \
-		/qt-5.5.0-install/include/QtCore/QTextCodec
+		/qt-5.5.0-install/include/QtSerialPort/qtserialportversion.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o serialport.o serialport/serialport.cpp
 
 ipinfotable.o: net/ipinfotable.cpp net/ipinfotable.h \
@@ -6405,169 +3618,23 @@ ipinfotable.o: net/ipinfotable.cpp net/ipinfotable.h \
 		/qt-5.5.0-install/include/QtGui/qtextcursor.h \
 		/qt-5.5.0-install/include/QtGui/qtextformat.h \
 		/qt-5.5.0-install/include/QtGui/qpen.h \
-		/qt-5.5.0-install/include/QtNetwork/QtNetwork \
-		/qt-5.5.0-install/include/QtNetwork/QtNetworkDepends \
-		/qt-5.5.0-install/include/QtCore/QtCore \
-		/qt-5.5.0-install/include/QtCore/QtCoreDepends \
-		/qt-5.5.0-install/include/QtCore/qabstractanimation.h \
-		/qt-5.5.0-install/include/QtCore/qanimationgroup.h \
-		/qt-5.5.0-install/include/QtCore/qparallelanimationgroup.h \
-		/qt-5.5.0-install/include/QtCore/qpauseanimation.h \
-		/qt-5.5.0-install/include/QtCore/qpropertyanimation.h \
-		/qt-5.5.0-install/include/QtCore/qvariantanimation.h \
-		/qt-5.5.0-install/include/QtCore/qeasingcurve.h \
-		/qt-5.5.0-install/include/QtCore/qsequentialanimationgroup.h \
-		/qt-5.5.0-install/include/QtCore/qtextcodec.h \
-		/qt-5.5.0-install/include/QtCore/qendian.h \
-		/qt-5.5.0-install/include/QtCore/qlibraryinfo.h \
-		/qt-5.5.0-install/include/QtCore/qdatetime.h \
-		/qt-5.5.0-install/include/QtCore/qbuffer.h \
-		/qt-5.5.0-install/include/QtCore/qdir.h \
-		/qt-5.5.0-install/include/QtCore/qfileinfo.h \
-		/qt-5.5.0-install/include/QtCore/qdiriterator.h \
-		/qt-5.5.0-install/include/QtCore/qfileselector.h \
-		/qt-5.5.0-install/include/QtCore/QObject \
-		/qt-5.5.0-install/include/QtCore/QStringList \
-		/qt-5.5.0-install/include/QtCore/qfilesystemwatcher.h \
-		/qt-5.5.0-install/include/QtCore/qlockfile.h \
-		/qt-5.5.0-install/include/QtCore/qloggingcategory.h \
-		/qt-5.5.0-install/include/QtCore/qprocess.h \
-		/qt-5.5.0-install/include/QtCore/qresource.h \
-		/qt-5.5.0-install/include/QtCore/qsavefile.h \
-		/qt-5.5.0-install/include/QtCore/qsettings.h \
-		/qt-5.5.0-install/include/QtCore/qstandardpaths.h \
-		/qt-5.5.0-install/include/QtCore/qstorageinfo.h \
-		/qt-5.5.0-install/include/QtCore/qtemporarydir.h \
-		/qt-5.5.0-install/include/QtCore/QScopedPointer \
-		/qt-5.5.0-install/include/QtCore/qtemporaryfile.h \
-		/qt-5.5.0-install/include/QtCore/qabstractitemmodel.h \
-		/qt-5.5.0-install/include/QtCore/qabstractproxymodel.h \
-		/qt-5.5.0-install/include/QtCore/qidentityproxymodel.h \
-		/qt-5.5.0-install/include/QtCore/qitemselectionmodel.h \
-		/qt-5.5.0-install/include/QtCore/qsortfilterproxymodel.h \
-		/qt-5.5.0-install/include/QtCore/qstringlistmodel.h \
-		/qt-5.5.0-install/include/QtCore/qjsonarray.h \
-		/qt-5.5.0-install/include/QtCore/qjsonvalue.h \
-		/qt-5.5.0-install/include/QtCore/qjsondocument.h \
-		/qt-5.5.0-install/include/QtCore/qjsonobject.h \
-		/qt-5.5.0-install/include/QtCore/qabstracteventdispatcher.h \
-		/qt-5.5.0-install/include/QtCore/qeventloop.h \
-		/qt-5.5.0-install/include/QtCore/qabstractnativeeventfilter.h \
-		/qt-5.5.0-install/include/QtCore/qbasictimer.h \
-		/qt-5.5.0-install/include/QtCore/qcoreapplication.h \
-		/qt-5.5.0-install/include/QtCore/qmath.h \
-		/qt-5.5.0-install/include/QtCore/qmetaobject.h \
-		/qt-5.5.0-install/include/QtCore/qmimedata.h \
-		/qt-5.5.0-install/include/QtCore/qobjectcleanuphandler.h \
-		/qt-5.5.0-install/include/QtCore/qpointer.h \
-		/qt-5.5.0-install/include/QtCore/qsharedmemory.h \
-		/qt-5.5.0-install/include/QtCore/qsignalmapper.h \
-		/qt-5.5.0-install/include/QtCore/qsocketnotifier.h \
-		/qt-5.5.0-install/include/QtCore/qsystemsemaphore.h \
-		/qt-5.5.0-install/include/QtCore/qtimer.h \
-		/qt-5.5.0-install/include/QtCore/qtranslator.h \
-		/qt-5.5.0-install/include/QtCore/qwineventnotifier.h \
-		/qt-5.5.0-install/include/QtCore/qmimedatabase.h \
-		/qt-5.5.0-install/include/QtCore/qmimetype.h \
-		/qt-5.5.0-install/include/QtCore/qfactoryinterface.h \
-		/qt-5.5.0-install/include/QtCore/qlibrary.h \
-		/qt-5.5.0-install/include/QtCore/qplugin.h \
-		/qt-5.5.0-install/include/QtCore/qpluginloader.h \
-		/qt-5.5.0-install/include/QtCore/quuid.h \
-		/qt-5.5.0-install/include/QtCore/qabstractstate.h \
-		/qt-5.5.0-install/include/QtCore/qabstracttransition.h \
-		/qt-5.5.0-install/include/QtCore/qeventtransition.h \
-		/qt-5.5.0-install/include/QtCore/qfinalstate.h \
-		/qt-5.5.0-install/include/QtCore/qhistorystate.h \
-		/qt-5.5.0-install/include/QtCore/qsignaltransition.h \
-		/qt-5.5.0-install/include/QtCore/qstate.h \
-		/qt-5.5.0-install/include/QtCore/qstatemachine.h \
-		/qt-5.5.0-install/include/QtCore/qexception.h \
-		/qt-5.5.0-install/include/QtCore/qfuture.h \
-		/qt-5.5.0-install/include/QtCore/qfutureinterface.h \
-		/qt-5.5.0-install/include/QtCore/qrunnable.h \
-		/qt-5.5.0-install/include/QtCore/qresultstore.h \
-		/qt-5.5.0-install/include/QtCore/qfuturesynchronizer.h \
-		/qt-5.5.0-install/include/QtCore/qfuturewatcher.h \
-		/qt-5.5.0-install/include/QtCore/qreadwritelock.h \
-		/qt-5.5.0-install/include/QtCore/qsemaphore.h \
-		/qt-5.5.0-install/include/QtCore/qthread.h \
-		/qt-5.5.0-install/include/QtCore/qthreadpool.h \
-		/qt-5.5.0-install/include/QtCore/qthreadstorage.h \
-		/qt-5.5.0-install/include/QtCore/qwaitcondition.h \
-		/qt-5.5.0-install/include/QtCore/qarraydataops.h \
-		/qt-5.5.0-install/include/QtCore/qarraydatapointer.h \
-		/qt-5.5.0-install/include/QtCore/qbitarray.h \
-		/qt-5.5.0-install/include/QtCore/qbytearraymatcher.h \
-		/qt-5.5.0-install/include/QtCore/qcache.h \
-		/qt-5.5.0-install/include/QtCore/qcollator.h \
-		/qt-5.5.0-install/include/QtCore/qcommandlineoption.h \
-		/qt-5.5.0-install/include/QtCore/qcommandlineparser.h \
-		/qt-5.5.0-install/include/QtCore/qcryptographichash.h \
-		/qt-5.5.0-install/include/QtCore/qelapsedtimer.h \
-		/qt-5.5.0-install/include/QtCore/qlinkedlist.h \
-		/qt-5.5.0-install/include/QtCore/qmessageauthenticationcode.h \
-		/qt-5.5.0-install/include/QtCore/qqueue.h \
-		/qt-5.5.0-install/include/QtCore/qregularexpression.h \
-		/qt-5.5.0-install/include/QtCore/qscopedvaluerollback.h \
-		/qt-5.5.0-install/include/QtCore/qstack.h \
-		/qt-5.5.0-install/include/QtCore/qtextboundaryfinder.h \
-		/qt-5.5.0-install/include/QtCore/qtimeline.h \
-		/qt-5.5.0-install/include/QtCore/qtimezone.h \
-		/qt-5.5.0-install/include/QtCore/qxmlstream.h \
-		/qt-5.5.0-install/include/QtCore/qtcoreversion.h \
-		/qt-5.5.0-install/include/QtNetwork/qabstractnetworkcache.h \
-		/qt-5.5.0-install/include/QtNetwork/qnetworkrequest.h \
-		/qt-5.5.0-install/include/QtCore/QSharedDataPointer \
-		/qt-5.5.0-install/include/QtCore/QString \
-		/qt-5.5.0-install/include/QtCore/QUrl \
-		/qt-5.5.0-install/include/QtCore/QVariant \
-		/qt-5.5.0-install/include/QtNetwork/qhttpmultipart.h \
-		/qt-5.5.0-install/include/QtCore/QByteArray \
-		/qt-5.5.0-install/include/QtCore/QIODevice \
-		/qt-5.5.0-install/include/QtNetwork/QNetworkRequest \
-		/qt-5.5.0-install/include/QtNetwork/qnetworkaccessmanager.h \
-		/qt-5.5.0-install/include/QtNetwork/QSslConfiguration \
-		/qt-5.5.0-install/include/QtNetwork/qsslconfiguration.h \
-		/qt-5.5.0-install/include/QtNetwork/qsslsocket.h \
-		/qt-5.5.0-install/include/QtNetwork/qtcpsocket.h \
-		/qt-5.5.0-install/include/QtNetwork/qabstractsocket.h \
-		/qt-5.5.0-install/include/QtNetwork/qsslerror.h \
-		/qt-5.5.0-install/include/QtNetwork/qsslcertificate.h \
-		/qt-5.5.0-install/include/QtNetwork/qssl.h \
-		/qt-5.5.0-install/include/QtCore/QFlags \
-		/qt-5.5.0-install/include/QtNetwork/QSslPreSharedKeyAuthenticator \
-		/qt-5.5.0-install/include/QtNetwork/qsslpresharedkeyauthenticator.h \
-		/qt-5.5.0-install/include/QtCore/QtGlobal \
-		/qt-5.5.0-install/include/QtCore/QMetaType \
-		/qt-5.5.0-install/include/QtNetwork/qnetworkcookie.h \
-		/qt-5.5.0-install/include/QtCore/QList \
-		/qt-5.5.0-install/include/QtNetwork/qnetworkcookiejar.h \
-		/qt-5.5.0-install/include/QtNetwork/qnetworkdiskcache.h \
-		/qt-5.5.0-install/include/QtNetwork/qnetworkreply.h \
-		/qt-5.5.0-install/include/QtNetwork/QNetworkAccessManager \
-		/qt-5.5.0-install/include/QtNetwork/qnetworkconfigmanager.h \
-		/qt-5.5.0-install/include/QtNetwork/qnetworkconfiguration.h \
-		/qt-5.5.0-install/include/QtNetwork/qnetworksession.h \
+		/qt-5.5.0-install/include/QtNetwork/QNetworkInterface \
 		/qt-5.5.0-install/include/QtNetwork/qnetworkinterface.h \
 		/qt-5.5.0-install/include/QtNetwork/qhostaddress.h \
-		/qt-5.5.0-install/include/QtNetwork/qauthenticator.h \
-		/qt-5.5.0-install/include/QtNetwork/qdnslookup.h \
-		/qt-5.5.0-install/include/QtNetwork/qhostinfo.h \
-		/qt-5.5.0-install/include/QtNetwork/qnetworkproxy.h \
-		/qt-5.5.0-install/include/QtNetwork/qlocalserver.h \
-		/qt-5.5.0-install/include/QtNetwork/qlocalsocket.h \
-		/qt-5.5.0-install/include/QtNetwork/qtcpserver.h \
-		/qt-5.5.0-install/include/QtNetwork/qudpsocket.h \
-		/qt-5.5.0-install/include/QtNetwork/qsslcertificateextension.h \
-		/qt-5.5.0-install/include/QtNetwork/qsslcipher.h \
-		/qt-5.5.0-install/include/QtNetwork/qsslellipticcurve.h \
-		/qt-5.5.0-install/include/QtCore/QHash \
-		/qt-5.5.0-install/include/QtNetwork/qsslkey.h \
-		/qt-5.5.0-install/include/QtNetwork/qtnetworkversion.h \
+		/qt-5.5.0-install/include/QtNetwork/qabstractsocket.h \
+		/qt-5.5.0-install/include/QtCore/QProcess \
+		/qt-5.5.0-install/include/QtCore/qprocess.h \
+		/qt-5.5.0-install/include/QtCore/QElapsedTimer \
+		/qt-5.5.0-install/include/QtCore/qelapsedtimer.h \
+		/qt-5.5.0-install/include/QtCore/QCoreApplication \
+		/qt-5.5.0-install/include/QtCore/qcoreapplication.h \
+		/qt-5.5.0-install/include/QtCore/qeventloop.h \
 		global.h \
+		/qt-5.5.0-install/include/QtCore/QVariant \
 		/qt-5.5.0-install/include/QtCore/QSettings \
-		/qt-5.5.0-install/include/QtCore/QTextCodec
+		/qt-5.5.0-install/include/QtCore/qsettings.h \
+		/qt-5.5.0-install/include/QtCore/QTextCodec \
+		/qt-5.5.0-install/include/QtCore/qtextcodec.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o ipinfotable.o net/ipinfotable.cpp
 
 buffer.o: SSDB/buffer.c SSDB/buffer.h
@@ -6580,7 +3647,8 @@ ssdb_client.o: SSDB/ssdb_client.cpp SSDB/buffer.h \
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o ssdb_client.o SSDB/ssdb_client.cpp
 
 ssdb_client_.o: SSDB/ssdb_client_.cpp SSDB/ssdb_client_.h \
-		/qt-5.5.0-install/include/QtCore/QObject \
+		/qt-5.5.0-install/include/QtCore/QThread \
+		/qt-5.5.0-install/include/QtCore/qthread.h \
 		/qt-5.5.0-install/include/QtCore/qobject.h \
 		/qt-5.5.0-install/include/QtCore/qobjectdefs.h \
 		/qt-5.5.0-install/include/QtCore/qnamespace.h \
@@ -6633,17 +3701,13 @@ ssdb_client_.o: SSDB/ssdb_client_.cpp SSDB/ssdb_client_.h \
 		/qt-5.5.0-install/include/QtCore/qcontainerfwd.h \
 		/qt-5.5.0-install/include/QtCore/qisenum.h \
 		/qt-5.5.0-install/include/QtCore/qobject_impl.h \
-		/qt-5.5.0-install/include/QtCore/QtCore \
-		/qt-5.5.0-install/include/QtCore/QtCoreDepends \
-		/qt-5.5.0-install/include/QtCore/qabstractanimation.h \
-		/qt-5.5.0-install/include/QtCore/qanimationgroup.h \
-		/qt-5.5.0-install/include/QtCore/qparallelanimationgroup.h \
-		/qt-5.5.0-install/include/QtCore/qpauseanimation.h \
-		/qt-5.5.0-install/include/QtCore/qpropertyanimation.h \
-		/qt-5.5.0-install/include/QtCore/qvariantanimation.h \
-		/qt-5.5.0-install/include/QtCore/qeasingcurve.h \
+		/qt-5.5.0-install/include/QtCore/QMutex \
+		/qt-5.5.0-install/include/QtCore/QVector \
 		/qt-5.5.0-install/include/QtCore/qvector.h \
 		/qt-5.5.0-install/include/QtCore/qpoint.h \
+		SSDB/ssdb_client.h \
+		global.h \
+		/qt-5.5.0-install/include/QtCore/QVariant \
 		/qt-5.5.0-install/include/QtCore/qvariant.h \
 		/qt-5.5.0-install/include/QtCore/qmap.h \
 		/qt-5.5.0-install/include/QtCore/qpair.h \
@@ -6655,136 +3719,26 @@ ssdb_client_.o: SSDB/ssdb_client_.cpp SSDB/ssdb_client_.h \
 		/qt-5.5.0-install/include/QtCore/qshareddata.h \
 		/qt-5.5.0-install/include/QtCore/qset.h \
 		/qt-5.5.0-install/include/QtCore/qcontiguouscache.h \
-		/qt-5.5.0-install/include/QtCore/qsequentialanimationgroup.h \
-		/qt-5.5.0-install/include/QtCore/qtextcodec.h \
-		/qt-5.5.0-install/include/QtCore/qendian.h \
-		/qt-5.5.0-install/include/QtCore/qlibraryinfo.h \
-		/qt-5.5.0-install/include/QtCore/qdatetime.h \
-		/qt-5.5.0-install/include/QtCore/qbuffer.h \
-		/qt-5.5.0-install/include/QtCore/qdatastream.h \
-		/qt-5.5.0-install/include/QtCore/qdir.h \
-		/qt-5.5.0-install/include/QtCore/qfileinfo.h \
-		/qt-5.5.0-install/include/QtCore/qfile.h \
-		/qt-5.5.0-install/include/QtCore/qfiledevice.h \
-		/qt-5.5.0-install/include/QtCore/qdiriterator.h \
-		/qt-5.5.0-install/include/QtCore/qfileselector.h \
-		/qt-5.5.0-install/include/QtCore/QStringList \
-		/qt-5.5.0-install/include/QtCore/qfilesystemwatcher.h \
-		/qt-5.5.0-install/include/QtCore/qlockfile.h \
-		/qt-5.5.0-install/include/QtCore/qloggingcategory.h \
-		/qt-5.5.0-install/include/QtCore/qprocess.h \
-		/qt-5.5.0-install/include/QtCore/qresource.h \
-		/qt-5.5.0-install/include/QtCore/qsavefile.h \
-		/qt-5.5.0-install/include/QtCore/qsettings.h \
-		/qt-5.5.0-install/include/QtCore/qstandardpaths.h \
-		/qt-5.5.0-install/include/QtCore/qstorageinfo.h \
-		/qt-5.5.0-install/include/QtCore/qtemporarydir.h \
-		/qt-5.5.0-install/include/QtCore/QScopedPointer \
-		/qt-5.5.0-install/include/QtCore/qtemporaryfile.h \
-		/qt-5.5.0-install/include/QtCore/qurl.h \
-		/qt-5.5.0-install/include/QtCore/qurlquery.h \
-		/qt-5.5.0-install/include/QtCore/qabstractitemmodel.h \
-		/qt-5.5.0-install/include/QtCore/qabstractproxymodel.h \
-		/qt-5.5.0-install/include/QtCore/qidentityproxymodel.h \
-		/qt-5.5.0-install/include/QtCore/qitemselectionmodel.h \
-		/qt-5.5.0-install/include/QtCore/qsortfilterproxymodel.h \
-		/qt-5.5.0-install/include/QtCore/qstringlistmodel.h \
-		/qt-5.5.0-install/include/QtCore/qjsonarray.h \
-		/qt-5.5.0-install/include/QtCore/qjsonvalue.h \
-		/qt-5.5.0-install/include/QtCore/qjsondocument.h \
-		/qt-5.5.0-install/include/QtCore/qjsonobject.h \
-		/qt-5.5.0-install/include/QtCore/qabstracteventdispatcher.h \
-		/qt-5.5.0-install/include/QtCore/qeventloop.h \
-		/qt-5.5.0-install/include/QtCore/qabstractnativeeventfilter.h \
-		/qt-5.5.0-install/include/QtCore/qbasictimer.h \
-		/qt-5.5.0-install/include/QtCore/qcoreapplication.h \
-		/qt-5.5.0-install/include/QtCore/qmath.h \
-		/qt-5.5.0-install/include/QtCore/qmetaobject.h \
-		/qt-5.5.0-install/include/QtCore/qmimedata.h \
-		/qt-5.5.0-install/include/QtCore/qobjectcleanuphandler.h \
-		/qt-5.5.0-install/include/QtCore/qpointer.h \
-		/qt-5.5.0-install/include/QtCore/qsharedpointer.h \
-		/qt-5.5.0-install/include/QtCore/qsharedpointer_impl.h \
-		/qt-5.5.0-install/include/QtCore/qsharedmemory.h \
-		/qt-5.5.0-install/include/QtCore/qsignalmapper.h \
-		/qt-5.5.0-install/include/QtCore/qsocketnotifier.h \
-		/qt-5.5.0-install/include/QtCore/qsystemsemaphore.h \
-		/qt-5.5.0-install/include/QtCore/qtimer.h \
-		/qt-5.5.0-install/include/QtCore/qtranslator.h \
-		/qt-5.5.0-install/include/QtCore/qwineventnotifier.h \
-		/qt-5.5.0-install/include/QtCore/qmimedatabase.h \
-		/qt-5.5.0-install/include/QtCore/qmimetype.h \
-		/qt-5.5.0-install/include/QtCore/qfactoryinterface.h \
-		/qt-5.5.0-install/include/QtCore/qlibrary.h \
-		/qt-5.5.0-install/include/QtCore/qplugin.h \
-		/qt-5.5.0-install/include/QtCore/qpluginloader.h \
-		/qt-5.5.0-install/include/QtCore/quuid.h \
-		/qt-5.5.0-install/include/QtCore/qabstractstate.h \
-		/qt-5.5.0-install/include/QtCore/qabstracttransition.h \
-		/qt-5.5.0-install/include/QtCore/qeventtransition.h \
-		/qt-5.5.0-install/include/QtCore/qfinalstate.h \
-		/qt-5.5.0-install/include/QtCore/qhistorystate.h \
-		/qt-5.5.0-install/include/QtCore/qsignaltransition.h \
-		/qt-5.5.0-install/include/QtCore/qstate.h \
-		/qt-5.5.0-install/include/QtCore/qstatemachine.h \
-		/qt-5.5.0-install/include/QtCore/qexception.h \
-		/qt-5.5.0-install/include/QtCore/qfuture.h \
-		/qt-5.5.0-install/include/QtCore/qfutureinterface.h \
-		/qt-5.5.0-install/include/QtCore/qrunnable.h \
-		/qt-5.5.0-install/include/QtCore/qresultstore.h \
-		/qt-5.5.0-install/include/QtCore/qfuturesynchronizer.h \
-		/qt-5.5.0-install/include/QtCore/qfuturewatcher.h \
-		/qt-5.5.0-install/include/QtCore/qreadwritelock.h \
-		/qt-5.5.0-install/include/QtCore/qsemaphore.h \
-		/qt-5.5.0-install/include/QtCore/qthread.h \
-		/qt-5.5.0-install/include/QtCore/qthreadpool.h \
-		/qt-5.5.0-install/include/QtCore/qthreadstorage.h \
-		/qt-5.5.0-install/include/QtCore/qwaitcondition.h \
-		/qt-5.5.0-install/include/QtCore/qarraydataops.h \
-		/qt-5.5.0-install/include/QtCore/qarraydatapointer.h \
-		/qt-5.5.0-install/include/QtCore/qbitarray.h \
-		/qt-5.5.0-install/include/QtCore/qbytearraymatcher.h \
-		/qt-5.5.0-install/include/QtCore/qcache.h \
-		/qt-5.5.0-install/include/QtCore/qcollator.h \
-		/qt-5.5.0-install/include/QtCore/qcommandlineoption.h \
-		/qt-5.5.0-install/include/QtCore/qcommandlineparser.h \
-		/qt-5.5.0-install/include/QtCore/qcryptographichash.h \
-		/qt-5.5.0-install/include/QtCore/qelapsedtimer.h \
-		/qt-5.5.0-install/include/QtCore/qline.h \
-		/qt-5.5.0-install/include/QtCore/qlinkedlist.h \
-		/qt-5.5.0-install/include/QtCore/qmargins.h \
-		/qt-5.5.0-install/include/QtCore/qmessageauthenticationcode.h \
-		/qt-5.5.0-install/include/QtCore/qqueue.h \
-		/qt-5.5.0-install/include/QtCore/qrect.h \
-		/qt-5.5.0-install/include/QtCore/qsize.h \
-		/qt-5.5.0-install/include/QtCore/qregularexpression.h \
-		/qt-5.5.0-install/include/QtCore/qscopedvaluerollback.h \
-		/qt-5.5.0-install/include/QtCore/qstack.h \
-		/qt-5.5.0-install/include/QtCore/qtextboundaryfinder.h \
-		/qt-5.5.0-install/include/QtCore/qtimeline.h \
-		/qt-5.5.0-install/include/QtCore/qtimezone.h \
-		/qt-5.5.0-install/include/QtCore/qxmlstream.h \
-		/qt-5.5.0-install/include/QtCore/qtcoreversion.h \
-		SSDB/ssdb_client.h \
-		global.h \
-		/qt-5.5.0-install/include/QtCore/QString \
-		/qt-5.5.0-install/include/QtCore/QVariant \
 		/qt-5.5.0-install/include/QtCore/QSettings \
+		/qt-5.5.0-install/include/QtCore/qsettings.h \
 		/qt-5.5.0-install/include/QtCore/QTextCodec \
+		/qt-5.5.0-install/include/QtCore/qtextcodec.h \
 		serialport/serialport.h \
-		/qt-5.5.0-install/include/QtSerialPort/QtSerialPort \
-		/qt-5.5.0-install/include/QtSerialPort/QtSerialPortDepends \
+		/qt-5.5.0-install/include/QtSerialPort/QSerialPort \
 		/qt-5.5.0-install/include/QtSerialPort/qserialport.h \
 		/qt-5.5.0-install/include/QtSerialPort/qserialportglobal.h \
-		/qt-5.5.0-install/include/QtSerialPort/qserialportinfo.h \
-		/qt-5.5.0-install/include/QtSerialPort/qtserialportversion.h \
-		/qt-5.5.0-install/include/QtCore/QElapsedTimer
+		/qt-5.5.0-install/include/QtCore/QTimer \
+		/qt-5.5.0-install/include/QtCore/qtimer.h \
+		/qt-5.5.0-install/include/QtCore/qbasictimer.h \
+		/qt-5.5.0-install/include/QtCore/QElapsedTimer \
+		/qt-5.5.0-install/include/QtCore/qelapsedtimer.h \
+		/qt-5.5.0-install/include/QtCore/QDebug
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o ssdb_client_.o SSDB/ssdb_client_.cpp
 
 global.o: global.cpp global.h \
-		/qt-5.5.0-install/include/QtCore/QString \
-		/qt-5.5.0-install/include/QtCore/qstring.h \
-		/qt-5.5.0-install/include/QtCore/qchar.h \
+		/qt-5.5.0-install/include/QtCore/QVariant \
+		/qt-5.5.0-install/include/QtCore/qvariant.h \
+		/qt-5.5.0-install/include/QtCore/qatomic.h \
 		/qt-5.5.0-install/include/QtCore/qglobal.h \
 		/qt-5.5.0-install/include/QtCore/qconfig.h \
 		/qt-5.5.0-install/include/QtCore/qfeatures.h \
@@ -6796,7 +3750,9 @@ global.o: global.cpp global.h \
 		/qt-5.5.0-install/include/QtCore/qsysinfo.h \
 		/qt-5.5.0-install/include/QtCore/qlogging.h \
 		/qt-5.5.0-install/include/QtCore/qflags.h \
-		/qt-5.5.0-install/include/QtCore/qatomic.h \
+		/qt-5.5.0-install/include/QtCore/qglobalstatic.h \
+		/qt-5.5.0-install/include/QtCore/qmutex.h \
+		/qt-5.5.0-install/include/QtCore/qnumeric.h \
 		/qt-5.5.0-install/include/QtCore/qbasicatomic.h \
 		/qt-5.5.0-install/include/QtCore/qatomic_bootstrap.h \
 		/qt-5.5.0-install/include/QtCore/qgenericatomic.h \
@@ -6810,16 +3766,13 @@ global.o: global.cpp global.h \
 		/qt-5.5.0-install/include/QtCore/qatomic_mips.h \
 		/qt-5.5.0-install/include/QtCore/qatomic_x86.h \
 		/qt-5.5.0-install/include/QtCore/qatomic_unix.h \
-		/qt-5.5.0-install/include/QtCore/qglobalstatic.h \
-		/qt-5.5.0-install/include/QtCore/qmutex.h \
-		/qt-5.5.0-install/include/QtCore/qnumeric.h \
 		/qt-5.5.0-install/include/QtCore/qbytearray.h \
 		/qt-5.5.0-install/include/QtCore/qrefcount.h \
 		/qt-5.5.0-install/include/QtCore/qnamespace.h \
 		/qt-5.5.0-install/include/QtCore/qarraydata.h \
+		/qt-5.5.0-install/include/QtCore/qstring.h \
+		/qt-5.5.0-install/include/QtCore/qchar.h \
 		/qt-5.5.0-install/include/QtCore/qstringbuilder.h \
-		/qt-5.5.0-install/include/QtCore/QVariant \
-		/qt-5.5.0-install/include/QtCore/qvariant.h \
 		/qt-5.5.0-install/include/QtCore/qlist.h \
 		/qt-5.5.0-install/include/QtCore/qalgorithms.h \
 		/qt-5.5.0-install/include/QtCore/qiterator.h \
@@ -7148,138 +4101,15 @@ netspeed.o: net/netspeed.cpp net/netspeed.h \
 		/qt-5.5.0-install/include/QtCore/qcontainerfwd.h \
 		/qt-5.5.0-install/include/QtCore/qisenum.h \
 		/qt-5.5.0-install/include/QtCore/qobject_impl.h \
-		/qt-5.5.0-install/include/QtCore/QtCore \
-		/qt-5.5.0-install/include/QtCore/QtCoreDepends \
-		/qt-5.5.0-install/include/QtCore/qabstractanimation.h \
-		/qt-5.5.0-install/include/QtCore/qanimationgroup.h \
-		/qt-5.5.0-install/include/QtCore/qparallelanimationgroup.h \
-		/qt-5.5.0-install/include/QtCore/qpauseanimation.h \
-		/qt-5.5.0-install/include/QtCore/qpropertyanimation.h \
-		/qt-5.5.0-install/include/QtCore/qvariantanimation.h \
-		/qt-5.5.0-install/include/QtCore/qeasingcurve.h \
-		/qt-5.5.0-install/include/QtCore/qvector.h \
-		/qt-5.5.0-install/include/QtCore/qpoint.h \
-		/qt-5.5.0-install/include/QtCore/qvariant.h \
-		/qt-5.5.0-install/include/QtCore/qmap.h \
-		/qt-5.5.0-install/include/QtCore/qpair.h \
-		/qt-5.5.0-install/include/QtCore/qdebug.h \
-		/qt-5.5.0-install/include/QtCore/qhash.h \
-		/qt-5.5.0-install/include/QtCore/qtextstream.h \
-		/qt-5.5.0-install/include/QtCore/qiodevice.h \
-		/qt-5.5.0-install/include/QtCore/qlocale.h \
-		/qt-5.5.0-install/include/QtCore/qshareddata.h \
-		/qt-5.5.0-install/include/QtCore/qset.h \
-		/qt-5.5.0-install/include/QtCore/qcontiguouscache.h \
-		/qt-5.5.0-install/include/QtCore/qsequentialanimationgroup.h \
-		/qt-5.5.0-install/include/QtCore/qtextcodec.h \
-		/qt-5.5.0-install/include/QtCore/qendian.h \
-		/qt-5.5.0-install/include/QtCore/qlibraryinfo.h \
-		/qt-5.5.0-install/include/QtCore/qdatetime.h \
-		/qt-5.5.0-install/include/QtCore/qbuffer.h \
-		/qt-5.5.0-install/include/QtCore/qdatastream.h \
-		/qt-5.5.0-install/include/QtCore/qdir.h \
-		/qt-5.5.0-install/include/QtCore/qfileinfo.h \
+		/qt-5.5.0-install/include/QtCore/QTimer \
+		/qt-5.5.0-install/include/QtCore/qtimer.h \
+		/qt-5.5.0-install/include/QtCore/qbasictimer.h \
+		/qt-5.5.0-install/include/QtCore/QFile \
 		/qt-5.5.0-install/include/QtCore/qfile.h \
 		/qt-5.5.0-install/include/QtCore/qfiledevice.h \
-		/qt-5.5.0-install/include/QtCore/qdiriterator.h \
-		/qt-5.5.0-install/include/QtCore/qfileselector.h \
-		/qt-5.5.0-install/include/QtCore/QStringList \
-		/qt-5.5.0-install/include/QtCore/qfilesystemwatcher.h \
-		/qt-5.5.0-install/include/QtCore/qlockfile.h \
-		/qt-5.5.0-install/include/QtCore/qloggingcategory.h \
-		/qt-5.5.0-install/include/QtCore/qprocess.h \
-		/qt-5.5.0-install/include/QtCore/qresource.h \
-		/qt-5.5.0-install/include/QtCore/qsavefile.h \
-		/qt-5.5.0-install/include/QtCore/qsettings.h \
-		/qt-5.5.0-install/include/QtCore/qstandardpaths.h \
-		/qt-5.5.0-install/include/QtCore/qstorageinfo.h \
-		/qt-5.5.0-install/include/QtCore/qtemporarydir.h \
-		/qt-5.5.0-install/include/QtCore/QScopedPointer \
-		/qt-5.5.0-install/include/QtCore/qtemporaryfile.h \
-		/qt-5.5.0-install/include/QtCore/qurl.h \
-		/qt-5.5.0-install/include/QtCore/qurlquery.h \
-		/qt-5.5.0-install/include/QtCore/qabstractitemmodel.h \
-		/qt-5.5.0-install/include/QtCore/qabstractproxymodel.h \
-		/qt-5.5.0-install/include/QtCore/qidentityproxymodel.h \
-		/qt-5.5.0-install/include/QtCore/qitemselectionmodel.h \
-		/qt-5.5.0-install/include/QtCore/qsortfilterproxymodel.h \
-		/qt-5.5.0-install/include/QtCore/qstringlistmodel.h \
-		/qt-5.5.0-install/include/QtCore/qjsonarray.h \
-		/qt-5.5.0-install/include/QtCore/qjsonvalue.h \
-		/qt-5.5.0-install/include/QtCore/qjsondocument.h \
-		/qt-5.5.0-install/include/QtCore/qjsonobject.h \
-		/qt-5.5.0-install/include/QtCore/qabstracteventdispatcher.h \
-		/qt-5.5.0-install/include/QtCore/qeventloop.h \
-		/qt-5.5.0-install/include/QtCore/qabstractnativeeventfilter.h \
-		/qt-5.5.0-install/include/QtCore/qbasictimer.h \
-		/qt-5.5.0-install/include/QtCore/qcoreapplication.h \
-		/qt-5.5.0-install/include/QtCore/qmath.h \
-		/qt-5.5.0-install/include/QtCore/qmetaobject.h \
-		/qt-5.5.0-install/include/QtCore/qmimedata.h \
-		/qt-5.5.0-install/include/QtCore/qobjectcleanuphandler.h \
-		/qt-5.5.0-install/include/QtCore/qpointer.h \
-		/qt-5.5.0-install/include/QtCore/qsharedpointer.h \
-		/qt-5.5.0-install/include/QtCore/qsharedpointer_impl.h \
-		/qt-5.5.0-install/include/QtCore/qsharedmemory.h \
-		/qt-5.5.0-install/include/QtCore/qsignalmapper.h \
-		/qt-5.5.0-install/include/QtCore/qsocketnotifier.h \
-		/qt-5.5.0-install/include/QtCore/qsystemsemaphore.h \
-		/qt-5.5.0-install/include/QtCore/qtimer.h \
-		/qt-5.5.0-install/include/QtCore/qtranslator.h \
-		/qt-5.5.0-install/include/QtCore/qwineventnotifier.h \
-		/qt-5.5.0-install/include/QtCore/qmimedatabase.h \
-		/qt-5.5.0-install/include/QtCore/qmimetype.h \
-		/qt-5.5.0-install/include/QtCore/qfactoryinterface.h \
-		/qt-5.5.0-install/include/QtCore/qlibrary.h \
-		/qt-5.5.0-install/include/QtCore/qplugin.h \
-		/qt-5.5.0-install/include/QtCore/qpluginloader.h \
-		/qt-5.5.0-install/include/QtCore/quuid.h \
-		/qt-5.5.0-install/include/QtCore/qabstractstate.h \
-		/qt-5.5.0-install/include/QtCore/qabstracttransition.h \
-		/qt-5.5.0-install/include/QtCore/qeventtransition.h \
-		/qt-5.5.0-install/include/QtCore/qfinalstate.h \
-		/qt-5.5.0-install/include/QtCore/qhistorystate.h \
-		/qt-5.5.0-install/include/QtCore/qsignaltransition.h \
-		/qt-5.5.0-install/include/QtCore/qstate.h \
-		/qt-5.5.0-install/include/QtCore/qstatemachine.h \
-		/qt-5.5.0-install/include/QtCore/qexception.h \
-		/qt-5.5.0-install/include/QtCore/qfuture.h \
-		/qt-5.5.0-install/include/QtCore/qfutureinterface.h \
-		/qt-5.5.0-install/include/QtCore/qrunnable.h \
-		/qt-5.5.0-install/include/QtCore/qresultstore.h \
-		/qt-5.5.0-install/include/QtCore/qfuturesynchronizer.h \
-		/qt-5.5.0-install/include/QtCore/qfuturewatcher.h \
-		/qt-5.5.0-install/include/QtCore/qreadwritelock.h \
-		/qt-5.5.0-install/include/QtCore/qsemaphore.h \
-		/qt-5.5.0-install/include/QtCore/qthread.h \
-		/qt-5.5.0-install/include/QtCore/qthreadpool.h \
-		/qt-5.5.0-install/include/QtCore/qthreadstorage.h \
-		/qt-5.5.0-install/include/QtCore/qwaitcondition.h \
-		/qt-5.5.0-install/include/QtCore/qarraydataops.h \
-		/qt-5.5.0-install/include/QtCore/qarraydatapointer.h \
-		/qt-5.5.0-install/include/QtCore/qbitarray.h \
-		/qt-5.5.0-install/include/QtCore/qbytearraymatcher.h \
-		/qt-5.5.0-install/include/QtCore/qcache.h \
-		/qt-5.5.0-install/include/QtCore/qcollator.h \
-		/qt-5.5.0-install/include/QtCore/qcommandlineoption.h \
-		/qt-5.5.0-install/include/QtCore/qcommandlineparser.h \
-		/qt-5.5.0-install/include/QtCore/qcryptographichash.h \
-		/qt-5.5.0-install/include/QtCore/qelapsedtimer.h \
-		/qt-5.5.0-install/include/QtCore/qline.h \
-		/qt-5.5.0-install/include/QtCore/qlinkedlist.h \
-		/qt-5.5.0-install/include/QtCore/qmargins.h \
-		/qt-5.5.0-install/include/QtCore/qmessageauthenticationcode.h \
-		/qt-5.5.0-install/include/QtCore/qqueue.h \
-		/qt-5.5.0-install/include/QtCore/qrect.h \
-		/qt-5.5.0-install/include/QtCore/qsize.h \
-		/qt-5.5.0-install/include/QtCore/qregularexpression.h \
-		/qt-5.5.0-install/include/QtCore/qscopedvaluerollback.h \
-		/qt-5.5.0-install/include/QtCore/qstack.h \
-		/qt-5.5.0-install/include/QtCore/qtextboundaryfinder.h \
-		/qt-5.5.0-install/include/QtCore/qtimeline.h \
-		/qt-5.5.0-install/include/QtCore/qtimezone.h \
-		/qt-5.5.0-install/include/QtCore/qxmlstream.h \
-		/qt-5.5.0-install/include/QtCore/qtcoreversion.h
+		/qt-5.5.0-install/include/QtCore/qiodevice.h \
+		/qt-5.5.0-install/include/QtCore/QThread \
+		/qt-5.5.0-install/include/QtCore/qthread.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o netspeed.o net/netspeed.cpp
 
 keyinput.o: keyinput.cpp keyinput.h \
@@ -7338,146 +4168,29 @@ keyinput.o: keyinput.cpp keyinput.h \
 		/qt-5.5.0-install/include/QtCore/qobject_impl.h \
 		/qt-5.5.0-install/include/QtCore/QSocketNotifier \
 		/qt-5.5.0-install/include/QtCore/qsocketnotifier.h \
-		/qt-5.5.0-install/include/QtCore/QtCore \
-		/qt-5.5.0-install/include/QtCore/QtCoreDepends \
-		/qt-5.5.0-install/include/QtCore/qabstractanimation.h \
-		/qt-5.5.0-install/include/QtCore/qanimationgroup.h \
-		/qt-5.5.0-install/include/QtCore/qparallelanimationgroup.h \
-		/qt-5.5.0-install/include/QtCore/qpauseanimation.h \
-		/qt-5.5.0-install/include/QtCore/qpropertyanimation.h \
-		/qt-5.5.0-install/include/QtCore/qvariantanimation.h \
-		/qt-5.5.0-install/include/QtCore/qeasingcurve.h \
-		/qt-5.5.0-install/include/QtCore/qvector.h \
-		/qt-5.5.0-install/include/QtCore/qpoint.h \
-		/qt-5.5.0-install/include/QtCore/qvariant.h \
-		/qt-5.5.0-install/include/QtCore/qmap.h \
-		/qt-5.5.0-install/include/QtCore/qpair.h \
+		/qt-5.5.0-install/include/QtCore/QDebug \
 		/qt-5.5.0-install/include/QtCore/qdebug.h \
 		/qt-5.5.0-install/include/QtCore/qhash.h \
+		/qt-5.5.0-install/include/QtCore/qpair.h \
+		/qt-5.5.0-install/include/QtCore/qmap.h \
 		/qt-5.5.0-install/include/QtCore/qtextstream.h \
 		/qt-5.5.0-install/include/QtCore/qiodevice.h \
 		/qt-5.5.0-install/include/QtCore/qlocale.h \
+		/qt-5.5.0-install/include/QtCore/qvariant.h \
 		/qt-5.5.0-install/include/QtCore/qshareddata.h \
+		/qt-5.5.0-install/include/QtCore/qvector.h \
+		/qt-5.5.0-install/include/QtCore/qpoint.h \
 		/qt-5.5.0-install/include/QtCore/qset.h \
-		/qt-5.5.0-install/include/QtCore/qcontiguouscache.h \
-		/qt-5.5.0-install/include/QtCore/qsequentialanimationgroup.h \
-		/qt-5.5.0-install/include/QtCore/qtextcodec.h \
-		/qt-5.5.0-install/include/QtCore/qendian.h \
-		/qt-5.5.0-install/include/QtCore/qlibraryinfo.h \
-		/qt-5.5.0-install/include/QtCore/qdatetime.h \
-		/qt-5.5.0-install/include/QtCore/qbuffer.h \
-		/qt-5.5.0-install/include/QtCore/qdatastream.h \
-		/qt-5.5.0-install/include/QtCore/qdir.h \
-		/qt-5.5.0-install/include/QtCore/qfileinfo.h \
-		/qt-5.5.0-install/include/QtCore/qfile.h \
-		/qt-5.5.0-install/include/QtCore/qfiledevice.h \
-		/qt-5.5.0-install/include/QtCore/qdiriterator.h \
-		/qt-5.5.0-install/include/QtCore/qfileselector.h \
-		/qt-5.5.0-install/include/QtCore/QStringList \
-		/qt-5.5.0-install/include/QtCore/qfilesystemwatcher.h \
-		/qt-5.5.0-install/include/QtCore/qlockfile.h \
-		/qt-5.5.0-install/include/QtCore/qloggingcategory.h \
-		/qt-5.5.0-install/include/QtCore/qprocess.h \
-		/qt-5.5.0-install/include/QtCore/qresource.h \
-		/qt-5.5.0-install/include/QtCore/qsavefile.h \
-		/qt-5.5.0-install/include/QtCore/qsettings.h \
-		/qt-5.5.0-install/include/QtCore/qstandardpaths.h \
-		/qt-5.5.0-install/include/QtCore/qstorageinfo.h \
-		/qt-5.5.0-install/include/QtCore/qtemporarydir.h \
-		/qt-5.5.0-install/include/QtCore/QScopedPointer \
-		/qt-5.5.0-install/include/QtCore/qtemporaryfile.h \
-		/qt-5.5.0-install/include/QtCore/qurl.h \
-		/qt-5.5.0-install/include/QtCore/qurlquery.h \
-		/qt-5.5.0-install/include/QtCore/qabstractitemmodel.h \
-		/qt-5.5.0-install/include/QtCore/qabstractproxymodel.h \
-		/qt-5.5.0-install/include/QtCore/qidentityproxymodel.h \
-		/qt-5.5.0-install/include/QtCore/qitemselectionmodel.h \
-		/qt-5.5.0-install/include/QtCore/qsortfilterproxymodel.h \
-		/qt-5.5.0-install/include/QtCore/qstringlistmodel.h \
-		/qt-5.5.0-install/include/QtCore/qjsonarray.h \
-		/qt-5.5.0-install/include/QtCore/qjsonvalue.h \
-		/qt-5.5.0-install/include/QtCore/qjsondocument.h \
-		/qt-5.5.0-install/include/QtCore/qjsonobject.h \
-		/qt-5.5.0-install/include/QtCore/qabstracteventdispatcher.h \
-		/qt-5.5.0-install/include/QtCore/qeventloop.h \
-		/qt-5.5.0-install/include/QtCore/qabstractnativeeventfilter.h \
-		/qt-5.5.0-install/include/QtCore/qbasictimer.h \
-		/qt-5.5.0-install/include/QtCore/qcoreapplication.h \
-		/qt-5.5.0-install/include/QtCore/qmath.h \
-		/qt-5.5.0-install/include/QtCore/qmetaobject.h \
-		/qt-5.5.0-install/include/QtCore/qmimedata.h \
-		/qt-5.5.0-install/include/QtCore/qobjectcleanuphandler.h \
-		/qt-5.5.0-install/include/QtCore/qpointer.h \
-		/qt-5.5.0-install/include/QtCore/qsharedpointer.h \
-		/qt-5.5.0-install/include/QtCore/qsharedpointer_impl.h \
-		/qt-5.5.0-install/include/QtCore/qsharedmemory.h \
-		/qt-5.5.0-install/include/QtCore/qsignalmapper.h \
-		/qt-5.5.0-install/include/QtCore/qsystemsemaphore.h \
-		/qt-5.5.0-install/include/QtCore/qtimer.h \
-		/qt-5.5.0-install/include/QtCore/qtranslator.h \
-		/qt-5.5.0-install/include/QtCore/qwineventnotifier.h \
-		/qt-5.5.0-install/include/QtCore/qmimedatabase.h \
-		/qt-5.5.0-install/include/QtCore/qmimetype.h \
-		/qt-5.5.0-install/include/QtCore/qfactoryinterface.h \
-		/qt-5.5.0-install/include/QtCore/qlibrary.h \
-		/qt-5.5.0-install/include/QtCore/qplugin.h \
-		/qt-5.5.0-install/include/QtCore/qpluginloader.h \
-		/qt-5.5.0-install/include/QtCore/quuid.h \
-		/qt-5.5.0-install/include/QtCore/qabstractstate.h \
-		/qt-5.5.0-install/include/QtCore/qabstracttransition.h \
-		/qt-5.5.0-install/include/QtCore/qeventtransition.h \
-		/qt-5.5.0-install/include/QtCore/qfinalstate.h \
-		/qt-5.5.0-install/include/QtCore/qhistorystate.h \
-		/qt-5.5.0-install/include/QtCore/qsignaltransition.h \
-		/qt-5.5.0-install/include/QtCore/qstate.h \
-		/qt-5.5.0-install/include/QtCore/qstatemachine.h \
-		/qt-5.5.0-install/include/QtCore/qexception.h \
-		/qt-5.5.0-install/include/QtCore/qfuture.h \
-		/qt-5.5.0-install/include/QtCore/qfutureinterface.h \
-		/qt-5.5.0-install/include/QtCore/qrunnable.h \
-		/qt-5.5.0-install/include/QtCore/qresultstore.h \
-		/qt-5.5.0-install/include/QtCore/qfuturesynchronizer.h \
-		/qt-5.5.0-install/include/QtCore/qfuturewatcher.h \
-		/qt-5.5.0-install/include/QtCore/qreadwritelock.h \
-		/qt-5.5.0-install/include/QtCore/qsemaphore.h \
-		/qt-5.5.0-install/include/QtCore/qthread.h \
-		/qt-5.5.0-install/include/QtCore/qthreadpool.h \
-		/qt-5.5.0-install/include/QtCore/qthreadstorage.h \
-		/qt-5.5.0-install/include/QtCore/qwaitcondition.h \
-		/qt-5.5.0-install/include/QtCore/qarraydataops.h \
-		/qt-5.5.0-install/include/QtCore/qarraydatapointer.h \
-		/qt-5.5.0-install/include/QtCore/qbitarray.h \
-		/qt-5.5.0-install/include/QtCore/qbytearraymatcher.h \
-		/qt-5.5.0-install/include/QtCore/qcache.h \
-		/qt-5.5.0-install/include/QtCore/qcollator.h \
-		/qt-5.5.0-install/include/QtCore/qcommandlineoption.h \
-		/qt-5.5.0-install/include/QtCore/qcommandlineparser.h \
-		/qt-5.5.0-install/include/QtCore/qcryptographichash.h \
-		/qt-5.5.0-install/include/QtCore/qelapsedtimer.h \
-		/qt-5.5.0-install/include/QtCore/qline.h \
-		/qt-5.5.0-install/include/QtCore/qlinkedlist.h \
-		/qt-5.5.0-install/include/QtCore/qmargins.h \
-		/qt-5.5.0-install/include/QtCore/qmessageauthenticationcode.h \
-		/qt-5.5.0-install/include/QtCore/qqueue.h \
-		/qt-5.5.0-install/include/QtCore/qrect.h \
-		/qt-5.5.0-install/include/QtCore/qsize.h \
-		/qt-5.5.0-install/include/QtCore/qregularexpression.h \
-		/qt-5.5.0-install/include/QtCore/qscopedvaluerollback.h \
-		/qt-5.5.0-install/include/QtCore/qstack.h \
-		/qt-5.5.0-install/include/QtCore/qtextboundaryfinder.h \
-		/qt-5.5.0-install/include/QtCore/qtimeline.h \
-		/qt-5.5.0-install/include/QtCore/qtimezone.h \
-		/qt-5.5.0-install/include/QtCore/qxmlstream.h \
-		/qt-5.5.0-install/include/QtCore/qtcoreversion.h
+		/qt-5.5.0-install/include/QtCore/qcontiguouscache.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o keyinput.o keyinput.cpp
 
 screenemotion.o: screenemotion/screenemotion.cpp screenemotion/screenemotion.h \
-		/qt-5.5.0-install/include/QtCore/QtCore \
-		/qt-5.5.0-install/include/QtCore/QtCoreDepends \
-		/qt-5.5.0-install/include/QtCore/qabstractanimation.h \
-		/qt-5.5.0-install/include/QtCore/qobject.h \
-		/qt-5.5.0-install/include/QtCore/qobjectdefs.h \
-		/qt-5.5.0-install/include/QtCore/qnamespace.h \
+		screenemotion/label.h \
+		/qt-5.5.0-install/include/QtWidgets/QLabel \
+		/qt-5.5.0-install/include/QtWidgets/qlabel.h \
+		/qt-5.5.0-install/include/QtWidgets/qframe.h \
+		/qt-5.5.0-install/include/QtWidgets/qwidget.h \
+		/qt-5.5.0-install/include/QtGui/qwindowdefs.h \
 		/qt-5.5.0-install/include/QtCore/qglobal.h \
 		/qt-5.5.0-install/include/QtCore/qconfig.h \
 		/qt-5.5.0-install/include/QtCore/qfeatures.h \
@@ -7506,7 +4219,11 @@ screenemotion.o: screenemotion/screenemotion.cpp screenemotion/screenemotion.h \
 		/qt-5.5.0-install/include/QtCore/qglobalstatic.h \
 		/qt-5.5.0-install/include/QtCore/qmutex.h \
 		/qt-5.5.0-install/include/QtCore/qnumeric.h \
+		/qt-5.5.0-install/include/QtCore/qobjectdefs.h \
+		/qt-5.5.0-install/include/QtCore/qnamespace.h \
 		/qt-5.5.0-install/include/QtCore/qobjectdefs_impl.h \
+		/qt-5.5.0-install/include/QtGui/qwindowdefs_win.h \
+		/qt-5.5.0-install/include/QtCore/qobject.h \
 		/qt-5.5.0-install/include/QtCore/qstring.h \
 		/qt-5.5.0-install/include/QtCore/qchar.h \
 		/qt-5.5.0-install/include/QtCore/qbytearray.h \
@@ -7527,408 +4244,75 @@ screenemotion.o: screenemotion/screenemotion.cpp screenemotion/screenemotion.h \
 		/qt-5.5.0-install/include/QtCore/qcontainerfwd.h \
 		/qt-5.5.0-install/include/QtCore/qisenum.h \
 		/qt-5.5.0-install/include/QtCore/qobject_impl.h \
-		/qt-5.5.0-install/include/QtCore/qanimationgroup.h \
-		/qt-5.5.0-install/include/QtCore/qparallelanimationgroup.h \
-		/qt-5.5.0-install/include/QtCore/qpauseanimation.h \
-		/qt-5.5.0-install/include/QtCore/qpropertyanimation.h \
-		/qt-5.5.0-install/include/QtCore/qvariantanimation.h \
-		/qt-5.5.0-install/include/QtCore/qeasingcurve.h \
-		/qt-5.5.0-install/include/QtCore/qvector.h \
-		/qt-5.5.0-install/include/QtCore/qpoint.h \
-		/qt-5.5.0-install/include/QtCore/qvariant.h \
-		/qt-5.5.0-install/include/QtCore/qmap.h \
-		/qt-5.5.0-install/include/QtCore/qpair.h \
-		/qt-5.5.0-install/include/QtCore/qdebug.h \
-		/qt-5.5.0-install/include/QtCore/qhash.h \
-		/qt-5.5.0-install/include/QtCore/qtextstream.h \
-		/qt-5.5.0-install/include/QtCore/qiodevice.h \
-		/qt-5.5.0-install/include/QtCore/qlocale.h \
-		/qt-5.5.0-install/include/QtCore/qshareddata.h \
-		/qt-5.5.0-install/include/QtCore/qset.h \
-		/qt-5.5.0-install/include/QtCore/qcontiguouscache.h \
-		/qt-5.5.0-install/include/QtCore/qsequentialanimationgroup.h \
-		/qt-5.5.0-install/include/QtCore/qtextcodec.h \
-		/qt-5.5.0-install/include/QtCore/qendian.h \
-		/qt-5.5.0-install/include/QtCore/qlibraryinfo.h \
-		/qt-5.5.0-install/include/QtCore/qdatetime.h \
-		/qt-5.5.0-install/include/QtCore/qbuffer.h \
-		/qt-5.5.0-install/include/QtCore/qdatastream.h \
-		/qt-5.5.0-install/include/QtCore/qdir.h \
-		/qt-5.5.0-install/include/QtCore/qfileinfo.h \
-		/qt-5.5.0-install/include/QtCore/qfile.h \
-		/qt-5.5.0-install/include/QtCore/qfiledevice.h \
-		/qt-5.5.0-install/include/QtCore/qdiriterator.h \
-		/qt-5.5.0-install/include/QtCore/qfileselector.h \
-		/qt-5.5.0-install/include/QtCore/QObject \
-		/qt-5.5.0-install/include/QtCore/QStringList \
-		/qt-5.5.0-install/include/QtCore/qfilesystemwatcher.h \
-		/qt-5.5.0-install/include/QtCore/qlockfile.h \
-		/qt-5.5.0-install/include/QtCore/qloggingcategory.h \
-		/qt-5.5.0-install/include/QtCore/qprocess.h \
-		/qt-5.5.0-install/include/QtCore/qresource.h \
-		/qt-5.5.0-install/include/QtCore/qsavefile.h \
-		/qt-5.5.0-install/include/QtCore/qsettings.h \
-		/qt-5.5.0-install/include/QtCore/qstandardpaths.h \
-		/qt-5.5.0-install/include/QtCore/qstorageinfo.h \
-		/qt-5.5.0-install/include/QtCore/qtemporarydir.h \
-		/qt-5.5.0-install/include/QtCore/QScopedPointer \
-		/qt-5.5.0-install/include/QtCore/qtemporaryfile.h \
-		/qt-5.5.0-install/include/QtCore/qurl.h \
-		/qt-5.5.0-install/include/QtCore/qurlquery.h \
-		/qt-5.5.0-install/include/QtCore/qabstractitemmodel.h \
-		/qt-5.5.0-install/include/QtCore/qabstractproxymodel.h \
-		/qt-5.5.0-install/include/QtCore/qidentityproxymodel.h \
-		/qt-5.5.0-install/include/QtCore/qitemselectionmodel.h \
-		/qt-5.5.0-install/include/QtCore/qsortfilterproxymodel.h \
-		/qt-5.5.0-install/include/QtCore/qstringlistmodel.h \
-		/qt-5.5.0-install/include/QtCore/qjsonarray.h \
-		/qt-5.5.0-install/include/QtCore/qjsonvalue.h \
-		/qt-5.5.0-install/include/QtCore/qjsondocument.h \
-		/qt-5.5.0-install/include/QtCore/qjsonobject.h \
-		/qt-5.5.0-install/include/QtCore/qabstracteventdispatcher.h \
-		/qt-5.5.0-install/include/QtCore/qeventloop.h \
-		/qt-5.5.0-install/include/QtCore/qabstractnativeeventfilter.h \
-		/qt-5.5.0-install/include/QtCore/qbasictimer.h \
-		/qt-5.5.0-install/include/QtCore/qcoreapplication.h \
-		/qt-5.5.0-install/include/QtCore/qmath.h \
-		/qt-5.5.0-install/include/QtCore/qmetaobject.h \
-		/qt-5.5.0-install/include/QtCore/qmimedata.h \
-		/qt-5.5.0-install/include/QtCore/qobjectcleanuphandler.h \
-		/qt-5.5.0-install/include/QtCore/qpointer.h \
-		/qt-5.5.0-install/include/QtCore/qsharedpointer.h \
-		/qt-5.5.0-install/include/QtCore/qsharedpointer_impl.h \
-		/qt-5.5.0-install/include/QtCore/qsharedmemory.h \
-		/qt-5.5.0-install/include/QtCore/qsignalmapper.h \
-		/qt-5.5.0-install/include/QtCore/qsocketnotifier.h \
-		/qt-5.5.0-install/include/QtCore/qsystemsemaphore.h \
-		/qt-5.5.0-install/include/QtCore/qtimer.h \
-		/qt-5.5.0-install/include/QtCore/qtranslator.h \
-		/qt-5.5.0-install/include/QtCore/qwineventnotifier.h \
-		/qt-5.5.0-install/include/QtCore/qmimedatabase.h \
-		/qt-5.5.0-install/include/QtCore/qmimetype.h \
-		/qt-5.5.0-install/include/QtCore/qfactoryinterface.h \
-		/qt-5.5.0-install/include/QtCore/qlibrary.h \
-		/qt-5.5.0-install/include/QtCore/qplugin.h \
-		/qt-5.5.0-install/include/QtCore/qpluginloader.h \
-		/qt-5.5.0-install/include/QtCore/quuid.h \
-		/qt-5.5.0-install/include/QtCore/qabstractstate.h \
-		/qt-5.5.0-install/include/QtCore/qabstracttransition.h \
-		/qt-5.5.0-install/include/QtCore/qeventtransition.h \
-		/qt-5.5.0-install/include/QtCore/qfinalstate.h \
-		/qt-5.5.0-install/include/QtCore/qhistorystate.h \
-		/qt-5.5.0-install/include/QtCore/qsignaltransition.h \
-		/qt-5.5.0-install/include/QtCore/qstate.h \
-		/qt-5.5.0-install/include/QtCore/qstatemachine.h \
-		/qt-5.5.0-install/include/QtCore/qexception.h \
-		/qt-5.5.0-install/include/QtCore/qfuture.h \
-		/qt-5.5.0-install/include/QtCore/qfutureinterface.h \
-		/qt-5.5.0-install/include/QtCore/qrunnable.h \
-		/qt-5.5.0-install/include/QtCore/qresultstore.h \
-		/qt-5.5.0-install/include/QtCore/qfuturesynchronizer.h \
-		/qt-5.5.0-install/include/QtCore/qfuturewatcher.h \
-		/qt-5.5.0-install/include/QtCore/qreadwritelock.h \
-		/qt-5.5.0-install/include/QtCore/qsemaphore.h \
-		/qt-5.5.0-install/include/QtCore/qthread.h \
-		/qt-5.5.0-install/include/QtCore/qthreadpool.h \
-		/qt-5.5.0-install/include/QtCore/qthreadstorage.h \
-		/qt-5.5.0-install/include/QtCore/qwaitcondition.h \
-		/qt-5.5.0-install/include/QtCore/qarraydataops.h \
-		/qt-5.5.0-install/include/QtCore/qarraydatapointer.h \
-		/qt-5.5.0-install/include/QtCore/qbitarray.h \
-		/qt-5.5.0-install/include/QtCore/qbytearraymatcher.h \
-		/qt-5.5.0-install/include/QtCore/qcache.h \
-		/qt-5.5.0-install/include/QtCore/qcollator.h \
-		/qt-5.5.0-install/include/QtCore/qcommandlineoption.h \
-		/qt-5.5.0-install/include/QtCore/qcommandlineparser.h \
-		/qt-5.5.0-install/include/QtCore/qcryptographichash.h \
-		/qt-5.5.0-install/include/QtCore/qelapsedtimer.h \
-		/qt-5.5.0-install/include/QtCore/qline.h \
-		/qt-5.5.0-install/include/QtCore/qlinkedlist.h \
 		/qt-5.5.0-install/include/QtCore/qmargins.h \
-		/qt-5.5.0-install/include/QtCore/qmessageauthenticationcode.h \
-		/qt-5.5.0-install/include/QtCore/qqueue.h \
+		/qt-5.5.0-install/include/QtGui/qpaintdevice.h \
 		/qt-5.5.0-install/include/QtCore/qrect.h \
 		/qt-5.5.0-install/include/QtCore/qsize.h \
-		/qt-5.5.0-install/include/QtCore/qregularexpression.h \
-		/qt-5.5.0-install/include/QtCore/qscopedvaluerollback.h \
-		/qt-5.5.0-install/include/QtCore/qstack.h \
-		/qt-5.5.0-install/include/QtCore/qtextboundaryfinder.h \
-		/qt-5.5.0-install/include/QtCore/qtimeline.h \
-		/qt-5.5.0-install/include/QtCore/qtimezone.h \
-		/qt-5.5.0-install/include/QtCore/qxmlstream.h \
-		/qt-5.5.0-install/include/QtCore/qtcoreversion.h \
-		/qt-5.5.0-install/include/QtWidgets/QtWidgets \
-		/qt-5.5.0-install/include/QtWidgets/QtWidgetsDepends \
-		/qt-5.5.0-install/include/QtGui/QtGui \
-		/qt-5.5.0-install/include/QtGui/QtGuiDepends \
-		/qt-5.5.0-install/include/QtGui/qaccessible.h \
+		/qt-5.5.0-install/include/QtCore/qpoint.h \
+		/qt-5.5.0-install/include/QtGui/qpalette.h \
 		/qt-5.5.0-install/include/QtGui/qcolor.h \
 		/qt-5.5.0-install/include/QtGui/qrgb.h \
-		/qt-5.5.0-install/include/QtGui/qevent.h \
-		/qt-5.5.0-install/include/QtGui/qwindowdefs.h \
-		/qt-5.5.0-install/include/QtGui/qwindowdefs_win.h \
-		/qt-5.5.0-install/include/QtGui/qregion.h \
-		/qt-5.5.0-install/include/QtGui/qkeysequence.h \
-		/qt-5.5.0-install/include/QtGui/qvector2d.h \
-		/qt-5.5.0-install/include/QtGui/qtouchdevice.h \
-		/qt-5.5.0-install/include/QtGui/qaccessiblebridge.h \
-		/qt-5.5.0-install/include/QtGui/qaccessibleobject.h \
-		/qt-5.5.0-install/include/QtGui/qaccessibleplugin.h \
-		/qt-5.5.0-install/include/QtGui/qbitmap.h \
-		/qt-5.5.0-install/include/QtGui/qpixmap.h \
-		/qt-5.5.0-install/include/QtGui/qpaintdevice.h \
-		/qt-5.5.0-install/include/QtGui/qimage.h \
-		/qt-5.5.0-install/include/QtGui/qtransform.h \
+		/qt-5.5.0-install/include/QtGui/qbrush.h \
+		/qt-5.5.0-install/include/QtCore/qpair.h \
+		/qt-5.5.0-install/include/QtCore/qvector.h \
 		/qt-5.5.0-install/include/QtGui/qmatrix.h \
 		/qt-5.5.0-install/include/QtGui/qpolygon.h \
+		/qt-5.5.0-install/include/QtGui/qregion.h \
+		/qt-5.5.0-install/include/QtCore/qdatastream.h \
+		/qt-5.5.0-install/include/QtCore/qiodevice.h \
+		/qt-5.5.0-install/include/QtCore/qline.h \
+		/qt-5.5.0-install/include/QtGui/qtransform.h \
 		/qt-5.5.0-install/include/QtGui/qpainterpath.h \
+		/qt-5.5.0-install/include/QtGui/qimage.h \
 		/qt-5.5.0-install/include/QtGui/qpixelformat.h \
-		/qt-5.5.0-install/include/QtGui/qicon.h \
-		/qt-5.5.0-install/include/QtGui/qiconengine.h \
-		/qt-5.5.0-install/include/QtGui/qiconengineplugin.h \
-		/qt-5.5.0-install/include/QtGui/qimageiohandler.h \
-		/qt-5.5.0-install/include/QtGui/qimagereader.h \
-		/qt-5.5.0-install/include/QtGui/qimagewriter.h \
-		/qt-5.5.0-install/include/QtGui/qmovie.h \
-		/qt-5.5.0-install/include/QtGui/qpicture.h \
-		/qt-5.5.0-install/include/QtGui/qpictureformatplugin.h \
-		/qt-5.5.0-install/include/QtGui/qpixmapcache.h \
-		/qt-5.5.0-install/include/QtGui/qstandarditemmodel.h \
-		/qt-5.5.0-install/include/QtGui/qbrush.h \
+		/qt-5.5.0-install/include/QtGui/qpixmap.h \
+		/qt-5.5.0-install/include/QtCore/qsharedpointer.h \
+		/qt-5.5.0-install/include/QtCore/qshareddata.h \
+		/qt-5.5.0-install/include/QtCore/qhash.h \
+		/qt-5.5.0-install/include/QtCore/qsharedpointer_impl.h \
 		/qt-5.5.0-install/include/QtGui/qfont.h \
-		/qt-5.5.0-install/include/QtGui/qclipboard.h \
-		/qt-5.5.0-install/include/QtGui/qcursor.h \
-		/qt-5.5.0-install/include/QtGui/qdrag.h \
-		/qt-5.5.0-install/include/QtGui/qgenericplugin.h \
-		/qt-5.5.0-install/include/QtGui/qgenericpluginfactory.h \
-		/qt-5.5.0-install/include/QtGui/qguiapplication.h \
-		/qt-5.5.0-install/include/QtGui/qinputmethod.h \
-		/qt-5.5.0-install/include/QtGui/qoffscreensurface.h \
-		/qt-5.5.0-install/include/QtGui/qsurface.h \
-		/qt-5.5.0-install/include/QtGui/qsurfaceformat.h \
-		/qt-5.5.0-install/include/QtGui/qopenglcontext.h \
-		/qt-5.5.0-install/include/QtGui/QSurfaceFormat \
-		/qt-5.5.0-install/include/QtGui/qopengl.h \
-		/qt-5.5.0-install/include/QtCore/qt_windows.h \
-		/qt-5.5.0-install/include/QtGui/qopengles2ext.h \
-		/qt-5.5.0-install/include/QtGui/qopenglext.h \
-		/qt-5.5.0-install/include/QtGui/qopenglversionfunctions.h \
-		/qt-5.5.0-install/include/QtGui/qopenglwindow.h \
-		/qt-5.5.0-install/include/QtGui/QPaintDeviceWindow \
-		/qt-5.5.0-install/include/QtGui/qpaintdevicewindow.h \
-		/qt-5.5.0-install/include/QtGui/QWindow \
-		/qt-5.5.0-install/include/QtGui/qwindow.h \
-		/qt-5.5.0-install/include/QtCore/QEvent \
-		/qt-5.5.0-install/include/QtCore/QMargins \
-		/qt-5.5.0-install/include/QtCore/QRect \
-		/qt-5.5.0-install/include/QtGui/QPaintDevice \
-		/qt-5.5.0-install/include/QtGui/QOpenGLContext \
-		/qt-5.5.0-install/include/QtGui/QImage \
-		/qt-5.5.0-install/include/QtGui/qpalette.h \
-		/qt-5.5.0-install/include/QtGui/qrasterwindow.h \
-		/qt-5.5.0-install/include/QtGui/qscreen.h \
-		/qt-5.5.0-install/include/QtCore/QList \
-		/qt-5.5.0-install/include/QtCore/QSize \
-		/qt-5.5.0-install/include/QtCore/QSizeF \
-		/qt-5.5.0-install/include/QtGui/QTransform \
-		/qt-5.5.0-install/include/QtGui/qsessionmanager.h \
-		/qt-5.5.0-install/include/QtGui/qstylehints.h \
-		/qt-5.5.0-install/include/QtGui/qgenericmatrix.h \
-		/qt-5.5.0-install/include/QtGui/qmatrix4x4.h \
-		/qt-5.5.0-install/include/QtGui/qvector3d.h \
-		/qt-5.5.0-install/include/QtGui/qvector4d.h \
-		/qt-5.5.0-install/include/QtGui/qquaternion.h \
-		/qt-5.5.0-install/include/QtGui/qopenglbuffer.h \
-		/qt-5.5.0-install/include/QtGui/qopengldebug.h \
-		/qt-5.5.0-install/include/QtGui/qopenglframebufferobject.h \
-		/qt-5.5.0-install/include/QtGui/qopenglfunctions.h \
-		/qt-5.5.0-install/include/QtGui/qopenglpaintdevice.h \
-		/qt-5.5.0-install/include/QtGui/qopenglpixeltransferoptions.h \
-		/qt-5.5.0-install/include/QtCore/QSharedDataPointer \
-		/qt-5.5.0-install/include/QtGui/qopenglshaderprogram.h \
-		/qt-5.5.0-install/include/QtGui/qopengltexture.h \
-		/qt-5.5.0-install/include/QtGui/qopengltimerquery.h \
-		/qt-5.5.0-install/include/QtGui/qopenglvertexarrayobject.h \
-		/qt-5.5.0-install/include/QtGui/qbackingstore.h \
-		/qt-5.5.0-install/include/QtGui/qpagedpaintdevice.h \
-		/qt-5.5.0-install/include/QtGui/qpagelayout.h \
-		/qt-5.5.0-install/include/QtGui/qpagesize.h \
-		/qt-5.5.0-install/include/QtGui/qpaintengine.h \
-		/qt-5.5.0-install/include/QtGui/qpainter.h \
-		/qt-5.5.0-install/include/QtGui/qtextoption.h \
-		/qt-5.5.0-install/include/QtGui/qpen.h \
-		/qt-5.5.0-install/include/QtGui/qfontinfo.h \
 		/qt-5.5.0-install/include/QtGui/qfontmetrics.h \
-		/qt-5.5.0-install/include/QtGui/qpdfwriter.h \
-		/qt-5.5.0-install/include/QtGui/qabstracttextdocumentlayout.h \
-		/qt-5.5.0-install/include/QtGui/qtextlayout.h \
-		/qt-5.5.0-install/include/QtGui/qtextformat.h \
-		/qt-5.5.0-install/include/QtGui/qglyphrun.h \
-		/qt-5.5.0-install/include/QtGui/qrawfont.h \
-		/qt-5.5.0-install/include/QtGui/qfontdatabase.h \
-		/qt-5.5.0-install/include/QtGui/qtextcursor.h \
-		/qt-5.5.0-install/include/QtGui/qtextdocument.h \
-		/qt-5.5.0-install/include/QtGui/qstatictext.h \
-		/qt-5.5.0-install/include/QtGui/qsyntaxhighlighter.h \
-		/qt-5.5.0-install/include/QtGui/qtextobject.h \
-		/qt-5.5.0-install/include/QtGui/qtextdocumentfragment.h \
-		/qt-5.5.0-install/include/QtGui/qtextdocumentwriter.h \
-		/qt-5.5.0-install/include/QtGui/qtextlist.h \
-		/qt-5.5.0-install/include/QtGui/qtexttable.h \
-		/qt-5.5.0-install/include/QtGui/qdesktopservices.h \
-		/qt-5.5.0-install/include/QtGui/qvalidator.h \
-		/qt-5.5.0-install/include/QtGui/qtguiversion.h \
-		/qt-5.5.0-install/include/QtWidgets/complexwidgets.h \
-		/qt-5.5.0-install/include/QtWidgets/qaccessiblewidget.h \
-		/qt-5.5.0-install/include/QtWidgets/qabstractitemview.h \
-		/qt-5.5.0-install/include/QtWidgets/qabstractscrollarea.h \
-		/qt-5.5.0-install/include/QtWidgets/qframe.h \
-		/qt-5.5.0-install/include/QtWidgets/qwidget.h \
+		/qt-5.5.0-install/include/QtGui/qfontinfo.h \
 		/qt-5.5.0-install/include/QtWidgets/qsizepolicy.h \
-		/qt-5.5.0-install/include/QtWidgets/qabstractitemdelegate.h \
-		/qt-5.5.0-install/include/QtWidgets/qstyleoption.h \
-		/qt-5.5.0-install/include/QtWidgets/qabstractspinbox.h \
-		/qt-5.5.0-install/include/QtWidgets/qslider.h \
-		/qt-5.5.0-install/include/QtWidgets/qabstractslider.h \
-		/qt-5.5.0-install/include/QtWidgets/qstyle.h \
-		/qt-5.5.0-install/include/QtWidgets/qtabbar.h \
-		/qt-5.5.0-install/include/QtWidgets/qtabwidget.h \
-		/qt-5.5.0-install/include/QtWidgets/qrubberband.h \
-		/qt-5.5.0-install/include/QtWidgets/itemviews.h \
-		/qt-5.5.0-install/include/QtWidgets/qheaderview.h \
-		/qt-5.5.0-install/include/QtWidgets/qaccessiblemenu.h \
-		/qt-5.5.0-install/include/QtWidgets/qaccessiblewidgets.h \
-		/qt-5.5.0-install/include/QtCore/QPointer \
-		/qt-5.5.0-install/include/QtCore/QPair \
-		/qt-5.5.0-install/include/QtWidgets/rangecontrols.h \
-		/qt-5.5.0-install/include/QtWidgets/simplewidgets.h \
-		/qt-5.5.0-install/include/QtWidgets/qcolordialog.h \
-		/qt-5.5.0-install/include/QtWidgets/qdialog.h \
-		/qt-5.5.0-install/include/QtWidgets/qerrormessage.h \
-		/qt-5.5.0-install/include/QtWidgets/qfiledialog.h \
-		/qt-5.5.0-install/include/QtWidgets/qfilesystemmodel.h \
-		/qt-5.5.0-install/include/QtWidgets/qfontdialog.h \
-		/qt-5.5.0-install/include/QtWidgets/qinputdialog.h \
-		/qt-5.5.0-install/include/QtWidgets/qlineedit.h \
-		/qt-5.5.0-install/include/QtWidgets/qmessagebox.h \
-		/qt-5.5.0-install/include/QtWidgets/qprogressdialog.h \
-		/qt-5.5.0-install/include/QtWidgets/qwizard.h \
-		/qt-5.5.0-install/include/QtWidgets/qgraphicseffect.h \
-		/qt-5.5.0-install/include/QtWidgets/qgraphicsanchorlayout.h \
-		/qt-5.5.0-install/include/QtWidgets/qgraphicsitem.h \
-		/qt-5.5.0-install/include/QtWidgets/qgraphicslayout.h \
-		/qt-5.5.0-install/include/QtWidgets/qgraphicslayoutitem.h \
-		/qt-5.5.0-install/include/QtWidgets/qgraphicsgridlayout.h \
-		/qt-5.5.0-install/include/QtWidgets/qgraphicsitemanimation.h \
-		/qt-5.5.0-install/include/QtWidgets/qgraphicslinearlayout.h \
-		/qt-5.5.0-install/include/QtWidgets/qgraphicsproxywidget.h \
-		/qt-5.5.0-install/include/QtWidgets/qgraphicswidget.h \
-		/qt-5.5.0-install/include/QtWidgets/qgraphicsscene.h \
-		/qt-5.5.0-install/include/QtWidgets/qgraphicssceneevent.h \
-		/qt-5.5.0-install/include/QtWidgets/qgraphicstransform.h \
-		/qt-5.5.0-install/include/QtGui/QVector3D \
-		/qt-5.5.0-install/include/QtGui/QMatrix4x4 \
-		/qt-5.5.0-install/include/QtWidgets/qgraphicsview.h \
-		/qt-5.5.0-install/include/QtWidgets/qscrollarea.h \
-		/qt-5.5.0-install/include/QtWidgets/qcolumnview.h \
-		/qt-5.5.0-install/include/QtWidgets/qdatawidgetmapper.h \
-		/qt-5.5.0-install/include/QtWidgets/qdirmodel.h \
-		/qt-5.5.0-install/include/QtWidgets/qfileiconprovider.h \
-		/qt-5.5.0-install/include/QtWidgets/qitemdelegate.h \
-		/qt-5.5.0-install/include/QtWidgets/qitemeditorfactory.h \
-		/qt-5.5.0-install/include/QtWidgets/qlistview.h \
-		/qt-5.5.0-install/include/QtWidgets/qlistwidget.h \
-		/qt-5.5.0-install/include/QtWidgets/qstyleditemdelegate.h \
-		/qt-5.5.0-install/include/QtWidgets/qtableview.h \
-		/qt-5.5.0-install/include/QtWidgets/qtablewidget.h \
-		/qt-5.5.0-install/include/QtWidgets/qtreeview.h \
-		/qt-5.5.0-install/include/QtWidgets/qtreewidget.h \
-		/qt-5.5.0-install/include/QtWidgets/qtreewidgetitemiterator.h \
-		/qt-5.5.0-install/include/QtWidgets/qaction.h \
-		/qt-5.5.0-install/include/QtWidgets/qactiongroup.h \
-		/qt-5.5.0-install/include/QtWidgets/qapplication.h \
-		/qt-5.5.0-install/include/QtWidgets/qdesktopwidget.h \
-		/qt-5.5.0-install/include/QtWidgets/qboxlayout.h \
-		/qt-5.5.0-install/include/QtWidgets/qlayout.h \
-		/qt-5.5.0-install/include/QtWidgets/qlayoutitem.h \
-		/qt-5.5.0-install/include/QtWidgets/qgridlayout.h \
-		/qt-5.5.0-install/include/QtWidgets/qformlayout.h \
-		/qt-5.5.0-install/include/QtWidgets/QLayout \
-		/qt-5.5.0-install/include/QtWidgets/qgesture.h \
-		/qt-5.5.0-install/include/QtWidgets/qgesturerecognizer.h \
-		/qt-5.5.0-install/include/QtWidgets/qopenglwidget.h \
-		/qt-5.5.0-install/include/QtWidgets/QWidget \
-		/qt-5.5.0-install/include/QtWidgets/qshortcut.h \
-		/qt-5.5.0-install/include/QtWidgets/qstackedlayout.h \
-		/qt-5.5.0-install/include/QtWidgets/qtooltip.h \
-		/qt-5.5.0-install/include/QtWidgets/qwhatsthis.h \
-		/qt-5.5.0-install/include/QtWidgets/qwidgetaction.h \
-		/qt-5.5.0-install/include/QtWidgets/qkeyeventtransition.h \
-		/qt-5.5.0-install/include/QtWidgets/qmouseeventtransition.h \
-		/qt-5.5.0-install/include/QtWidgets/qcommonstyle.h \
-		/qt-5.5.0-install/include/QtWidgets/qdrawutil.h \
-		/qt-5.5.0-install/include/QtWidgets/qproxystyle.h \
-		/qt-5.5.0-install/include/QtWidgets/QCommonStyle \
-		/qt-5.5.0-install/include/QtWidgets/qstylefactory.h \
-		/qt-5.5.0-install/include/QtWidgets/qstylepainter.h \
-		/qt-5.5.0-install/include/QtWidgets/qstyleplugin.h \
-		/qt-5.5.0-install/include/QtWidgets/qcolormap.h \
-		/qt-5.5.0-install/include/QtWidgets/qcompleter.h \
-		/qt-5.5.0-install/include/QtWidgets/qscroller.h \
-		/qt-5.5.0-install/include/QtCore/QPointF \
-		/qt-5.5.0-install/include/QtWidgets/QScrollerProperties \
-		/qt-5.5.0-install/include/QtWidgets/qscrollerproperties.h \
-		/qt-5.5.0-install/include/QtCore/QMetaType \
-		/qt-5.5.0-install/include/QtCore/QVariant \
-		/qt-5.5.0-install/include/QtWidgets/qsystemtrayicon.h \
-		/qt-5.5.0-install/include/QtWidgets/qundogroup.h \
-		/qt-5.5.0-install/include/QtWidgets/qundostack.h \
-		/qt-5.5.0-install/include/QtWidgets/qundoview.h \
-		/qt-5.5.0-install/include/QtWidgets/qabstractbutton.h \
-		/qt-5.5.0-install/include/QtWidgets/qbuttongroup.h \
-		/qt-5.5.0-install/include/QtWidgets/qcalendarwidget.h \
-		/qt-5.5.0-install/include/QtWidgets/qcheckbox.h \
-		/qt-5.5.0-install/include/QtWidgets/qcombobox.h \
-		/qt-5.5.0-install/include/QtWidgets/qcommandlinkbutton.h \
-		/qt-5.5.0-install/include/QtWidgets/qpushbutton.h \
-		/qt-5.5.0-install/include/QtWidgets/qdatetimeedit.h \
-		/qt-5.5.0-install/include/QtWidgets/qdial.h \
-		/qt-5.5.0-install/include/QtWidgets/qdialogbuttonbox.h \
-		/qt-5.5.0-install/include/QtWidgets/qdockwidget.h \
-		/qt-5.5.0-install/include/QtWidgets/qfocusframe.h \
-		/qt-5.5.0-install/include/QtWidgets/qfontcombobox.h \
-		/qt-5.5.0-install/include/QtWidgets/qgroupbox.h \
-		/qt-5.5.0-install/include/QtWidgets/qkeysequenceedit.h \
-		/qt-5.5.0-install/include/QtWidgets/qlabel.h \
-		/qt-5.5.0-install/include/QtWidgets/qlcdnumber.h \
-		/qt-5.5.0-install/include/QtWidgets/qmainwindow.h \
-		/qt-5.5.0-install/include/QtWidgets/qmdiarea.h \
-		/qt-5.5.0-install/include/QtWidgets/qmdisubwindow.h \
-		/qt-5.5.0-install/include/QtWidgets/qmenu.h \
-		/qt-5.5.0-install/include/QtWidgets/qmenubar.h \
-		/qt-5.5.0-install/include/QtWidgets/qplaintextedit.h \
-		/qt-5.5.0-install/include/QtWidgets/qtextedit.h \
-		/qt-5.5.0-install/include/QtWidgets/qprogressbar.h \
-		/qt-5.5.0-install/include/QtWidgets/qradiobutton.h \
-		/qt-5.5.0-install/include/QtWidgets/qscrollbar.h \
-		/qt-5.5.0-install/include/QtWidgets/qsizegrip.h \
-		/qt-5.5.0-install/include/QtWidgets/qspinbox.h \
-		/qt-5.5.0-install/include/QtWidgets/qsplashscreen.h \
-		/qt-5.5.0-install/include/QtWidgets/qsplitter.h \
-		/qt-5.5.0-install/include/QtWidgets/qstackedwidget.h \
-		/qt-5.5.0-install/include/QtWidgets/qstatusbar.h \
-		/qt-5.5.0-install/include/QtWidgets/qtextbrowser.h \
-		/qt-5.5.0-install/include/QtWidgets/qtoolbar.h \
-		/qt-5.5.0-install/include/QtWidgets/qtoolbox.h \
-		/qt-5.5.0-install/include/QtWidgets/qtoolbutton.h \
-		/qt-5.5.0-install/include/QtWidgets/qtwidgetsversion.h \
-		/qt-5.5.0-install/include/QtWidgets/QLabel \
-		/qt-5.5.0-install/include/QtGui/QMovie \
+		/qt-5.5.0-install/include/QtGui/qcursor.h \
+		/qt-5.5.0-install/include/QtGui/qkeysequence.h \
+		/qt-5.5.0-install/include/QtGui/qevent.h \
+		/qt-5.5.0-install/include/QtCore/qvariant.h \
+		/qt-5.5.0-install/include/QtCore/qmap.h \
+		/qt-5.5.0-install/include/QtCore/qdebug.h \
+		/qt-5.5.0-install/include/QtCore/qtextstream.h \
+		/qt-5.5.0-install/include/QtCore/qlocale.h \
+		/qt-5.5.0-install/include/QtCore/qset.h \
+		/qt-5.5.0-install/include/QtCore/qcontiguouscache.h \
+		/qt-5.5.0-install/include/QtCore/qurl.h \
+		/qt-5.5.0-install/include/QtCore/qurlquery.h \
+		/qt-5.5.0-install/include/QtCore/qfile.h \
+		/qt-5.5.0-install/include/QtCore/qfiledevice.h \
+		/qt-5.5.0-install/include/QtGui/qvector2d.h \
+		/qt-5.5.0-install/include/QtGui/qtouchdevice.h \
 		global.h \
-		/qt-5.5.0-install/include/QtCore/QString \
+		/qt-5.5.0-install/include/QtCore/QVariant \
 		/qt-5.5.0-install/include/QtCore/QSettings \
+		/qt-5.5.0-install/include/QtCore/qsettings.h \
 		/qt-5.5.0-install/include/QtCore/QTextCodec \
-		screenemotion/label.h
+		/qt-5.5.0-install/include/QtCore/qtextcodec.h \
+		/qt-5.5.0-install/include/QtCore/QFile \
+		/qt-5.5.0-install/include/QtGui/QMovie \
+		/qt-5.5.0-install/include/QtGui/qmovie.h \
+		/qt-5.5.0-install/include/QtGui/qimagereader.h \
+		/qt-5.5.0-install/include/QtCore/qcoreapplication.h \
+		/qt-5.5.0-install/include/QtCore/qeventloop.h \
+		/qt-5.5.0-install/include/QtGui/qimageiohandler.h \
+		/qt-5.5.0-install/include/QtCore/qplugin.h \
+		/qt-5.5.0-install/include/QtCore/qpointer.h \
+		/qt-5.5.0-install/include/QtCore/qjsonobject.h \
+		/qt-5.5.0-install/include/QtCore/qjsonvalue.h \
+		/qt-5.5.0-install/include/QtCore/qfactoryinterface.h \
+		/qt-5.5.0-install/include/QtCore/QDebug \
+		/qt-5.5.0-install/include/QtCore/QFileInfo \
+		/qt-5.5.0-install/include/QtCore/qfileinfo.h \
+		/qt-5.5.0-install/include/QtCore/QDir \
+		/qt-5.5.0-install/include/QtCore/qdir.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o screenemotion.o screenemotion/screenemotion.cpp
 
 audioplayer.o: audioplayer/audioplayer.cpp audioplayer/audioplayer.h \
@@ -8102,12 +4486,12 @@ login.o: net/login.cpp net/login.h \
 		/qt-5.5.0-install/include/QtCore/QUrl \
 		/qt-5.5.0-install/include/QtCore/qurl.h \
 		/qt-5.5.0-install/include/QtCore/qurlquery.h \
-		/qt-5.5.0-install/include/QtCore/QThread \
-		/qt-5.5.0-install/include/QtCore/qthread.h \
 		/qt-5.5.0-install/include/QtCore/QElapsedTimer \
 		/qt-5.5.0-install/include/QtCore/qelapsedtimer.h \
 		/qt-5.5.0-install/include/QtCore/QEventLoop \
 		/qt-5.5.0-install/include/QtCore/qeventloop.h \
+		/qt-5.5.0-install/include/QtCore/QThread \
+		/qt-5.5.0-install/include/QtCore/qthread.h \
 		/qt-5.5.0-install/include/QtCore/QDebug \
 		/qt-5.5.0-install/include/QtCore/QTimer \
 		/qt-5.5.0-install/include/QtCore/qtimer.h \
@@ -8219,15 +4603,14 @@ label.o: screenemotion/label.cpp screenemotion/label.h \
 		/qt-5.5.0-install/include/QtCore/qfiledevice.h \
 		/qt-5.5.0-install/include/QtGui/qvector2d.h \
 		/qt-5.5.0-install/include/QtGui/qtouchdevice.h \
+		/qt-5.5.0-install/include/QtGui/QMouseEvent \
+		/qt-5.5.0-install/include/QtCore/QDebug \
 		global.h \
-		/qt-5.5.0-install/include/QtCore/QString \
 		/qt-5.5.0-install/include/QtCore/QVariant \
 		/qt-5.5.0-install/include/QtCore/QSettings \
 		/qt-5.5.0-install/include/QtCore/qsettings.h \
 		/qt-5.5.0-install/include/QtCore/QTextCodec \
-		/qt-5.5.0-install/include/QtCore/qtextcodec.h \
-		/qt-5.5.0-install/include/QtGui/QMouseEvent \
-		/qt-5.5.0-install/include/QtCore/QDebug
+		/qt-5.5.0-install/include/QtCore/qtextcodec.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o label.o screenemotion/label.cpp
 
 emotionplayer.o: videoplayer/emotionplayer.cpp videoplayer/emotionplayer.h \
@@ -8285,412 +4668,76 @@ emotionplayer.o: videoplayer/emotionplayer.cpp videoplayer/emotionplayer.h \
 		/qt-5.5.0-install/include/QtCore/qisenum.h \
 		/qt-5.5.0-install/include/QtCore/qobject_impl.h \
 		videoplayer/videoplayer.h \
-		/qt-5.5.0-install/include/QtCore/QtCore \
-		/qt-5.5.0-install/include/QtCore/QtCoreDepends \
-		/qt-5.5.0-install/include/QtCore/qabstractanimation.h \
-		/qt-5.5.0-install/include/QtCore/qanimationgroup.h \
-		/qt-5.5.0-install/include/QtCore/qparallelanimationgroup.h \
-		/qt-5.5.0-install/include/QtCore/qpauseanimation.h \
-		/qt-5.5.0-install/include/QtCore/qpropertyanimation.h \
-		/qt-5.5.0-install/include/QtCore/qvariantanimation.h \
-		/qt-5.5.0-install/include/QtCore/qeasingcurve.h \
-		/qt-5.5.0-install/include/QtCore/qvector.h \
-		/qt-5.5.0-install/include/QtCore/qpoint.h \
-		/qt-5.5.0-install/include/QtCore/qvariant.h \
-		/qt-5.5.0-install/include/QtCore/qmap.h \
-		/qt-5.5.0-install/include/QtCore/qpair.h \
-		/qt-5.5.0-install/include/QtCore/qdebug.h \
-		/qt-5.5.0-install/include/QtCore/qhash.h \
-		/qt-5.5.0-install/include/QtCore/qtextstream.h \
-		/qt-5.5.0-install/include/QtCore/qiodevice.h \
-		/qt-5.5.0-install/include/QtCore/qlocale.h \
-		/qt-5.5.0-install/include/QtCore/qshareddata.h \
-		/qt-5.5.0-install/include/QtCore/qset.h \
-		/qt-5.5.0-install/include/QtCore/qcontiguouscache.h \
-		/qt-5.5.0-install/include/QtCore/qsequentialanimationgroup.h \
-		/qt-5.5.0-install/include/QtCore/qtextcodec.h \
-		/qt-5.5.0-install/include/QtCore/qendian.h \
-		/qt-5.5.0-install/include/QtCore/qlibraryinfo.h \
-		/qt-5.5.0-install/include/QtCore/qdatetime.h \
-		/qt-5.5.0-install/include/QtCore/qbuffer.h \
-		/qt-5.5.0-install/include/QtCore/qdatastream.h \
-		/qt-5.5.0-install/include/QtCore/qdir.h \
+		/qt-5.5.0-install/include/QtCore/QThread \
+		/qt-5.5.0-install/include/QtCore/qthread.h \
+		/qt-5.5.0-install/include/QtCore/QMutex \
+		/qt-5.5.0-install/include/QtCore/QFileInfo \
 		/qt-5.5.0-install/include/QtCore/qfileinfo.h \
 		/qt-5.5.0-install/include/QtCore/qfile.h \
 		/qt-5.5.0-install/include/QtCore/qfiledevice.h \
-		/qt-5.5.0-install/include/QtCore/qdiriterator.h \
-		/qt-5.5.0-install/include/QtCore/qfileselector.h \
-		/qt-5.5.0-install/include/QtCore/QStringList \
-		/qt-5.5.0-install/include/QtCore/qfilesystemwatcher.h \
-		/qt-5.5.0-install/include/QtCore/qlockfile.h \
-		/qt-5.5.0-install/include/QtCore/qloggingcategory.h \
-		/qt-5.5.0-install/include/QtCore/qprocess.h \
-		/qt-5.5.0-install/include/QtCore/qresource.h \
-		/qt-5.5.0-install/include/QtCore/qsavefile.h \
-		/qt-5.5.0-install/include/QtCore/qsettings.h \
-		/qt-5.5.0-install/include/QtCore/qstandardpaths.h \
-		/qt-5.5.0-install/include/QtCore/qstorageinfo.h \
-		/qt-5.5.0-install/include/QtCore/qtemporarydir.h \
-		/qt-5.5.0-install/include/QtCore/QScopedPointer \
-		/qt-5.5.0-install/include/QtCore/qtemporaryfile.h \
-		/qt-5.5.0-install/include/QtCore/qurl.h \
-		/qt-5.5.0-install/include/QtCore/qurlquery.h \
-		/qt-5.5.0-install/include/QtCore/qabstractitemmodel.h \
-		/qt-5.5.0-install/include/QtCore/qabstractproxymodel.h \
-		/qt-5.5.0-install/include/QtCore/qidentityproxymodel.h \
-		/qt-5.5.0-install/include/QtCore/qitemselectionmodel.h \
-		/qt-5.5.0-install/include/QtCore/qsortfilterproxymodel.h \
-		/qt-5.5.0-install/include/QtCore/qstringlistmodel.h \
-		/qt-5.5.0-install/include/QtCore/qjsonarray.h \
-		/qt-5.5.0-install/include/QtCore/qjsonvalue.h \
-		/qt-5.5.0-install/include/QtCore/qjsondocument.h \
-		/qt-5.5.0-install/include/QtCore/qjsonobject.h \
-		/qt-5.5.0-install/include/QtCore/qabstracteventdispatcher.h \
-		/qt-5.5.0-install/include/QtCore/qeventloop.h \
-		/qt-5.5.0-install/include/QtCore/qabstractnativeeventfilter.h \
-		/qt-5.5.0-install/include/QtCore/qbasictimer.h \
-		/qt-5.5.0-install/include/QtCore/qcoreapplication.h \
-		/qt-5.5.0-install/include/QtCore/qmath.h \
-		/qt-5.5.0-install/include/QtCore/qmetaobject.h \
-		/qt-5.5.0-install/include/QtCore/qmimedata.h \
-		/qt-5.5.0-install/include/QtCore/qobjectcleanuphandler.h \
-		/qt-5.5.0-install/include/QtCore/qpointer.h \
-		/qt-5.5.0-install/include/QtCore/qsharedpointer.h \
-		/qt-5.5.0-install/include/QtCore/qsharedpointer_impl.h \
-		/qt-5.5.0-install/include/QtCore/qsharedmemory.h \
-		/qt-5.5.0-install/include/QtCore/qsignalmapper.h \
-		/qt-5.5.0-install/include/QtCore/qsocketnotifier.h \
-		/qt-5.5.0-install/include/QtCore/qsystemsemaphore.h \
-		/qt-5.5.0-install/include/QtCore/qtimer.h \
-		/qt-5.5.0-install/include/QtCore/qtranslator.h \
-		/qt-5.5.0-install/include/QtCore/qwineventnotifier.h \
-		/qt-5.5.0-install/include/QtCore/qmimedatabase.h \
-		/qt-5.5.0-install/include/QtCore/qmimetype.h \
-		/qt-5.5.0-install/include/QtCore/qfactoryinterface.h \
-		/qt-5.5.0-install/include/QtCore/qlibrary.h \
-		/qt-5.5.0-install/include/QtCore/qplugin.h \
-		/qt-5.5.0-install/include/QtCore/qpluginloader.h \
-		/qt-5.5.0-install/include/QtCore/quuid.h \
-		/qt-5.5.0-install/include/QtCore/qabstractstate.h \
-		/qt-5.5.0-install/include/QtCore/qabstracttransition.h \
-		/qt-5.5.0-install/include/QtCore/qeventtransition.h \
-		/qt-5.5.0-install/include/QtCore/qfinalstate.h \
-		/qt-5.5.0-install/include/QtCore/qhistorystate.h \
-		/qt-5.5.0-install/include/QtCore/qsignaltransition.h \
-		/qt-5.5.0-install/include/QtCore/qstate.h \
-		/qt-5.5.0-install/include/QtCore/qstatemachine.h \
-		/qt-5.5.0-install/include/QtCore/qexception.h \
-		/qt-5.5.0-install/include/QtCore/qfuture.h \
-		/qt-5.5.0-install/include/QtCore/qfutureinterface.h \
-		/qt-5.5.0-install/include/QtCore/qrunnable.h \
-		/qt-5.5.0-install/include/QtCore/qresultstore.h \
-		/qt-5.5.0-install/include/QtCore/qfuturesynchronizer.h \
-		/qt-5.5.0-install/include/QtCore/qfuturewatcher.h \
-		/qt-5.5.0-install/include/QtCore/qreadwritelock.h \
-		/qt-5.5.0-install/include/QtCore/qsemaphore.h \
-		/qt-5.5.0-install/include/QtCore/qthread.h \
-		/qt-5.5.0-install/include/QtCore/qthreadpool.h \
-		/qt-5.5.0-install/include/QtCore/qthreadstorage.h \
-		/qt-5.5.0-install/include/QtCore/qwaitcondition.h \
-		/qt-5.5.0-install/include/QtCore/qarraydataops.h \
-		/qt-5.5.0-install/include/QtCore/qarraydatapointer.h \
-		/qt-5.5.0-install/include/QtCore/qbitarray.h \
-		/qt-5.5.0-install/include/QtCore/qbytearraymatcher.h \
-		/qt-5.5.0-install/include/QtCore/qcache.h \
-		/qt-5.5.0-install/include/QtCore/qcollator.h \
-		/qt-5.5.0-install/include/QtCore/qcommandlineoption.h \
-		/qt-5.5.0-install/include/QtCore/qcommandlineparser.h \
-		/qt-5.5.0-install/include/QtCore/qcryptographichash.h \
-		/qt-5.5.0-install/include/QtCore/qelapsedtimer.h \
-		/qt-5.5.0-install/include/QtCore/qline.h \
-		/qt-5.5.0-install/include/QtCore/qlinkedlist.h \
-		/qt-5.5.0-install/include/QtCore/qmargins.h \
-		/qt-5.5.0-install/include/QtCore/qmessageauthenticationcode.h \
-		/qt-5.5.0-install/include/QtCore/qqueue.h \
-		/qt-5.5.0-install/include/QtCore/qrect.h \
-		/qt-5.5.0-install/include/QtCore/qsize.h \
-		/qt-5.5.0-install/include/QtCore/qregularexpression.h \
-		/qt-5.5.0-install/include/QtCore/qscopedvaluerollback.h \
-		/qt-5.5.0-install/include/QtCore/qstack.h \
-		/qt-5.5.0-install/include/QtCore/qtextboundaryfinder.h \
-		/qt-5.5.0-install/include/QtCore/qtimeline.h \
-		/qt-5.5.0-install/include/QtCore/qtimezone.h \
-		/qt-5.5.0-install/include/QtCore/qxmlstream.h \
-		/qt-5.5.0-install/include/QtCore/qtcoreversion.h \
-		/qt-5.5.0-install/include/QtWidgets/QtWidgets \
-		/qt-5.5.0-install/include/QtWidgets/QtWidgetsDepends \
-		/qt-5.5.0-install/include/QtGui/QtGui \
-		/qt-5.5.0-install/include/QtGui/QtGuiDepends \
-		/qt-5.5.0-install/include/QtGui/qaccessible.h \
-		/qt-5.5.0-install/include/QtGui/qcolor.h \
-		/qt-5.5.0-install/include/QtGui/qrgb.h \
-		/qt-5.5.0-install/include/QtGui/qevent.h \
-		/qt-5.5.0-install/include/QtGui/qwindowdefs.h \
-		/qt-5.5.0-install/include/QtGui/qwindowdefs_win.h \
-		/qt-5.5.0-install/include/QtGui/qregion.h \
-		/qt-5.5.0-install/include/QtGui/qkeysequence.h \
-		/qt-5.5.0-install/include/QtGui/qvector2d.h \
-		/qt-5.5.0-install/include/QtGui/qtouchdevice.h \
-		/qt-5.5.0-install/include/QtGui/qaccessiblebridge.h \
-		/qt-5.5.0-install/include/QtGui/qaccessibleobject.h \
-		/qt-5.5.0-install/include/QtGui/qaccessibleplugin.h \
-		/qt-5.5.0-install/include/QtGui/qbitmap.h \
-		/qt-5.5.0-install/include/QtGui/qpixmap.h \
-		/qt-5.5.0-install/include/QtGui/qpaintdevice.h \
-		/qt-5.5.0-install/include/QtGui/qimage.h \
-		/qt-5.5.0-install/include/QtGui/qtransform.h \
-		/qt-5.5.0-install/include/QtGui/qmatrix.h \
-		/qt-5.5.0-install/include/QtGui/qpolygon.h \
-		/qt-5.5.0-install/include/QtGui/qpainterpath.h \
-		/qt-5.5.0-install/include/QtGui/qpixelformat.h \
-		/qt-5.5.0-install/include/QtGui/qicon.h \
-		/qt-5.5.0-install/include/QtGui/qiconengine.h \
-		/qt-5.5.0-install/include/QtGui/qiconengineplugin.h \
-		/qt-5.5.0-install/include/QtGui/qimageiohandler.h \
-		/qt-5.5.0-install/include/QtGui/qimagereader.h \
-		/qt-5.5.0-install/include/QtGui/qimagewriter.h \
-		/qt-5.5.0-install/include/QtGui/qmovie.h \
-		/qt-5.5.0-install/include/QtGui/qpicture.h \
-		/qt-5.5.0-install/include/QtGui/qpictureformatplugin.h \
-		/qt-5.5.0-install/include/QtGui/qpixmapcache.h \
-		/qt-5.5.0-install/include/QtGui/qstandarditemmodel.h \
-		/qt-5.5.0-install/include/QtGui/qbrush.h \
-		/qt-5.5.0-install/include/QtGui/qfont.h \
-		/qt-5.5.0-install/include/QtGui/qclipboard.h \
-		/qt-5.5.0-install/include/QtGui/qcursor.h \
-		/qt-5.5.0-install/include/QtGui/qdrag.h \
-		/qt-5.5.0-install/include/QtGui/qgenericplugin.h \
-		/qt-5.5.0-install/include/QtGui/qgenericpluginfactory.h \
-		/qt-5.5.0-install/include/QtGui/qguiapplication.h \
-		/qt-5.5.0-install/include/QtGui/qinputmethod.h \
-		/qt-5.5.0-install/include/QtGui/qoffscreensurface.h \
-		/qt-5.5.0-install/include/QtGui/qsurface.h \
-		/qt-5.5.0-install/include/QtGui/qsurfaceformat.h \
-		/qt-5.5.0-install/include/QtGui/qopenglcontext.h \
-		/qt-5.5.0-install/include/QtGui/QSurfaceFormat \
-		/qt-5.5.0-install/include/QtGui/qopengl.h \
-		/qt-5.5.0-install/include/QtCore/qt_windows.h \
-		/qt-5.5.0-install/include/QtGui/qopengles2ext.h \
-		/qt-5.5.0-install/include/QtGui/qopenglext.h \
-		/qt-5.5.0-install/include/QtGui/qopenglversionfunctions.h \
-		/qt-5.5.0-install/include/QtGui/qopenglwindow.h \
-		/qt-5.5.0-install/include/QtGui/QPaintDeviceWindow \
-		/qt-5.5.0-install/include/QtGui/qpaintdevicewindow.h \
-		/qt-5.5.0-install/include/QtGui/QWindow \
-		/qt-5.5.0-install/include/QtGui/qwindow.h \
-		/qt-5.5.0-install/include/QtCore/QEvent \
-		/qt-5.5.0-install/include/QtCore/QMargins \
-		/qt-5.5.0-install/include/QtCore/QRect \
-		/qt-5.5.0-install/include/QtGui/QPaintDevice \
-		/qt-5.5.0-install/include/QtGui/QOpenGLContext \
-		/qt-5.5.0-install/include/QtGui/QImage \
-		/qt-5.5.0-install/include/QtGui/qpalette.h \
-		/qt-5.5.0-install/include/QtGui/qrasterwindow.h \
-		/qt-5.5.0-install/include/QtGui/qscreen.h \
-		/qt-5.5.0-install/include/QtCore/QList \
-		/qt-5.5.0-install/include/QtCore/QSize \
-		/qt-5.5.0-install/include/QtCore/QSizeF \
-		/qt-5.5.0-install/include/QtGui/QTransform \
-		/qt-5.5.0-install/include/QtGui/qsessionmanager.h \
-		/qt-5.5.0-install/include/QtGui/qstylehints.h \
-		/qt-5.5.0-install/include/QtGui/qgenericmatrix.h \
-		/qt-5.5.0-install/include/QtGui/qmatrix4x4.h \
-		/qt-5.5.0-install/include/QtGui/qvector3d.h \
-		/qt-5.5.0-install/include/QtGui/qvector4d.h \
-		/qt-5.5.0-install/include/QtGui/qquaternion.h \
-		/qt-5.5.0-install/include/QtGui/qopenglbuffer.h \
-		/qt-5.5.0-install/include/QtGui/qopengldebug.h \
-		/qt-5.5.0-install/include/QtGui/qopenglframebufferobject.h \
-		/qt-5.5.0-install/include/QtGui/qopenglfunctions.h \
-		/qt-5.5.0-install/include/QtGui/qopenglpaintdevice.h \
-		/qt-5.5.0-install/include/QtGui/qopenglpixeltransferoptions.h \
-		/qt-5.5.0-install/include/QtCore/QSharedDataPointer \
-		/qt-5.5.0-install/include/QtGui/qopenglshaderprogram.h \
-		/qt-5.5.0-install/include/QtGui/qopengltexture.h \
-		/qt-5.5.0-install/include/QtGui/qopengltimerquery.h \
-		/qt-5.5.0-install/include/QtGui/qopenglvertexarrayobject.h \
-		/qt-5.5.0-install/include/QtGui/qbackingstore.h \
-		/qt-5.5.0-install/include/QtGui/qpagedpaintdevice.h \
-		/qt-5.5.0-install/include/QtGui/qpagelayout.h \
-		/qt-5.5.0-install/include/QtGui/qpagesize.h \
-		/qt-5.5.0-install/include/QtGui/qpaintengine.h \
-		/qt-5.5.0-install/include/QtGui/qpainter.h \
-		/qt-5.5.0-install/include/QtGui/qtextoption.h \
-		/qt-5.5.0-install/include/QtGui/qpen.h \
-		/qt-5.5.0-install/include/QtGui/qfontinfo.h \
-		/qt-5.5.0-install/include/QtGui/qfontmetrics.h \
-		/qt-5.5.0-install/include/QtGui/qpdfwriter.h \
-		/qt-5.5.0-install/include/QtGui/qabstracttextdocumentlayout.h \
-		/qt-5.5.0-install/include/QtGui/qtextlayout.h \
-		/qt-5.5.0-install/include/QtGui/qtextformat.h \
-		/qt-5.5.0-install/include/QtGui/qglyphrun.h \
-		/qt-5.5.0-install/include/QtGui/qrawfont.h \
-		/qt-5.5.0-install/include/QtGui/qfontdatabase.h \
-		/qt-5.5.0-install/include/QtGui/qtextcursor.h \
-		/qt-5.5.0-install/include/QtGui/qtextdocument.h \
-		/qt-5.5.0-install/include/QtGui/qstatictext.h \
-		/qt-5.5.0-install/include/QtGui/qsyntaxhighlighter.h \
-		/qt-5.5.0-install/include/QtGui/qtextobject.h \
-		/qt-5.5.0-install/include/QtGui/qtextdocumentfragment.h \
-		/qt-5.5.0-install/include/QtGui/qtextdocumentwriter.h \
-		/qt-5.5.0-install/include/QtGui/qtextlist.h \
-		/qt-5.5.0-install/include/QtGui/qtexttable.h \
-		/qt-5.5.0-install/include/QtGui/qdesktopservices.h \
-		/qt-5.5.0-install/include/QtGui/qvalidator.h \
-		/qt-5.5.0-install/include/QtGui/qtguiversion.h \
-		/qt-5.5.0-install/include/QtWidgets/complexwidgets.h \
-		/qt-5.5.0-install/include/QtWidgets/qaccessiblewidget.h \
-		/qt-5.5.0-install/include/QtWidgets/qabstractitemview.h \
-		/qt-5.5.0-install/include/QtWidgets/qabstractscrollarea.h \
-		/qt-5.5.0-install/include/QtWidgets/qframe.h \
-		/qt-5.5.0-install/include/QtWidgets/qwidget.h \
-		/qt-5.5.0-install/include/QtWidgets/qsizepolicy.h \
-		/qt-5.5.0-install/include/QtWidgets/qabstractitemdelegate.h \
-		/qt-5.5.0-install/include/QtWidgets/qstyleoption.h \
-		/qt-5.5.0-install/include/QtWidgets/qabstractspinbox.h \
-		/qt-5.5.0-install/include/QtWidgets/qslider.h \
-		/qt-5.5.0-install/include/QtWidgets/qabstractslider.h \
-		/qt-5.5.0-install/include/QtWidgets/qstyle.h \
-		/qt-5.5.0-install/include/QtWidgets/qtabbar.h \
-		/qt-5.5.0-install/include/QtWidgets/qtabwidget.h \
-		/qt-5.5.0-install/include/QtWidgets/qrubberband.h \
-		/qt-5.5.0-install/include/QtWidgets/itemviews.h \
-		/qt-5.5.0-install/include/QtWidgets/qheaderview.h \
-		/qt-5.5.0-install/include/QtWidgets/qaccessiblemenu.h \
-		/qt-5.5.0-install/include/QtWidgets/qaccessiblewidgets.h \
-		/qt-5.5.0-install/include/QtCore/QPointer \
-		/qt-5.5.0-install/include/QtCore/QPair \
-		/qt-5.5.0-install/include/QtWidgets/rangecontrols.h \
-		/qt-5.5.0-install/include/QtWidgets/simplewidgets.h \
-		/qt-5.5.0-install/include/QtWidgets/qcolordialog.h \
-		/qt-5.5.0-install/include/QtWidgets/qdialog.h \
-		/qt-5.5.0-install/include/QtWidgets/qerrormessage.h \
-		/qt-5.5.0-install/include/QtWidgets/qfiledialog.h \
-		/qt-5.5.0-install/include/QtWidgets/qfilesystemmodel.h \
-		/qt-5.5.0-install/include/QtWidgets/qfontdialog.h \
-		/qt-5.5.0-install/include/QtWidgets/qinputdialog.h \
-		/qt-5.5.0-install/include/QtWidgets/qlineedit.h \
-		/qt-5.5.0-install/include/QtWidgets/qmessagebox.h \
-		/qt-5.5.0-install/include/QtWidgets/qprogressdialog.h \
-		/qt-5.5.0-install/include/QtWidgets/qwizard.h \
-		/qt-5.5.0-install/include/QtWidgets/qgraphicseffect.h \
-		/qt-5.5.0-install/include/QtWidgets/qgraphicsanchorlayout.h \
-		/qt-5.5.0-install/include/QtWidgets/qgraphicsitem.h \
-		/qt-5.5.0-install/include/QtWidgets/qgraphicslayout.h \
-		/qt-5.5.0-install/include/QtWidgets/qgraphicslayoutitem.h \
-		/qt-5.5.0-install/include/QtWidgets/qgraphicsgridlayout.h \
-		/qt-5.5.0-install/include/QtWidgets/qgraphicsitemanimation.h \
-		/qt-5.5.0-install/include/QtWidgets/qgraphicslinearlayout.h \
-		/qt-5.5.0-install/include/QtWidgets/qgraphicsproxywidget.h \
-		/qt-5.5.0-install/include/QtWidgets/qgraphicswidget.h \
-		/qt-5.5.0-install/include/QtWidgets/qgraphicsscene.h \
-		/qt-5.5.0-install/include/QtWidgets/qgraphicssceneevent.h \
-		/qt-5.5.0-install/include/QtWidgets/qgraphicstransform.h \
-		/qt-5.5.0-install/include/QtGui/QVector3D \
-		/qt-5.5.0-install/include/QtGui/QMatrix4x4 \
-		/qt-5.5.0-install/include/QtWidgets/qgraphicsview.h \
-		/qt-5.5.0-install/include/QtWidgets/qscrollarea.h \
-		/qt-5.5.0-install/include/QtWidgets/qcolumnview.h \
-		/qt-5.5.0-install/include/QtWidgets/qdatawidgetmapper.h \
-		/qt-5.5.0-install/include/QtWidgets/qdirmodel.h \
-		/qt-5.5.0-install/include/QtWidgets/qfileiconprovider.h \
-		/qt-5.5.0-install/include/QtWidgets/qitemdelegate.h \
-		/qt-5.5.0-install/include/QtWidgets/qitemeditorfactory.h \
-		/qt-5.5.0-install/include/QtWidgets/qlistview.h \
-		/qt-5.5.0-install/include/QtWidgets/qlistwidget.h \
-		/qt-5.5.0-install/include/QtWidgets/qstyleditemdelegate.h \
-		/qt-5.5.0-install/include/QtWidgets/qtableview.h \
-		/qt-5.5.0-install/include/QtWidgets/qtablewidget.h \
-		/qt-5.5.0-install/include/QtWidgets/qtreeview.h \
-		/qt-5.5.0-install/include/QtWidgets/qtreewidget.h \
-		/qt-5.5.0-install/include/QtWidgets/qtreewidgetitemiterator.h \
-		/qt-5.5.0-install/include/QtWidgets/qaction.h \
-		/qt-5.5.0-install/include/QtWidgets/qactiongroup.h \
-		/qt-5.5.0-install/include/QtWidgets/qapplication.h \
-		/qt-5.5.0-install/include/QtWidgets/qdesktopwidget.h \
-		/qt-5.5.0-install/include/QtWidgets/qboxlayout.h \
-		/qt-5.5.0-install/include/QtWidgets/qlayout.h \
-		/qt-5.5.0-install/include/QtWidgets/qlayoutitem.h \
-		/qt-5.5.0-install/include/QtWidgets/qgridlayout.h \
-		/qt-5.5.0-install/include/QtWidgets/qformlayout.h \
-		/qt-5.5.0-install/include/QtWidgets/QLayout \
-		/qt-5.5.0-install/include/QtWidgets/qgesture.h \
-		/qt-5.5.0-install/include/QtWidgets/qgesturerecognizer.h \
-		/qt-5.5.0-install/include/QtWidgets/qopenglwidget.h \
-		/qt-5.5.0-install/include/QtWidgets/QWidget \
-		/qt-5.5.0-install/include/QtWidgets/qshortcut.h \
-		/qt-5.5.0-install/include/QtWidgets/qstackedlayout.h \
-		/qt-5.5.0-install/include/QtWidgets/qtooltip.h \
-		/qt-5.5.0-install/include/QtWidgets/qwhatsthis.h \
-		/qt-5.5.0-install/include/QtWidgets/qwidgetaction.h \
-		/qt-5.5.0-install/include/QtWidgets/qkeyeventtransition.h \
-		/qt-5.5.0-install/include/QtWidgets/qmouseeventtransition.h \
-		/qt-5.5.0-install/include/QtWidgets/qcommonstyle.h \
-		/qt-5.5.0-install/include/QtWidgets/qdrawutil.h \
-		/qt-5.5.0-install/include/QtWidgets/qproxystyle.h \
-		/qt-5.5.0-install/include/QtWidgets/QCommonStyle \
-		/qt-5.5.0-install/include/QtWidgets/qstylefactory.h \
-		/qt-5.5.0-install/include/QtWidgets/qstylepainter.h \
-		/qt-5.5.0-install/include/QtWidgets/qstyleplugin.h \
-		/qt-5.5.0-install/include/QtWidgets/qcolormap.h \
-		/qt-5.5.0-install/include/QtWidgets/qcompleter.h \
-		/qt-5.5.0-install/include/QtWidgets/qscroller.h \
-		/qt-5.5.0-install/include/QtCore/QPointF \
-		/qt-5.5.0-install/include/QtWidgets/QScrollerProperties \
-		/qt-5.5.0-install/include/QtWidgets/qscrollerproperties.h \
-		/qt-5.5.0-install/include/QtCore/QMetaType \
-		/qt-5.5.0-install/include/QtCore/QVariant \
-		/qt-5.5.0-install/include/QtWidgets/qsystemtrayicon.h \
-		/qt-5.5.0-install/include/QtWidgets/qundogroup.h \
-		/qt-5.5.0-install/include/QtWidgets/qundostack.h \
-		/qt-5.5.0-install/include/QtWidgets/qundoview.h \
-		/qt-5.5.0-install/include/QtWidgets/qabstractbutton.h \
-		/qt-5.5.0-install/include/QtWidgets/qbuttongroup.h \
-		/qt-5.5.0-install/include/QtWidgets/qcalendarwidget.h \
-		/qt-5.5.0-install/include/QtWidgets/qcheckbox.h \
-		/qt-5.5.0-install/include/QtWidgets/qcombobox.h \
-		/qt-5.5.0-install/include/QtWidgets/qcommandlinkbutton.h \
-		/qt-5.5.0-install/include/QtWidgets/qpushbutton.h \
-		/qt-5.5.0-install/include/QtWidgets/qdatetimeedit.h \
-		/qt-5.5.0-install/include/QtWidgets/qdial.h \
-		/qt-5.5.0-install/include/QtWidgets/qdialogbuttonbox.h \
-		/qt-5.5.0-install/include/QtWidgets/qdockwidget.h \
-		/qt-5.5.0-install/include/QtWidgets/qfocusframe.h \
-		/qt-5.5.0-install/include/QtWidgets/qfontcombobox.h \
-		/qt-5.5.0-install/include/QtWidgets/qgroupbox.h \
-		/qt-5.5.0-install/include/QtWidgets/qkeysequenceedit.h \
-		/qt-5.5.0-install/include/QtWidgets/qlabel.h \
-		/qt-5.5.0-install/include/QtWidgets/qlcdnumber.h \
-		/qt-5.5.0-install/include/QtWidgets/qmainwindow.h \
-		/qt-5.5.0-install/include/QtWidgets/qmdiarea.h \
-		/qt-5.5.0-install/include/QtWidgets/qmdisubwindow.h \
-		/qt-5.5.0-install/include/QtWidgets/qmenu.h \
-		/qt-5.5.0-install/include/QtWidgets/qmenubar.h \
-		/qt-5.5.0-install/include/QtWidgets/qplaintextedit.h \
-		/qt-5.5.0-install/include/QtWidgets/qtextedit.h \
-		/qt-5.5.0-install/include/QtWidgets/qprogressbar.h \
-		/qt-5.5.0-install/include/QtWidgets/qradiobutton.h \
-		/qt-5.5.0-install/include/QtWidgets/qscrollbar.h \
-		/qt-5.5.0-install/include/QtWidgets/qsizegrip.h \
-		/qt-5.5.0-install/include/QtWidgets/qspinbox.h \
-		/qt-5.5.0-install/include/QtWidgets/qsplashscreen.h \
-		/qt-5.5.0-install/include/QtWidgets/qsplitter.h \
-		/qt-5.5.0-install/include/QtWidgets/qstackedwidget.h \
-		/qt-5.5.0-install/include/QtWidgets/qstatusbar.h \
-		/qt-5.5.0-install/include/QtWidgets/qtextbrowser.h \
-		/qt-5.5.0-install/include/QtWidgets/qtoolbar.h \
-		/qt-5.5.0-install/include/QtWidgets/qtoolbox.h \
-		/qt-5.5.0-install/include/QtWidgets/qtoolbutton.h \
-		/qt-5.5.0-install/include/QtWidgets/qtwidgetsversion.h \
-		/qt-5.5.0-install/include/QtCore/QTimer \
+		/qt-5.5.0-install/include/QtCore/qiodevice.h \
+		/qt-5.5.0-install/include/QtCore/qshareddata.h \
+		/qt-5.5.0-install/include/QtCore/qhash.h \
+		/qt-5.5.0-install/include/QtCore/qpair.h \
+		/qt-5.5.0-install/include/QtCore/QDir \
+		/qt-5.5.0-install/include/QtCore/qdir.h \
 		global.h \
-		/qt-5.5.0-install/include/QtCore/QString \
+		/qt-5.5.0-install/include/QtCore/QVariant \
+		/qt-5.5.0-install/include/QtCore/qvariant.h \
+		/qt-5.5.0-install/include/QtCore/qmap.h \
+		/qt-5.5.0-install/include/QtCore/qdebug.h \
+		/qt-5.5.0-install/include/QtCore/qtextstream.h \
+		/qt-5.5.0-install/include/QtCore/qlocale.h \
+		/qt-5.5.0-install/include/QtCore/qvector.h \
+		/qt-5.5.0-install/include/QtCore/qpoint.h \
+		/qt-5.5.0-install/include/QtCore/qset.h \
+		/qt-5.5.0-install/include/QtCore/qcontiguouscache.h \
 		/qt-5.5.0-install/include/QtCore/QSettings \
+		/qt-5.5.0-install/include/QtCore/qsettings.h \
 		/qt-5.5.0-install/include/QtCore/QTextCodec \
+		/qt-5.5.0-install/include/QtCore/qtextcodec.h \
 		audioplayer/audioplayer.h \
 		/qt-5.5.0-install/include/QtCore/QProcess \
+		/qt-5.5.0-install/include/QtCore/qprocess.h \
 		screenemotion/label.h \
-		/qt-5.5.0-install/include/QtWidgets/QLabel
+		/qt-5.5.0-install/include/QtWidgets/QLabel \
+		/qt-5.5.0-install/include/QtWidgets/qlabel.h \
+		/qt-5.5.0-install/include/QtWidgets/qframe.h \
+		/qt-5.5.0-install/include/QtWidgets/qwidget.h \
+		/qt-5.5.0-install/include/QtGui/qwindowdefs.h \
+		/qt-5.5.0-install/include/QtGui/qwindowdefs_win.h \
+		/qt-5.5.0-install/include/QtCore/qmargins.h \
+		/qt-5.5.0-install/include/QtGui/qpaintdevice.h \
+		/qt-5.5.0-install/include/QtCore/qrect.h \
+		/qt-5.5.0-install/include/QtCore/qsize.h \
+		/qt-5.5.0-install/include/QtGui/qpalette.h \
+		/qt-5.5.0-install/include/QtGui/qcolor.h \
+		/qt-5.5.0-install/include/QtGui/qrgb.h \
+		/qt-5.5.0-install/include/QtGui/qbrush.h \
+		/qt-5.5.0-install/include/QtGui/qmatrix.h \
+		/qt-5.5.0-install/include/QtGui/qpolygon.h \
+		/qt-5.5.0-install/include/QtGui/qregion.h \
+		/qt-5.5.0-install/include/QtCore/qdatastream.h \
+		/qt-5.5.0-install/include/QtCore/qline.h \
+		/qt-5.5.0-install/include/QtGui/qtransform.h \
+		/qt-5.5.0-install/include/QtGui/qpainterpath.h \
+		/qt-5.5.0-install/include/QtGui/qimage.h \
+		/qt-5.5.0-install/include/QtGui/qpixelformat.h \
+		/qt-5.5.0-install/include/QtGui/qpixmap.h \
+		/qt-5.5.0-install/include/QtCore/qsharedpointer.h \
+		/qt-5.5.0-install/include/QtCore/qsharedpointer_impl.h \
+		/qt-5.5.0-install/include/QtGui/qfont.h \
+		/qt-5.5.0-install/include/QtGui/qfontmetrics.h \
+		/qt-5.5.0-install/include/QtGui/qfontinfo.h \
+		/qt-5.5.0-install/include/QtWidgets/qsizepolicy.h \
+		/qt-5.5.0-install/include/QtGui/qcursor.h \
+		/qt-5.5.0-install/include/QtGui/qkeysequence.h \
+		/qt-5.5.0-install/include/QtGui/qevent.h \
+		/qt-5.5.0-install/include/QtCore/qurl.h \
+		/qt-5.5.0-install/include/QtCore/qurlquery.h \
+		/qt-5.5.0-install/include/QtGui/qvector2d.h \
+		/qt-5.5.0-install/include/QtGui/qtouchdevice.h \
+		/qt-5.5.0-install/include/QtCore/QDebug
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o emotionplayer.o videoplayer/emotionplayer.cpp
 
 networkqualitythread.o: net/networkqualitythread.cpp net/networkqualitythread.h \
@@ -8748,153 +4795,31 @@ networkqualitythread.o: net/networkqualitythread.cpp net/networkqualitythread.h 
 		/qt-5.5.0-install/include/QtCore/qcontainerfwd.h \
 		/qt-5.5.0-install/include/QtCore/qisenum.h \
 		/qt-5.5.0-install/include/QtCore/qobject_impl.h \
-		/qt-5.5.0-install/include/QtCore/QtCore \
-		/qt-5.5.0-install/include/QtCore/QtCoreDepends \
-		/qt-5.5.0-install/include/QtCore/qabstractanimation.h \
-		/qt-5.5.0-install/include/QtCore/qanimationgroup.h \
-		/qt-5.5.0-install/include/QtCore/qparallelanimationgroup.h \
-		/qt-5.5.0-install/include/QtCore/qpauseanimation.h \
-		/qt-5.5.0-install/include/QtCore/qpropertyanimation.h \
-		/qt-5.5.0-install/include/QtCore/qvariantanimation.h \
-		/qt-5.5.0-install/include/QtCore/qeasingcurve.h \
+		/qt-5.5.0-install/include/QtCore/QProcess \
+		/qt-5.5.0-install/include/QtCore/qprocess.h \
+		/qt-5.5.0-install/include/QtCore/qiodevice.h \
+		/qt-5.5.0-install/include/QtCore/qshareddata.h \
+		/qt-5.5.0-install/include/QtCore/qhash.h \
+		/qt-5.5.0-install/include/QtCore/qpair.h \
+		/qt-5.5.0-install/include/QtCore/QElapsedTimer \
+		/qt-5.5.0-install/include/QtCore/qelapsedtimer.h \
+		/qt-5.5.0-install/include/QtCore/QDebug \
+		/qt-5.5.0-install/include/QtCore/qdebug.h \
+		/qt-5.5.0-install/include/QtCore/qmap.h \
+		/qt-5.5.0-install/include/QtCore/qtextstream.h \
+		/qt-5.5.0-install/include/QtCore/qlocale.h \
+		/qt-5.5.0-install/include/QtCore/qvariant.h \
 		/qt-5.5.0-install/include/QtCore/qvector.h \
 		/qt-5.5.0-install/include/QtCore/qpoint.h \
-		/qt-5.5.0-install/include/QtCore/qvariant.h \
-		/qt-5.5.0-install/include/QtCore/qmap.h \
-		/qt-5.5.0-install/include/QtCore/qpair.h \
-		/qt-5.5.0-install/include/QtCore/qdebug.h \
-		/qt-5.5.0-install/include/QtCore/qhash.h \
-		/qt-5.5.0-install/include/QtCore/qtextstream.h \
-		/qt-5.5.0-install/include/QtCore/qiodevice.h \
-		/qt-5.5.0-install/include/QtCore/qlocale.h \
-		/qt-5.5.0-install/include/QtCore/qshareddata.h \
 		/qt-5.5.0-install/include/QtCore/qset.h \
 		/qt-5.5.0-install/include/QtCore/qcontiguouscache.h \
-		/qt-5.5.0-install/include/QtCore/qsequentialanimationgroup.h \
-		/qt-5.5.0-install/include/QtCore/qtextcodec.h \
-		/qt-5.5.0-install/include/QtCore/qendian.h \
-		/qt-5.5.0-install/include/QtCore/qlibraryinfo.h \
-		/qt-5.5.0-install/include/QtCore/qdatetime.h \
-		/qt-5.5.0-install/include/QtCore/qbuffer.h \
-		/qt-5.5.0-install/include/QtCore/qdatastream.h \
-		/qt-5.5.0-install/include/QtCore/qdir.h \
-		/qt-5.5.0-install/include/QtCore/qfileinfo.h \
-		/qt-5.5.0-install/include/QtCore/qfile.h \
-		/qt-5.5.0-install/include/QtCore/qfiledevice.h \
-		/qt-5.5.0-install/include/QtCore/qdiriterator.h \
-		/qt-5.5.0-install/include/QtCore/qfileselector.h \
-		/qt-5.5.0-install/include/QtCore/QObject \
-		/qt-5.5.0-install/include/QtCore/QStringList \
-		/qt-5.5.0-install/include/QtCore/qfilesystemwatcher.h \
-		/qt-5.5.0-install/include/QtCore/qlockfile.h \
-		/qt-5.5.0-install/include/QtCore/qloggingcategory.h \
-		/qt-5.5.0-install/include/QtCore/qprocess.h \
-		/qt-5.5.0-install/include/QtCore/qresource.h \
-		/qt-5.5.0-install/include/QtCore/qsavefile.h \
-		/qt-5.5.0-install/include/QtCore/qsettings.h \
-		/qt-5.5.0-install/include/QtCore/qstandardpaths.h \
-		/qt-5.5.0-install/include/QtCore/qstorageinfo.h \
-		/qt-5.5.0-install/include/QtCore/qtemporarydir.h \
-		/qt-5.5.0-install/include/QtCore/QScopedPointer \
-		/qt-5.5.0-install/include/QtCore/qtemporaryfile.h \
-		/qt-5.5.0-install/include/QtCore/qurl.h \
-		/qt-5.5.0-install/include/QtCore/qurlquery.h \
-		/qt-5.5.0-install/include/QtCore/qabstractitemmodel.h \
-		/qt-5.5.0-install/include/QtCore/qabstractproxymodel.h \
-		/qt-5.5.0-install/include/QtCore/qidentityproxymodel.h \
-		/qt-5.5.0-install/include/QtCore/qitemselectionmodel.h \
-		/qt-5.5.0-install/include/QtCore/qsortfilterproxymodel.h \
-		/qt-5.5.0-install/include/QtCore/qstringlistmodel.h \
-		/qt-5.5.0-install/include/QtCore/qjsonarray.h \
-		/qt-5.5.0-install/include/QtCore/qjsonvalue.h \
-		/qt-5.5.0-install/include/QtCore/qjsondocument.h \
-		/qt-5.5.0-install/include/QtCore/qjsonobject.h \
-		/qt-5.5.0-install/include/QtCore/qabstracteventdispatcher.h \
-		/qt-5.5.0-install/include/QtCore/qeventloop.h \
-		/qt-5.5.0-install/include/QtCore/qabstractnativeeventfilter.h \
-		/qt-5.5.0-install/include/QtCore/qbasictimer.h \
-		/qt-5.5.0-install/include/QtCore/qcoreapplication.h \
-		/qt-5.5.0-install/include/QtCore/qmath.h \
-		/qt-5.5.0-install/include/QtCore/qmetaobject.h \
-		/qt-5.5.0-install/include/QtCore/qmimedata.h \
-		/qt-5.5.0-install/include/QtCore/qobjectcleanuphandler.h \
-		/qt-5.5.0-install/include/QtCore/qpointer.h \
-		/qt-5.5.0-install/include/QtCore/qsharedpointer.h \
-		/qt-5.5.0-install/include/QtCore/qsharedpointer_impl.h \
-		/qt-5.5.0-install/include/QtCore/qsharedmemory.h \
-		/qt-5.5.0-install/include/QtCore/qsignalmapper.h \
-		/qt-5.5.0-install/include/QtCore/qsocketnotifier.h \
-		/qt-5.5.0-install/include/QtCore/qsystemsemaphore.h \
-		/qt-5.5.0-install/include/QtCore/qtimer.h \
-		/qt-5.5.0-install/include/QtCore/qtranslator.h \
-		/qt-5.5.0-install/include/QtCore/qwineventnotifier.h \
-		/qt-5.5.0-install/include/QtCore/qmimedatabase.h \
-		/qt-5.5.0-install/include/QtCore/qmimetype.h \
-		/qt-5.5.0-install/include/QtCore/qfactoryinterface.h \
-		/qt-5.5.0-install/include/QtCore/qlibrary.h \
-		/qt-5.5.0-install/include/QtCore/qplugin.h \
-		/qt-5.5.0-install/include/QtCore/qpluginloader.h \
-		/qt-5.5.0-install/include/QtCore/quuid.h \
-		/qt-5.5.0-install/include/QtCore/qabstractstate.h \
-		/qt-5.5.0-install/include/QtCore/qabstracttransition.h \
-		/qt-5.5.0-install/include/QtCore/qeventtransition.h \
-		/qt-5.5.0-install/include/QtCore/qfinalstate.h \
-		/qt-5.5.0-install/include/QtCore/qhistorystate.h \
-		/qt-5.5.0-install/include/QtCore/qsignaltransition.h \
-		/qt-5.5.0-install/include/QtCore/qstate.h \
-		/qt-5.5.0-install/include/QtCore/qstatemachine.h \
-		/qt-5.5.0-install/include/QtCore/qexception.h \
-		/qt-5.5.0-install/include/QtCore/qfuture.h \
-		/qt-5.5.0-install/include/QtCore/qfutureinterface.h \
-		/qt-5.5.0-install/include/QtCore/qrunnable.h \
-		/qt-5.5.0-install/include/QtCore/qresultstore.h \
-		/qt-5.5.0-install/include/QtCore/qfuturesynchronizer.h \
-		/qt-5.5.0-install/include/QtCore/qfuturewatcher.h \
-		/qt-5.5.0-install/include/QtCore/qreadwritelock.h \
-		/qt-5.5.0-install/include/QtCore/qsemaphore.h \
-		/qt-5.5.0-install/include/QtCore/qthreadpool.h \
-		/qt-5.5.0-install/include/QtCore/qthreadstorage.h \
-		/qt-5.5.0-install/include/QtCore/qwaitcondition.h \
-		/qt-5.5.0-install/include/QtCore/qarraydataops.h \
-		/qt-5.5.0-install/include/QtCore/qarraydatapointer.h \
-		/qt-5.5.0-install/include/QtCore/qbitarray.h \
-		/qt-5.5.0-install/include/QtCore/qbytearraymatcher.h \
-		/qt-5.5.0-install/include/QtCore/qcache.h \
-		/qt-5.5.0-install/include/QtCore/qcollator.h \
-		/qt-5.5.0-install/include/QtCore/qcommandlineoption.h \
-		/qt-5.5.0-install/include/QtCore/qcommandlineparser.h \
-		/qt-5.5.0-install/include/QtCore/qcryptographichash.h \
-		/qt-5.5.0-install/include/QtCore/qelapsedtimer.h \
-		/qt-5.5.0-install/include/QtCore/qline.h \
-		/qt-5.5.0-install/include/QtCore/qlinkedlist.h \
-		/qt-5.5.0-install/include/QtCore/qmargins.h \
-		/qt-5.5.0-install/include/QtCore/qmessageauthenticationcode.h \
-		/qt-5.5.0-install/include/QtCore/qqueue.h \
-		/qt-5.5.0-install/include/QtCore/qrect.h \
-		/qt-5.5.0-install/include/QtCore/qsize.h \
-		/qt-5.5.0-install/include/QtCore/qregularexpression.h \
-		/qt-5.5.0-install/include/QtCore/qscopedvaluerollback.h \
-		/qt-5.5.0-install/include/QtCore/qstack.h \
-		/qt-5.5.0-install/include/QtCore/qtextboundaryfinder.h \
-		/qt-5.5.0-install/include/QtCore/qtimeline.h \
-		/qt-5.5.0-install/include/QtCore/qtimezone.h \
-		/qt-5.5.0-install/include/QtCore/qxmlstream.h \
-		/qt-5.5.0-install/include/QtCore/qtcoreversion.h \
-		SSDB/ssdb_client_.h \
-		SSDB/ssdb_client.h \
+		/qt-5.5.0-install/include/QtCore/QMutex \
 		global.h \
-		/qt-5.5.0-install/include/QtCore/QString \
 		/qt-5.5.0-install/include/QtCore/QVariant \
 		/qt-5.5.0-install/include/QtCore/QSettings \
+		/qt-5.5.0-install/include/QtCore/qsettings.h \
 		/qt-5.5.0-install/include/QtCore/QTextCodec \
-		serialport/serialport.h \
-		/qt-5.5.0-install/include/QtSerialPort/QtSerialPort \
-		/qt-5.5.0-install/include/QtSerialPort/QtSerialPortDepends \
-		/qt-5.5.0-install/include/QtSerialPort/qserialport.h \
-		/qt-5.5.0-install/include/QtSerialPort/qserialportglobal.h \
-		/qt-5.5.0-install/include/QtSerialPort/qserialportinfo.h \
-		/qt-5.5.0-install/include/QtSerialPort/qtserialportversion.h \
-		/qt-5.5.0-install/include/QtCore/QElapsedTimer
+		/qt-5.5.0-install/include/QtCore/qtextcodec.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o networkqualitythread.o net/networkqualitythread.cpp
 
 ftpdownloader.o: net/ftpdownloader.cpp net/ftpdownloader.h \
