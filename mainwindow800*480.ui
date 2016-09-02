@@ -27,7 +27,7 @@
      <enum>Qt::NoFocus</enum>
     </property>
     <property name="currentIndex">
-     <number>4</number>
+     <number>1</number>
     </property>
     <widget class="QWidget" name="tabWidgetPage1">
      <attribute name="title">
@@ -131,7 +131,7 @@
            <enum>Qt::NoFocus</enum>
           </property>
           <property name="text">
-           <string>scan</string>
+           <string>Scan WiFi</string>
           </property>
          </widget>
         </item>
@@ -147,23 +147,7 @@
            <enum>Qt::NoFocus</enum>
           </property>
           <property name="text">
-           <string>connect</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QPushButton" name="pushButton_openssdb">
-          <property name="minimumSize">
-           <size>
-            <width>0</width>
-            <height>34</height>
-           </size>
-          </property>
-          <property name="focusPolicy">
-           <enum>Qt::NoFocus</enum>
-          </property>
-          <property name="text">
-           <string>open SSDB</string>
+           <string>Connect</string>
           </property>
          </widget>
         </item>
@@ -179,7 +163,55 @@
            <enum>Qt::NoFocus</enum>
           </property>
           <property name="text">
-           <string>disconnect</string>
+           <string>Disconnect</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="pushButton_startvideo">
+          <property name="minimumSize">
+           <size>
+            <width>0</width>
+            <height>34</height>
+           </size>
+          </property>
+          <property name="focusPolicy">
+           <enum>Qt::NoFocus</enum>
+          </property>
+          <property name="text">
+           <string>Start Video</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="pushButton_openssdb">
+          <property name="minimumSize">
+           <size>
+            <width>0</width>
+            <height>34</height>
+           </size>
+          </property>
+          <property name="focusPolicy">
+           <enum>Qt::NoFocus</enum>
+          </property>
+          <property name="text">
+           <string>Open SSDB</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="pushButton_natlogin">
+          <property name="minimumSize">
+           <size>
+            <width>0</width>
+            <height>34</height>
+           </size>
+          </property>
+          <property name="focusPolicy">
+           <enum>Qt::NoFocus</enum>
+          </property>
+          <property name="text">
+           <string>NAT Login</string>
           </property>
          </widget>
         </item>
@@ -352,12 +384,12 @@
         <height>266</height>
        </rect>
       </property>
-      <widget class="QPushButton" name="pushButton_download">
+      <widget class="QPushButton" name="pushButton_test2">
        <property name="geometry">
         <rect>
          <x>250</x>
          <y>190</y>
-         <width>92</width>
+         <width>121</width>
          <height>34</height>
         </rect>
        </property>
@@ -371,7 +403,7 @@
         <enum>Qt::NoFocus</enum>
        </property>
        <property name="text">
-        <string>Download</string>
+        <string>NAT Send Test</string>
        </property>
       </widget>
       <widget class="QGroupBox" name="groupBox">

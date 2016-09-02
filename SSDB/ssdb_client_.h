@@ -46,7 +46,7 @@ public slots:
 
 signals:
     void CtrlMsg(SSDB_CtrlCmd);
-    void errMsg(QString, bool = 0);
+    void errMsg(const QString &, bool = 0);
 
 private:
     bool isNewDirCmd(SSDB_DIR cmd);

@@ -12,12 +12,13 @@ int main(int argc, char *argv[])
     if(argc > 1)
     {
         QCommandLineParser parser;
-        QCommandLineOption o1("t", "test net work delay", "pattern", "");
+        QCommandLineOption o1("t", "test network delay", "pattern", "");
         parser.addOption(o1);
         parser.addVersionOption();
         parser.addHelpOption();
-        QString info = QString("\r%1 %2\ncompiled at:\t%3 %4\npowered by:\t%5")
-                .arg(a.applicationName(), VERSION_STR, __DATE__, __TIME__, "WYL");
+        QString info = QString("\r%1 %2(%6x%7)\ncompiled at:\t%3 %4\npowered by:\t%5")
+                .arg(a.applicationName(), VERSION_STR, __DATE__, __TIME__, "WYL")
+                .arg(SCREEN_WIDTH).arg(SCREEN_HEIGHT);
         a.setApplicationVersion(VERSION+info);
         parser.setApplicationDescription(info);
         parser.process(a);

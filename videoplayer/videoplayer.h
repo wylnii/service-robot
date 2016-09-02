@@ -38,7 +38,7 @@ public:
     void setSource(const QString &name);
     void setVolume(int vol);
     int Volume();
-    QString source() const;
+    const QString &source() const;
     void Init();
     int openFile_and_getStream();
     void wait_for_end();
@@ -87,7 +87,7 @@ public slots:
     int play();
     int play(const QString & file);
     int play(int no);
-    void silence(const bool & s = 1);
+    void silence(bool  s = true);
     void replay();
     void pause();
     void stop(bool repaint = false);

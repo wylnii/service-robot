@@ -17,7 +17,7 @@
 #endif
 
 //定义HD_SCREEN 高清屏
-#define HD_SCREEN
+//#define HD_SCREEN
 
 #ifdef HD_SCREEN
 const int SCREEN_WIDTH = 1280;
@@ -27,11 +27,11 @@ const int SCREEN_WIDTH = 800;
 const int SCREEN_HEIGHT = 480;
 #endif
 
-#define VERSION  "2.1.0"
+#define VERSION  "3.0.0"
 #ifdef HD_SCREEN
-#define VERSION_STR VERSION " for HD"
+#define VERSION_STR VERSION " for HD Screen"
 #else
-#define VERSION_STR VERSION " for SD"
+#define VERSION_STR VERSION " for SD Screen"
 #endif
 
 #ifndef Logout
@@ -52,7 +52,7 @@ const int WINDOW_WIDTH = SCREEN_WIDTH;
 const int WINDOW_HEIGHT = SCREEN_HEIGHT;
 
 const int RCV_DATA_INTERVAL = 10;
-const int DEFAULT_BAUD = 38400;
+const int DEFAULT_BAUD = 9600;
 
 enum SSDB_CTRL_Type{SSDB_CTRL_DirCtrl, SSDB_CTRL_ParamSet, SSDB_CTRL_Video, SSDB_CTRL_VideoCtrl, SSDB_CTRL_Charge, SSDB_CTRL_Emotion, SSDB_CTRL_num};
 enum SSDB_DIR{SSDB_DIR_Up = 0x01, SSDB_DIR_Down, SSDB_DIR_Left, SSDB_DIR_Right, SSDB_DIR_Stop = 0x05,\

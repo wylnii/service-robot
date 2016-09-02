@@ -30,7 +30,7 @@ public:
     void sendArgs(const SSDB_CtrlCmd &cmd);
 
 public slots:
-    bool openPort(const QString & portname, const int &baudRate, bool close = false);
+    bool openPort(const QString & portname, const int baudRate, bool close = false);
     void move(MoveFlag motion);
     void readCom();
     void getData();
@@ -49,8 +49,8 @@ private:
     int timerCount;
 
 signals:
-    void errMsg(QString, bool = 0);
-    void rcvSPData(SerialPort::CtrlCmd cmd);
+    void errMsg(const QString &, bool = false);
+    void rcvSPData(const SerialPort::CtrlCmd &cmd);
 };
 
 #endif // SERIALPORT_H

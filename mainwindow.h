@@ -16,6 +16,8 @@
 #include "keyinput.h"
 #include "net/login.h"
 #include "net/networkqualitythread.h"
+#include "net/natclient.h"
+#include "ffmpeg/ffmpeg_sh.h"
 
 namespace Ui {
 class MainWindow;
@@ -34,10 +36,13 @@ public:
 signals:
     void connect_net(QString ssid,QString state,QString passcode);
     void stop_net();
-    void openSerialPort(const QString &portname, const int &baudRate, bool close = false);
+    void openSerialPort(const QString &portname, const int baudRate, bool close = false);
     void robotMove(SerialPort::MoveFlag move);
     void connectSSDB();
-    void sendCmd(QByteArray cmd);
+    void sendCmd(QByteArray &cmd);
+    void send_rtsp(QString rtsp_ip,QString port,QString feed,QString Resolution,QString fbs,QString bitrate,QString device);
+    void natLogin();
+    void natLogout(bool = false);
 
 protected:
     void setStyleSheet();
@@ -63,7 +68,7 @@ public slots:
     void on_toolButton_headleft_clicked();
     void on_toolButton_headright_clicked();
 
-    void on_pushButton_download_clicked();
+    void on_pushButton_test2_clicked();
     void on_toolButton_show_clicked();
     void on_toolButton_charge_clicked();
     void on_verticalSlider_valueChanged(int value);
@@ -72,6 +77,7 @@ public slots:
 
     void on_toolButton_next_clicked();
     void on_verticalSlider_2_sliderReleased();
+    void on_pushButton_natlogin_clicked();
 
 private slots:
     void autoConnect();
@@ -82,6 +88,9 @@ private slots:
     void getCtrlMsg(const SSDB_CtrlCmd &cmd);
     void getKeyinput(uchar key, bool status);
     void changeWindows();
+    void getNATCtrlMsg(const QByteArray &msg);
+
+    void on_pushButton_startvideo_clicked();
 
 private:
     void showSupportMsg();
@@ -100,6 +109,10 @@ private:
 //    NetSpeed *netSpeed;
     KeyInput *keyInput;
     NetworkQualityThread *networkQualityThread;
+
+    NatClient *nat;
+    FFmpeg_sh *ffmpeg_run;
+    QThread *ffmpegthread;
 };
 
 #endif // MAINWINDOW_H

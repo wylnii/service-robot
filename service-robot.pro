@@ -50,7 +50,9 @@ SOURCES += main.cpp\
     screenemotion/label.cpp \
     videoplayer/emotionplayer.cpp \
     net/networkqualitythread.cpp \
-    net/ftpdownloader.cpp
+    net/ftpdownloader.cpp \
+    net/natclient.cpp \
+    ffmpeg/ffmpeg_sh.cpp \
 
 HEADERS  += mainwindow.h \
     keyboard/keyboard.h \
@@ -72,14 +74,17 @@ HEADERS  += mainwindow.h \
     screenemotion/label.h \
     videoplayer/emotionplayer.h \
     net/networkqualitythread.h \
-    net/ftpdownloader.h
+    net/ftpdownloader.h \
+    net/natclient.h \
+    net/proto.h \
+    ffmpeg/ffmpeg_sh.h \
 
-FORMS    += \
-    mainwindow.ui \
-    keyboard/keyboard.ui
 #FORMS    += \
-#    mainwindow800*480.ui \
-#    keyboard/keyboard800*480.ui
+#    mainwindow.ui \
+#    keyboard/keyboard.ui
+FORMS    += \
+    mainwindow800*480.ui \
+    keyboard/keyboard800*480.ui
 
 RESOURCES += \
     res.qrc

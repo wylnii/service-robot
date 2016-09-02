@@ -235,7 +235,7 @@ void SerialPort::sendArgs(const SSDB_CtrlCmd &cmd)
     }
 }
 
-bool SerialPort::openPort(const QString &portname, const int &baudRate, bool close)
+bool SerialPort::openPort(const QString &portname, const int baudRate, bool close)
 {
     //    qDebug()<<"serial_thread"<<QThread::currentThread();
     if(close)
@@ -275,7 +275,7 @@ void SerialPort::getData()
 {
     if(dataLength == rcvMsg.length() && dataIsValid())
     {
-        qDebug()<<dataLength<<rcvMsg.toHex()<<timer->elapsed();
+//        qDebug()<<dataLength<<rcvMsg.toHex()<<timer->elapsed();
         analyseData(rcvMsg);
         dataLength = 0;
         rcvMsg.clear();
@@ -316,7 +316,6 @@ void SerialPort::analyseData(const QByteArray &rcvMsg)
         }
         if(sum == (uchar)rcvMsg[last] && last > 1) //last byte:check
         {
-            qDebug("check:0x%02X",sum);
             int data = -1;
             switch ((uchar)rcvMsg[1])
             {
@@ -358,5 +357,9 @@ void SerialPort::analyseData(const QByteArray &rcvMsg)
                 emit rcvSPData(CtrlCmd{(Cmd_Type)rcvMsg[1], data});
             }
         }
+//        else
+//        {
+//            qDebug("BCC check failed:0x%02X",sum);
+//        }
     }
 }

@@ -39,8 +39,11 @@ MainWindow::MainWindow(QWidget *parent) :
     serialport_thread = new QThread(this);
     serialport_thread->start();
 
+    ffmpegthread = new QThread(this);//推送线程
+    ffmpegthread->start();
+
     wifi=new USB_WiFi;//不能指定为this，要不然无法用moveToThread
-    connect(wifi,&USB_WiFi::errormsg,this,&MainWindow::setStatText);
+    connect(wifi,&USB_WiFi::errorMsg,this,&MainWindow::setStatText);
     connect(this,&MainWindow::connect_net,wifi,&USB_WiFi::connect_wifi);
     connect(this,&MainWindow::stop_net,wifi,&USB_WiFi::stop_wifi);
     wifi->moveToThread(wifi_thread);
@@ -54,6 +57,18 @@ MainWindow::MainWindow(QWidget *parent) :
     }
 #endif
     QTimer::singleShot(1500,Qt::VeryCoarseTimer,this,&MainWindow::autoConnect);//auto connect
+
+    ffmpeg_run =new FFmpeg_sh;
+    connect(this, &MainWindow::send_rtsp, ffmpeg_run, &FFmpeg_sh::rtsp_send);
+    connect(ffmpeg_run, &FFmpeg_sh::errMsg, this, &MainWindow::setStatusBarText);
+    ffmpeg_run->moveToThread(ffmpegthread);
+
+    nat=new NatClient;
+    connect(this, &MainWindow::natLogin, nat, &NatClient::login);
+    connect(this, &MainWindow::natLogout, nat, &NatClient::logout);
+    connect(nat, &NatClient::reciveMsg, this, &MainWindow::getNATCtrlMsg);
+    connect(nat, &NatClient::errorMsg, this, &MainWindow::setStatText);
+    nat->moveToThread(ffmpegthread);
 
     wifitable=new QTableWidget(ui->tabWidgetPage2);
 
@@ -133,11 +148,10 @@ MainWindow::MainWindow(QWidget *parent) :
 
 MainWindow::~MainWindow()
 {
-    wifi_thread->quit();
-    serialport_thread->quit();
 //    videoPlayer->stop();
     wifi_thread->quit();
     serialport_thread->quit();
+    ffmpegthread->quit();
     thread()->msleep(100);
     delete videoPlayer;
     delete wifi;
@@ -269,7 +283,7 @@ void MainWindow::on_pushButton_scan_clicked()
     header3<<"<hidden>"<<"80%"<<"locked";
     list.append(header3);
 #else
-    if(wifi->connetct_ssid.isEmpty())
+    if(wifi->connected_ssid.isEmpty())
         list=wifi->scan_wifi(0);
     else
         list=wifi->scan_wifi(1);
@@ -321,6 +335,11 @@ void MainWindow::autoConnect()
         {
             emotionPlayer->changeEmotion("service");
             emit connectSSDB();
+            emit natLogin();
+//            QString cmd("./audioPlayer %1 %2 %3");
+//            cmd = cmd.arg(loadHistory("SSDB_server","60.171.108.155"),"20000",RobotName);
+//            system(cmd.toLocal8Bit().constData());
+//            qDebug()<<cmd;
             if(! ssdbClient->isConnected())
             {
                 showSupportMsg();
@@ -344,8 +363,8 @@ void MainWindow::autoConnect()
         emit connectSSDB();
         QString cmd("./audioPlayer %1 %2 %3");
         cmd = cmd.arg(loadHistory("SSDB_server","60.171.108.155"),"20000",RobotName);
-        qDebug()<<cmd;
         system(cmd.toLocal8Bit().constData());
+        qDebug()<<cmd;
         if(! ssdbClient->isConnected())
         {
             showSupportMsg();
@@ -379,6 +398,11 @@ void MainWindow::on_pushButton_connect_clicked()
     }
 }
 
+void MainWindow::on_pushButton_disconnect_clicked()
+{
+    emit stop_net();
+}
+
 void MainWindow::rcvKBInput(const QString &input, const QString &mrk)
 {
     if(mrk == "#WIFI_password")
@@ -400,7 +424,7 @@ void MainWindow::rcvKBInput(const QString &input, const QString &mrk)
     {
         if(input.contains(QRegExp("^((\\d{1,2}|1\\d\\d|2[0-4]\\d|25[0-5])\\.){3}(\\d{1,2}|1\\d\\d|2[0-4]\\d|25[0-5])$")))
         {
-//            ffmpeg_run->ipAddr = input;
+            ffmpeg_run->ipAddr = input;
 
             mykeyboard->setInputMsg("Input Device :", "Device");
             mykeyboard->show();
@@ -415,7 +439,7 @@ void MainWindow::rcvKBInput(const QString &input, const QString &mrk)
     {
         if(input.contains(QRegExp("^/dev/.+\\d+$")))
         {
-//            ffmpeg_run->device = input;
+            ffmpeg_run->device = input;
             mykeyboard->setInputMsg("Input Feed :", "Feed");
             mykeyboard->show();
         }
@@ -429,8 +453,8 @@ void MainWindow::rcvKBInput(const QString &input, const QString &mrk)
     {
         if(input.contains(QRegExp("^[\\d\\w]+$")))
         {
-//            ffmpeg_run->feed = input;
-//            emit send_rtsp(ffmpeg_run->ipAddr,"",ffmpeg_run->feed,"640*480","15","256k",ffmpeg_run->device);
+            ffmpeg_run->feed = input;
+            emit send_rtsp(ffmpeg_run->ipAddr,"",ffmpeg_run->feed,"640*480","15","256k",ffmpeg_run->device);
         }
         else
         {
@@ -443,14 +467,27 @@ void MainWindow::rcvKBInput(const QString &input, const QString &mrk)
         QRegExp regexp("^(((\\d{1,2}|1\\d\\d|2[0-4]\\d|25[0-5])\\.){3}(\\d{1,2}|1\\d\\d|2[0-4]\\d|25[0-5]))\\s?:\\s?([\\d]{1,5})$");
         if(regexp.indexIn(input) != -1)
         {
-//            nat->setServerIP(regexp.cap(1));
-//            nat->setServerPort(regexp.cap(5).toInt());
-            mykeyboard->setInputMsg("Input NAT Name :", "RobotName");
+            nat->setServerIP(regexp.cap(1));
+            nat->setServerPort(regexp.cap(5).toInt());
+            mykeyboard->setInputMsg("Input NAT Name :", "ClientName");
             mykeyboard->show();
         }
         else
         {
             setStatusBarText("eg :\t192.168.1.1:1234",1);
+            mykeyboard->show();
+        }
+    }
+    else if(mrk == "ClientName")
+    {
+        if(! input.isEmpty() && input.length() < 11)
+        {
+            nat->setLocalNatName(input.toLatin1());
+            emit natLogin();
+        }
+        else
+        {
+            setStatusBarText("eg :\tRobot427 (< 10 chars)",true);
             mykeyboard->show();
         }
     }
@@ -506,11 +543,6 @@ void MainWindow::rcvKBInput(const QString &input, const QString &mrk)
     }
 }
 
-void MainWindow::on_pushButton_disconnect_clicked()
-{
-    emit stop_net();
-}
-
 void MainWindow::on_toolButton_up_clicked()
 {
     emit robotMove(SerialPort::Up);
@@ -545,7 +577,10 @@ void MainWindow::on_pushButton_openPort_clicked()
 
 void MainWindow::getSPMsg(const SerialPort::CtrlCmd &cmd)
 {
-    setStatText(QString("type: 0x%1 data: %2").arg(cmd.type, 0, 16).arg(cmd.data, 8, 2, QChar('0')));
+    if(cmd.type != SerialPort::Cmd_WarningMsg)
+    {
+        setStatText(QString("type: 0x%1 data: %2").arg(cmd.type, 0, 16).arg(cmd.data, 8, 2, QChar('0')));
+    }
 }
 
 void MainWindow::on_tabWidget_tabBarClicked(int index)
@@ -593,6 +628,27 @@ void MainWindow::changeWindows()
     mykeyboard->show();
 }
 
+void MainWindow::getNATCtrlMsg(const QByteArray &msg)
+{
+    if(msg=="up")
+        emit robotMove(SerialPort::Up);
+    else if(msg=="down")
+        emit robotMove(SerialPort::Down);
+    else if(msg=="left")
+        emit robotMove(SerialPort::Left);
+    else if(msg=="right")
+        emit robotMove(SerialPort::Right);
+    else if(msg=="stop")
+        emit robotMove(SerialPort::Stop);
+    else if(msg=="stop_video")
+        ffmpeg_run->stopProcess();
+    else if(msg=="start_video")
+    {
+        emit send_rtsp(ffmpeg_run->ipAddr,"",ffmpeg_run->feed,"640*480","15","256k",ffmpeg_run->device);
+    }
+    setStatusBarText(QLatin1String("##\trecive Msg: ")+msg,true);
+}
+
 void MainWindow::showSupportMsg()
 {
     this->hide();
@@ -635,18 +691,9 @@ void MainWindow::on_toolButton_headright_clicked()
     emit robotMove(SerialPort::HeadRight);
 }
 
-void MainWindow::on_pushButton_download_clicked()
+void MainWindow::on_pushButton_test2_clicked()
 {
-    Downloader *downloader = new Downloader(this);
-
-    if(! downloader->isDownloading())
-    {
-        downloader->startDownload("\
-http://mirrors.ustc.edu.cn/qtproject/official_releases/gdb/linux-32/md5sums.txt\
-");
-    }
-    else
-        downloader->stopDownload();
+    nat->sendData("hello");
 }
 
 void MainWindow::on_toolButton_show_clicked()
@@ -709,3 +756,29 @@ void MainWindow::on_verticalSlider_2_sliderReleased()
     setBacklightBright(ui->verticalSlider_2->value());
 #endif
 }
+
+void MainWindow::on_pushButton_natlogin_clicked()
+{
+    if(nat->isOnline())
+    {
+        emit natLogout();
+    }
+    else
+    {
+        mykeyboard->setInputMsg("input NAT Addr && Port :","NAT");
+        mykeyboard->show();
+    }
+}
+
+void MainWindow::on_pushButton_startvideo_clicked()
+{
+    if(ffmpeg_run->processState() == 0)
+    {
+        mykeyboard->setInputMsg("Input IP Address :","IP");
+        mykeyboard->show();
+//        lower();
+    }
+    else
+        ffmpeg_run->stopProcess();
+}
+

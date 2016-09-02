@@ -67,7 +67,7 @@ void SSDB_Client::disConnect()
     queryDirCtrlTimerStart = false;
     sendInfo_timer = false;
     m_client->disConnect();
-    emit errMsg("disconnect ssdb");
+    emit errMsg(QStringLiteral("disconnect ssdb"));
 }
 
 SSDBClient *SSDB_Client::Client() const
@@ -179,7 +179,7 @@ bool SSDB_Client::connectServer(const QString &host, int port)
         //        QDataStream data2(&buffer);
         //        data2>>img2;
         //        qDebug()<<img2.size();
-        emit errMsg("connect ssdb succeed!");
+        emit errMsg(QStringLiteral("connect ssdb succeed!"));
         timerStart = true;
         this->start();
 #ifndef _TEST
@@ -194,7 +194,7 @@ bool SSDB_Client::connectServer(const QString &host, int port)
     }
     else
     {
-        emit errMsg("connect ssdb failed!");
+        emit errMsg(QStringLiteral("connect ssdb failed!"));
         return false;
     }
 }
@@ -512,7 +512,7 @@ void SSDB_Client::run()
     if(! stop)
         return;
     stop = false;
-    qDebug()<<this<<this->thread()<<currentThread();
+    qDebug()<<this<<clientName.data()<<this->thread()<<currentThread();
     int timeCnt = 0;
     //    QElapsedTimer t;
     while(! stop)

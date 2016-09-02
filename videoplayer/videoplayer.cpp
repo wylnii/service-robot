@@ -101,7 +101,7 @@ int VideoPlayer::Volume()
     return volume;
 }
 
-QString VideoPlayer::source() const
+const QString &VideoPlayer::source() const
 {
     return filename;
 }
@@ -462,7 +462,7 @@ int VideoPlayer::play(int no)
     return -1;
 }
 
-void VideoPlayer::silence(const bool &s)
+void VideoPlayer::silence(bool s)
 {
     vs->quit = s;//stop audioThread
     SDL_PauseAudio(s);

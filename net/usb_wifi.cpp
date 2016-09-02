@@ -8,7 +8,7 @@
 USB_WiFi::USB_WiFi(QObject  *parent) : QObject(parent)
 {
     process = new QProcess;
-    connetct_ssid="";
+    connected_ssid="";
     retry = 0;
 }
 USB_WiFi::~USB_WiFi()
@@ -40,7 +40,7 @@ QList<QStringList> USB_WiFi::scan_wifi(int update)
     else if(update == 0)
         qDebug()<<"scan_wifi thread:"<<QThread::currentThread();
     if(update != 2)
-        emit errormsg(QString("scan wifi ...").prepend(update ? "update ":""));
+        emit errorMsg(QString("scan wifi ...").prepend(update ? "update ":""));
     qApp->processEvents();
     QStringList header;
     header<<"SSID"<<"Intensity"<<"state";
@@ -90,17 +90,17 @@ QList<QStringList> USB_WiFi::scan_wifi(int update)
                len = info.lastIndexOf('\n')-6;
             if(len > 0)
                 SSID = info.mid(6,len);
-            if(SSID == connetct_ssid && ! connetct_ssid.isEmpty())
+            if(SSID == connected_ssid && ! connected_ssid.isEmpty())
                 state = "connected";
             list.clear();
             list<<SSID<<Intensity<<state;
             result.append(list);
         }
-    emit errormsg(QString("scan wifi completed! %1s").arg(timer.elapsed()/1000.0, 0, 'f', 3));
+    emit errorMsg(QString("scan wifi completed! %1s").arg(timer.elapsed()/1000.0, 0, 'f', 3));
     return result;
 }
 
-bool USB_WiFi::connect_wifi(QString ssid,QString state,QString passcode)
+bool USB_WiFi::connect_wifi(const QString &ssid, const QString &state, const QString &passcode)
 {
     QMutexLocker locker(&mutex);
 
@@ -113,7 +113,7 @@ bool USB_WiFi::connect_wifi(QString ssid,QString state,QString passcode)
     {
         type = "none";
         cmd = QString("start-wifi %2 %1").arg(ssid,type);
-        emit errormsg(QString("connecting open wifi ..."));
+        emit errorMsg(QString("connecting open wifi ..."));
         if(! connect_wifi_by_(cmd, ssid, type))
             return false;
     }
@@ -121,12 +121,12 @@ bool USB_WiFi::connect_wifi(QString ssid,QString state,QString passcode)
     {
         type = "wpa";
         cmd = QString("start-wifi %3 %1 %2").arg(ssid,passcode,type);
-        emit errormsg(QString("connecting %1 wifi ...").arg(type));
+        emit errorMsg(QString("connecting %1 wifi ...").arg(type));
         if(! connect_wifi_by_(cmd, ssid, type))
         {
             type = "wpa2";
             cmd = QString("start-wifi %3 %1 %2").arg(ssid,passcode,type);
-            emit errormsg(QString("connecting %1 wifi ...").arg(type));
+            emit errorMsg(QString("connecting %1 wifi ...").arg(type));
             return connect_wifi_by_(cmd, ssid, type);
 //            if(! connect_wifi_by_(cmd, ssid, type))
 //            {
@@ -146,7 +146,7 @@ bool USB_WiFi::stop_wifi()
     QMutexLocker locker(&mutex);
 
     retry = 0;
-    emit errormsg("Disconnect wifi ...");
+    emit errorMsg("Disconnect wifi ...");
     process = new QProcess;
     process->start("stop-wifi");
     if(process->waitForStarted())
@@ -154,20 +154,21 @@ bool USB_WiFi::stop_wifi()
         QString ret;
         if(process->waitForFinished(), ret = process->readAll(), ret.isEmpty())
         {
-            emit errormsg("Disconnect wifi success!");
-            connetct_ssid.clear();
+            emit errorMsg("Disconnect wifi success!");
+            connected_ssid.clear();
             locker.unlock();
             scan_wifi(2);
             return true;
         }
-        emit errormsg(QLatin1String("<font color = 'red'>Disconnect wifi failed!</font> : ")+ret);
+        emit errorMsg(QString("<font color = 'red'>Disconnect wifi failed!</font> : ")+ret);
     }
     return false;
 }
 
 bool USB_WiFi::connect_wifi_by_(const QString &cmd, const QString &ssid, const QString &type)
 {
-    short ip_mark = 0, connect_mark = 0;
+    int ip_mark = false;
+
     QElapsedTimer t;
     t.start();
 
@@ -176,8 +177,6 @@ bool USB_WiFi::connect_wifi_by_(const QString &cmd, const QString &ssid, const Q
     process->start(cmd);
     if(process->waitForStarted())
     {
-//        if(! process->waitForFinished(5000))
-//            process->kill();
         QByteArray ret;
         while(ret.count("Sending discover...") < 4 && t.elapsed() < 8000)
         {
@@ -187,13 +186,13 @@ bool USB_WiFi::connect_wifi_by_(const QString &cmd, const QString &ssid, const Q
             if(ret.isEmpty())
                 return false;
             if(ret.contains("Sending select for"))
-                ip_mark=1;//找到IP
-            if(ret.contains("adding dns"))
-                connect_mark=1;//连接成功
-            if(ip_mark && connect_mark) //connected
+                ip_mark = true;//找到IP
+//            if(ret.contains("adding dns"))
+//                connect_mark=1;//连接成功
+            if(ip_mark) //connected
             {
-                emit errormsg(QString("connect %1 success! (%2)").arg(ssid,type));
-                connetct_ssid = ssid;
+                emit errorMsg(QString("connect %1 success! (%2)").arg(ssid,type));
+                connected_ssid = ssid;
                 process->waitForFinished(1000);
                 qDebug() << ret;
                 if(process->state() != QProcess::NotRunning)
@@ -203,7 +202,7 @@ bool USB_WiFi::connect_wifi_by_(const QString &cmd, const QString &ssid, const Q
         }
         qDebug() << ret;
     }
-    emit errormsg(QString("<font color = 'red'>connect %1 failed!</font>").arg(ssid));
-    connetct_ssid.clear();
+    emit errorMsg(QString("<font color = 'red'>connect %1 failed!</font>").arg(ssid));
+    connected_ssid.clear();
     return false;
 }
